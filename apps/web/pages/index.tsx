@@ -1,13 +1,12 @@
-import { Button } from "shared";
-import { useHelloQuery } from "@store/services/api";
+import { useHelloQuery } from '@store/services/api';
+import { Header } from '@components/global/Header';
 
 export default function Web() {
   const { data } = useHelloQuery();
 
   return (
     <div>
-      <h1>{data?.message}</h1>
-      <Button />
+      <Header />
     </div>
   );
 }

@@ -26,7 +26,7 @@
       "@svg*": ["../../apps/web/public/svg/*"],
       "@fonts*": ["../../apps/web/public/fonts/*"],
       "@public*": ["../../apps/web/src/public/*"],
-      "@components*": ["../../packages/interface/src/components/*"]
+      "@components*": ["../../apps/web/src/components/*"]
     }
   },
   "exclude": ["node_modules"]

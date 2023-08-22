@@ -1,20 +1,16 @@
-import type { AppProps } from "next/app";
-import { Provider } from "react-redux";
-import store from "../src/store";
-import "@styles/global.css";
-import styles from "@styles/shared/shared.module.css";
-import { poppinsFont } from "@fonts/poppins/poppins.font";
+import type { AppProps } from 'next/app';
+import { Provider } from 'react-redux';
+import store from '../src/store';
+import '@styles/global.css';
+import { Background } from '@components/global/Background';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <div
-      className={`${styles.background} ${poppinsFont.className} bg-primary w-full h-full`}
-      style={{ width: "100vw", height: "100vh" }}
-    >
+    <Background>
       <Provider store={store}>
-        <Component {...pageProps} />;
+        <Component {...pageProps} />
       </Provider>
-    </div>
+    </Background>
   );
 }
 

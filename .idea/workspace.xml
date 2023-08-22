@@ -5,62 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2101ad9f-8972-44d3-9c27-f093e4bebdd9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.prettierrc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/web/.prettierrc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/web/public/fonts/poppins/OFL.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/web/public/fonts/poppins/Poppins-Black.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/web/public/fonts/poppins/Poppins-BlackItalic.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/web/public/fonts/poppins/Poppins-Bold.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/web/public/fonts/poppins/Poppins-BoldItalic.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/web/public/fonts/poppins/Poppins-ExtraBold.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/web/public/fonts/poppins/Poppins-ExtraBoldItalic.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/web/public/fonts/poppins/Poppins-ExtraLight.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/web/public/fonts/poppins/Poppins-ExtraLightItalic.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/web/public/fonts/poppins/Poppins-Italic.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/web/public/fonts/poppins/Poppins-Light.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/web/public/fonts/poppins/Poppins-LightItalic.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/web/public/fonts/poppins/Poppins-Medium.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/web/public/fonts/poppins/Poppins-MediumItalic.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/web/public/fonts/poppins/Poppins-Regular.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/web/public/fonts/poppins/Poppins-SemiBold.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/web/public/fonts/poppins/Poppins-SemiBoldItalic.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/web/public/fonts/poppins/Poppins-Thin.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/web/public/fonts/poppins/Poppins-ThinItalic.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/web/public/fonts/poppins/poppins.font.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/web/src/styles/colors.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/web/src/styles/shared/shared.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/shared/utils/enum/enum.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/web/src/components/global/Background.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/web/src/components/global/Header.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/api/.prettierrc" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/.prettierrc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/api/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/api/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/next-env.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/next-env.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/next.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/next.config.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/web/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/web/pages/_app.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/pages/_app.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/web/pages/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/pages/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/common/.gitkeep" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/pages/_document.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/screens/admin/.gitkeep" beforeDir="false" afterPath="$PROJECT_DIR$/packages/shared/interfaces/enum/enum.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/screens/auth/login/login.test.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/screens/auth/login/login.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/screens/common/.gitkeep" beforeDir="false" afterPath="$PROJECT_DIR$/packages/shared/interfaces/enum/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/screens/employee/.gitkeep" beforeDir="false" afterPath="$PROJECT_DIR$/packages/shared/utils/enum/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/store/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/store/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/store/services/api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/store/services/api.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/tailwind.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/tailwind.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/tsconfig.tsbuildinfo" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/tsconfig.tsbuildinfo" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/styles/shared/shared.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/styles/shared/shared.module.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/config/tailwind.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/packages/config/tailwind.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/tsconfig/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/packages/tsconfig/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/shared/utils/enum/enum.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/shared/utils/enum/enum.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/tsconfig/base.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/tsconfig/base.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/tsconfig/nextjs.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/tsconfig/nextjs.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/ui/components/Button/Button.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/ui/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/ui/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/ui/tsconfig.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,23 +36,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/davit/Projects/solace&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
-    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;C:\\Users\\davit\\Projects\\solace\\node_modules\\prettier&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode.TypeScript&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\davit\\Projects\\solace\\node_modules\\typescript\\lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "dart.analysis.tool.window.visible": "false",
+    "last_opened_file_path": "C:/Users/davit/Projects/solace",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "yarn",
+    "prettierjs.PrettierConfiguration.Package": "C:\\Users\\davit\\Projects\\solace\\node_modules\\prettier",
+    "settings.editor.selected.configurable": "web-ide.project.structure",
+    "ts.external.directory.path": "C:\\Users\\davit\\Projects\\solace\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\davit\Projects\solace" />
@@ -125,7 +80,7 @@
       <workItem from="1692626261162" duration="7115000" />
       <workItem from="1692660814738" duration="102000" />
       <workItem from="1692660940687" duration="2423000" />
-      <workItem from="1692663644688" duration="672000" />
+      <workItem from="1692663644688" duration="3769000" />
     </task>
     <servers />
   </component>

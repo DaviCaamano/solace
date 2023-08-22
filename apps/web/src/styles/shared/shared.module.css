@@ -1,4 +1,6 @@
+
+
 .background {
-  background: url(/images/shared/global/bg.webp) no-repeat
-    fixed calc(100% - 20px) 100%;
+  background: url(/images/shared/global/bg.webp) no-repeat fixed
+    calc(100% - 20px) 100%;
 }
