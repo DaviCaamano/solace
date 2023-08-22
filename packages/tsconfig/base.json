@@ -15,7 +15,19 @@
     "preserveWatchOutput": true,
     "skipLibCheck": true,
     "strict": true,
-
+    "paths": {
+      "~api*": ["../../apps/api/*"],
+      "~web*": ["../../apps/web/*"],
+      "~*": ["../../apps/api/src/*"],
+      "@*": ["../../apps/web/src/*"],
+      "!*": ["../../packages/shared/*"],
+      "@pages*": ["../../apps/web/pages/*"],
+      "@images*": ["../../apps/web/public/images/*"],
+      "@svg*": ["../../apps/web/public/svg/*"],
+      "@fonts*": ["../../apps/web/public/fonts/*"],
+      "@public*": ["../../apps/web/src/public/*"],
+      "@components*": ["../../packages/interface/src/components/*"]
+    }
   },
   "exclude": ["node_modules"]
 }
