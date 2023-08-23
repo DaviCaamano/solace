@@ -1,14 +1,15 @@
 /* istanbul ignore file */
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+require('dotenv').config({ path: '../../.env' });
 
 import { Logger } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from '~app.module';
-
+const PORT = process.env.BACKEND_PORT || 5002;
 declare const module: any;
 async function bootstrap() {
   const logger = new Logger('EntryPoint');
   const app = await NestFactory.create(AppModule);
-  const PORT = 5002;
 
   await app.listen(PORT);
 

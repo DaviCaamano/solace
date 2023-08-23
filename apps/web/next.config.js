@@ -1,20 +1,17 @@
 const withTM = require('next-transpile-modules')(['shared']);
+require('dotenv').config({ path: '../../.env' });
 
+console.log('BACKENDPORT', process.env);
+
+const backendPort = process.env.BACKENDPORT || 5002;
+const backendHost = process.env.BACKENDHOST || 'http://localhost';
 module.exports = withTM({
   reactStrictMode: true,
-  async redirects() {
+  async rewrites() {
     return [
       {
-        source: '/api/',
-        has: [
-          {
-            type: 'header',
-            key: 'host',
-            value: 'localhost:3000',
-          },
-        ],
-        permanent: false,
-        destination: 'localhost:5002/',
+        source: '/api/:path*',
+        destination: `${backendHost}:${backendPort}/:path*`, // Proxy to Backend
       },
     ];
   },
