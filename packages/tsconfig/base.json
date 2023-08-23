@@ -18,7 +18,7 @@
     "paths": {
       "~*": ["../../apps/api/src/*"],
       "@*": ["../../apps/web/src/*"],
-      "!*": ["../../packages/shared/*"],
+      "#*": ["../../packages/shared/*"],
       "@pages*": ["../../apps/web/pages/*"],
       "@images*": ["../../apps/web/public/images/*"],
       "@svg*": ["../../apps/web/public/svg/*"],

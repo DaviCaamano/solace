@@ -6,7 +6,7 @@
     "paths": {
       "~*": ["./src/*"],
       "@*": ["../web/src/*"],
-      "!*": ["../../packages/shared/*"],
+      "#*": ["../../packages/shared/*"],
       "@pages*": ["../web/pages/*"],
       "@images*": ["../web/public/images/*"],
       "@svg*": ["../web/public/svg/*"],

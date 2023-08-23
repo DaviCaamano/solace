@@ -5,33 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2101ad9f-8972-44d3-9c27-f093e4bebdd9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/apps/api/utils/logging/ComponentWithLogging.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/api/utils/logging/errorHandler.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/api/utils/logging/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/shared/interfaces/logging/error.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/shared/interfaces/logging/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/shared/utils/logging/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/shared/utils/logging/log.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/api/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/api/src/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/app.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/api/src/auth/auth.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/auth/auth.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/api/src/auth/auth.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/auth/auth.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/api/src/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/main.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/api/test/app.e2e-spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/test/app.e2e-spec.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/api/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/tsconfig.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/next.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/next.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/api/utils/logging/ComponentWithLogging.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/utils/logging/ComponentWithLogging.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/api/utils/logging/errorHandler.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/utils/logging/errorHandler.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/web/pages/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/pages/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/components/global/Background.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/global/Background.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/components/global/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/global/Header.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/components/login/Login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/login/Login.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/styles/colors.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/styles/colors.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-scripts.js" beforeDir="false" afterPath="$PROJECT_DIR$/package-scripts.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/config/tailwind.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/packages/config/tailwind.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/tsconfig/base.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/tsconfig/base.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/tsconfig/nestjs.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/tsconfig/nestjs.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/tsconfig/nextjs.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/tsconfig/nextjs.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -98,7 +78,7 @@
       <workItem from="1692660814738" duration="102000" />
       <workItem from="1692660940687" duration="2423000" />
       <workItem from="1692663644688" duration="12538000" />
-      <workItem from="1692814774974" duration="564000" />
+      <workItem from="1692814774974" duration="1716000" />
     </task>
     <servers />
   </component>

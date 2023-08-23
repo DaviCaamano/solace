@@ -1,5 +1,5 @@
-import { ErrorHandler, LoggingHandler } from '!interfaces/logging';
-import { log as consoleLog } from '!utils/logging';
+import { ErrorHandler, LoggingHandler } from '#interfaces/logging';
+import { log as consoleLog } from '#utils/logging';
 import { errorHandler, logHandler } from './errorHandler';
 
 export class ComponentWithLogging {

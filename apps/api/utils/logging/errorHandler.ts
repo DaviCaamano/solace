@@ -6,7 +6,7 @@ import {
   ErrorHandler,
   ErrorResponse,
   LoggingHandler,
-} from '!interfaces/logging/error';
+} from '#interfaces/logging';
 
 const DEFAULT_MESSAGE = 'INTERNAL SERVER ERROR';
 /**

@@ -15,7 +15,7 @@
   },
   "devDependencies": {
     "prisma": "^5.1.0",
-    "turbo": "1.10.12"
+    "turbo": "^1.10.13"
   },
   "engines": {
     "npm": ">=7.0.0",
