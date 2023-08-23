@@ -5,11 +5,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2101ad9f-8972-44d3-9c27-f093e4bebdd9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.env.template" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/web/pages/api/auth/[auth0].js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/web/public/favicon-64.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/config/eslint-api.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/config/eslint-web.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env.template" beforeDir="false" afterPath="$PROJECT_DIR$/.env.template" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/api/.eslintrc.js" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/.eslintrc.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/api/src/auth/auth.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/auth/auth.controller.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/api/src/auth/auth.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/auth/auth.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/.eslintrc.js" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/.eslintrc.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/web/next.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/next.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/pages/_app.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/pages/_app.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/pages/_document.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/pages/_document.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/web/pages/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/pages/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/public/favicon.svg" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/public/favicon.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/global/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/global/Header.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/login/Login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/login/Login.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/store/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/store/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/store/services/api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/store/services/api.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/config/eslint-preset.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,23 +47,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "dart.analysis.tool.window.visible": "false",
-    "last_opened_file_path": "C:/Users/davit/Projects/solace",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "yarn",
-    "prettierjs.PrettierConfiguration.Package": "C:\\Users\\davit\\Projects\\solace\\node_modules\\prettier",
-    "settings.editor.selected.configurable": "preferences.fileTypes",
-    "ts.external.directory.path": "C:\\Users\\davit\\Projects\\solace\\node_modules\\typescript\\lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/davit/Projects/solace&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
+    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;C:\\Users\\davit\\Projects\\solace\\node_modules\\prettier&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.fileTypes&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\davit\\Projects\\solace\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\davit\Projects\solace" />
@@ -55,11 +72,11 @@
       <recent name="C:\Users\davit\Projects\solace\apps\web\public" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\davit\Projects\solace\apps\web\public" />
+      <recent name="C:\Users\davit\Projects\solace\apps\web\pages\api\auth" />
       <recent name="C:\Users\davit\Projects\solace\apps\api\utils\logging" />
       <recent name="C:\Users\davit\Projects\solace\apps\api\utils" />
       <recent name="C:\Users\davit\Projects\solace\apps\api\src\auth" />
-      <recent name="C:\Users\davit\Projects\solace\apps\api\src" />
-      <recent name="C:\Users\davit\Projects\solace\apps\api\src\auth\auth" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -75,7 +92,9 @@
       <workItem from="1692660814738" duration="102000" />
       <workItem from="1692660940687" duration="2423000" />
       <workItem from="1692663644688" duration="12538000" />
-      <workItem from="1692814774974" duration="3732000" />
+      <workItem from="1692814774974" duration="7623000" />
+      <workItem from="1692823667285" duration="298000" />
+      <workItem from="1692823984809" duration="2457000" />
     </task>
     <servers />
   </component>

@@ -1,8 +1,14 @@
+import Iframe from 'react-iframe';
+
 export const Login = () => {
   return (
-    <div id={'Login'} className='w-full h-full'>
-      <LoginRow />
-    </div>
+    <Iframe
+      url='/api/auth/login'
+      id='login'
+      className='w-full h-full'
+      display='block'
+      position='relative'
+    />
   );
 };
 

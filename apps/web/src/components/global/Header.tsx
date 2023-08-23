@@ -3,21 +3,17 @@ import colors from '@styles/colors';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useState } from 'react';
 import { Login } from '@componentslogin/Login';
+import Link from 'next/link';
 
 export const Header = () => {
-  const [open, setOpen] = useState<boolean>(false);
-
-  console.log('open', open);
-
   return (
     <div
       id={'header'}
       className={'w-full h-20 flex flex-col items-end justify-start pt-3 pr-3'}
     >
-      <LoginPopup open={open} />
-      <div onClick={() => setOpen(!open)} className={'cursor-pointer'}>
+      <Link href={'/api/auth/login'}>
         <PersonPinIcon style={{ fontSize: '3rem', color: colors.beige }} />
-      </div>
+      </Link>
     </div>
   );
 };

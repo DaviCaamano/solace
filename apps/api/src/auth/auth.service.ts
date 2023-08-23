@@ -15,9 +15,9 @@ export class AuthService extends ComponentWithLogging {
     });
   }
 
-  authCallback(args: any) {
+  authZeroLogin(args: any) {
     this.log(args);
 
-    return 'Complete';
+    return 'Authzero Login';
   }
 }
