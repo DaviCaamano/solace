@@ -1,8 +1,11 @@
-import { Controller } from '@nestjs/common';
+import { Body, Controller, Post } from '@nestjs/common';
+import { AuthService } from './auth.service';
 
 @Controller('auth')
 export class AuthController {
-  //   @Post(){
-  //
-  // }
+  constructor(private readonly authService: AuthService) {}
+  @Post('callback')
+  authCallback(@Body() args: any) {
+    this.authService.authCallback(args);
+  }
 }

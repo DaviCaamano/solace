@@ -12,7 +12,7 @@ export const Background = ({ children }: BackgroundProps) => {
       style={{
         width: '100vw',
         height: '100vh',
-        backgroundColor: colors.secondary,
+        backgroundColor: colors.brown,
       }}
     >
       {children}

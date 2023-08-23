@@ -1,7 +1,6 @@
 import { enumToJson } from 'shared/utils/enum';
 import colors from 'web/src/styles/colors';
 
-console.log('enumToJson(colors)', enumToJson(colors));
 module.exports = {
   content: [
     '../../packages/shared/**/*.{js,ts,jsx,tsx}',
@@ -11,7 +10,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        // ...enumToJson(colors),
+        ...enumToJson(colors),
       },
     },
   },

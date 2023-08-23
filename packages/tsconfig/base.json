@@ -16,8 +16,6 @@
     "skipLibCheck": true,
     "strict": true,
     "paths": {
-      "~api*": ["../../apps/api/*"],
-      "~web*": ["../../apps/web/*"],
       "~*": ["../../apps/api/src/*"],
       "@*": ["../../apps/web/src/*"],
       "!*": ["../../packages/shared/*"],
@@ -26,7 +24,9 @@
       "@svg*": ["../../apps/web/public/svg/*"],
       "@fonts*": ["../../apps/web/public/fonts/*"],
       "@public*": ["../../apps/web/src/public/*"],
-      "@components*": ["../../apps/web/src/components/*"]
+      "@components*": ["../../apps/web/src/components/*"],
+      "~interfaces*": ["../../api/interfaces/*"],
+      "~utils*": ["../../api/utils/*"]
     }
   },
   "exclude": ["node_modules"]
