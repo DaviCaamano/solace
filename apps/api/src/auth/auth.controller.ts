@@ -9,5 +9,4 @@ export class AuthController {
   authZeroLogin(@Body() args: any) {
     this.authService.authZeroLogin(args);
   }
-
 }

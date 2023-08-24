@@ -1,5 +1,5 @@
 import styles from '@styles/shared/shared.module.css';
-import { poppinsFont } from '@fontspoppins/poppins.font';
+import { poppinsFont } from '@fonts/poppins/poppins.font';
 import colors from '@styles/colors';
 
 interface BackgroundProps {
