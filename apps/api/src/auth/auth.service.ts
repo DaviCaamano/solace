@@ -15,9 +15,34 @@ export class AuthService extends ComponentWithLogging {
     });
   }
 
-  authZeroLogin(args: any) {
-    this.log(args);
-
-    return 'Authzero Login';
+  authZeroLogin(args: any, req: Request, res: Response) {
+    this.log(
+      `
+    
+    Post method:`,
+      args,
+    );
+    this.log(
+      `
+    
+    Post method:`,
+      req,
+    );
+    // res.redirect('/api/auth/authorize');
+  }
+  authZeroLoginGet(args: any, req: Request, res: Response) {
+    this.log(
+      `
+      
+    Get method:`,
+      args,
+    );
+    this.log(
+      `
+      
+    Get method:`,
+      req,
+    );
+    // res.redirect('/api/auth/authorize');
   }
 }

@@ -34,3 +34,7 @@ yarn-error.log*
 
 # turbo
 .turbo
+
+#mkcert
+packages/config/mkcert/
+!packages/config/mkcert/README.md
