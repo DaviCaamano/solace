@@ -7,14 +7,14 @@
       "~*": ["./src/*"],
       "@*": ["../web/src/*"],
       "#*": ["../../packages/shared/*"],
-      "@pages*": ["../web/pages/*"],
-      "@images*": ["../web/public/images/*"],
-      "@svg*": ["../web/public/svg/*"],
-      "@fonts*": ["../web/public/fonts/*"],
-      "@public*": ["../web/src/public/*"],
-      "@components*": ["../web/src/components/*"],
-      "~interfaces*": ["./interfaces/*"],
-      "~utils*": ["./utils/*"]
+      "@pages/*": ["../web/pages/*"],
+      "@images/*": ["../web/public/images/*"],
+      "@svg/*": ["../web/public/svg/*"],
+      "@fonts/*": ["../web/public/fonts/*"],
+      "@public/*": ["../web/src/public/*"],
+      "@components/*": ["../web/src/components/*"],
+      "~interfaces/*": ["./interfaces/*"],
+      "~utils/*": ["./utils/*"]
     }
   }
 }

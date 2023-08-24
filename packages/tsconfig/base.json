@@ -19,14 +19,14 @@
       "~*": ["../../apps/api/src/*"],
       "@*": ["../../apps/web/src/*"],
       "#*": ["../../packages/shared/*"],
-      "@pages*": ["../../apps/web/pages/*"],
-      "@images*": ["../../apps/web/public/images/*"],
-      "@svg*": ["../../apps/web/public/svg/*"],
-      "@fonts*": ["../../apps/web/public/fonts/*"],
-      "@public*": ["../../apps/web/src/public/*"],
-      "@components*": ["../../apps/web/src/components/*"],
-      "~interfaces*": ["../../api/interfaces/*"],
-      "~utils*": ["../../api/utils/*"]
+      "@pages/*": ["../../apps/web/pages/*"],
+      "@images/*": ["../../apps/web/public/images/*"],
+      "@svg/*": ["../../apps/web/public/svg/*"],
+      "@fonts/*": ["../../apps/web/public/fonts/*"],
+      "@public/*": ["../../apps/web/src/public/*"],
+      "@components/*": ["../../apps/web/src/components/*"],
+      "~interfaces/*": ["../../api/interfaces/*"],
+      "~utils/*": ["../../api/utils/*"]
     }
   },
   "exclude": ["node_modules"]

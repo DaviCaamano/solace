@@ -1,83 +1,54 @@
-import PersonPinIcon from '@mui/icons-material/PersonPin';
-import colors from '@styles/colors';
-import { AnimatePresence, motion } from 'framer-motion';
-import { useState } from 'react';
-import { Login } from '@componentslogin/Login';
 import Link from 'next/link';
+import { useUser } from '@auth0/nextjs-auth0/client';
+import { capitalize } from '#utils/string';
+import { UserMenu } from '@components/header';
+import { useState } from 'react';
 
 export const Header = () => {
+  const [open, setOpen] = useState<boolean>(false);
+  const User = useUser();
+  const { user, error, isLoading, checkSession } = User;
+  if (isLoading) return <div>Loading...</div>;
+
+  if (error) return <div>{error.message}</div>;
   return (
     <div
       id={'header'}
-      className={'w-full h-20 flex flex-col items-end justify-start pt-3 pr-3'}
+      className={'w-full h-20 flex flex-col items-end justify-start pt-5 pr-12'}
     >
-      <Link href={'/api/auth/login'}>
-        <PersonPinIcon style={{ fontSize: '3rem', color: colors.beige }} />
-      </Link>
+      {user ? (
+        <LogoutLink name={user.name} setOpen={setOpen} />
+      ) : isLoading ? (
+        <LoadingLink />
+      ) : (
+        <LoginLink />
+      )}
+      {user && <UserMenu open={open} />}
     </div>
   );
 };
 
-interface LoginPopupProps {
-  open: boolean;
+const LoginLink = () => (
+  <Link href={'/api/auth/login'}>
+    <span className={'text-2xl text-[beige] hover:underline'}>Login</span>
+  </Link>
+);
+
+const LoadingLink = () => (
+  <span className={'text-2xl text-[disabledText] hover:underline cursor-none'}>
+    Login
+  </span>
+);
+
+interface LogoutLinkProps {
+  name?: string;
+  setOpen?: Setter<boolean>;
 }
-const LoginPopup = ({ open }: LoginPopupProps) => {
-  return (
-    <div
-      id={'login-popup'}
-      className={
-        'absolute right-[5rem] top-[5rem] h-[40rem] w-[40rem] flex justify-end'
-      }
-    >
-      <AnimatePresence>
-        {open && (
-          <motion.div
-            className={
-              'bg-beige border-tan border-2 rounded-2xl overflow-hidden'
-            }
-            initial={'hidden'}
-            animate={open ? 'shown' : 'hidden'}
-            variants={containerAnimations}
-            transition={{ duration: 0.2 }}
-            exit={'hidden'}
-          >
-            <AnimatePresence>
-              {open && (
-                <motion.div
-                  className={'bg-primary h-[40rem] w-[40rem] p-5'}
-                  initial={'hidden'}
-                  animate={open ? 'shown' : 'hidden'}
-                  variants={contentAnimations}
-                  transition={{ duration: 0.1, delay: 0.2 }}
-                  exit={'hidden'}
-                >
-                  <Login />
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </div>
-  );
-};
 
-const containerAnimations = {
-  shown: {
-    height: '40rem',
-    width: '40rem',
-  },
-  hidden: {
-    height: 0,
-    width: 0,
-  },
-};
-
-const contentAnimations = {
-  shown: {
-    opacity: 1,
-  },
-  hidden: {
-    opacity: 0,
-  },
-};
+const LogoutLink = ({ name, setOpen }: LogoutLinkProps) => (
+  <a onClick={() => setOpen((prev: boolean) => !prev)}>
+    <span className={'text-2xl text-[beige] hover:underline'}>
+      {name ? `Hello ${capitalize(name)}` : 'Logout'}
+    </span>
+  </a>
+);
