@@ -5,49 +5,31 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2101ad9f-8972-44d3-9c27-f093e4bebdd9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/packages/config/mkcert/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/web/src/context/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/web/src/context/redux/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/web/src/context/redux/slices/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/web/src/context/redux/slices/user.redux.slice.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/web/src/context/redux/store.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/web/src/hooks/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/web/src/hooks/useRedux.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/web/src/hooks/user/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/web/src/hooks/user/useLogin.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/web/src/services/api/api.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/web/src/services/api/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/web/src/services/api/redux/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/web/src/services/api/routes/auth.api.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/web/src/services/api/routes/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/web/src/services/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/shared/interfaces/user/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/shared/interfaces/user/user.interface.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/api/src/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/app.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/api/src/auth/auth.controller.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/auth/auth.controller.spec.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/api/src/auth/auth.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/auth/auth.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/api/src/auth/auth.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/auth/auth.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/api/src/auth/auth.service.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/auth/auth.service.spec.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/api/src/auth/auth.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/auth/auth.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/api/src/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/main.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/api/src/persistence/persistence.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/persistence/persistence.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/api/test/app.e2e-spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/test/app.e2e-spec.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/api/utils/logging/ComponentWithLogging.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/utils/logging/ComponentWithLogging.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/api/utils/logging/errorHandler.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/utils/logging/errorHandler.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/api/utils/logging/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/utils/logging/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/web/global.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/global.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/web/pages/_app.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/pages/_app.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/pages/_document.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/pages/_document.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/web/pages/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/pages/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/public/fonts/poppins/poppins.font.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/public/fonts/poppins/poppins.font.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/components/global/Background.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/global/Background.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/web/src/components/global/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/global/Header.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/components/header/UserMenu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/header/UserMenu.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/components/header/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/header/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/store/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/store/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/store/services/api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/store/services/api.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/styles/colors.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/styles/colors.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/shared/components/Button/Button.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/shared/components/Button/Button.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/shared/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/shared/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/shared/interfaces/enum/enum.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/shared/interfaces/enum/enum.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/shared/interfaces/enum/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/shared/interfaces/enum/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/shared/interfaces/logging/error.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/shared/interfaces/logging/error.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/shared/interfaces/logging/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/shared/interfaces/logging/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/shared/utils/enum/enum.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/shared/utils/enum/enum.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/shared/utils/enum/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/shared/utils/enum/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/shared/utils/logging/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/shared/utils/logging/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/shared/utils/logging/log.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/shared/utils/logging/log.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/shared/utils/string/captialize.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/shared/utils/string/captialize.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/shared/utils/string/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/shared/utils/string/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/store/index.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/store/services/api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/services/api/redux/redux.api.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/shared/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/shared/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,23 +76,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "dart.analysis.tool.window.visible": "false",
-    "last_opened_file_path": "C:/Users/davit/Projects/solace/packages/config/mkcert",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "yarn",
-    "prettierjs.PrettierConfiguration.Package": "C:\\Users\\davit\\Projects\\solace\\node_modules\\prettier",
-    "settings.editor.selected.configurable": "preferences.fileTypes",
-    "ts.external.directory.path": "C:\\Users\\davit\\Projects\\solace\\node_modules\\typescript\\lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/davit/Projects/solace/packages/config/mkcert&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
+    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;C:\\Users\\davit\\Projects\\solace\\node_modules\\prettier&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.fileTypes&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\davit\\Projects\\solace\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\davit\Projects\solace\packages\config\mkcert" />
@@ -120,11 +103,11 @@
       <recent name="C:\Users\davit\Projects\solace\apps\web\public" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\davit\Projects\solace" />
-      <recent name="C:\Users\davit\Projects\solace\packages\config\mkcert" />
-      <recent name="C:\Users\davit\Projects\solace\apps\web\public" />
-      <recent name="C:\Users\davit\Projects\solace\apps\web\pages\api\auth" />
-      <recent name="C:\Users\davit\Projects\solace\apps\api\utils\logging" />
+      <recent name="C:\Users\davit\Projects\solace\apps\web\src\hooks\user" />
+      <recent name="C:\Users\davit\Projects\solace\apps\web\src\hooks" />
+      <recent name="C:\Users\davit\Projects\solace\apps\web\src\context\redux\slices" />
+      <recent name="C:\Users\davit\Projects\solace\apps\web\src\services\api\redux" />
+      <recent name="C:\Users\davit\Projects\solace\apps\web\src\services\api\routes" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -143,6 +126,7 @@
       <workItem from="1692814774974" duration="7623000" />
       <workItem from="1692823667285" duration="298000" />
       <workItem from="1692823984809" duration="7193000" />
+      <workItem from="1693164130700" duration="6491000" />
     </task>
     <servers />
   </component>
@@ -154,7 +138,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="master" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>

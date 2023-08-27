@@ -9,6 +9,7 @@
     "@types/react-dom": "^18.2.7",
     "config": "*",
     "tsconfig": "*",
-    "typescript": "^5.1.6"
+    "typescript": "^5.1.6",
+    "@auth0/nextjs-auth0": "^3.1.0"
   }
 }

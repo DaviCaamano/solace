@@ -3,13 +3,12 @@ import { useUser } from '@auth0/nextjs-auth0/client';
 import { capitalize } from '#utils/string';
 import { UserMenu } from '@components/header';
 import { useState } from 'react';
+import { useLogin } from '@hooks';
 
 export const Header = () => {
   const [open, setOpen] = useState<boolean>(false);
-  const User = useUser();
-  const { user, error, isLoading, checkSession } = User;
+  const { isLoading, error, user } = useLogin();
   if (isLoading) return <div>Loading...</div>;
-
   if (error) return <div>{error.message}</div>;
   return (
     <div
