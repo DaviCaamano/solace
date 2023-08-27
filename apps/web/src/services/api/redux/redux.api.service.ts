@@ -16,10 +16,23 @@ export const authApi = createApi({
   }),
 });
 
-export const {
+export type UseLoginMutation = () => [
+  login: (user: User) => Promise<LoginResponse>,
+  result: LoginResponse,
+];
+const useLoginMutation: UseLoginMutation = authApi.useLoginMutation;
+
+const {
+  useLoginQuery,
+  /** Login User */
+  login,
+  useLazyLoginQuery,
+} = authApi;
+
+export {
   useLoginQuery,
   /** Login User */
   login,
   useLazyLoginQuery,
   useLoginMutation,
-} = authApi;
+};

@@ -1,5 +1,5 @@
 import { UserProfile } from '@auth0/nextjs-auth0/client';
-import { useUser } from '@auth0/nextjs-auth0/dist/client';
+import { useUser as useAuthZeroUser } from '@auth0/nextjs-auth0/dist/client';
 import { useEffect, useState } from 'react';
 import { useLoginMutation } from '@services/api/redux';
 import { User } from '#interfaces/user/user.interface';
@@ -14,14 +14,14 @@ export const useLogin = (): useLoginResponse => {
     user: authZeroUser,
     error: authZeroError,
     isLoading: authZeroIsLoading,
-  } = useUser();
-  const [login, user] = useLoginMutation();
+  } = useAuthZeroUser();
+  const [login, { user }] = useLoginMutation();
 
   const [isLoading, setIsLoading] = useState<boolean>(authZeroIsLoading);
   const [error, setError] = useState<Error | undefined>();
 
   useEffect(() => {
-    if (detectUserChange(user.current, authZeroUser)) {
+    if (detectUserChange(user, authZeroUser)) {
       setIsLoading(true);
       login(authZeroUser)
         .then(() => {

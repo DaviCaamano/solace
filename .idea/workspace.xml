@@ -5,31 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2101ad9f-8972-44d3-9c27-f093e4bebdd9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/apps/web/src/context/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/web/src/context/redux/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/web/src/context/redux/slices/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/web/src/context/redux/slices/user.redux.slice.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/web/src/context/redux/store.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/web/src/hooks/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/web/src/hooks/useRedux.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/web/src/hooks/user/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/web/src/hooks/user/useLogin.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/web/src/services/api/api.service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/web/src/services/api/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/web/src/services/api/redux/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/web/src/services/api/routes/auth.api.service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/web/src/services/api/routes/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/web/src/services/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/shared/interfaces/user/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/shared/interfaces/user/user.interface.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/global.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/global.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/pages/_app.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/pages/_app.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/pages/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/pages/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/components/global/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/global/Header.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/store/index.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/store/services/api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/services/api/redux/redux.api.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/shared/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/shared/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/hooks/user/useLogin.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/hooks/user/useLogin.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/services/api/redux/redux.api.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/services/api/redux/redux.api.service.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -126,7 +103,7 @@
       <workItem from="1692814774974" duration="7623000" />
       <workItem from="1692823667285" duration="298000" />
       <workItem from="1692823984809" duration="7193000" />
-      <workItem from="1693164130700" duration="6491000" />
+      <workItem from="1693164130700" duration="6901000" />
     </task>
     <servers />
   </component>
