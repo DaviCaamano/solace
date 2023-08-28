@@ -10,6 +10,7 @@ declare const module: any;
 async function bootstrap() {
   const logger = new Logger('EntryPoint');
   const app = await NestFactory.create(AppModule);
+  app.setGlobalPrefix('api');
 
   await app.listen(PORT);
 

@@ -25,7 +25,7 @@ import {
 export class NoteController {
   constructor(private readonly noteService: NoteService) {}
 
-  @Get()
+  @Get('list')
   list(@Query() { userId }: ListNotesDto): Promise<ListNotesResponse> {
     return this.noteService.list(userId);
   }

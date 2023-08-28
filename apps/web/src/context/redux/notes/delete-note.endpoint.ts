@@ -4,7 +4,7 @@ import { HttpMethod } from '#interfaces/http';
 export const deleteNoteEndpoint = (builder: ReduxEndpoint) =>
   builder.mutation({
     query: (userId: string, noteId: string) => ({
-      url: `/notes/${userId}`,
+      url: '/note',
       method: HttpMethod.delete,
       body: { noteId },
     }),

@@ -5,16 +5,65 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2101ad9f-8972-44d3-9c27-f093e4bebdd9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/apps/web/src/app/providers/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/web/src/utils/redux/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/web/src/utils/redux/transformErrorResponse.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/config/.eslintrc.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/shared/interfaces/redux/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/shared/interfaces/redux/redux.interfaces.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env.template" beforeDir="false" afterPath="$PROJECT_DIR$/.env.template" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/pages/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/pages/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/app/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/components/global/redux/Redux.provider.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/app/providers/Redux.provider.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/components/global/redux/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/global/redux/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/components/notes/NoteList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notes/NoteList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/api/src/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/api/src/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/main.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/api/src/note/note-database.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/note/note-database.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/api/src/note/note.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/note/note.controller.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/api/src/note/note.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/note/note.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/api/src/user/user.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/user/user.controller.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/api/src/user/user.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/user/user.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/next.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/next.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/pages/_app.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/pages/_app.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/global/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/global/Header.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/header/UserMenu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/header/UserMenu.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/context/redux/api/api.slice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/context/redux/api/api.slice.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/context/redux/notes/add-note.endpoint.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/context/redux/notes/add-note.endpoint.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/context/redux/notes/delete-note.endpoint.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/context/redux/notes/delete-note.endpoint.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/web/src/context/redux/notes/get-notes.endpoint.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/context/redux/notes/get-notes.endpoint.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/context/redux/notes/notes.slice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/context/redux/notes/notes.slice.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/context/redux/notes/update-note.endpoint.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/context/redux/notes/update-note.endpoint.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/context/redux/user/login.endpoint.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/context/redux/user/login.endpoint.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/web/src/hooks/user/useLogin.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/hooks/user/useLogin.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/styles/global.css" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/styles/global.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/tsconfig.tsbuildinfo" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/tsconfig.tsbuildinfo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/config/tailwind.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/packages/config/tailwind.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/shared/interfaces/enum/enum.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/shared/interfaces/enum/enum.d.ts.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/shared/interfaces/enum/enum.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/shared/interfaces/enum/index.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/shared/interfaces/enum/index.d.ts.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/shared/interfaces/enum/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/shared/interfaces/http/http-method.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/shared/interfaces/http/http-method.d.ts.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/shared/interfaces/http/http-method.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/shared/interfaces/http/index.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/shared/interfaces/http/index.d.ts.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/shared/interfaces/http/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/shared/interfaces/logging/error.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/shared/interfaces/logging/error.d.ts.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/shared/interfaces/logging/error.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/shared/interfaces/logging/index.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/shared/interfaces/logging/index.d.ts.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/shared/interfaces/logging/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/shared/interfaces/notes/index.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/shared/interfaces/notes/index.d.ts.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/shared/interfaces/notes/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/shared/interfaces/notes/notes.interface.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/shared/interfaces/notes/notes.interface.d.ts.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/shared/interfaces/notes/notes.interface.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/shared/interfaces/user/index.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/shared/interfaces/user/index.d.ts.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/shared/interfaces/user/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/shared/interfaces/user/user.interface.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/shared/interfaces/user/user.interface.d.ts.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/shared/interfaces/user/user.interface.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/shared/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/shared/tsconfig.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,24 +110,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/davit/Projects/solace/apps/api/src/note&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
-    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;C:\\Users\\davit\\Projects\\solace\\node_modules\\prettier&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;settings.typescriptcompiler&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\davit\\Projects\\solace\\node_modules\\typescript\\lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "dart.analysis.tool.window.visible": "false",
+    "git-widget-placeholder": "master",
+    "js.linters.configure.manually.selectedeslint": "true",
+    "last_opened_file_path": "C:/Users/davit/Projects/solace/apps/api/src/note",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.standard": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "C:\\Users\\davit\\Projects\\solace\\node_modules\\eslint",
+    "node.js.selected.package.standard": "",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "yarn",
+    "prettierjs.PrettierConfiguration.Package": "C:\\Users\\davit\\Projects\\solace\\node_modules\\prettier",
+    "settings.editor.selected.configurable": "settings.typescriptcompiler",
+    "ts.external.directory.path": "C:\\Users\\davit\\Projects\\solace\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\davit\Projects\solace\apps\api\src\note" />
@@ -88,11 +140,11 @@
       <recent name="C:\Users\davit\Projects\solace" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\davit\Projects\solace\apps\web\src\utils" />
+      <recent name="C:\Users\davit\Projects\solace\apps\web\src" />
+      <recent name="C:\Users\davit\Projects\solace\apps\web\src\components" />
       <recent name="C:\Users\davit\Projects\solace\apps\web\src\context\redux" />
       <recent name="C:\Users\davit\Projects\solace\apps\web\src\context\redux\slices\api\notes" />
-      <recent name="C:\Users\davit\Projects\solace\apps\web\src\context\redux\slices\api" />
-      <recent name="C:\Users\davit\Projects\solace\apps\web\src\context\redux\slices" />
-      <recent name="C:\Users\davit\Projects\solace\apps\web\src\context\redux\" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -119,6 +171,7 @@
       <workItem from="1693219926640" duration="2127000" />
       <workItem from="1693241872633" duration="959000" />
       <workItem from="1693242857565" duration="1875000" />
+      <workItem from="1693256035006" duration="7553000" />
     </task>
     <servers />
   </component>
@@ -126,60 +179,30 @@
     <option name="version" value="3" />
     <option name="exactExcludedFiles">
       <list>
-        <option value="$PROJECT_DIR$/packages/shared/interfaces/user/user.interface.js" />
-        <option value="$PROJECT_DIR$/packages/shared/interfaces/user/user.interface.d.ts.map" />
-        <option value="$PROJECT_DIR$/packages/shared/interfaces/user/user.interface.d.ts" />
-        <option value="$PROJECT_DIR$/packages/shared/interfaces/notes/notes.interface.d.ts.map" />
-        <option value="$PROJECT_DIR$/packages/shared/interfaces/notes/notes.interface.d.ts" />
-        <option value="$PROJECT_DIR$/packages/shared/interfaces/notes/notes.interface.js" />
-        <option value="$PROJECT_DIR$/packages/shared/interfaces/notes/index.js" />
-        <option value="$PROJECT_DIR$/packages/shared/interfaces/notes/index.d.ts" />
-        <option value="$PROJECT_DIR$/packages/shared/interfaces/notes/index.d.ts.map" />
-        <option value="$PROJECT_DIR$/packages/shared/components/Button/Button.d.ts.map" />
-        <option value="$PROJECT_DIR$/packages/shared/components/Button/Button.d.ts" />
         <option value="$PROJECT_DIR$/packages/shared/components/Button/Button.js" />
-        <option value="$PROJECT_DIR$/packages/shared/utils/enum/index.js" />
-        <option value="$PROJECT_DIR$/packages/shared/utils/enum/enum.d.ts" />
-        <option value="$PROJECT_DIR$/packages/shared/utils/enum/index.d.ts" />
-        <option value="$PROJECT_DIR$/packages/shared/utils/enum/enum.d.ts.map" />
-        <option value="$PROJECT_DIR$/packages/shared/utils/enum/enum.js" />
-        <option value="$PROJECT_DIR$/packages/shared/utils/enum/index.d.ts.map" />
-        <option value="$PROJECT_DIR$/packages/shared/interfaces/enum/index.js" />
-        <option value="$PROJECT_DIR$/packages/shared/interfaces/enum/enum.d.ts" />
-        <option value="$PROJECT_DIR$/packages/shared/interfaces/enum/index.d.ts" />
-        <option value="$PROJECT_DIR$/packages/shared/interfaces/enum/enum.d.ts.map" />
-        <option value="$PROJECT_DIR$/packages/shared/interfaces/enum/enum.js" />
-        <option value="$PROJECT_DIR$/packages/shared/interfaces/enum/index.d.ts.map" />
-        <option value="$PROJECT_DIR$/packages/shared/interfaces/http/index.js" />
-        <option value="$PROJECT_DIR$/packages/shared/interfaces/http/index.d.ts" />
-        <option value="$PROJECT_DIR$/packages/shared/interfaces/http/index.d.ts.map" />
-        <option value="$PROJECT_DIR$/packages/shared/interfaces/http/http-method.d.ts" />
-        <option value="$PROJECT_DIR$/packages/shared/interfaces/http/http-method.d.ts.map" />
-        <option value="$PROJECT_DIR$/packages/shared/interfaces/http/http-method.js" />
-        <option value="$PROJECT_DIR$/packages/shared/interfaces/user/index.js" />
-        <option value="$PROJECT_DIR$/packages/shared/interfaces/user/index.d.ts" />
-        <option value="$PROJECT_DIR$/packages/shared/interfaces/user/index.d.ts.map" />
-        <option value="$PROJECT_DIR$/packages/shared/interfaces/logging/index.js" />
-        <option value="$PROJECT_DIR$/packages/shared/interfaces/logging/error.d.ts" />
-        <option value="$PROJECT_DIR$/packages/shared/interfaces/logging/index.d.ts" />
-        <option value="$PROJECT_DIR$/packages/shared/interfaces/logging/error.js" />
-        <option value="$PROJECT_DIR$/packages/shared/interfaces/logging/error.d.ts.map" />
-        <option value="$PROJECT_DIR$/packages/shared/interfaces/logging/index.d.ts.map" />
-        <option value="$PROJECT_DIR$/packages/shared/utils/logging/index.js" />
-        <option value="$PROJECT_DIR$/packages/shared/utils/logging/log.d.ts.map" />
-        <option value="$PROJECT_DIR$/packages/shared/utils/logging/log.js" />
-        <option value="$PROJECT_DIR$/packages/shared/utils/logging/index.d.ts" />
         <option value="$PROJECT_DIR$/packages/shared/utils/logging/index.d.ts.map" />
-        <option value="$PROJECT_DIR$/packages/shared/utils/logging/log.d.ts" />
-        <option value="$PROJECT_DIR$/packages/shared/index.js" />
-        <option value="$PROJECT_DIR$/packages/shared/index.d.ts" />
+        <option value="$PROJECT_DIR$/packages/shared/components/Button/Button.d.ts" />
+        <option value="$PROJECT_DIR$/packages/shared/utils/logging/index.d.ts" />
+        <option value="$PROJECT_DIR$/packages/shared/components/Button/Button.d.ts.map" />
+        <option value="$PROJECT_DIR$/packages/shared/utils/logging/log.js" />
+        <option value="$PROJECT_DIR$/packages/shared/utils/logging/log.d.ts.map" />
+        <option value="$PROJECT_DIR$/packages/shared/utils/enum/enum.d.ts.map" />
         <option value="$PROJECT_DIR$/packages/shared/index.d.ts.map" />
-        <option value="$PROJECT_DIR$/packages/shared/utils/string/captialize.d.ts.map" />
-        <option value="$PROJECT_DIR$/packages/shared/utils/string/index.js" />
-        <option value="$PROJECT_DIR$/packages/shared/utils/string/captialize.js" />
+        <option value="$PROJECT_DIR$/packages/shared/utils/enum/index.d.ts" />
+        <option value="$PROJECT_DIR$/packages/shared/index.d.ts" />
+        <option value="$PROJECT_DIR$/packages/shared/utils/enum/enum.d.ts" />
+        <option value="$PROJECT_DIR$/packages/shared/index.js" />
+        <option value="$PROJECT_DIR$/packages/shared/utils/enum/index.js" />
+        <option value="$PROJECT_DIR$/packages/shared/utils/logging/log.d.ts" />
         <option value="$PROJECT_DIR$/packages/shared/utils/string/index.d.ts" />
-        <option value="$PROJECT_DIR$/packages/shared/utils/string/captialize.d.ts" />
+        <option value="$PROJECT_DIR$/packages/shared/utils/string/captialize.js" />
+        <option value="$PROJECT_DIR$/packages/shared/utils/enum/index.d.ts.map" />
+        <option value="$PROJECT_DIR$/packages/shared/utils/string/index.js" />
+        <option value="$PROJECT_DIR$/packages/shared/utils/enum/enum.js" />
+        <option value="$PROJECT_DIR$/packages/shared/utils/string/captialize.d.ts.map" />
         <option value="$PROJECT_DIR$/packages/shared/utils/string/index.d.ts.map" />
+        <option value="$PROJECT_DIR$/packages/shared/utils/string/captialize.d.ts" />
+        <option value="$PROJECT_DIR$/packages/shared/utils/logging/index.js" />
       </list>
     </option>
   </component>

@@ -3,7 +3,8 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { PersistenceModule } from '~persistence/persistence.module';
-import { userModule } from '~user/user.module';
+import { NoteModule } from '~note/note.module';
+import { UserModule } from '~user/user.module';
 
 @Module({
   imports: [
@@ -11,8 +12,9 @@ import { userModule } from '~user/user.module';
       isGlobal: true,
       envFilePath: '../../.env',
     }),
-    userModule,
     PersistenceModule,
+    UserModule,
+    NoteModule,
   ],
   controllers: [],
   providers: [],

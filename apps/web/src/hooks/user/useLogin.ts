@@ -2,13 +2,13 @@ import {
   UserProfile,
   useUser as useAuthZeroUser,
 } from '@auth0/nextjs-auth0/client';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { User } from '#interfaces/user/user.interface';
 import { useLoginMutation } from '@context/redux/user';
 
 interface useLoginResponse {
   isLoading: boolean;
-  error: Error | undefined;
+  error: string | undefined;
   user: User | undefined;
 }
 export const useLogin = (): useLoginResponse => {
@@ -17,35 +17,25 @@ export const useLogin = (): useLoginResponse => {
     error: authZeroError,
     isLoading: authZeroIsLoading,
   } = useAuthZeroUser();
-  const [login, { user }] = useLoginMutation();
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [error, setError] = useState<Error | undefined>();
+
+  const [login, { data: user, error, isLoading, isSuccess }] =
+    useLoginMutation();
 
   useEffect(() => {
     if (authZeroUser && detectUserChange(user, authZeroUser)) {
-      setIsLoading(true);
       login({
         zeroId: authZeroUser.sub,
         email: authZeroUser.email,
         name: authZeroUser.name,
         nickname: authZeroUser.nickname,
         picture: authZeroUser.picture,
-      })
-        .then((resp) => {
-          setIsLoading(false);
-          setError(undefined);
-          return resp;
-        })
-        .catch((error: any) => {
-          setIsLoading(false);
-          setError(error);
-        });
+      }).unwrap();
     }
   }, [authZeroUser, login, user]);
 
   return {
     isLoading: authZeroIsLoading || isLoading,
-    user: undefined,
+    user: isSuccess ? (user as User) : undefined,
     error: authZeroError || error,
   };
 };
@@ -54,7 +44,7 @@ const detectUserChange = (user?: User, authZeroUser?: UserProfile): boolean => {
   const validAuthZeroUser = authZeroUser?.email && authZeroUser?.sub;
   const userLoggedIn = validAuthZeroUser && !user;
   const userUpdated =
-    user?.email &&
+    user &&
     authZeroUser?.email &&
     (user.name !== authZeroUser.name ||
       user.email !== authZeroUser.email ||

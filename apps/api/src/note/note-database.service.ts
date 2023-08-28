@@ -3,7 +3,7 @@ import { ComponentWithLogging } from '~utils/logging';
 import { NoteFindManyArgs, Note, NoteUpdateArgs } from 'prisma';
 import { CreateNoteDto, UpdateNoteDto } from '~note/dto/note.dto';
 import { DatabaseService } from '~persistence/prisma/database.service';
-import { NoteStatus } from 'shared/interfaces/notes/notes.interface';
+import { NoteStatus } from '#interfaces/notes/notes.interface';
 import { HttpStatus } from '@nestjs/common/enums/http-status.enum';
 
 @Injectable()

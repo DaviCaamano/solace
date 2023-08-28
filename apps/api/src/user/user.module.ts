@@ -7,4 +7,4 @@ import { UserDatabaseService } from '~user/user-database.service';
   controllers: [UserController],
   providers: [UserService, UserDatabaseService],
 })
-export class userModule {}
+export class UserModule {}

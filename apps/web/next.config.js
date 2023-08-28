@@ -11,7 +11,7 @@ module.exports = withTM({
       fallback: [
         {
           source: '/api/:path*',
-          destination: `${backendHost}:${backendPort}/:path*`, // Proxy to Backend
+          destination: `${backendHost}:${backendPort}/api/:path*`, // Proxy to Backend
         },
       ],
     };

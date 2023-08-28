@@ -28,7 +28,10 @@ export const UserMenu = ({ open }: LoginPopupProps) => {
               <AnimatePresence>
                 {open && (
                   <motion.div
-                    className={'bg-primary h-[3.5rem] w-[9rem] py-3 bg-white'}
+                    className={
+                      'bg-primary h-[3.5rem] w-[9rem] py-3 transition duration-300 ' +
+                      'hover:bg-white delay-200 hover:delay-0'
+                    }
                     initial={'hidden'}
                     animate={open ? 'shown' : 'hidden'}
                     variants={contentAnimations}
