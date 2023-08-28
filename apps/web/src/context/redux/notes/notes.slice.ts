@@ -11,7 +11,6 @@ export const notesAdapter: EntityAdapter<Note> = createEntityAdapter({
   sortComparer: (a, b) => b.updatedAt.localeCompare(a.updatedAt),
 });
 
-// console.log('getNotesEndpoint', getNotesEndpoint);
 const initialState: EntityState<Note> = notesAdapter.getInitialState();
 
 export const notesSlice = apiSlice.injectEndpoints({

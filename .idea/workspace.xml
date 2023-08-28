@@ -5,19 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2101ad9f-8972-44d3-9c27-f093e4bebdd9" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/web/src/app/providers/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/api/src/note/note.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/note/note.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/api/src/note/note.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/note/note.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/pages/_app.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/pages/_app.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/web/pages/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/pages/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/web/src/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/app/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/components/global/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/global/Header.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/context/redux/user/user.slice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/context/redux/user/user.slice.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/global/redux/Redux.provider.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/app/providers/Redux.provider.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/global/redux/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/global/redux/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/notes/NoteList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notes/NoteList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/context/redux/notes/get-notes.endpoint.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/context/redux/notes/get-notes.endpoint.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/context/redux/notes/notes.slice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/context/redux/notes/notes.slice.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/web/src/hooks/user/useLogin.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/hooks/user/useLogin.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -121,7 +118,7 @@
       <workItem from="1693215846389" duration="4008000" />
       <workItem from="1693219926640" duration="2127000" />
       <workItem from="1693241872633" duration="959000" />
-      <workItem from="1693242857565" duration="730000" />
+      <workItem from="1693242857565" duration="1875000" />
     </task>
     <servers />
   </component>

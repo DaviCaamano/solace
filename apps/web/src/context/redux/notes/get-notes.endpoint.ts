@@ -13,7 +13,6 @@ export const getNotesEndpoint = (
       return notesAdapter.setAll(initialState, notes);
     },
     providesTags: (result, error, arg) => {
-      console.log('Provide Tags is running:', { result, error, arg });
       return [
         { type: 'Note', id: 'LIST' },
         ...result?.ids.map((id) => ({ type: 'Note', id })),

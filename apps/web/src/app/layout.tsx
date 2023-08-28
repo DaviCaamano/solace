@@ -1,5 +1,5 @@
-import { ReduxProviders } from '@components/global/redux/Redux.provider';
 import { ReactNode } from 'react';
+import { ReduxProvider } from '@app/providers';
 
 export const metadata = {
   title: 'Create Next App',
@@ -8,10 +8,10 @@ export const metadata = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang='en'>
-      <body>
-        <ReduxProviders>{children}</ReduxProviders>
-      </body>
-    </html>
+    <ReduxProvider>
+      <html lang='en'>
+        <body style={{ display: 'none' }}>{children}</body>
+      </html>{' '}
+    </ReduxProvider>
   );
 }

@@ -4,8 +4,6 @@ import { selectNotesResult, useGetNotesQuery } from '@context/redux/notes';
 export const NoteList = () => {
   const args = useGetNotesQuery();
 
-  console.log('useGetNotesQuery', useGetNotesQuery);
-
   const { isLoading, isSuccess, isError, error } = args;
   const orderedNotes = useSelector(selectNotesResult);
   if (isLoading) return <div>Loading...</div>;

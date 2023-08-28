@@ -1,1 +1,1 @@
-export * from './Redux.provider';
+export * from '../../../app/providers/Redux.provider';

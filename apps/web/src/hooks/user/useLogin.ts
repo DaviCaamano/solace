@@ -17,39 +17,31 @@ export const useLogin = (): useLoginResponse => {
     error: authZeroError,
     isLoading: authZeroIsLoading,
   } = useAuthZeroUser();
-  // const [login, { user }] = useLoginMutation();
+  const [login, { user }] = useLoginMutation();
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<Error | undefined>();
-  const user = undefined;
+
   useEffect(() => {
     if (authZeroUser && detectUserChange(user, authZeroUser)) {
       setIsLoading(true);
-      // login({
-      //   zeroId: authZeroUser.sub,
-      //   email: authZeroUser.email,
-      //   name: authZeroUser.name,
-      //   nickname: authZeroUser.nickname,
-      //   picture: authZeroUser.picture,
-      // })
-      //   .then((resp) => {
-      //     console.log(
-      //       '##########################################################',
-      //       resp,
-      //     );
-      //     setIsLoading(false);
-      //     setError(undefined);
-      //     return resp;
-      //   })
-      //   .catch((error: any) => {
-      //     console.log(
-      //       '$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$',
-      //     );
-      //     setIsLoading(false);
-      //     setError(error);
-      //   });
+      login({
+        zeroId: authZeroUser.sub,
+        email: authZeroUser.email,
+        name: authZeroUser.name,
+        nickname: authZeroUser.nickname,
+        picture: authZeroUser.picture,
+      })
+        .then((resp) => {
+          setIsLoading(false);
+          setError(undefined);
+          return resp;
+        })
+        .catch((error: any) => {
+          setIsLoading(false);
+          setError(error);
+        });
     }
-  }, [authZeroUser, user]);
-  // }, [authZeroUser, login, user]);
+  }, [authZeroUser, login, user]);
 
   return {
     isLoading: authZeroIsLoading || isLoading,
