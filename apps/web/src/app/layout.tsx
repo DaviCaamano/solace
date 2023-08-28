@@ -1,7 +1,4 @@
-import '@styles/globals.css';
 import { ReduxProviders } from '@components/global/redux/Redux.provider';
-import { UserProvider } from '@auth0/nextjs-auth0/client';
-import { Background } from '@components/global/Background';
 import { ReactNode } from 'react';
 
 export const metadata = {
@@ -13,11 +10,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang='en'>
       <body>
-        <ReduxProviders>
-          <UserProvider>
-            <Background>{children}</Background>
-          </UserProvider>
-        </ReduxProviders>
+        <ReduxProviders>{children}</ReduxProviders>
       </body>
     </html>
   );

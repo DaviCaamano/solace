@@ -12,7 +12,8 @@ import {
   CreateNoteDto,
   DeleteNoteDto,
   GetNoteDto,
-  ListNotesDto, UpdateNoteDto,
+  ListNotesDto,
+  UpdateNoteDto,
 } from '~note/dto/note.dto';
 import {
   DeleteNoteResponse,

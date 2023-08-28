@@ -9,7 +9,7 @@ import { useLoginMutation } from '@context/redux/user';
 interface useLoginResponse {
   isLoading: boolean;
   error: Error | undefined;
-  user: User;
+  user: User | undefined;
 }
 export const useLogin = (): useLoginResponse => {
   const {
@@ -17,47 +17,43 @@ export const useLogin = (): useLoginResponse => {
     error: authZeroError,
     isLoading: authZeroIsLoading,
   } = useAuthZeroUser();
-  const [login, { user }] = useLoginMutation();
+  // const [login, { user }] = useLoginMutation();
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<Error | undefined>();
-
-  console.log('user', user);
+  const user = undefined;
   useEffect(() => {
-    console.log(
-      'detectUserChange(user, authZeroUser)',
-      detectUserChange(user, authZeroUser),
-    );
     if (authZeroUser && detectUserChange(user, authZeroUser)) {
       setIsLoading(true);
-      login({
-        zeroId: authZeroUser.sub,
-        email: authZeroUser.email,
-        name: authZeroUser.name,
-        nickname: authZeroUser.nickname,
-        picture: authZeroUser.picture,
-      })
-        .then((resp) => {
-          console.log(
-            '##########################################################',
-            resp,
-          );
-          setIsLoading(false);
-          setError(undefined);
-          return resp;
-        })
-        .catch((error: any) => {
-          console.log(
-            '$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$',
-          );
-          setIsLoading(false);
-          setError(error);
-        });
+      // login({
+      //   zeroId: authZeroUser.sub,
+      //   email: authZeroUser.email,
+      //   name: authZeroUser.name,
+      //   nickname: authZeroUser.nickname,
+      //   picture: authZeroUser.picture,
+      // })
+      //   .then((resp) => {
+      //     console.log(
+      //       '##########################################################',
+      //       resp,
+      //     );
+      //     setIsLoading(false);
+      //     setError(undefined);
+      //     return resp;
+      //   })
+      //   .catch((error: any) => {
+      //     console.log(
+      //       '$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$',
+      //     );
+      //     setIsLoading(false);
+      //     setError(error);
+      //   });
     }
-  }, [authZeroUser, login, user]);
+  }, [authZeroUser, user]);
+  // }, [authZeroUser, login, user]);
 
   return {
     isLoading: authZeroIsLoading || isLoading,
-    user,
+    user: undefined,
     error: authZeroError || error,
   };
 };

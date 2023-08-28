@@ -4,16 +4,16 @@ import { apiSlice } from '@context/redux/api';
 
 export const userSlice = apiSlice.injectEndpoints({
   endpoints: (builder: ReduxEndpoint) => ({
-    getNotes: loginEndpoint(builder),
+    login: loginEndpoint(builder),
   }),
 });
 
 export const { useGetUserQuery, useLoginMutation } = userSlice;
 
 /** memoized selectors */
-export const selectUserResult = userSlice.endpoints.getNotes.select();
+export const selectUserResult = userSlice.endpoints.login.select();
 
-const selectNotesData = createSelector(
+const selectUserData = createSelector(
   selectUserResult,
   (postsResult) => postsResult.data, // normalized state object with ids & entities
 );

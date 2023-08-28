@@ -1,14 +1,7 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { ComponentWithLogging } from '~utils/logging';
-import { LoginResponse } from '#interfaces/user/user.interface';
-import { LoginDto } from '~user/dto';
 import { NoteDatabaseService } from '~note/note-database.service';
-import {
-  CreateNoteDto,
-  DeleteNoteDto,
-  ListNotesDto,
-  UpdateNoteDto,
-} from '~note/dto/note.dto';
+import { CreateNoteDto, UpdateNoteDto } from '~note/dto/note.dto';
 import {
   DeleteNoteResponse,
   ListNotesResponse,

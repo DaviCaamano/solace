@@ -9,6 +9,7 @@ export const Header = () => {
   const { isLoading, error, user } = useLogin();
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>{error.message}</div>;
+
   return (
     <div
       id={'header'}
