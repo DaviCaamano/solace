@@ -7,25 +7,34 @@
     "packages/*"
   ],
   "scripts": {
-    "build": "turbo run build",
+    "build": "cross-env turbo daemon clean && turbo run build",
     "dev": "turbo run dev --parallel",
     "lint": "turbo run lint",
     "tsc": "turbo run tsc",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "clean": "turbo daemon clean",
-    "gen": "yarn workspace api run gen",
-    "migrate": "yarn workspace api run migrate"
+    "gen": "prisma generate",
+    "migrate": "cross-env dotenv -e .env prisma migrate dev && prisma generate"
+  },
+  "dependencies": {
+    "@prisma/client": "^5.2.0",
+    "cross-env": "^7.0.3",
+    "dotenv": "^16.3.1"
   },
   "devDependencies": {
-    "prisma": "^5.1.0",
-    "turbo": "^1.10.13"
+    "prisma": "^5.2.0",
+    "turbo": "^1.10.13",
+    "dotenv-cli": "^7.3.0"
   },
   "engines": {
     "npm": ">=7.0.0",
     "node": ">=14.0.0"
   },
   "packageManager": "yarn@1.22.17",
-  "dependencies": {
-    "cross-env": "^7.0.3"
+  "prisma": {
+    "schema": "./apps/api/prisma/schema.prisma",
+    "migrations": {
+      "path": "./apps/api/prisma/migrations"
+    }
   }
 }

@@ -1,11 +1,10 @@
 import { Global, Logger, Module } from '@nestjs/common';
 import { PrismaService } from './prisma/prisma.service';
-import { WriterService } from '~persistence/prisma/writer.service';
-import { ReaderService } from '~persistence/prisma/reader.service';
+import { DatabaseService } from '~persistence/prisma/database.service';
 
 @Global()
 @Module({
-  providers: [PrismaService, WriterService, ReaderService, Logger],
-  exports: [PrismaService, WriterService, ReaderService, Logger],
+  providers: [PrismaService, DatabaseService, Logger],
+  exports: [PrismaService, DatabaseService, Logger],
 })
 export class PersistenceModule {}

@@ -1,15 +1,13 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { ComponentWithLogging } from '~utils/logging';
 import { User, UserRecord } from '#interfaces/user/user.interface';
-import { WriterService } from '~persistence/prisma/writer.service';
-import { ReaderService } from '~persistence/prisma/reader.service';
 import { UserUpsertArgs } from 'prisma';
+import { DatabaseService } from '~persistence/prisma/database.service';
 
 @Injectable()
 export class UserDatabaseService extends ComponentWithLogging {
   constructor(
-    private readonly writer: WriterService,
-    private readonly reader: ReaderService,
+    private readonly db: DatabaseService,
     private readonly logger: Logger,
   ) {
     super();
@@ -60,7 +58,7 @@ export class UserDatabaseService extends ComponentWithLogging {
     }
 
     try {
-      return this.writer.user.upsert(query);
+      return this.db.user.upsert(query);
     } catch (err: any) {
       this.report('Failed to Upsert User', err);
     }

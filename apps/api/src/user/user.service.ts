@@ -7,7 +7,7 @@ import { LoginDto } from '~user/dto';
 @Injectable()
 export class UserService extends ComponentWithLogging {
   constructor(
-    private readonly db: UserDatabaseService,
+    private readonly dbService: UserDatabaseService,
     private readonly logger: Logger,
   ) {
     super();
@@ -22,7 +22,7 @@ export class UserService extends ComponentWithLogging {
   }
 
   async login(user: LoginDto): Promise<LoginResponse> {
-    const updatedUser = await this.db.upsert(user);
+    const updatedUser = await this.dbService.upsert(user);
     return { user: updatedUser };
   }
 }

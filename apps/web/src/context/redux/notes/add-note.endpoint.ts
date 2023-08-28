@@ -4,7 +4,7 @@ import { HttpMethod } from '#interfaces/http';
 export const addNoteEndpoint = (builder: ReduxEndpoint) =>
   builder.mutation({
     query: (note: NewNote) => ({
-      url: `/notes/${note.userId}`,
+      url: `/note/${note.userId}`,
       method: HttpMethod.post,
       body: note,
     }),

@@ -17,5 +17,5 @@ export interface UserRecord {
 export interface LoginResponse {
     user: User | null;
 }
-export type NewUser = Omit<User, 'id'>;
+export declare type NewUser = Omit<User, 'id'>;
 //# sourceMappingURL=user.interface.d.ts.map
