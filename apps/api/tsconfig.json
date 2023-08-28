@@ -12,9 +12,8 @@
       "@svg/*": ["../web/public/svg/*"],
       "@fonts/*": ["../web/public/fonts/*"],
       "@public/*": ["../web/src/public/*"],
-      "@components/*": ["../web/src/components/*"],
       "~interfaces/*": ["./interfaces/*"],
-      "~utils/*": ["./utils/*"],
+      "~utils/*": ["./utils/*"]
     }
   }
 }

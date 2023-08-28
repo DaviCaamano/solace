@@ -1,23 +1,23 @@
 export interface User {
-  email?: string | null;
+  id: string;
+  email: string;
   name?: string | null;
   nickname?: string | null;
   picture?: string | null;
 }
 
-/** Redux */
-export enum UserActionType {
-  login = 'LOGIN',
-  logout = 'LOGOUT',
+export interface UserRecord {
+  id: string;
+  zeroId: string;
+  email: string;
+  name?: string | null;
+  nickname?: string | null;
+  picture?: string | null;
 }
-
-/** Redux */
-export type UserAction = {
-  type: UserActionType;
-  user?: User;
-};
 
 /** API */
 export interface LoginResponse {
   user: User | null;
 }
+
+export type NewUser = Omit<User, 'id'>;

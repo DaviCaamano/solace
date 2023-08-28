@@ -5,8 +5,70 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2101ad9f-8972-44d3-9c27-f093e4bebdd9" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/apps/api/src/persistence/prisma/reader.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/api/src/persistence/prisma/writer.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/api/src/user/dto/login.dto.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/api/src/user/user-database.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/api/src/user/user.controller.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/api/src/user/user.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/web/src/components/global/redux/Redux.provider.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/web/src/components/global/redux/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/web/src/components/notes/NoteList.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/web/src/components/notes/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/web/src/context/redux/api/api.slice.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/web/src/context/redux/api/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/web/src/context/redux/notes/add-note.endpoint.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/web/src/context/redux/notes/delete-note.endpoint.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/web/src/context/redux/notes/get-notes.endpoint.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/web/src/context/redux/notes/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/web/src/context/redux/notes/notes.slice.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/web/src/context/redux/notes/update-note.endpoint.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/web/src/context/redux/user/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/web/src/context/redux/user/login.endpoint.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/web/src/context/redux/user/user.slice.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/shared/interfaces/http/http-method.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/shared/interfaces/http/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/shared/interfaces/notes/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/shared/interfaces/notes/notes.interface.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env.template" beforeDir="false" afterPath="$PROJECT_DIR$/.env.template" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/api/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/api/prisma/migrations/migration_lock.toml" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/prisma/migrations/migration_lock.toml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/api/prisma/schema.prisma" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/prisma/schema.prisma" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/api/src/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/api/src/auth/auth.controller.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/user/user.controller.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/api/src/auth/auth.controller.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/api/src/auth/auth.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/user/user.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/api/src/auth/auth.service.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/user/user.service.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/api/src/auth/auth.service.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/api/src/persistence/persistence.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/persistence/persistence.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/api/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/global.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/global.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/pages/_app.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/pages/_app.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/pages/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/pages/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/postcss.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/postcss.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/context/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/user/dto/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/context/redux/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/context/redux/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/context/redux/slices/index.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/context/redux/slices/user.redux.slice.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/context/redux/store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/context/redux/store.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/web/src/hooks/user/useLogin.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/hooks/user/useLogin.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/services/api/redux/redux.api.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/services/api/redux/redux.api.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/services/api/api.service.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/services/api/index.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/services/api/redux/index.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/services/api/redux/redux.api.service.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/services/api/routes/auth.api.service.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/services/api/routes/index.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/services/index.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/tsconfig.tsbuildinfo" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/tsconfig.tsbuildinfo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/config/mkcert/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/shared/interfaces/user/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/shared/interfaces/user/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/shared/interfaces/user/user.interface.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/shared/interfaces/user/user.interface.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/tsconfig/base.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/tsconfig/base.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/tsconfig/nextjs.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/tsconfig/nextjs.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,32 +121,32 @@
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/davit/Projects/solace/packages/config/mkcert&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/davit/Projects/solace/apps/web/src/context/redux/slices/api/user&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
     &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;C:\\Users\\davit\\Projects\\solace\\node_modules\\prettier&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.fileTypes&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\davit\\Projects\\solace\\node_modules\\typescript\\lib&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\davit\Projects\solace\apps\web\src\context\redux\slices\api\user" />
+      <recent name="C:\Users\davit\Projects\solace\apps\api\src\persistence\prisma" />
       <recent name="C:\Users\davit\Projects\solace\packages\config\mkcert" />
       <recent name="C:\Users\davit\Projects\solace" />
       <recent name="C:\Users\davit\Projects\solace\apps\web" />
-      <recent name="C:\Users\davit\Projects\solace\packages" />
-      <recent name="C:\Users\davit\Projects\solace\apps\web\public" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\davit\Projects\solace\apps\web\src\hooks\user" />
-      <recent name="C:\Users\davit\Projects\solace\apps\web\src\hooks" />
+      <recent name="C:\Users\davit\Projects\solace\apps\web\src\context\redux" />
+      <recent name="C:\Users\davit\Projects\solace\apps\web\src\context\redux\slices\api\notes" />
+      <recent name="C:\Users\davit\Projects\solace\apps\web\src\context\redux\slices\api" />
       <recent name="C:\Users\davit\Projects\solace\apps\web\src\context\redux\slices" />
-      <recent name="C:\Users\davit\Projects\solace\apps\web\src\services\api\redux" />
-      <recent name="C:\Users\davit\Projects\solace\apps\web\src\services\api\routes" />
+      <recent name="C:\Users\davit\Projects\solace\apps\web\src\context\redux\" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -103,12 +165,25 @@
       <workItem from="1692814774974" duration="7623000" />
       <workItem from="1692823667285" duration="298000" />
       <workItem from="1692823984809" duration="7193000" />
-      <workItem from="1693164130700" duration="6901000" />
+      <workItem from="1693164130700" duration="13347000" />
+      <workItem from="1693177739031" duration="19884000" />
+      <workItem from="1693203744409" duration="333000" />
+      <workItem from="1693204427047" duration="3720000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+    <option name="exactExcludedFiles">
+      <list>
+        <option value="$PROJECT_DIR$/packages/shared/interfaces/user/user.interface.js" />
+        <option value="$PROJECT_DIR$/packages/shared/interfaces/user/user.interface.d.ts.map" />
+        <option value="$PROJECT_DIR$/packages/shared/interfaces/user/user.interface.d.ts" />
+        <option value="$PROJECT_DIR$/packages/shared/interfaces/notes/notes.interface.d.ts.map" />
+        <option value="$PROJECT_DIR$/packages/shared/interfaces/notes/notes.interface.d.ts" />
+        <option value="$PROJECT_DIR$/packages/shared/interfaces/notes/notes.interface.js" />
+      </list>
+    </option>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">

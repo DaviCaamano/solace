@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import { useUser } from '@auth0/nextjs-auth0/client';
 import { capitalize } from '#utils/string';
 import { UserMenu } from '@components/header';
 import { useState } from 'react';
@@ -40,12 +39,12 @@ const LoadingLink = () => (
 );
 
 interface LogoutLinkProps {
-  name?: string;
-  setOpen?: Setter<boolean>;
+  name?: string | null;
+  setOpen: Setter<boolean>;
 }
 
 const LogoutLink = ({ name, setOpen }: LogoutLinkProps) => (
-  <a onClick={() => setOpen((prev: boolean) => !prev)}>
+  <a onClick={() => setOpen?.((prev: boolean) => !prev)}>
     <span className={'text-2xl text-[beige] hover:underline'}>
       {name ? `Hello ${capitalize(name)}` : 'Logout'}
     </span>

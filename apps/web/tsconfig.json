@@ -4,12 +4,19 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "jest.setup.js"
+    "jest.setup.js",
+    ".next/types/**/*.ts"
   ],
   "exclude": [
     "node_modules"
   ],
   "compilerOptions": {
-    "allowJs": true
+    "allowJs": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "strictNullChecks": true
   }
 }

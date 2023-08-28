@@ -14,7 +14,10 @@ declare global {
   /** State Setter for React and React like components */
   interface Setter<T> extends Dispatch<SetStateAction<T>> {}
 
-  /** Redux */
+  /** fetch */
+  interface FetchResponse<T> extends Response {
+    data: T;
+  }
 
   /* Redux Endpoint for API Service */
   type TagTypes = string;
@@ -24,16 +27,5 @@ declare global {
     payload: T;
     meta?: any;
     error?: any;
-  }
-
-  /** HTTP */
-  enum HttpMethod {
-    get = 'GET',
-    head = 'HEAD',
-    options = 'OPTIONS',
-    post = 'POST',
-    put = 'PUT',
-    delete = 'DELETE',
-    patch = 'PATCH',
   }
 }

@@ -12,7 +12,9 @@
     "lint": "turbo run lint",
     "tsc": "turbo run tsc",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "clean": "turbo daemon clean"
+    "clean": "turbo daemon clean",
+    "gen": "yarn workspace api run gen",
+    "migrate": "yarn workspace api run migrate"
   },
   "devDependencies": {
     "prisma": "^5.1.0",

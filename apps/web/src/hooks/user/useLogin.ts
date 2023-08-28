@@ -1,12 +1,14 @@
-import { UserProfile } from '@auth0/nextjs-auth0/client';
-import { useUser as useAuthZeroUser } from '@auth0/nextjs-auth0/dist/client';
+import {
+  UserProfile,
+  useUser as useAuthZeroUser,
+} from '@auth0/nextjs-auth0/client';
 import { useEffect, useState } from 'react';
-import { useLoginMutation } from '@services/api/redux';
 import { User } from '#interfaces/user/user.interface';
+import { useLoginMutation } from '@context/redux/user';
 
 interface useLoginResponse {
   isLoading: boolean;
-  error: Error;
+  error: Error | undefined;
   user: User;
 }
 export const useLogin = (): useLoginResponse => {
@@ -16,19 +18,37 @@ export const useLogin = (): useLoginResponse => {
     isLoading: authZeroIsLoading,
   } = useAuthZeroUser();
   const [login, { user }] = useLoginMutation();
-
-  const [isLoading, setIsLoading] = useState<boolean>(authZeroIsLoading);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<Error | undefined>();
 
+  console.log('user', user);
   useEffect(() => {
-    if (detectUserChange(user, authZeroUser)) {
+    console.log(
+      'detectUserChange(user, authZeroUser)',
+      detectUserChange(user, authZeroUser),
+    );
+    if (authZeroUser && detectUserChange(user, authZeroUser)) {
       setIsLoading(true);
-      login(authZeroUser)
-        .then(() => {
+      login({
+        zeroId: authZeroUser.sub,
+        email: authZeroUser.email,
+        name: authZeroUser.name,
+        nickname: authZeroUser.nickname,
+        picture: authZeroUser.picture,
+      })
+        .then((resp) => {
+          console.log(
+            '##########################################################',
+            resp,
+          );
           setIsLoading(false);
           setError(undefined);
+          return resp;
         })
         .catch((error: any) => {
+          console.log(
+            '$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$',
+          );
           setIsLoading(false);
           setError(error);
         });
@@ -43,13 +63,14 @@ export const useLogin = (): useLoginResponse => {
 };
 
 const detectUserChange = (user?: User, authZeroUser?: UserProfile): boolean => {
-  const userLoggedIn = authZeroUser && !user;
+  const validAuthZeroUser = authZeroUser?.email && authZeroUser?.sub;
+  const userLoggedIn = validAuthZeroUser && !user;
   const userUpdated =
-    user &&
-    authZeroUser &&
+    user?.email &&
+    authZeroUser?.email &&
     (user.name !== authZeroUser.name ||
       user.email !== authZeroUser.email ||
       user.nickname !== authZeroUser.nickname ||
       user.picture !== authZeroUser.picture);
-  return userLoggedIn || userUpdated;
+  return !!validAuthZeroUser && (userLoggedIn || !!userUpdated);
 };

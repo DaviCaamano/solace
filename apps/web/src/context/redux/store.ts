@@ -1,17 +1,17 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { reducer as userSlice } from '@context/redux/slices/user.redux.slice';
-import { authApi } from '@services/api/redux';
+import { apiSlice } from '@context/redux/api';
+import { setupListeners } from '@reduxjs/toolkit/query';
 
-export function makeStore() {
-  return configureStore({
-    reducer: {
-      [authApi.reducerPath]: authApi.reducer,
-      user: userSlice,
-    },
-  });
-}
+export const store = configureStore({
+  reducer: {
+    [apiSlice.reducerPath]: apiSlice.reducer,
+  },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(apiSlice.middleware),
+  devTools: process.env.NODE_ENV !== 'production',
+});
 
-export const store = makeStore();
+setupListeners(store.dispatch);
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;

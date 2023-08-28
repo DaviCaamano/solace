@@ -1,7 +1,3 @@
-# Localhost Development
-
-To test this project locally, please see the README.md file in the `/root/packages/config/mkcert` directory
-
 # Turborepo (NestJS + Prisma + NextJS + Tailwind + Typescript + Jest) Starter
 
 This is fullstack turborepo starter. It comes with the following features.
