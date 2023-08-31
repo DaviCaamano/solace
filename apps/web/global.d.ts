@@ -28,4 +28,6 @@ declare global {
     meta?: any;
     error?: any;
   }
+
+  type Tailwind = Record<string, string>;
 }

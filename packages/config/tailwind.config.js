@@ -1,5 +1,6 @@
-import { enumToJson } from 'shared/utils/enum';
-import colors from 'web/src/styles/colors';
+import { tailwindColors } from './tailwind';
+import colors from '../../apps/web/src/styles/tailwind/colors';
+const defaultTheme = require('tailwindcss/defaultTheme');
 
 module.exports = {
   content: [
@@ -10,7 +11,11 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        ...enumToJson(colors),
+        ...tailwindColors(colors),
+      },
+      fontFamily: {
+        sans: ['var(--font-montserrat)', ...defaultTheme.fontFamily.sans],
+        mono: ['var(--font-montserrat)', ...defaultTheme.fontFamily.mono],
       },
     },
   },
