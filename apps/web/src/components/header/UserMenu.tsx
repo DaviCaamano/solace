@@ -1,12 +1,15 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import Link from 'next/link';
 import { UserMenuLogoutButton } from '@components/header/button';
-import colors from '@styles/tailwind/colors';
+import { useOuterClicks } from '@hooks';
+import { Ref } from 'react';
 
 interface LoginPopupProps {
   open: boolean;
+  setOpen: Setter<boolean>;
 }
-export const UserMenu = ({ open }: LoginPopupProps) => {
+export const UserMenu = ({ open, setOpen }: LoginPopupProps) => {
+  const clickRef = useOuterClicks(() => setOpen(false));
   return (
     <div
       id={'user-popup'}
@@ -23,6 +26,7 @@ export const UserMenu = ({ open }: LoginPopupProps) => {
             variants={containerAnimations}
             transition={{ duration: 0.2 }}
             exit={'hidden'}
+            ref={clickRef as Ref<HTMLDivElement>}
           >
             <Link href={'/api/auth/logout'}>
               <AnimatePresence>

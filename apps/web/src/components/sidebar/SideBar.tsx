@@ -29,8 +29,9 @@ const MenuButton = ({ setOpen }: MenuButtonProps) => {
     <a onClick={() => setOpen((prev: boolean) => !prev)}>
       <MenuRoundedIcon
         id={'menu-button'}
-        className={'absolute top-0 left-0 text-[50px] cursor-pointer'}
-        sx={{ fontSize: '50px', color: colors.beige }}
+        className={
+          'absolute top-2 left-3 text-[40px] text-beige cursor-pointer'
+        }
       />
     </a>
   );

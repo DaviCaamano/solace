@@ -14,7 +14,7 @@ export const Header = () => {
       <Greeting name={user?.name} setOpen={setOpen} />
       <LoadingLink show={isLoading} />
       <LoginLink show={!error && !user && !isLoading} />
-      <UserMenu open={open} />
+      <UserMenu open={open} setOpen={setOpen} />
     </HeaderBar>
   );
 };
