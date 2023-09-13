@@ -4,14 +4,7 @@ import {
   FetchArgs,
   FetchBaseQueryError,
   FetchBaseQueryMeta,
-  MutationDefinition,
 } from '@reduxjs/toolkit/dist/query/react';
-import {
-  UseQuery,
-  UseMutation,
-  UseLazyQuery,
-} from '@reduxjs/toolkit/src/query/react/buildHooks';
-import { QueryDefinition } from '@reduxjs/toolkit/query';
 
 /** Redux Query Hook response status */
 export enum ReduxStatus {
@@ -45,47 +38,3 @@ export type ReduxQueryBuilder<Tags extends TagTypes = TagTypes> =
 interface FetchResponse<T> extends Response {
   data: T;
 }
-export type UseQueryHook<
-  Argument, //Argument for Query
-  EndpointResponse, //Endpoint Response Data
-  Tags extends string | TagTypes, //tags
-  ReduxReducerPath extends string = 'api',
-> = UseQuery<
-  QueryDefinition<
-    Argument,
-    BaseQueryFn<Argument, FetchResponse<EndpointResponse>>,
-    Tags,
-    EndpointResponse,
-    ReduxReducerPath
-  >
->;
-
-export type UseMutationHook<
-  Argument, //Argument for Query
-  EndpointResponse, //Endpoint Response Data
-  Tags extends string | TagTypes, //tags
-  ReduxReducerPath extends string = 'api',
-> = UseMutation<
-  MutationDefinition<
-    Argument,
-    BaseQueryFn<Argument, FetchResponse<EndpointResponse>>,
-    Tags,
-    EndpointResponse,
-    ReduxReducerPath
-  >
->;
-
-export type UseLazyQueryHook<
-  Argument, //Argument for Query
-  EndpointResponse, //Endpoint Response Data
-  Tags extends string | TagTypes, //tags
-  ReduxReducerPath extends string = 'api',
-> = UseLazyQuery<
-  QueryDefinition<
-    Argument,
-    BaseQueryFn<Argument, FetchResponse<EndpointResponse>>,
-    Tags,
-    EndpointResponse,
-    ReduxReducerPath
-  >
->;
