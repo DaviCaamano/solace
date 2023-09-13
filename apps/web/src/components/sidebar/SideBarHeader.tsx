@@ -10,11 +10,7 @@ export const SideBarHeader = () => {
           'linear-gradient(to right, rgba(254, 91, 99, 0.5), rgba(254, 91, 99, 0.05)) 2 100%',
       }}
     >
-      <span
-        className={'text-2xl leading-[5rem] text-beige'}
-      >
-        History
-      </span>
+      <span className={'text-2xl leading-[5rem] text-beige'}>History</span>
     </div>
   );
 };

@@ -1,7 +1,30 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import {
+  Api,
+  BaseQueryFn,
+  FetchArgs,
+  FetchBaseQueryError,
+  FetchBaseQueryMeta,
+  coreModuleName,
+  createApi,
+  fetchBaseQuery,
+  reactHooksModuleName,
+} from '@reduxjs/toolkit/query/react';
 
+type ApiSlice = Api<
+  BaseQueryFn<
+    string | FetchArgs,
+    unknown,
+    FetchBaseQueryError,
+    {},
+    FetchBaseQueryMeta
+  >,
+  {},
+  'api',
+  'Note' | 'User',
+  typeof coreModuleName | typeof reactHooksModuleName
+>;
 const baseUrl = process.env.BASE_URL || 'http://localhost:3000';
-export const apiSlice = createApi({
+export const apiSlice: ApiSlice = createApi({
   reducerPath: 'api',
   baseQuery: fetchBaseQuery({
     baseUrl: baseUrl + '/api/',

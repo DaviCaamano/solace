@@ -18,7 +18,7 @@
     "@emotion/styled": "^11.11.0",
     "@mui/icons-material": "^5.14.3",
     "@mui/material": "^5.14.5",
-    "@reduxjs/toolkit": "^1.9.5",
+    "@reduxjs/toolkit": "^2.0.0-beta.1",
     "axios": "^1.4.0",
     "cross-env": "^7.0.3",
     "framer-motion": "^10.16.1",

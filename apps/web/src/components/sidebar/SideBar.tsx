@@ -2,8 +2,6 @@ import { useState } from 'react';
 import { SideBarPane } from '@components/sidebar';
 import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
 
-import colors from '@styles/tailwind/colors';
-
 export const SideBar = () => {
   const [open, setOpen] = useState(true);
 

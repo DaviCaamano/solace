@@ -1,13 +1,12 @@
-import { useSelector } from 'react-redux';
-import { selectNotesResult, useGetNotesQuery } from '@context/redux/notes';
+import { useListNotesLazyQuery } from '@context/redux/notes';
 
 export const NoteList = () => {
-  const args = useGetNotesQuery();
-
+  const [getNotes, args] = useListNotesLazyQuery();
   const { isLoading, isSuccess, isError, error } = args;
-  const orderedNotes = useSelector(selectNotesResult);
+  console.log('args', args);
+
   if (isLoading) return <div>Loading...</div>;
-  if (isError) return <div>{error.message}</div>;
+  if (isError) return <div>{(error as any).message}</div>;
   if (isSuccess) {
     return (
       <section className={'w-full h-full flex justify-center, items-center'}>

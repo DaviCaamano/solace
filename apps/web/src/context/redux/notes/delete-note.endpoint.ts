@@ -1,12 +1,17 @@
-import { Note } from '#interfaces/notes';
+import { DeleteNoteResponse, NoteResponse } from '#interfaces/notes';
 import { HttpMethod } from '#interfaces/http';
+import { ReduxQueryBuilder } from '#interfaces/redux';
+import { DeleteNoteDto } from '~note/dto/note.dto';
 
-export const deleteNoteEndpoint = (builder: ReduxEndpoint) =>
-  builder.mutation({
-    query: (userId: string, noteId: string) => ({
+export const deleteNoteEndpoint = (builder: ReduxQueryBuilder) =>
+  builder.mutation<boolean, DeleteNoteDto>({
+    query: (body: DeleteNoteDto) => ({
       url: '/note',
       method: HttpMethod.delete,
-      body: { noteId },
+      body,
     }),
+    transformResponse: ({ data: note }: FetchResponse<DeleteNoteResponse>) => {
+      return note?.success || false;
+    },
     invalidatesTags: [{ type: 'Note', id: 'LIST' }],
   });

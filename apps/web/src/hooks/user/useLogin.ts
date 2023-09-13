@@ -3,8 +3,8 @@ import {
   useUser as useAuthZeroUser,
 } from '@auth0/nextjs-auth0/client';
 import { useEffect } from 'react';
-import { User } from '#interfaces/user/user.interface';
 import { useLoginMutation } from '@context/redux/user';
+import { User } from '#interfaces/user/user.interface';
 
 interface useLoginResponse {
   isLoading: boolean;
@@ -19,16 +19,18 @@ export const useLogin = (): useLoginResponse => {
   } = useAuthZeroUser();
 
   const [login, { data: user, error, isLoading, isSuccess }] =
-    useLoginMutation();
+    useLoginMutation?.({
+      fixedCacheKey: 'login',
+    });
 
   useEffect(() => {
-    if (authZeroUser && detectUserChange(user, authZeroUser)) {
+    if (authZeroUser && user && detectUserChange(user, authZeroUser)) {
       login({
-        zeroId: authZeroUser.sub,
-        email: authZeroUser.email,
-        name: authZeroUser.name,
-        nickname: authZeroUser.nickname,
-        picture: authZeroUser.picture,
+        zeroId: authZeroUser.sub as string,
+        email: authZeroUser.email as string,
+        name: authZeroUser.name || undefined,
+        nickname: authZeroUser.nickname || undefined,
+        picture: authZeroUser.picture || undefined,
       }).unwrap();
     }
   }, [authZeroUser, login, user]);
@@ -36,7 +38,10 @@ export const useLogin = (): useLoginResponse => {
   return {
     isLoading: authZeroIsLoading || isLoading,
     user: isSuccess ? (user as User) : undefined,
-    error: authZeroError || error,
+    error: (authZeroError?.message ||
+      authZeroError ||
+      (error as Error)?.message ||
+      error) as string | undefined,
   };
 };
 

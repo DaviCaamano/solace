@@ -17,7 +17,9 @@
     "noImplicitAny": false,
     "strictBindCallApply": false,
     "forceConsistentCasingInFileNames": false,
-    "noFallthroughCasesInSwitch": false
+    "noFallthroughCasesInSwitch": false,
+    "baseUrl": "."
   },
-  "include": ["../../apps/api/src/**/*.ts"]
+  "include": ["../../apps/api/src/**/*.ts"],
+  "exclude": ["node_modules"]
 }

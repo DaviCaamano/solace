@@ -1,19 +1,16 @@
-import { createSelector } from '@reduxjs/toolkit';
 import { loginEndpoint } from '@context/redux/user';
 import { apiSlice } from '@context/redux/api';
+import { ReduxQueryBuilder, UseMutationHook } from '#interfaces/redux';
+import { NewUser, User } from '#interfaces/user';
+import { LoginDto } from '~user/dto';
 
+type UserTags = 'User' | 'Note';
 export const userSlice = apiSlice.injectEndpoints({
-  endpoints: (builder: ReduxEndpoint) => ({
+  endpoints: (builder: ReduxQueryBuilder<UserTags>) => ({
     login: loginEndpoint(builder),
   }),
 });
 
-export const { useGetUserQuery, useLoginMutation } = userSlice;
-
-/** memoized selectors */
-export const selectUserResult = userSlice.endpoints.login.select();
-
-const selectUserData = createSelector(
-  selectUserResult,
-  (postsResult) => postsResult.data, // normalized state object with ids & entities
-);
+/** Manually Typing Hooks for Intellij incompatibility with Redux Toolkit Query */
+export const useLoginMutation = userSlice.endpoints.login
+  .useMutation as UseMutationHook<LoginDto, User | null, UserTags>;

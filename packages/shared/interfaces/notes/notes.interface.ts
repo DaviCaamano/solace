@@ -13,7 +13,6 @@ export enum NoteStatus {
   deleted = 'DELETED',
 }
 
-export type NewNote = Omit<Note, 'id'>;
 type NoteWithoutTimeSTamps = Omit<Note, 'createdAt' | 'updatedAt'>;
 export type NoteUpdate = Partial<NoteWithoutTimeSTamps> & Pick<Note, 'id'>;
 
