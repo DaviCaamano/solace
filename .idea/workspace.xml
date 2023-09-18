@@ -5,13 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2101ad9f-8972-44d3-9c27-f093e4bebdd9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/apps/web/src/hooks/redux/useListNotes.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/web/public/images/shared/global/bg-0-320.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/web/public/images/shared/global/bg-320-785.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/web/public/images/shared/global/bg-786.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/web/src/utils/responsive/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/web/src/utils/responsive/responsive.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/components/notes/NoteList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notes/NoteList.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/context/redux/notes/list-notes.endpoint.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/context/redux/notes/list-notes.endpoint.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/hooks/redux/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/hooks/redux/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/hooks/user/useLogin.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/hooks/user/useLogin.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/hooks/user/useUser.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/hooks/user/useUser.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/public/images/shared/global/bg.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/app/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/global/Background.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/global/Background.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/styles/shared/shared.module.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/config/tailwind.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/packages/config/tailwind.config.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,29 +66,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;js.linters.configure.manually.selectedeslint&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/davit/Projects/solace&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;C:\\Users\\davit\\Projects\\solace\\node_modules\\eslint&quot;,
-    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
-    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;C:\\Users\\davit\\Projects\\solace\\node_modules\\prettier&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\davit\\Projects\\solace\\node_modules\\typescript\\lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "dart.analysis.tool.window.visible": "false",
+    "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
+    "js.linters.configure.manually.selectedeslint": "true",
+    "last_opened_file_path": "C:/Users/davit/Projects/quelliv",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.standard": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "C:\\Users\\davit\\Projects\\solace\\node_modules\\eslint",
+    "node.js.selected.package.standard": "",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "yarn",
+    "prettierjs.PrettierConfiguration.Package": "C:\\Users\\davit\\Projects\\solace\\node_modules\\prettier",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "ts.external.directory.path": "C:\\Users\\davit\\Projects\\solace\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\davit\Projects\solace\apps\web\public\fonts" />
@@ -93,11 +98,11 @@
       <recent name="C:\Users\davit\Projects\solace\packages\config\mkcert" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\davit\Projects\solace\apps\web\public\images\shared\global" />
       <recent name="C:\Users\davit\Projects\solace\apps\web\src\hooks\redux" />
       <recent name="C:\Users\davit\Projects\solace\apps\web\src\styles\tailwind" />
       <recent name="C:\Users\davit\Projects\solace\apps\web\public\fonts\montserrat\ttf" />
       <recent name="C:\Users\davit\Projects\solace\apps\web\public\fonts\old" />
-      <recent name="C:\Users\davit\Projects\solace\apps\web\public\fonts\quicksand" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -140,7 +145,9 @@
       <workItem from="1694628670101" duration="11699000" />
       <workItem from="1694640549003" duration="645000" />
       <workItem from="1694756421619" duration="12000" />
-      <workItem from="1695059119907" duration="3735000" />
+      <workItem from="1695059119907" duration="8068000" />
+      <workItem from="1695073479703" duration="1104000" />
+      <workItem from="1695074625494" duration="322000" />
     </task>
     <servers />
   </component>
@@ -148,29 +155,7 @@
     <option name="version" value="3" />
     <option name="exactExcludedFiles">
       <list>
-        <option value="$PROJECT_DIR$/apps/web/pages/index.js" />
-        <option value="$PROJECT_DIR$/apps/web/src/styles/tailwind/colors.js" />
-        <option value="$PROJECT_DIR$/apps/web/public/fonts/index.js" />
-        <option value="$PROJECT_DIR$/apps/web/pages/_app.js" />
-        <option value="$PROJECT_DIR$/apps/web/pages/_document.js" />
-        <option value="$PROJECT_DIR$/apps/web/src/styles/tailwind/index.js" />
-        <option value="$PROJECT_DIR$/apps/web/src/utils/redux/transformErrorResponse.js" />
-        <option value="$PROJECT_DIR$/apps/web/src/utils/redux/index.js" />
-        <option value="$PROJECT_DIR$/apps/web/public/fonts/montserrat/montserrat.font.js" />
-        <option value="$PROJECT_DIR$/apps/web/src/context/redux/user/login.endpoint.js" />
-        <option value="$PROJECT_DIR$/apps/web/src/context/redux/notes/get-note.endpoint.js" />
-        <option value="$PROJECT_DIR$/apps/web/src/context/redux/notes/add-note.endpoint.js" />
-        <option value="$PROJECT_DIR$/apps/web/src/context/redux/notes/notes.slice.js" />
-        <option value="$PROJECT_DIR$/apps/web/src/context/redux/notes/delete-note.endpoint.js" />
-        <option value="$PROJECT_DIR$/apps/web/src/context/redux/notes/update-note.endpoint.js" />
-        <option value="$PROJECT_DIR$/apps/web/src/context/redux/notes/list-notes.endpoint.js" />
-        <option value="$PROJECT_DIR$/apps/web/src/components/notes/NoteList.jsx" />
-        <option value="$PROJECT_DIR$/apps/web/src/context/redux/api/api.slice.js" />
-        <option value="$PROJECT_DIR$/apps/web/src/hooks/user/useLogin.js" />
-        <option value="$PROJECT_DIR$/apps/web/src/hooks/user/useUser.js" />
-        <option value="$PROJECT_DIR$/apps/web/src/context/redux/user/user.slice.js" />
-        <option value="$PROJECT_DIR$/packages/shared/interfaces/enum/index.js" />
-        <option value="$PROJECT_DIR$/apps/api/test/app.e2e-spec.js" />
+        <option value="$PROJECT_DIR$/apps/web/pages/_app.jsx" />
       </list>
     </option>
   </component>

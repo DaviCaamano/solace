@@ -11,6 +11,7 @@
   },
   "include": [
     "src",
+    "pages",
     "next-env.d.ts",
     "global.d.ts",
     "jest.setup.js",

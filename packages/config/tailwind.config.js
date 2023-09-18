@@ -9,6 +9,14 @@ module.exports = {
     './src/components/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
+    screens: {
+      xs: '320px',
+      sm: '480px',
+      md: '768px',
+      lg: '1024px',
+      xl: '1280px',
+      '2xl': '1536px',
+    },
     extend: {
       colors: {
         ...tailwindColors(colors),
@@ -21,3 +29,15 @@ module.exports = {
   },
   plugins: [],
 };
+
+/**
+ * Recommended breakpoints from Browserstack for 2023
+ * https://www.browserstack.com/guide/responsive-design-breakpoints
+ * base: 0–319px
+ * [xs] Mobile: 320px–479px
+ * [sm]Tablet: 480px–767px
+ * [md] Laptop: 768px–1023px
+ * [lg] Desktop: 1024px–1279px
+ * [xl] (TW default): 1280px and above
+ * [2xl]: (TW default) 1536px
+ */

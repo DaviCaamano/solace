@@ -11,7 +11,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     <ReduxProvider>
       <html lang='en'>
         <body style={{ display: 'none' }}>{children}</body>
-      </html>{' '}
+      </html>
     </ReduxProvider>
   );
 }
