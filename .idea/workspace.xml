@@ -132,7 +132,7 @@
       <workItem from="1694628670101" duration="11699000" />
       <workItem from="1694640549003" duration="645000" />
       <workItem from="1694756421619" duration="12000" />
-      <workItem from="1695059119907" duration="1813000" />
+      <workItem from="1695059119907" duration="2213000" />
     </task>
     <servers />
   </component>
@@ -162,6 +162,7 @@
         <option value="$PROJECT_DIR$/apps/web/src/hooks/user/useUser.js" />
         <option value="$PROJECT_DIR$/apps/web/src/context/redux/user/user.slice.js" />
         <option value="$PROJECT_DIR$/packages/shared/interfaces/enum/index.js" />
+        <option value="$PROJECT_DIR$/apps/api/test/app.e2e-spec.js" />
       </list>
     </option>
   </component>
