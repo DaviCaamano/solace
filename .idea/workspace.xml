@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2101ad9f-8972-44d3-9c27-f093e4bebdd9" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/packages/shared/interfaces/redux/redux.interfaces.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/shared/interfaces/redux/redux.interfaces.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -133,6 +133,8 @@
       <workItem from="1694628329982" duration="266000" />
       <workItem from="1694628670101" duration="11699000" />
       <workItem from="1694640549003" duration="645000" />
+      <workItem from="1694756421619" duration="12000" />
+      <workItem from="1695059119907" duration="974000" />
     </task>
     <servers />
   </component>
