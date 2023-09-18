@@ -24,7 +24,7 @@ export const useLogin = (): useLoginResponse => {
     });
 
   useEffect(() => {
-    if (authZeroUser && user && detectUserChange(user, authZeroUser)) {
+    if (authZeroUser && detectUserChange(user, authZeroUser)) {
       login({
         zeroId: authZeroUser.sub as string,
         email: authZeroUser.email as string,
@@ -45,7 +45,10 @@ export const useLogin = (): useLoginResponse => {
   };
 };
 
-const detectUserChange = (user?: User, authZeroUser?: UserProfile): boolean => {
+const detectUserChange = (
+  user?: User | null,
+  authZeroUser?: UserProfile,
+): boolean => {
   const validAuthZeroUser = authZeroUser?.email && authZeroUser?.sub;
   const userLoggedIn = validAuthZeroUser && !user;
   const userUpdated =

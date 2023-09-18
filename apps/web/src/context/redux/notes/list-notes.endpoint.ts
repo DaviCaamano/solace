@@ -6,15 +6,15 @@ import { GetNoteDto, ListNotesDto } from '~note/dto/note.dto';
 export const listNotesEndpoint = (builder: ReduxQueryBuilder<'Note'>) =>
   builder.query<Note[], ListNotesDto>({
     query: (params: GetNoteDto) => ({
-      url: '/note',
+      url: '/note/list',
       method: HttpMethod.get,
       params,
     }),
-    transformResponse: ({
-      data: notes,
-    }: FetchResponse<ListNotesResponse>): Note[] => {
-      return notes?.notes?.filter(
-        (notes: Note) => notes.status === NoteStatus.active,
+    transformResponse: (notes: ListNotesResponse): Note[] => {
+      return (
+        notes?.notes?.filter(
+          (notes: Note) => notes.status === NoteStatus.active,
+        ) || []
       );
     },
     providesTags: [{ type: 'Note', id: 'LIST' }],

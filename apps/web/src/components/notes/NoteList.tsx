@@ -1,11 +1,9 @@
-import { useLazyListNotesQuery } from '@context/redux/notes';
+import { useListNotes } from '@hooks';
 
 export const NoteList = () => {
-  const [getNotes, args] = useLazyListNotesQuery();
-  const { isLoading, isSuccess, isError, error } = args;
-  console.log('args', args);
-  console.log('error', error);
-
+  const args = useListNotes();
+  const { isLoading, isSuccess, isError, error, data: noteList } = args;
+  console.log('noteList', noteList);
   if (isLoading) return <div>Loading...</div>;
   if (isError) {
     // @ts-ignore
@@ -14,7 +12,7 @@ export const NoteList = () => {
   if (isSuccess) {
     return (
       <section className={'w-full h-full flex justify-center, items-center'}>
-        <h1>Notes</h1>
+        {noteList?.map(({ title }) => <h1>{title}</h1>)}
       </section>
     );
   }

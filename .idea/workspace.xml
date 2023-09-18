@@ -4,7 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2101ad9f-8972-44d3-9c27-f093e4bebdd9" name="Changes" comment="" />
+    <list default="true" id="2101ad9f-8972-44d3-9c27-f093e4bebdd9" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/apps/web/src/hooks/redux/useListNotes.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/notes/NoteList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notes/NoteList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/context/redux/notes/list-notes.endpoint.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/context/redux/notes/list-notes.endpoint.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/hooks/redux/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/hooks/redux/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/hooks/user/useLogin.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/hooks/user/useLogin.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/hooks/user/useUser.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/hooks/user/useUser.ts" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -132,7 +140,7 @@
       <workItem from="1694628670101" duration="11699000" />
       <workItem from="1694640549003" duration="645000" />
       <workItem from="1694756421619" duration="12000" />
-      <workItem from="1695059119907" duration="2213000" />
+      <workItem from="1695059119907" duration="3735000" />
     </task>
     <servers />
   </component>
