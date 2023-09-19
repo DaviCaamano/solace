@@ -5,12 +5,14 @@ export const MenuContainer = () => {
   return (
     <div
       id={'menu-container'}
-      className={'flex flex-1 flex-col md:flex-row justify-center items-center pb-[10%]'}
+      className={
+        'flex flex-1 flex-col md:flex-row justify-center items-center pb-[10%]'
+      }
     >
       <AddNoteButton />
-      <div className={'flex flex-row md:flex-col m-2'}>
+      <div className={'flex flex-row md:flex-col m-2 sm:m-4'}>
         <NoteHistoryButton />
-        <div className={'m-2'} />
+        <div className={'m-1 sm:m-2'} />
         <ScheduleNoteButton />
       </div>
     </div>
@@ -33,9 +35,9 @@ const noteButtonCss =
   'hover:bg-mug-dark bg-mug relative rounded-2xl cursor-pointer p-6';
 const pressedButtonCss = 'bg-mug relative rounded-2xl cursor-pointer p-6';
 const smallButtonDimensions =
-  'w-[8rem] h-[8rem] sm:w-[13rem] sm:h-[13rem] lg:w-[18.5rem] lg:h-[18.5rem]';
+  'w-[6.25rem] h-[6.25rem] sm:w-[10rem] sm:h-[10rem] lg:w-[15rem] lg:h-[15rem]';
 const largeButtonDimensions =
-  'w-[15.5rem] h-[15.5rem] sm:w-[26.5rem] sm:h-[26.5rem] lg:w-[37.5rem] lg:h-[37.5rem]';
+  'w-[13.5rem] h-[13.5rem] sm:w-[21rem] sm:h-[21rem] lg:w-[31rem] lg:h-[31rem]';
 
 export const AddNoteButton = () => {
   const [css, onMouseDown, onMouseUp] = usePress();
