@@ -8,11 +8,10 @@ export const SideBar = () => {
   return (
     <div
       id={'side-bar'}
-      className={'absolute left-0 top-0 min-h-screen h-full w-[18.75rem'}
+      className={'absolute left-0 top-0 min-h-screen h-full w-[18.75rem]'}
     >
       <div className={'relative w-full h-full'}>
-        <SideBarPane open={open} setOpen={setOpen} />
-
+        <SideBarPane open={open} />
         <MenuButton setOpen={setOpen} />
       </div>
     </div>
@@ -24,11 +23,11 @@ interface MenuButtonProps {
 }
 const MenuButton = ({ setOpen }: MenuButtonProps) => {
   return (
-    <a onClick={() => setOpen((prev: boolean) => !prev)}>
+    <a id={'menu-button'} onClick={() => setOpen((prev: boolean) => !prev)}>
       <MenuRoundedIcon
         id={'menu-button'}
         className={
-          'absolute top-2 left-3 text-[40px] text-beige cursor-pointer'
+          'text-[40px] text-beige cursor-pointer absolute top-2 left-3 w-[3rem] h-[2.75rem] z-10'
         }
       />
     </a>

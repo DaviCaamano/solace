@@ -5,18 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2101ad9f-8972-44d3-9c27-f093e4bebdd9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/apps/web/public/images/shared/global/bg-0-320.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/web/public/images/shared/global/bg-320-785.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/web/public/images/shared/global/bg-786.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/web/src/utils/responsive/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/web/src/utils/responsive/responsive.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/web/src/components/menu/container/MenuContainer.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/web/src/components/menu/container/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/web/src/components/menu/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/public/images/shared/global/bg.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/app/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/pages/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/pages/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/public/images/shared/global/bg-0-320.webp" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/public/images/shared/global/bg-0-319.webp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/web/src/components/global/Background.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/global/Background.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/styles/shared/shared.module.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/tsconfig.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/config/tailwind.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/packages/config/tailwind.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/sidebar/SideBar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/sidebar/SideBar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/sidebar/SideBarPane.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/sidebar/SideBarPane.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/styles/tailwind/colors.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/styles/tailwind/colors.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,29 +64,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "dart.analysis.tool.window.visible": "false",
-    "git-widget-placeholder": "master",
-    "ignore.virus.scanning.warn.message": "true",
-    "js.linters.configure.manually.selectedeslint": "true",
-    "last_opened_file_path": "C:/Users/davit/Projects/quelliv",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.standard": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "C:\\Users\\davit\\Projects\\solace\\node_modules\\eslint",
-    "node.js.selected.package.standard": "",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "yarn",
-    "prettierjs.PrettierConfiguration.Package": "C:\\Users\\davit\\Projects\\solace\\node_modules\\prettier",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "ts.external.directory.path": "C:\\Users\\davit\\Projects\\solace\\node_modules\\typescript\\lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;js.linters.configure.manually.selectedeslint&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/davit/Projects/quelliv&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;C:\\Users\\davit\\Projects\\solace\\node_modules\\eslint&quot;,
+    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
+    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;C:\\Users\\davit\\Projects\\solace\\node_modules\\prettier&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\davit\\Projects\\solace\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\davit\Projects\solace\apps\web\public\fonts" />
@@ -147,7 +145,8 @@
       <workItem from="1694756421619" duration="12000" />
       <workItem from="1695059119907" duration="8068000" />
       <workItem from="1695073479703" duration="1104000" />
-      <workItem from="1695074625494" duration="322000" />
+      <workItem from="1695074625494" duration="6005000" />
+      <workItem from="1695143075965" duration="9971000" />
     </task>
     <servers />
   </component>

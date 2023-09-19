@@ -1,6 +1,4 @@
-import colors from '@styles/tailwind/colors';
 import { ReactNode } from 'react';
-import Image from 'next/image';
 interface BackgroundProps {
   children: ReactNode;
 }
@@ -8,42 +6,34 @@ export const Background = ({ children }: BackgroundProps) => {
   return (
     <div
       id={'global-background'}
-      className={'w-full h-full relative'}
-      style={{
-        width: '100vw',
-        height: '100vh',
-        backgroundColor: colors.brown,
-      }}
+      className={'relative w-full h-full overflow-hidden bg-brown min-w-[100vw]'}
     >
       <div
         id={'global-background-framer'}
-        className={
-          'w-full md:w-[49.125rem] h-[16rem] md:h-[17.625rem] absolute bottom-0 right-0 md:right-5'
-        }
+        className={'absolute bottom-0 overflow-hidden xs:right-[50%] xs:translate-x-[40%] sm:translate-x-[50%] md:right-0 md:translate-x-0'}
+
       >
-        <Image
-          id={'global-background-image'}
-          src={'/images/shared/global/bg-786.webp'}
-          loader={imageLoader}
-          fill={true}
-          alt={'Notes for Solace Background'}
-        />
+        <div
+          id={'global-background-image-container'}
+          className={
+            'flex justify-end items-end h-[17.625rem] w-full xs:min-w-[49.125rem] '
+          }
+        >
+          <picture>
+            <source
+              media={'(min-width: 320px)'}
+              srcSet={'/images/shared/global/bg-786.webp'}
+              style={{ width: '786px' }}
+            />
+            <img
+              id={'global-background-image'}
+              src={'/images/shared/global/bg-0-319.webp'}
+              alt={'Notes for Solace Background'}
+            />
+          </picture>
+        </div>
       </div>
       {children}
     </div>
   );
 };
-
-enum BG {
-  sm = '/images/shared/global/bg-0-320.webp',
-  md = '/images/shared/global/bg-320-785.webp',
-  lg = '/images/shared/global/bg-786.webp',
-}
-const imageLoader = ({ width }) =>
-  typeof width === 'number'
-    ? width > 785
-      ? BG.lg
-      : width > 320
-      ? BG.md
-      : BG.sm
-    : BG.lg;

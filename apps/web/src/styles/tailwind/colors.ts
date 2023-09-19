@@ -4,9 +4,11 @@ enum colors {
   mug = '#323C42',
   'mug-complement' = '#F3E5AB',
   'mug-light' = '#576873FF',
+  'mug-dark' = '#1F262AFF',
 
   tan = '#9F7D5F',
   brown = '#423832',
+  'brown-dark' = '#1C1A13FF',
   disabledText = '#DDDDDD',
 
   pink = '#FE5B63',

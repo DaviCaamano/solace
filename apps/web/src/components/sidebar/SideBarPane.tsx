@@ -12,9 +12,8 @@ const sideBarAnimationStates = {
 
 interface SideBarMenuProps {
   open: boolean;
-  setOpen: Setter<boolean>;
 }
-export const SideBarPane = ({ open, setOpen }: SideBarMenuProps) => {
+export const SideBarPane = ({ open }: SideBarMenuProps) => {
   return (
     <AnimatePresence>
       {open && (
@@ -35,7 +34,10 @@ export const SideBarPane = ({ open, setOpen }: SideBarMenuProps) => {
               'linear-gradient(to bottom, rgba(254, 91, 99, 0.5), rgba(254, 91, 99, 0.05)) 2 100%',
           }}
         >
-          <div className={'h-full w-[18.75rem]'}>
+          <div
+            id={'side-bar-content'}
+            className={`h-full w-[18.75rem] ${!open && 'fadeOut'} fade_1`}
+          >
             <SideBarHeader />
           </div>
         </MotionDiv>
