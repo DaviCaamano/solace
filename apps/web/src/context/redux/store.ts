@@ -1,10 +1,17 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { apiSlice } from '@context/redux/api';
 import { setupListeners } from '@reduxjs/toolkit/query';
+import {
+  clearContent,
+  editorSlice,
+  updateContent,
+} from '@context/redux/editor/editor';
+import { useAppSelector } from '@hooks';
 
 export const store = configureStore({
   reducer: {
     [apiSlice.reducerPath]: apiSlice.reducer,
+    editor: editorSlice.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(apiSlice.middleware),
@@ -15,3 +22,4 @@ setupListeners(store.dispatch);
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
+

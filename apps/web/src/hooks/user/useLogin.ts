@@ -3,7 +3,7 @@ import {
   useUser as useAuthZeroUser,
 } from '@auth0/nextjs-auth0/client';
 import { useEffect } from 'react';
-import { useLoginMutation } from '@context/redux/user';
+import { useLoginMutation } from '../../context/redux/api/user';
 import { User } from '#interfaces/user/user.interface';
 
 interface useLoginResponse {

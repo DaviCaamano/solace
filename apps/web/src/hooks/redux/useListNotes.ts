@@ -1,4 +1,4 @@
-import { useListNotesQuery } from '@context/redux/notes';
+import { useListNotesQuery } from '../../context/redux/api/notes';
 import { useUser } from '@hooks/user/useUser';
 
 export const useListNotes = () => {

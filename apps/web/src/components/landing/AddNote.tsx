@@ -1,6 +1,7 @@
 import colors from '@styles/tailwind/colors';
 
 export const AddNote = () => {
+
   return (
     <div
       id={'add-note'}
@@ -20,7 +21,7 @@ export const AddNote = () => {
           }}
         >
           <textarea
-            className={'w-full h-full bg-beige pl-8 pt-8 pr-4 pb-4'}
+            className={'w-full h-full bg-beige pl-8 pt-8 pr-4 pb-4 scrollbar-thin'}
             style={{
               backgroundImage: `linear-gradient(${colors['brown-dark']} .1em, transparent .1em), linear-gradient(90deg, transparent 28px, ${colors.mug} 28px, ${colors.mug} 30px, transparent 26px)`,
               backgroundSize: '100% 2rem',

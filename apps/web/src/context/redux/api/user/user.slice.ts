@@ -1,4 +1,4 @@
-import { loginEndpoint } from '@context/redux/user';
+import { loginEndpoint } from '@context/redux/api/user/index';
 import { apiSlice } from '@context/redux/api';
 import { ReduxQueryBuilder } from '#interfaces/redux';
 
