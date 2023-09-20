@@ -20,3 +20,7 @@ enum colors {
 }
 
 export default colors;
+
+
+//            backgroundImage: `linear-gradient(${colors['brown-dark']} .1em, transparent .1em),
+//             linear-gradient(90deg, transparent 6px, ${colors.mug} 6px, ${colors.mug} 8px, transparent 8px)`,

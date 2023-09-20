@@ -1,7 +1,6 @@
 import { Header } from '@components/global/Header';
-import { SideBar } from '@components/sidebar';
 import { NoteList } from '@components/notes';
-import { MenuContainer } from '@components/menu';
+import { Content } from '@components/landing';
 
 export default function Web() {
   return (
@@ -11,8 +10,7 @@ export default function Web() {
     >
       <Header />
       <NoteList />
-      {/*<SideBar />*/}
-      <MenuContainer />
+      <Content />
     </div>
   );
 }

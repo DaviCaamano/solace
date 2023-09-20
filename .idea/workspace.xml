@@ -5,7 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2101ad9f-8972-44d3-9c27-f093e4bebdd9" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/apps/web/src/components/menu/container/MenuContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/menu/container/MenuContainer.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/web/src/components/landing/AddNote.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/web/src/components/landing/Content.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/web/src/components/landing/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/web/src/interface/Landing/ContentWindow.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/web/src/interface/Landing/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/pages/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/pages/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/menu/container/MenuContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/landing/NoteMenu.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/menu/container/index.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/menu/index.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/styles/tailwind/colors.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/styles/tailwind/colors.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,11 +97,11 @@
       <recent name="C:\Users\davit\Projects\solace\packages\config\mkcert" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\davit\Projects\solace\apps\web\src\components\landing" />
+      <recent name="C:\Users\davit\Projects\solace\apps\web\src\interface\Landing" />
       <recent name="C:\Users\davit\Projects\solace\apps\web\public\images\shared\global" />
       <recent name="C:\Users\davit\Projects\solace\apps\web\src\hooks\redux" />
       <recent name="C:\Users\davit\Projects\solace\apps\web\src\styles\tailwind" />
-      <recent name="C:\Users\davit\Projects\solace\apps\web\public\fonts\montserrat\ttf" />
-      <recent name="C:\Users\davit\Projects\solace\apps\web\public\fonts\old" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -137,7 +147,7 @@
       <workItem from="1695059119907" duration="8068000" />
       <workItem from="1695073479703" duration="1104000" />
       <workItem from="1695074625494" duration="6005000" />
-      <workItem from="1695143075965" duration="10286000" />
+      <workItem from="1695143075965" duration="19777000" />
     </task>
     <servers />
   </component>
@@ -182,5 +192,17 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/apps/web/src/components/header/UserMenu.tsx</url>
+          <line>21</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
