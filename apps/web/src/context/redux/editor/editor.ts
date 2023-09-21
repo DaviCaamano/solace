@@ -9,7 +9,7 @@ export const editorSlice = createSlice({
   name: 'editor',
   initialState,
   reducers: {
-    updateContent: (state: Editor, action: PayloadAction<string>) => {
+    setContent: (state: Editor, action: PayloadAction<string>) => {
       state.content = action.payload;
     },
     clearContent: (state: Editor) => {
@@ -18,7 +18,6 @@ export const editorSlice = createSlice({
   },
 });
 
-export const { updateContent, clearContent } = editorSlice.actions;
-
+export const { setContent, clearContent } = editorSlice.actions;
 
 export default editorSlice.reducer;

@@ -7,21 +7,12 @@ interface MenuContainerProps {
 }
 export const NoteMenu = ({ setContentWindow }: MenuContainerProps) => {
   return (
-    <div
-      id={'menu-container'}
-      className={
-        'flex flex-1 flex-col md:flex-row justify-center items-center pb-[10%]'
-      }
-    >
+    <div id={'menu-container'} className={'flex flex-1 flex-col md:flex-row justify-center items-center pb-[10%]'}>
       <AddNoteButton onClick={() => setContentWindow(ContentWindow.addNote)} />
       <div className={'flex flex-row md:flex-col m-2 sm:m-4'}>
-        <NoteHistoryButton
-          onClick={() => setContentWindow(ContentWindow.history)}
-        />
+        <NoteHistoryButton onClick={() => setContentWindow(ContentWindow.history)} />
         <div className={'m-1 sm:m-2'} />
-        <ScheduleNoteButton
-          onClick={() => setContentWindow(ContentWindow.scheduler)}
-        />
+        <ScheduleNoteButton onClick={() => setContentWindow(ContentWindow.scheduler)} />
       </div>
     </div>
   );
@@ -44,13 +35,10 @@ interface NoteHistoryButtonProps {
   onClick: () => any;
 }
 
-const noteButtonCss =
-  'hover:bg-mug-dark bg-mug relative rounded-2xl cursor-pointer p-6';
+const noteButtonCss = 'hover:bg-mug-dark bg-mug relative rounded-2xl cursor-pointer p-6';
 const pressedButtonCss = 'bg-mug relative rounded-2xl cursor-pointer p-6';
-const smallButtonDimensions =
-  'w-[6.25rem] h-[6.25rem] sm:w-[10rem] sm:h-[10rem] lg:w-[15rem] lg:h-[15rem]';
-const largeButtonDimensions =
-  'w-[13.5rem] h-[13.5rem] sm:w-[21rem] sm:h-[21rem] lg:w-[31rem] lg:h-[31rem]';
+const smallButtonDimensions = 'w-[6.25rem] h-[6.25rem] sm:w-[10rem] sm:h-[10rem] lg:w-[15rem] lg:h-[15rem]';
+const largeButtonDimensions = 'w-[13.5rem] h-[13.5rem] sm:w-[21rem] sm:h-[21rem] lg:w-[31rem] lg:h-[31rem]';
 
 export const AddNoteButton = ({ onClick }: NoteHistoryButtonProps) => {
   const [css, onMouseDown, onMouseUp] = usePress();
@@ -65,11 +53,7 @@ export const AddNoteButton = ({ onClick }: NoteHistoryButtonProps) => {
       onClick={onClick}
     >
       <div className={'relative w-full h-full'}>
-        <Image
-          src={'/images/icons/add-note.svg'}
-          alt={'Click here to add a note!'}
-          fill={true}
-        />
+        <Image src={'/images/icons/add-note.svg'} alt={'Click here to add a note!'} fill={true} />
       </div>
     </div>
   );
@@ -86,11 +70,7 @@ export const NoteHistoryButton = ({ onClick }: NoteHistoryButtonProps) => {
       onMouseLeave={onMouseUp}
       onClick={onClick}
     >
-      <Image
-        src={'/images/icons/note-history.svg'}
-        alt={'Click here to add a note!'}
-        fill={true}
-      />
+      <Image src={'/images/icons/note-history.svg'} alt={'Click here to add a note!'} fill={true} />
     </div>
   );
 };
@@ -106,11 +86,7 @@ export const ScheduleNoteButton = ({ onClick }: NoteHistoryButtonProps) => {
       onMouseLeave={onMouseUp}
       onClick={onClick}
     >
-      <Image
-        src={'/images/icons/schedule-note.svg'}
-        alt={'Click here to add a note!'}
-        fill={true}
-      />
+      <Image src={'/images/icons/schedule-note.svg'} alt={'Click here to add a note!'} fill={true} />
     </div>
   );
 };

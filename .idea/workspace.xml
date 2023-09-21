@@ -5,27 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2101ad9f-8972-44d3-9c27-f093e4bebdd9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/apps/web/src/context/redux/editor/editor.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/web/src/interface/editor/editor.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/web/src/context/redux/editor/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/web/src/context/redux/editor/save-edit-to-cookie.middleware.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/web/src/hooks/local-storage/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/web/src/hooks/local-storage/useClearLocalStorage.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/web/src/interface/cookie/cookie.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/web/src/interface/cookie/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.prettierrc" beforeDir="false" afterPath="$PROJECT_DIR$/.prettierrc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/api/.prettierrc" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/.prettierrc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/.prettierrc" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/.prettierrc" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/web/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/pages/_app.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/pages/_app.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/web/src/components/landing/AddNote.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/landing/AddNote.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/context/redux/notes/add-note.endpoint.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/context/redux/api/notes/add-note.endpoint.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/context/redux/notes/delete-note.endpoint.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/context/redux/api/notes/delete-note.endpoint.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/context/redux/notes/get-note.endpoint.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/context/redux/api/notes/get-note.endpoint.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/context/redux/notes/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/context/redux/api/notes/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/context/redux/notes/list-notes.endpoint.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/context/redux/api/notes/list-notes.endpoint.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/context/redux/notes/notes.slice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/context/redux/api/notes/notes.slice.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/context/redux/notes/update-note.endpoint.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/context/redux/api/notes/update-note.endpoint.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/landing/NoteMenu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/landing/NoteMenu.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/context/redux/api/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/context/redux/api/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/context/redux/editor/editor.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/context/redux/editor/editor.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/context/redux/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/context/redux/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/web/src/context/redux/store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/context/redux/store.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/context/redux/user/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/context/redux/api/user/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/context/redux/user/login.endpoint.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/context/redux/api/user/login.endpoint.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/context/redux/user/user.slice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/context/redux/api/user/user.slice.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/hooks/redux/useListNotes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/hooks/redux/useListNotes.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/web/src/hooks/redux/useRedux.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/hooks/redux/useRedux.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/hooks/user/useLogin.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/hooks/user/useLogin.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/hooks/user/useUser.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/hooks/user/useUser.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/config/tailwind.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/packages/config/tailwind.config.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -76,29 +74,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;js.linters.configure.manually.selectedeslint&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/davit/Projects/quelliv&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;C:\\Users\\davit\\Projects\\solace\\node_modules\\eslint&quot;,
-    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
-    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;C:\\Users\\davit\\Projects\\solace\\node_modules\\prettier&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\davit\\Projects\\solace\\node_modules\\typescript\\lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "dart.analysis.tool.window.visible": "false",
+    "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
+    "js.linters.configure.manually.selectedeslint": "true",
+    "last_opened_file_path": "C:/Users/davit/Projects/quelliv",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.standard": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "C:\\Users\\davit\\Projects\\solace\\node_modules\\eslint",
+    "node.js.selected.package.standard": "",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "yarn",
+    "prettierjs.PrettierConfiguration.Package": "C:\\Users\\davit\\Projects\\solace\\node_modules\\prettier",
+    "settings.editor.selected.configurable": "editor.preferences.appearance",
+    "ts.external.directory.path": "C:\\Users\\davit\\Projects\\solace\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\davit\Projects\solace\apps\web\public\fonts" />
@@ -159,17 +157,13 @@
       <workItem from="1695073479703" duration="1104000" />
       <workItem from="1695074625494" duration="6005000" />
       <workItem from="1695143075965" duration="20426000" />
-      <workItem from="1695230699716" duration="3033000" />
+      <workItem from="1695230699716" duration="11030000" />
+      <workItem from="1695265693771" duration="1137000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-    <option name="exactExcludedFiles">
-      <list>
-        <option value="$PROJECT_DIR$/apps/web/pages/_app.jsx" />
-      </list>
-    </option>
   </component>
   <component name="Vcs.Log.History.Properties">
     <option name="COLUMN_ID_ORDER">
