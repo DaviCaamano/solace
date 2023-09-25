@@ -3,7 +3,7 @@ import Document from '@tiptap/extension-document';
 import Paragraph from '@tiptap/extension-paragraph';
 import Text from '@tiptap/extension-text';
 import { useEditorContext } from '@hooks';
-import styles from '@styles/editor/editor.module.css';
+import styles from '@styles/editor/editor.module.scss';
 
 export const useTipTap = () => {
   const {
@@ -20,13 +20,12 @@ export const useTipTap = () => {
     onUpdate: ({ editor }) => {
       setContent(editor.getHTML());
     },
-    editorProps:{
-      attributes:{
+    editorProps: {
+      attributes: {
         class: styles.editor,
-        style: {}
-      }
-    }
+      },
+    },
   });
 
-  return editor
+  return editor;
 };

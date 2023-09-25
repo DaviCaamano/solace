@@ -1,1 +1,1 @@
-export * from './slate';
+export * from './tiptap';

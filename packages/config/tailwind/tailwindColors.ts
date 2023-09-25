@@ -31,14 +31,12 @@ export const tailwindColors = (enumerable: Enum): TailwindColorJson => {
 type StringWithoutNumber = string;
 type ExtractedNumber = string | null;
 type SubColor = string | null;
-export const extractNestedColor = (
-  original: string,
-): [StringWithoutNumber, SubColor, ExtractedNumber] => {
+export const extractNestedColor = (original: string): [StringWithoutNumber, SubColor, ExtractedNumber] => {
   let numb: string | null = original.match(/\d/g)?.join('') || null;
-  const stringWithoutNumber: string = numb
-    ? original.replace(/\d/g, '')
-    : original;
+  const stringWithoutNumber: string = numb ? original.replace(/\d/g, '') : original;
 
   const [color, subColor] = stringWithoutNumber.split('-');
   return [color, subColor || null, numb];
 };
+
+export default tailwindColors;

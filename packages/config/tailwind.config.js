@@ -1,4 +1,3 @@
-import { tailwindColors } from './tailwind';
 import colors from '../../apps/web/src/styles/tailwind/colors';
 const defaultTheme = require('tailwindcss/defaultTheme');
 
@@ -18,9 +17,7 @@ module.exports = {
       '2xl': '1536px',
     },
     extend: {
-      colors: {
-        ...tailwindColors(colors),
-      },
+      colors,
       fontFamily: {
         sans: ['var(--font-montserrat)', ...defaultTheme.fontFamily.sans],
         mono: ['var(--font-montserrat)', ...defaultTheme.fontFamily.mono],
