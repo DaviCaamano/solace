@@ -1,6 +1,6 @@
 import Image from 'next/image';
-import { useState } from 'react';
 import { ContentWindow } from '@interface/Landing';
+import { useButtonStyle } from '@hooks';
 
 interface MenuContainerProps {
   setContentWindow: Setter<ContentWindow>;
@@ -18,19 +18,6 @@ export const NoteMenu = ({ setContentWindow }: MenuContainerProps) => {
   );
 };
 
-const usePress = (): [string, () => void, () => void] => {
-  const [pressed, setPressed] = useState<boolean>(false);
-  return [
-    pressed ? pressedButtonCss : noteButtonCss,
-    () => {
-      setPressed(true);
-    },
-    () => {
-      setPressed(false);
-    },
-  ];
-};
-
 interface NoteHistoryButtonProps {
   onClick: () => any;
 }
@@ -41,15 +28,13 @@ const smallButtonDimensions = 'w-[6.25rem] h-[6.25rem] sm:w-[10rem] sm:h-[10rem]
 const largeButtonDimensions = 'w-[13.5rem] h-[13.5rem] sm:w-[21rem] sm:h-[21rem] lg:w-[31rem] lg:h-[31rem]';
 
 export const AddNoteButton = ({ onClick }: NoteHistoryButtonProps) => {
-  const [css, onMouseDown, onMouseUp] = usePress();
+  const [css, events] = useButtonStyle(pressedButtonCss, noteButtonCss);
   return (
     <div
       id={'menu-container'}
       className={`${largeButtonDimensions} ${css}`}
       style={{ transition: 'all 0.75s ease' }}
-      onMouseDown={onMouseDown}
-      onMouseUp={onMouseUp}
-      onMouseLeave={onMouseUp}
+      {...events}
       onClick={onClick}
     >
       <div className={'relative w-full h-full'}>
@@ -60,14 +45,12 @@ export const AddNoteButton = ({ onClick }: NoteHistoryButtonProps) => {
 };
 
 export const NoteHistoryButton = ({ onClick }: NoteHistoryButtonProps) => {
-  const [css, onMouseDown, onMouseUp] = usePress();
+  const [css, events] = useButtonStyle(pressedButtonCss, noteButtonCss);
   return (
     <div
       className={`flex flex-col relative ${smallButtonDimensions} ${css}`}
       style={{ transition: 'all 0.75s ease' }}
-      onMouseDown={onMouseDown}
-      onMouseUp={onMouseUp}
-      onMouseLeave={onMouseUp}
+      {...events}
       onClick={onClick}
     >
       <Image src={'/images/icons/note-history.svg'} alt={'Click here to add a note!'} fill={true} />
@@ -76,14 +59,12 @@ export const NoteHistoryButton = ({ onClick }: NoteHistoryButtonProps) => {
 };
 
 export const ScheduleNoteButton = ({ onClick }: NoteHistoryButtonProps) => {
-  const [css, onMouseDown, onMouseUp] = usePress();
+  const [css, events] = useButtonStyle(pressedButtonCss, noteButtonCss);
   return (
     <div
       className={`flex flex-col relative ${smallButtonDimensions} ${css}`}
       style={{ transition: 'all 0.75s ease' }}
-      onMouseDown={onMouseDown}
-      onMouseUp={onMouseUp}
-      onMouseLeave={onMouseUp}
+      {...events}
       onClick={onClick}
     >
       <Image src={'/images/icons/schedule-note.svg'} alt={'Click here to add a note!'} fill={true} />

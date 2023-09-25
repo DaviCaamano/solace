@@ -1,6 +1,8 @@
 import { Editor as TipTapEditor, useEditor as useTipTapEditor } from '@tiptap/react';
 import Document from '@tiptap/extension-document';
 import Paragraph from '@tiptap/extension-paragraph';
+import Bold from '@tiptap/extension-bold';
+
 import Text from '@tiptap/extension-text';
 import { useEditorContext } from '@hooks';
 import styles from '@styles/editor/editor.module.scss';
@@ -12,7 +14,7 @@ export const useTipTap = () => {
   } = useEditorContext();
 
   const editor: TipTapEditor | null = useTipTapEditor({
-    extensions: [Document, Paragraph, Text],
+    extensions: [Document, Paragraph, Text, Bold],
     content,
     autofocus: true,
     editable: true,

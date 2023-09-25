@@ -3,7 +3,7 @@ import colors from '@styles/tailwind/colors';
 interface EditorProps {
   editor: TipTapEditor | null;
 }
-export const Editor = ({ editor }: EditorProps) => {
+export const TextEditor = ({ editor }: EditorProps) => {
   return (
     <>
       <style>{`
