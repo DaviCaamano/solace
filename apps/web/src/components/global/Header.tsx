@@ -46,7 +46,7 @@ const ErrorMessage = ({ error }: { error?: string }) => (
 const LoginLink = ({ show }: { show: boolean }) => (
   <Link href={'/api/auth/login'}>
     <span
-      className={`absolute right-5 text-xl text-beige hover:underline fade_7 ${
+      className={`absolute right-5 text-xl text-latte hover:underline fade_7 ${
         !show && 'fadeOut'
       }`}
     >
@@ -78,7 +78,7 @@ interface LogoutLinkProps {
 const Greeting = ({ name, setOpen }: LogoutLinkProps) => (
   <a onClick={() => setOpen?.((prev: boolean) => !prev)}>
     <span
-      className={`absolute right-5 text-xl text-beige hover:underline decoration-1 fade_7 cursor-pointer ${
+      className={`absolute right-5 text-xl text-latte hover:underline decoration-1 fade_7 cursor-pointer ${
         !name && 'fadeOut'
       }`}
     >

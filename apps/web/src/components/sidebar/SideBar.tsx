@@ -27,7 +27,7 @@ const MenuButton = ({ setOpen }: MenuButtonProps) => {
       <MenuRoundedIcon
         id={'menu-button'}
         className={
-          'text-[40px] text-beige cursor-pointer absolute top-2 left-3 w-[3rem] h-[2.75rem] z-10'
+          'text-[40px] text-latte cursor-pointer absolute top-2 left-3 w-[3rem] h-[2.75rem] z-10'
         }
       />
     </a>

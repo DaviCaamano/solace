@@ -13,7 +13,7 @@
     "src",
     "pages",
     "next-env.d.ts",
-    "global.d.ts",
+    "../../packages/shared/types/global.d.ts",
     "jest.setup.js",
     ".next/types/**/*.ts"
   ],

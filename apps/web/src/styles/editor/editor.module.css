@@ -1,0 +1,11 @@
+.editor {
+  @apply w-full h-full bg-latte pl-8 pt-8 pr-4 pb-4 scrollbar-thin;
+  /*backgroundImage: linear-gradient(${colors[brown-dark]} .1em, transparent .1em), */
+  /*linear-gradient(90deg, transparent 28px, ${colors.mug} 28px, ${colors.mug} 30px, transparent 26px);*/
+  background-size: 100% 2rem;
+  background-attachment: local;
+  background-color: red;
+  line-height: 2rem;
+  font-size: 1.5rem;
+  min-height: 100%;
+}

@@ -33,7 +33,7 @@ export const UserMenu = ({ open, setOpen }: LoginPopupProps) => {
                 {open && (
                   <motion.div
                     className={
-                      'bg-mug w-[9rem] py-1 transition duration-300 text-beige delay-200 '
+                      'bg-mug w-[9rem] py-1 transition duration-300 text-latte delay-200 '
                     }
                     initial={'hidden'}
                     animate={open ? 'shown' : 'hidden'}

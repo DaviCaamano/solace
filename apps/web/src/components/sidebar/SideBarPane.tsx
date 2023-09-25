@@ -20,7 +20,7 @@ export const SideBarPane = ({ open }: SideBarMenuProps) => {
         <MotionDiv
           id={'side-bar-menu-animator'}
           className={
-            'h-full w-[18.75rem] bg-mug border-r-[10px] border-beige border-b-2 ease-out overflow-hidden'
+            'h-full w-[18.75rem] bg-mug border-r-[10px] border-latte border-b-2 ease-out overflow-hidden'
           }
           initial={'closed'}
           animate={open ? 'open' : 'closed'}

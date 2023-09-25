@@ -1,6 +1,8 @@
 enum colors {
-  beige = '#F3E5AB',
-  'beige-complement' = '#323C42',
+  latte = '#FFF8E7',
+  'latte-darker' = '#ded8c9',
+  'latte-lighter' = '#fffaee',
+  'latte-complement' = '#e7eeff',
   mug = '#323C42',
   'mug-complement' = '#F3E5AB',
   'mug-light' = '#576873FF',
@@ -20,7 +22,3 @@ enum colors {
 }
 
 export default colors;
-
-
-//            backgroundImage: `linear-gradient(${colors['brown-dark']} .1em, transparent .1em),
-//             linear-gradient(90deg, transparent 6px, ${colors.mug} 6px, ${colors.mug} 8px, transparent 8px)`,

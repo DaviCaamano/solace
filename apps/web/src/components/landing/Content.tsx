@@ -1,7 +1,8 @@
 import { AnimatePresence, motion } from 'framer-motion';
-import { AddNote, NoteMenu } from '@components/landing';
+import { NoteMenu } from '@components/landing';
 import { ReactNode, useState } from 'react';
 import { ContentWindow } from '@interface/Landing';
+import { AddNote } from '@components/notes';
 
 const MotionDiv = motion.div;
 
@@ -30,10 +31,7 @@ export const Content = () => {
         open={window === ContentWindow.addNote}
         position={{
           onLoad: Position.hideRight,
-          onExit:
-            window === ContentWindow.menu
-              ? Position.hideRight
-              : Position.hideLeft,
+          onExit: window === ContentWindow.menu ? Position.hideRight : Position.hideLeft,
         }}
       >
         <AddNote />
@@ -51,11 +49,7 @@ interface SliderProps {
   children: ReactNode;
   position: SliderPosition;
 }
-const Slider = ({
-  children,
-  open,
-  position: { onLoad, onExit },
-}: SliderProps) => {
+const Slider = ({ children, open, position: { onLoad, onExit } }: SliderProps) => {
   return (
     <AnimatePresence>
       {open && (
