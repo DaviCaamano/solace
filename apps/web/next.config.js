@@ -1,7 +1,6 @@
 const withTM = require('next-transpile-modules')(['shared']);
 require('dotenv').config({ path: '../../.env' });
 const jsonImporter = require('node-sass-json-importer');
-
 const backendPort = process.env.BACKENDPORT || 5002;
 const backendHost = process.env.BACKENDHOST || 'http://localhost';
 

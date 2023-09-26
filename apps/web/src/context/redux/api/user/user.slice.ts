@@ -1,5 +1,5 @@
-import { loginEndpoint } from '@context/redux/api/user/index';
-import { apiSlice } from '@context/redux/api';
+import { loginEndpoint } from '@context/redux/api/user/endpoints';
+import { apiSlice } from '@context/redux/api/api.slice';
 import { ReduxQueryBuilder } from '#interfaces/redux';
 
 type UserTags = 'User' | 'Note';

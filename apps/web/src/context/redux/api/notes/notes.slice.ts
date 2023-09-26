@@ -1,12 +1,14 @@
-import { apiSlice } from '@context/redux/api';
+import { apiSlice } from '@context/redux/api/api.slice';
 
 //endpoints
-import { listNotesEndpoint } from '@context/redux/api/notes/list-notes.endpoint';
-import { addNoteEndpoint } from '@context/redux/api/notes/add-note.endpoint';
-import { updateNoteEndpoint } from '@context/redux/api/notes/update-note.endpoint';
-import { deleteNoteEndpoint } from '@context/redux/api/notes/delete-note.endpoint';
-import { getNotesEndpoint } from '@context/redux/api/notes/get-note.endpoint';
-import { ReduxQueryBuilder } from '#interfaces/redux';
+import {
+  addNoteEndpoint,
+  deleteNoteEndpoint,
+  getNotesEndpoint,
+  listNotesEndpoint,
+  updateNoteEndpoint,
+} from '@context/redux/api/notes/endpoints';
+import { ReduxQueryBuilder } from '#interfaces/redux/redux.interfaces';
 
 export const notesSlice = apiSlice.injectEndpoints({
   endpoints: (builder: ReduxQueryBuilder<'Note'>) => ({

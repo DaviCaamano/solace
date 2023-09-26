@@ -1,4 +1,5 @@
 @import url('../../public/fonts/montserrat/Montserrat.css');
+@import url('../../public/fonts/droid/Droid-Serif.css');
 
 @tailwind base;
 @tailwind components;
@@ -9,9 +10,9 @@ body {
   scroll-behavior: smooth;
   padding: 0;
   margin: 0;
-  font-family: 'Montserrat-Regular', sans-serif;
   text-decoration-thickness: 0.0625rem;
   text-underline-offset: 0.125rem;
+  @apply font-sans;
 }
 
 a {

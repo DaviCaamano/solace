@@ -6,20 +6,31 @@
   <component name="ChangeListManager">
     <list default="true" id="2101ad9f-8972-44d3-9c27-f093e4bebdd9" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/next-env.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/next-env.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/next.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/next.config.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/web/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/pages/_app.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/pages/_app.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/pages/_document.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/pages/_document.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/public/fonts/droid/droid-serif.font.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/public/fonts/droid/droid-serif.font.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/public/fonts/droid/Droid-Serif.css" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/public/fonts/droid/Droid-Serif.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/web/public/fonts/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/public/fonts/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/components/notes/EditorMenu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notes/EditorMenu.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/components/notes/editor/TextEditor.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notes/editor/TextEditor.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/web/src/components/notes/editor/editor-buttons/FormatButtons.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notes/editor/editor-buttons/FormatButtons.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/components/notes/editor/editor-buttons/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notes/editor/editor-buttons/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/components/notes/editor/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notes/editor/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/hooks/lib/tiptap/useTipTap.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/hooks/lib/tiptap/useTipTap.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/tsconfig.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/config/tailwind.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/packages/config/tailwind.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/providers/Redux.provider.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/providers/Redux.provider.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/context/redux/api/index.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/context/redux/api/notes/add-note.endpoint.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/context/redux/api/notes/endpoints/add-note.endpoint.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/context/redux/api/notes/delete-note.endpoint.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/context/redux/api/notes/endpoints/delete-note.endpoint.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/context/redux/api/notes/get-note.endpoint.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/context/redux/api/notes/endpoints/get-note.endpoint.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/context/redux/api/notes/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/context/redux/api/notes/endpoints/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/context/redux/api/notes/list-notes.endpoint.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/context/redux/api/notes/endpoints/list-notes.endpoint.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/context/redux/api/notes/notes.slice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/context/redux/api/notes/notes.slice.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/context/redux/api/notes/update-note.endpoint.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/context/redux/api/notes/endpoints/update-note.endpoint.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/context/redux/api/user/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/context/redux/api/user/endpoints/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/context/redux/api/user/login.endpoint.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/context/redux/api/user/endpoints/login.endpoint.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/context/redux/api/user/user.slice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/context/redux/api/user/user.slice.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/context/redux/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/context/redux/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/context/redux/store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/context/redux/store.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/hooks/context/useListNotes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/hooks/context/useListNotes.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/hooks/user/useLogin.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/hooks/user/useLogin.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/hooks/user/useUser.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/hooks/user/useUser.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/styles/editor/editor.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/styles/editor/editor.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/styles/global.css" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/styles/global.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -156,12 +167,81 @@
       <workItem from="1695265693771" duration="2099000" />
       <workItem from="1695396897945" duration="593000" />
       <workItem from="1695653767675" duration="20450000" />
-      <workItem from="1695765753361" duration="1105000" />
+      <workItem from="1695765753361" duration="2108000" />
+      <workItem from="1695767918608" duration="1018000" />
+      <workItem from="1695769229596" duration="2232000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+    <option name="exactExcludedFiles">
+      <list>
+        <option value="$PROJECT_DIR$/apps/web/src/components/notes/EditorMenu.js" />
+        <option value="$PROJECT_DIR$/apps/web/pages/_document.js" />
+        <option value="$PROJECT_DIR$/apps/web/src/context/redux/api/notes/notes.slice.js" />
+        <option value="$PROJECT_DIR$/apps/web/src/components/providers/Redux.provider.js" />
+        <option value="$PROJECT_DIR$/apps/web/src/context/redux/api/api.slice.js" />
+        <option value="$PROJECT_DIR$/apps/web/pages/_app.js" />
+        <option value="$PROJECT_DIR$/apps/web/src/hooks/lib/tiptap/useTipTap.js" />
+        <option value="$PROJECT_DIR$/apps/web/src/components/global/Header.js" />
+        <option value="$PROJECT_DIR$/apps/web/src/components/global/Background.js" />
+        <option value="$PROJECT_DIR$/apps/web/src/hooks/local-storage/useClearLocalStorage.js" />
+        <option value="$PROJECT_DIR$/apps/web/pages/index.js" />
+        <option value="$PROJECT_DIR$/apps/web/src/components/sidebar/index.js" />
+        <option value="$PROJECT_DIR$/apps/web/src/components/sidebar/SideBarPane.js" />
+        <option value="$PROJECT_DIR$/apps/web/src/hooks/context/useRedux.js" />
+        <option value="$PROJECT_DIR$/apps/web/src/components/sidebar/SideBarHeader.js" />
+        <option value="$PROJECT_DIR$/apps/web/src/components/sidebar/SideBar.js" />
+        <option value="$PROJECT_DIR$/apps/web/src/hooks/context/index.js" />
+        <option value="$PROJECT_DIR$/apps/web/src/hooks/shared/index.js" />
+        <option value="$PROJECT_DIR$/apps/web/src/hooks/shared/useOutsideClick.js" />
+        <option value="$PROJECT_DIR$/apps/web/src/hooks/index.js" />
+        <option value="$PROJECT_DIR$/apps/web/src/hooks/user/index.js" />
+        <option value="$PROJECT_DIR$/apps/web/src/hooks/user/useLogin.js" />
+        <option value="$PROJECT_DIR$/apps/web/src/hooks/user/useUser.js" />
+        <option value="$PROJECT_DIR$/apps/web/src/utils/redux/index.js" />
+        <option value="$PROJECT_DIR$/apps/web/src/utils/redux/transformErrorResponse.js" />
+        <option value="$PROJECT_DIR$/apps/web/src/interface/editor/index.js" />
+        <option value="$PROJECT_DIR$/apps/web/src/interface/editor/editor.js" />
+        <option value="$PROJECT_DIR$/apps/web/src/context/redux/editor/index.js" />
+        <option value="$PROJECT_DIR$/apps/web/src/context/redux/editor/save-edit-to-cookie.middleware.js" />
+        <option value="$PROJECT_DIR$/apps/web/src/context/redux/editor/editor.js" />
+        <option value="$PROJECT_DIR$/apps/web/src/hooks/local-storage/index.js" />
+        <option value="$PROJECT_DIR$/apps/web/src/interface/Landing/index.js" />
+        <option value="$PROJECT_DIR$/apps/web/src/interface/Landing/ContentWindow.js" />
+        <option value="$PROJECT_DIR$/apps/web/src/hooks/context/useListNotes.js" />
+        <option value="$PROJECT_DIR$/apps/web/src/hooks/context/useEditorContext.js" />
+        <option value="$PROJECT_DIR$/apps/web/src/interface/cookie/index.js" />
+        <option value="$PROJECT_DIR$/apps/web/src/interface/cookie/cookie.js" />
+        <option value="$PROJECT_DIR$/apps/web/src/components/header/index.js" />
+        <option value="$PROJECT_DIR$/apps/web/src/components/header/UserMenu.js" />
+        <option value="$PROJECT_DIR$/apps/web/src/hooks/lib/tiptap/index.js" />
+        <option value="$PROJECT_DIR$/apps/web/src/context/redux/index.js" />
+        <option value="$PROJECT_DIR$/apps/web/src/context/redux/store.js" />
+        <option value="$PROJECT_DIR$/apps/web/src/components/providers/index.js" />
+        <option value="$PROJECT_DIR$/apps/web/src/hooks/css/index.js" />
+        <option value="$PROJECT_DIR$/apps/web/src/hooks/css/useButtonStyle.js" />
+        <option value="$PROJECT_DIR$/apps/web/src/hooks/css/useToggle.js" />
+        <option value="$PROJECT_DIR$/apps/web/src/styles/tailwind/index.js" />
+        <option value="$PROJECT_DIR$/apps/web/src/components/notes/index.js" />
+        <option value="$PROJECT_DIR$/apps/web/src/components/notes/AddNote.js" />
+        <option value="$PROJECT_DIR$/apps/web/src/components/notes/NoteList.js" />
+        <option value="$PROJECT_DIR$/apps/web/src/components/header/button/index.js" />
+        <option value="$PROJECT_DIR$/apps/web/src/components/header/button/UserMenuLogoutButton.js" />
+        <option value="$PROJECT_DIR$/apps/web/src/hooks/lib/index.js" />
+        <option value="$PROJECT_DIR$/apps/web/src/utils/responsive/index.js" />
+        <option value="$PROJECT_DIR$/apps/web/src/utils/responsive/responsive.js" />
+        <option value="$PROJECT_DIR$/apps/web/src/components/landing/index.js" />
+        <option value="$PROJECT_DIR$/apps/web/src/components/landing/NoteMenu.js" />
+        <option value="$PROJECT_DIR$/apps/web/src/components/landing/Content.js" />
+        <option value="$PROJECT_DIR$/apps/web/src/components/notes/editor/index.js" />
+        <option value="$PROJECT_DIR$/apps/web/src/components/notes/editor/TextEditor.js" />
+        <option value="$PROJECT_DIR$/apps/web/src/components/notes/editor/editor-buttons/index.js" />
+        <option value="$PROJECT_DIR$/apps/web/src/components/notes/editor/editor-buttons/FormatButtons.js" />
+        <option value="$PROJECT_DIR$/apps/web/src/context/redux/api/user/user.slice.js" />
+      </list>
+    </option>
   </component>
   <component name="Vcs.Log.History.Properties">
     <option name="COLUMN_ID_ORDER">

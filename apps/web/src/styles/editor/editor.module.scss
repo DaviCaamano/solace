@@ -1,12 +1,12 @@
-@import '../tailwind/colors.js';
+//@import '../tailwind/colors.js';
 
 .editor {
-  @apply w-full h-full bg-latte pl-8 pt-8 pr-4 pb-4 scrollbar-thin;
-  background-image: linear-gradient($brown-dark 0.1em, transparent 0.1em),
-    linear-gradient(90deg, transparent 28px, $mug 28px, $mug 30px, transparent 26px);
-  background-size: 100% 2rem;
-  background-attachment: local;
-  line-height: 2rem;
-  font-size: 1.5rem;
-  min-height: 100%;
+  //@apply w-full h-full bg-latte pl-8 pt-8 pr-4 pb-4 scrollbar-thin;
+  //background-image: linear-gradient($brown-dark 0.1em, transparent 0.1em),
+  //  linear-gradient(90deg, transparent 28px, $mug 28px, $mug 30px, transparent 26px);
+  //background-size: 100% 2rem;
+  //background-attachment: local;
+  //line-height: 2rem;
+  //font-size: 1.5rem;
+  //min-height: 100%;
 }
