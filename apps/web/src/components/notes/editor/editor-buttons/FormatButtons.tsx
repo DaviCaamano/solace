@@ -14,7 +14,7 @@ export const BoldButton = ({ editor }: BoldButtonProps) => {
     pressedCss,
     offCss,
     onToggle: (toggled: boolean) => {
-      editor?.commands.setBold();
+      editor?.commands.toggleBold();
     },
   });
 
