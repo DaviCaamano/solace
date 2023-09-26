@@ -1,5 +1,4 @@
 import { EditorContent, Editor as TipTapEditor } from '@tiptap/react';
-import colors from '@styles/tailwind/colors';
 interface EditorProps {
   editor: TipTapEditor | null;
 }

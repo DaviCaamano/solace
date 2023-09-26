@@ -20,7 +20,10 @@ module.exports = {
       colors,
       fontFamily: {
         sans: ['var(--font-montserrat)', ...defaultTheme.fontFamily.sans],
+        montserrat: ['var(--font-montserrat)', ...defaultTheme.fontFamily.sans],
         mono: ['var(--font-montserrat)', ...defaultTheme.fontFamily.mono],
+        serif: ['var(--font-droid)', ...defaultTheme.fontFamily.mono],
+        droid: ['var(--font-droid)', ...defaultTheme.fontFamily.mono],
       },
     },
   },
