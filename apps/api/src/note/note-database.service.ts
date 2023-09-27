@@ -67,19 +67,13 @@ export class NoteDatabaseService extends ComponentWithLogging {
 
   create({ userId, title, content }: CreateNoteDto): Promise<Note> {
     if (!userId) {
-      this.report(
-        'No user id provided for create note',
-        HttpStatus.BAD_REQUEST,
-      );
+      this.report('No user id provided for create note', HttpStatus.BAD_REQUEST);
     }
     if (!title) {
       this.report('No title provided for create note', HttpStatus.BAD_REQUEST);
     }
     if (!content) {
-      this.report(
-        'No content provided for create note',
-        HttpStatus.BAD_REQUEST,
-      );
+      this.report('No content provided for create note', HttpStatus.BAD_REQUEST);
     }
 
     try {
@@ -102,16 +96,10 @@ export class NoteDatabaseService extends ComponentWithLogging {
 
   update({ id, userId, title, content, status }: UpdateNoteDto): Promise<Note> {
     if (!id) {
-      this.report(
-        'No note id provided for update note',
-        HttpStatus.BAD_REQUEST,
-      );
+      this.report('No note id provided for update note', HttpStatus.BAD_REQUEST);
     }
     if (!userId) {
-      this.report(
-        'No user id provided for update note',
-        HttpStatus.BAD_REQUEST,
-      );
+      this.report('No user id provided for update note', HttpStatus.BAD_REQUEST);
     }
     const query: NoteUpdateArgs = {
       where: {
@@ -142,16 +130,10 @@ export class NoteDatabaseService extends ComponentWithLogging {
 
   delete(id: string, userId: string): Promise<Note> {
     if (!id) {
-      this.report(
-        'No note id provided for delete note',
-        HttpStatus.BAD_REQUEST,
-      );
+      this.report('No note id provided for delete note', HttpStatus.BAD_REQUEST);
     }
     if (!userId) {
-      this.report(
-        'No user id provided for delete note',
-        HttpStatus.BAD_REQUEST,
-      );
+      this.report('No user id provided for delete note', HttpStatus.BAD_REQUEST);
     }
 
     try {

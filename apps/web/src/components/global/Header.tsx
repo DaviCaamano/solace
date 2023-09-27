@@ -19,39 +19,19 @@ export const Header = () => {
   );
 };
 
-const HeaderBar = ({
-  children,
-  className,
-}: {
-  children?: ReactNode;
-  className?: string;
-}) => (
-  <div
-    id={'header'}
-    className={
-      'w-full h-20 flex flex-col items-end justify-start pt-5 pr-12 ' +
-      className
-    }
-  >
+const HeaderBar = ({ children, className }: { children?: ReactNode; className?: string }) => (
+  <div id={'header'} className={'w-full h-20 flex flex-col items-end justify-start pt-5 pr-12 ' + className}>
     {children}
   </div>
 );
 
 const ErrorMessage = ({ error }: { error?: string }) => (
-  <span className={`absolute right-5 fade_7 ${!error && 'fadeOut'}`}>
-    {error}
-  </span>
+  <span className={`absolute right-5 fade_7 ${!error && 'fadeOut'}`}>{error}</span>
 );
 
 const LoginLink = ({ show }: { show: boolean }) => (
   <Link href={'/api/auth/login'}>
-    <span
-      className={`absolute right-5 text-xl text-latte hover:underline fade_7 ${
-        !show && 'fadeOut'
-      }`}
-    >
-      Login
-    </span>
+    <span className={`absolute right-5 text-xl text-latte hover:underline fade_7 ${!show && 'fadeOut'}`}>Login</span>
   </Link>
 );
 

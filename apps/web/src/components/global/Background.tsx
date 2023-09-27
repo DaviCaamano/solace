@@ -4,20 +4,16 @@ interface BackgroundProps {
 }
 export const Background = ({ children }: BackgroundProps) => {
   return (
-    <div
-      id={'global-background'}
-      className={'relative w-full h-full overflow-hidden bg-brown min-w-[100vw]'}
-    >
+    <div id={'global-background'} className={'relative w-full h-full overflow-hidden bg-brown min-w-[100vw]'}>
       <div
         id={'global-background-framer'}
-        className={'absolute bottom-0 overflow-hidden xs:right-[50%] xs:translate-x-[40%] sm:translate-x-[50%] md:right-0 md:translate-x-0'}
-
+        className={
+          'absolute bottom-0 overflow-hidden xs:right-[50%] xs:translate-x-[40%] sm:translate-x-[50%] md:right-0 md:translate-x-0'
+        }
       >
         <div
           id={'global-background-image-container'}
-          className={
-            'flex justify-end items-end h-[17.625rem] w-full xs:min-w-[49.125rem] '
-          }
+          className={'flex justify-end items-end h-[17.625rem] w-full xs:min-w-[49.125rem] '}
         >
           <picture>
             <source

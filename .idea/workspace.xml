@@ -5,11 +5,30 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2101ad9f-8972-44d3-9c27-f093e4bebdd9" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/apps/web/public/images/icons/highlight-text.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/web/src/components/notes/editor/editor-buttons/EditorColorBoard.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/web/src/components/notes/editor/editor-buttons/EditorHighlightColorButton.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/web/src/components/notes/editor/editor-buttons/EditorMenuButton.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/web/src/components/notes/editor/editor-buttons/EditorTextColorButton.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/web/src/constants/editor/editorColors.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/web/src/utils/color/hexOpacity.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/web/src/utils/color/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/next.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/next.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/web/pages/_app.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/pages/_app.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/public/fonts/droid/droid-serif.font.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/public/fonts/droid/droid-serif.font.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/public/fonts/montserrat/montserrat.font.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/public/fonts/montserrat/montserrat.font.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/config/tailwind.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/packages/config/tailwind.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/header/UserMenu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/header/UserMenu.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/notes/AddNote.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notes/AddNote.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/notes/EditorMenu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notes/EditorMenu.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/notes/editor/TextEditor.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notes/editor/TextEditor.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/notes/editor/editor-buttons/FormatButtons.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notes/editor/editor-buttons/FormatButtons.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/notes/editor/editor-buttons/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notes/editor/editor-buttons/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/sidebar/SideBar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/sidebar/SideBar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/hooks/css/useToggle.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/hooks/css/useToggle.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/hooks/lib/tiptap/useTipTap.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/hooks/lib/tiptap/useTipTap.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/interface/editor/editor.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/interface/editor/editor.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/styles/editor/editor.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/styles/editor/editor.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,11 +110,11 @@
       <recent name="C:\Users\davit\Projects\solace\packages\config\mkcert" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\davit\Projects\solace\apps\web\public\images\icons" />
       <recent name="C:\Users\davit\Projects\solace\apps\web\src\context\redux\api\notes\endpoints" />
       <recent name="C:\Users\davit\Projects\solace\apps\web\src\context\redux\api\user\endpoints" />
       <recent name="C:\Users\davit\Projects\solace\apps\web\src\components\notes" />
       <recent name="C:\Users\davit\Projects\solace\packages\shared\types" />
-      <recent name="C:\Users\davit\Projects\solace\packages\tsconfig\types" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -148,7 +167,9 @@
       <workItem from="1695653767675" duration="20450000" />
       <workItem from="1695765753361" duration="2108000" />
       <workItem from="1695767918608" duration="1018000" />
-      <workItem from="1695769229596" duration="3723000" />
+      <workItem from="1695769229596" duration="11121000" />
+      <workItem from="1695785801913" duration="5732000" />
+      <workItem from="1695791670327" duration="6651000" />
     </task>
     <servers />
   </component>

@@ -21,13 +21,7 @@ export class UserDatabaseService extends ComponentWithLogging {
     });
   }
 
-  upsert({
-    email,
-    name,
-    nickname,
-    picture,
-    zeroId,
-  }: Omit<UserRecord, 'id'>): Promise<User> {
+  upsert({ email, name, nickname, picture, zeroId }: Omit<UserRecord, 'id'>): Promise<User> {
     if (!email) {
       this.report('No email provided for login');
     }

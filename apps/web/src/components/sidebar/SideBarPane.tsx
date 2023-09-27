@@ -19,9 +19,7 @@ export const SideBarPane = ({ open }: SideBarMenuProps) => {
       {open && (
         <MotionDiv
           id={'side-bar-menu-animator'}
-          className={
-            'h-full w-[18.75rem] bg-mug border-r-[10px] border-latte border-b-2 ease-out overflow-hidden'
-          }
+          className={'h-full w-[18.75rem] bg-mug border-r-[10px] border-latte border-b-2 ease-out overflow-hidden'}
           initial={'closed'}
           animate={open ? 'open' : 'closed'}
           variants={sideBarAnimationStates}
@@ -30,14 +28,10 @@ export const SideBarPane = ({ open }: SideBarMenuProps) => {
           style={{
             borderRightWidth: '3px',
             borderStyle: 'solid',
-            borderImage:
-              'linear-gradient(to bottom, rgba(254, 91, 99, 0.5), rgba(254, 91, 99, 0.05)) 2 100%',
+            borderImage: 'linear-gradient(to bottom, rgba(254, 91, 99, 0.5), rgba(254, 91, 99, 0.05)) 2 100%',
           }}
         >
-          <div
-            id={'side-bar-content'}
-            className={`h-full w-[18.75rem] ${!open && 'fadeOut'} fade_1`}
-          >
+          <div id={'side-bar-content'} className={`h-full w-[18.75rem] ${!open && 'fadeOut'} fade_1`}>
             <SideBarHeader />
           </div>
         </MotionDiv>

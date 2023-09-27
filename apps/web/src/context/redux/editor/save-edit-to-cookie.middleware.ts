@@ -20,10 +20,7 @@ export const saveEditToCookieMiddleware = (store) => (next) => (action) => {
     const content = action.payload;
     if (content && timeStampExpired(30)) {
       localStorage.setItem(LocalStorage.editorContent, action.payload);
-      localStorage.setItem(
-        LocalStorage.expiration,
-        add(new Date(), { days: 7 }).toString(),
-      );
+      localStorage.setItem(LocalStorage.expiration, add(new Date(), { days: 7 }).toString());
     }
   }
 

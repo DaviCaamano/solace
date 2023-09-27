@@ -40,11 +40,9 @@ export const useToggle = ({ onCss, offCss, pressedCss, onToggle }: UseToggleStyl
   });
   const events: UseButtonEvents = {
     onMouseDown: () => {
-      console.log('!!!!!!!!!!!DOWN');
       setPressed(true);
     },
     onMouseUp: () => {
-      console.log('!!!!!!!!!!!UP');
       setPressed(false);
       setToggled((prev: boolean) => !prev);
     },

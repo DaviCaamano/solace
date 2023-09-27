@@ -1,10 +1,5 @@
 import { EndpointBuilder } from '@reduxjs/toolkit/dist/query/endpointDefinitions';
-import {
-  BaseQueryFn,
-  FetchArgs,
-  FetchBaseQueryError,
-  FetchBaseQueryMeta,
-} from '@reduxjs/toolkit/dist/query/react';
+import { BaseQueryFn, FetchArgs, FetchBaseQueryError, FetchBaseQueryMeta } from '@reduxjs/toolkit/dist/query/react';
 
 /** Redux Query Hook response status */
 export enum ReduxStatus {
@@ -18,18 +13,11 @@ export const tagTypes = ['Note', 'User'] as const;
 export type TagTypes = (typeof tagTypes)[number];
 
 /** Redux Query Endpoint Builder */
-export type ReduxQueryBuilder<Tags extends TagTypes = TagTypes> =
-  EndpointBuilder<
-    BaseQueryFn<
-      string | FetchArgs,
-      unknown,
-      FetchBaseQueryError,
-      {},
-      FetchBaseQueryMeta
-    >,
-    Tags,
-    'api'
-  >;
+export type ReduxQueryBuilder<Tags extends TagTypes = TagTypes> = EndpointBuilder<
+  BaseQueryFn<string | FetchArgs, unknown, FetchBaseQueryError, {}, FetchBaseQueryMeta>,
+  Tags,
+  'api'
+>;
 
 /** Redux Query Hook Definitions
  * Redux does not type well with Intellij IDE's

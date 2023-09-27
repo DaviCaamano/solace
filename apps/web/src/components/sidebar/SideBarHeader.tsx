@@ -6,8 +6,7 @@ export const SideBarHeader = () => {
       style={{
         borderBottomWidth: '13px',
         borderStyle: 'solid',
-        borderImage:
-          'linear-gradient(to right, rgba(254, 91, 99, 0.5), rgba(254, 91, 99, 0.05)) 2 100%',
+        borderImage: 'linear-gradient(to right, rgba(254, 91, 99, 0.5), rgba(254, 91, 99, 0.05)) 2 100%',
       }}
     >
       <span className={'text-2xl leading-[5rem] text-latte'}>History</span>

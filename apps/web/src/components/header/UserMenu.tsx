@@ -11,16 +11,11 @@ interface LoginPopupProps {
 export const UserMenu = ({ open, setOpen }: LoginPopupProps) => {
   const clickRef = useOuterClicks(() => setOpen(false));
   return (
-    <div
-      id={'user-popup'}
-      className={'absolute right-[1rem] top-[3rem] w-[9rem] flex justify-end'}
-    >
+    <div id={'user-popup'} className={'absolute right-[1rem] top-[3rem] w-[9rem] flex justify-end'}>
       <AnimatePresence>
         {open && (
           <motion.div
-            className={
-              'bg-mug border-tan border-2 rounded-[3px] overflow-hidden'
-            }
+            className={'bg-mug border-tan border-2 rounded-[3px] overflow-hidden'}
             initial={'hidden'}
             animate={open ? 'shown' : 'hidden'}
             variants={containerAnimations}
@@ -32,16 +27,14 @@ export const UserMenu = ({ open, setOpen }: LoginPopupProps) => {
               <AnimatePresence>
                 {open && (
                   <motion.div
-                    className={
-                      'bg-mug w-[9rem] py-1 transition duration-300 text-latte delay-200 '
-                    }
+                    className={'bg-mug w-[9rem] py-1 transition duration-300 text-latte delay-200 '}
                     initial={'hidden'}
                     animate={open ? 'shown' : 'hidden'}
                     variants={contentAnimations}
                     transition={{ duration: 0.1, delay: 0.2 }}
                     exit={'hidden'}
                   >
-                    <div className={'w-full w-[9rem]'}>
+                    <div className={'w-full'}>
                       <UserMenuLogoutButton />
                     </div>
                   </motion.div>

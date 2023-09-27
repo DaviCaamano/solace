@@ -9,14 +9,9 @@ export const responsive = <T>(values: T[]): T | undefined => {
   if (!values.length) {
     return undefined;
   }
-  const screenWidth =
-    manualBreakPoint === 0 ? window?.innerHeight || 0 : manualBreakPoint;
+  const screenWidth = manualBreakPoint === 0 ? window?.innerHeight || 0 : manualBreakPoint;
 
-  let breakPointIndex = breakpoints.findIndex(
-    (breakPoint: number) => screenWidth < breakPoint,
-  );
+  let breakPointIndex = breakpoints.findIndex((breakPoint: number) => screenWidth < breakPoint);
 
-  return breakPointIndex > values.length
-    ? values[values.length - 1]
-    : values[breakPointIndex];
+  return breakPointIndex > values.length ? values[values.length - 1] : values[breakPointIndex];
 };

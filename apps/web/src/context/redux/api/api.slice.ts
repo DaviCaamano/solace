@@ -11,13 +11,7 @@ import {
 } from '@reduxjs/toolkit/query/react';
 
 type ApiSlice = Api<
-  BaseQueryFn<
-    string | FetchArgs,
-    unknown,
-    FetchBaseQueryError,
-    {},
-    FetchBaseQueryMeta
-  >,
+  BaseQueryFn<string | FetchArgs, unknown, FetchBaseQueryError, {}, FetchBaseQueryMeta>,
   {},
   'api',
   'Note' | 'User',

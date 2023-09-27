@@ -1,9 +1,6 @@
 import { useEffect, useRef } from 'react';
 
-export const useOuterClicks = (
-  callback: () => void,
-  onEscape: boolean = true,
-) => {
+export const useOuterClicks = (callback: () => void, onEscape: boolean = true) => {
   const ref = useRef<HTMLElement>(null);
   // Handle clicks outside of chat
   useEffect(() => {

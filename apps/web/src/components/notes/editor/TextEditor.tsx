@@ -1,6 +1,6 @@
 import { EditorContent, Editor as TipTapEditor } from '@tiptap/react';
 interface EditorProps {
-  editor: TipTapEditor | null;
+  editor: TipTapEditor;
 }
 export const TextEditor = ({ editor }: EditorProps) => {
   return (
@@ -10,7 +10,7 @@ export const TextEditor = ({ editor }: EditorProps) => {
           outline: none !important;
         }
       `}</style>
-      <EditorContent editor={editor} className={'note-editor w-full h-full bg-latte'} />
+      <EditorContent editor={editor} className={'note-editor w-full h-full bg-latte text-coffee'} />
     </>
   );
 };

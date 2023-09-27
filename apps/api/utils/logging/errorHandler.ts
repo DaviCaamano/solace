@@ -1,12 +1,7 @@
 import { HttpStatus } from '@nestjs/common/enums/http-status.enum';
 import { HttpException } from '@nestjs/common/exceptions/http.exception';
 import util from 'util';
-import {
-  Error,
-  ErrorHandler,
-  ErrorResponse,
-  LoggingHandler,
-} from '#interfaces/logging';
+import { Error, ErrorHandler, ErrorResponse, LoggingHandler } from '#interfaces/logging';
 
 const DEFAULT_MESSAGE = 'INTERNAL SERVER ERROR';
 /**
@@ -34,11 +29,7 @@ export const errorHandler = (errorLogger: LoggingHandler): ErrorHandler => {
   function report(arg1: string, arg2: Error): never;
   function report(arg1: string, arg2: Error, arg3: number): never;
   function report(arg1: Error, arg2: number): never;
-  function report(
-    arg1?: number | string | Error,
-    arg2?: number | Error,
-    arg3?: number,
-  ): never {
+  function report(arg1?: number | string | Error, arg2?: number | Error, arg3?: number): never {
     let error: any;
     let message: string[] = [];
     let statusCode: number | undefined;
@@ -75,12 +66,7 @@ export const errorHandler = (errorLogger: LoggingHandler): ErrorHandler => {
     const fullErrorString = util.inspect(errorLog, false, null, false);
     errorLogger(
       JSON.parse(
-        JSON.stringify(
-          fullErrorString,
-          (key, value) =>
-            typeof value === 'bigint' ? value.toString() : value,
-          '\t',
-        ),
+        JSON.stringify(fullErrorString, (key, value) => (typeof value === 'bigint' ? value.toString() : value), '\t'),
       ),
     );
     throw new HttpException(errorLog, errorLog.statusCode);
@@ -93,9 +79,7 @@ export const logHandler = (logger: LoggingHandler): LoggingHandler => {
     let outStr = '';
     for (let i = 0; i < args.length; i++) {
       const arg =
-        typeof args[i as number] === 'object'
-          ? util.inspect(args[i as number], false, null, false)
-          : args[i as number];
+        typeof args[i as number] === 'object' ? util.inspect(args[i as number], false, null, false) : args[i as number];
       outStr += (i > 0 ? ' ' : '') + arg;
     }
     logger(outStr);
@@ -103,8 +87,7 @@ export const logHandler = (logger: LoggingHandler): LoggingHandler => {
 };
 
 export const isError = (error: any) =>
-  (typeof Error === 'object' && error instanceof Error) ||
-  (error && error.stack && error.message);
+  (typeof Error === 'object' && error instanceof Error) || (error && error.stack && error.message);
 
 const errorObject = (error: any): Error => {
   const { name, message, stack, response } = error;

@@ -5,10 +5,7 @@ export interface Error {
   response?: any;
 }
 
-export type LoggingHandler = (
-  message: any,
-  ...optionalParams: [...any, string?, string?]
-) => void;
+export type LoggingHandler = (message: any, ...optionalParams: [...any, string?, string?]) => void;
 
 export interface Error {
   name: string;

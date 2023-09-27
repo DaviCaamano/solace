@@ -11,11 +11,7 @@ export const listNotesEndpoint = (builder: ReduxQueryBuilder<'Note'>) =>
       params,
     }),
     transformResponse: (notes: ListNotesResponse): Note[] => {
-      return (
-        notes?.notes?.filter(
-          (notes: Note) => notes.status === NoteStatus.active,
-        ) || []
-      );
+      return notes?.notes?.filter((notes: Note) => notes.status === NoteStatus.active) || [];
     },
     providesTags: [{ type: 'Note', id: 'LIST' }],
   });

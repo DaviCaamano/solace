@@ -6,6 +6,9 @@ import { EditorMenu } from '@components/notes/EditorMenu';
 export const AddNote = () => {
   const editor: TipTapEditor | null = useTipTap();
 
+  if (!editor) {
+    return null;
+  }
   return (
     <div className={'flex flex-col'}>
       <EditorMenu editor={editor} />

@@ -6,7 +6,7 @@ import { UserProvider } from '@auth0/nextjs-auth0/client';
 import { ReduxProvider } from '@components/providers';
 import { droidFont, montserratFont } from '@fonts/index';
 import { useClearLocalStorage } from '@hooks/local-storage';
-console.log('droidFont.variable', droidFont);
+
 function MyApp({ Component, pageProps }: AppProps) {
   useClearLocalStorage();
   return (
