@@ -1,4 +1,4 @@
-import { Header } from '@components/global/Header';
+import { Header } from '@components/header/Header';
 import { NoteList } from '@components/notes';
 import { Content } from '@components/landing';
 

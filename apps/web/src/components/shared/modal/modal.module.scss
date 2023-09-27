@@ -1,0 +1,55 @@
+@import '../../../styles/tailwind/colors.js';
+$duration: 0.3333s;
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeout {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+@keyframes backdropFadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0.3333;
+  }
+}
+
+@keyframes backdropFadeout {
+  from {
+    opacity: 0.3333;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.fadeout {
+  animation: fadeout $duration !important;
+}
+
+.fadeout::backdrop {
+  animation: backdropFadeout $duration !important;
+}
+
+.modalContent {
+  animation: fadein $duration forwards;
+}
+
+.sharedModal::backdrop {
+  background-color: $mug;
+  opacity: 0.3333;
+  animation: backdropFadein $duration;
+}

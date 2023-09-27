@@ -1,6 +1,6 @@
 import { PropsWithChildren, useState } from 'react';
 
-import styles from '@styles/editor/editor-buttons.module.scss';
+import styles from '@components/notes/editor/editor-buttons/editor-buttons.module.scss';
 
 const onCss = 'border-[2px] bg-opacity-20';
 const pressedCss = 'border-[2px] bg-opacity-50';

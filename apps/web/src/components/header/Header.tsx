@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { capitalize } from '#utils/string';
-import { UserMenu } from '@components/header';
+import { UserMenu } from '@components/header/index';
 import { ReactNode, useEffect, useState } from 'react';
 import { useLogin } from '@hooks';
 

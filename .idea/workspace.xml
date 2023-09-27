@@ -5,10 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2101ad9f-8972-44d3-9c27-f093e4bebdd9" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/apps/web/src/components/shared/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/web/src/components/shared/modal/Modal.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/web/src/components/shared/modal/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/web/src/components/shared/modal/modal.module.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/pages/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/pages/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/global/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/header/Header.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/web/src/components/notes/EditorMenu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notes/EditorMenu.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/components/notes/editor/editor-buttons/FormatButtons.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notes/editor/editor-buttons/FormatButtons.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/notes/editor/editor-buttons/EditorMenuButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notes/editor/editor-buttons/EditorMenuButton.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/web/src/hooks/lib/tiptap/useTipTap.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/hooks/lib/tiptap/useTipTap.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/styles/editor/editor-buttons.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notes/editor/editor-buttons/editor-buttons.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/styles/editor/editor.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/hooks/lib/tiptap/tip-tap.module.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,11 +98,11 @@
       <recent name="C:\Users\davit\Projects\solace\packages\config\mkcert" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\davit\Projects\solace\apps\web\public\images\icons" />
-      <recent name="C:\Users\davit\Projects\solace\apps\web\src\context\redux\api\notes\endpoints" />
-      <recent name="C:\Users\davit\Projects\solace\apps\web\src\context\redux\api\user\endpoints" />
-      <recent name="C:\Users\davit\Projects\solace\apps\web\src\components\notes" />
-      <recent name="C:\Users\davit\Projects\solace\packages\shared\types" />
+      <recent name="C:\Users\davit\Projects\solace\apps\web\src\components\shared\modal" />
+      <recent name="C:\Users\davit\Projects\solace\apps\web\src\components\notes\editor\editor-buttons" />
+      <recent name="C:\Users\davit\Projects\solace\apps\web\src\hooks\lib\tiptap" />
+      <recent name="C:\Users\davit\Projects\solace\apps\web\src\components\shared" />
+      <recent name="C:\Users\davit\Projects\solace\apps\web\src\components\header" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -164,7 +172,6 @@
         <option value="$PROJECT_DIR$/apps/web/src/context/redux/api/api.slice.js" />
         <option value="$PROJECT_DIR$/apps/web/pages/_app.js" />
         <option value="$PROJECT_DIR$/apps/web/src/hooks/lib/tiptap/useTipTap.js" />
-        <option value="$PROJECT_DIR$/apps/web/src/components/global/Header.js" />
         <option value="$PROJECT_DIR$/apps/web/src/components/global/Background.js" />
         <option value="$PROJECT_DIR$/apps/web/src/hooks/local-storage/useClearLocalStorage.js" />
         <option value="$PROJECT_DIR$/apps/web/pages/index.js" />

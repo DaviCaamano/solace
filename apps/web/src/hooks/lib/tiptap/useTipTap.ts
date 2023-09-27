@@ -10,6 +10,7 @@ import Highlight from '@tiptap/extension-highlight';
 import Strike from '@tiptap/extension-strike';
 import Subscript from '@tiptap/extension-subscript';
 import Superscript from '@tiptap/extension-superscript';
+import styles from './tip-tap.module.scss';
 
 Color.configure({
   types: ['textStyle'],
@@ -17,7 +18,6 @@ Color.configure({
 
 import Text from '@tiptap/extension-text';
 import { useEditorContext } from '@hooks';
-import styles from '@styles/editor/editor.module.scss';
 
 export const useTipTap = () => {
   const {

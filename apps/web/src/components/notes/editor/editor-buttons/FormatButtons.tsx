@@ -85,3 +85,18 @@ export const SuperScript = ({ editor }: EditorMenuButtonProps) => {
     </EditorMenuButton>
   );
 };
+
+interface LinkButtonProps extends EditorMenuButtonProps {
+  setOpen: Setter<boolean>;
+}
+export const SuperScript = ({ editor }: ) => {
+  return (
+    <EditorMenuButton
+      active={editor.isActive('superscript')}
+      onClick={() => editor.chain().focus().toggleSuperscript().run()}
+      className={'font-medium relative px-1'}
+    >
+      X<sup>y</sup>
+    </EditorMenuButton>
+  );
+};
