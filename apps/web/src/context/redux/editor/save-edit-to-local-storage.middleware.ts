@@ -15,7 +15,7 @@ const timeStampExpired = (seconds: number): boolean => {
   return false;
 };
 
-export const saveEditToCookieMiddleware = (store) => (next) => (action) => {
+export const saveEditToLocalStorageMiddleware = () => (next) => (action) => {
   if (action.type === setContent.type) {
     const content = action.payload;
     if (content && timeStampExpired(30)) {

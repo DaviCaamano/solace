@@ -11,8 +11,8 @@ import {
 } from '@reduxjs/toolkit/query/react';
 
 type ApiSlice = Api<
-  BaseQueryFn<string | FetchArgs, unknown, FetchBaseQueryError, {}, FetchBaseQueryMeta>,
-  {},
+  BaseQueryFn<string | FetchArgs, unknown, FetchBaseQueryError, NonNullable<unknown>, FetchBaseQueryMeta>,
+  NonNullable<unknown>,
   'api',
   'Note' | 'User',
   typeof coreModuleName | typeof reactHooksModuleName

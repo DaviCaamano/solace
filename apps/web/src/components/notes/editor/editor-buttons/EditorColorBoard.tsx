@@ -1,4 +1,3 @@
-import colors from '@styles/tailwind/colors';
 import { AnimatePresence, motion } from 'framer-motion';
 import { editorColors } from '@constants/editor/editorColors';
 const MotionDiv = motion.div;

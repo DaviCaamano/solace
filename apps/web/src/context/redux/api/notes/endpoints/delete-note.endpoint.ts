@@ -1,4 +1,4 @@
-import { DeleteNoteResponse, NoteResponse } from '#interfaces/notes';
+import { DeleteNoteResponse } from '#interfaces/notes';
 import { HttpMethod } from '#interfaces/http';
 import { ReduxQueryBuilder } from '#interfaces/redux';
 import { DeleteNoteDto } from '~note/dto/note.dto';

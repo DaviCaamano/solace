@@ -1,4 +1,4 @@
-import { MouseEvent, MouseEventHandler, PropsWithChildren, useState } from 'react';
+import { PropsWithChildren, useState } from 'react';
 
 import styles from '@styles/editor/editor-buttons.module.scss';
 

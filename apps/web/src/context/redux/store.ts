@@ -2,7 +2,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import { apiSlice } from '@context/redux/api/api.slice';
 import { setupListeners } from '@reduxjs/toolkit/query';
 import { editorSlice } from '@context/redux/editor/editor';
-import { saveEditToCookieMiddleware } from '@context/redux/editor/save-edit-to-cookie.middleware';
+import { saveEditToLocalStorageMiddleware } from '@context/redux/editor/save-edit-to-local-storage.middleware';
 
 export const store = configureStore({
   reducer: {
@@ -10,7 +10,7 @@ export const store = configureStore({
     editor: editorSlice.reducer,
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(apiSlice.middleware).concat(saveEditToCookieMiddleware),
+    getDefaultMiddleware().concat(apiSlice.middleware).concat(saveEditToLocalStorageMiddleware),
   devTools: process.env.NODE_ENV !== 'production',
 });
 

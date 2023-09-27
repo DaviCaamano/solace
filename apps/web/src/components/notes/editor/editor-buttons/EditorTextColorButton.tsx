@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { Editor as TipTapEditor } from '@tiptap/react';
 import colors from '@styles/tailwind/colors';
 import { EditorColorBoard, EditorMenuButton } from '@components/notes';
