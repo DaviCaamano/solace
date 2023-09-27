@@ -7,6 +7,9 @@ import Underline from '@tiptap/extension-underline';
 import { Color } from '@tiptap/extension-color';
 import TextStyle from '@tiptap/extension-text-style';
 import Highlight from '@tiptap/extension-highlight';
+import Strike from '@tiptap/extension-strike';
+import Subscript from '@tiptap/extension-subscript';
+import Superscript from '@tiptap/extension-superscript';
 
 Color.configure({
   types: ['textStyle'],
@@ -33,6 +36,9 @@ export const useTipTap = () => {
       TextStyle,
       Color,
       Highlight.configure({ multicolor: true }),
+      Strike,
+      Subscript,
+      Superscript,
     ],
     content,
     autofocus: true,

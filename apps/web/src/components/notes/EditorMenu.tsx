@@ -4,6 +4,9 @@ import {
   EditorHighlightColorButton,
   EditorTextColorButton,
   ItalicsButton,
+  StrikeButton,
+  SubScript,
+  SuperScript,
   UnderlineButton,
 } from '@components/notes';
 import { ColorBoard } from '@interface/editor';
@@ -21,6 +24,9 @@ export const EditorMenu = ({ editor }: EditorMenuProps) => {
       <UnderlineButton editor={editor} />
       <EditorTextColorButton editor={editor} open={colorBoard === ColorBoard.text} setOpen={setColorBoard} />
       <EditorHighlightColorButton editor={editor} open={colorBoard === ColorBoard.highlight} setOpen={setColorBoard} />
+      <StrikeButton editor={editor} />
+      <SubScript editor={editor} />
+      <SuperScript editor={editor} />
     </div>
   );
 };

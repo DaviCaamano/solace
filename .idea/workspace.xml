@@ -6,18 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="2101ad9f-8972-44d3-9c27-f093e4bebdd9" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.prettierrc" beforeDir="false" afterPath="$PROJECT_DIR$/.prettierrc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/api/.eslintrc.js" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/.eslintrc.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/api/.prettierrc" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/.prettierrc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/.prettierrc" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/.prettierrc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/components/notes/editor/editor-buttons/EditorColorBoard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notes/editor/editor-buttons/EditorColorBoard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/components/notes/editor/editor-buttons/EditorHighlightColorButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notes/editor/editor-buttons/EditorHighlightColorButton.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/components/notes/editor/editor-buttons/EditorMenuButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notes/editor/editor-buttons/EditorMenuButton.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/components/notes/editor/editor-buttons/EditorTextColorButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notes/editor/editor-buttons/EditorTextColorButton.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/context/redux/api/api.slice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/context/redux/api/api.slice.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/context/redux/api/notes/endpoints/delete-note.endpoint.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/context/redux/api/notes/endpoints/delete-note.endpoint.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/context/redux/editor/save-edit-to-cookie.middleware.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/context/redux/editor/save-edit-to-cookie.middleware.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/config/eslint-web.js" beforeDir="false" afterPath="$PROJECT_DIR$/packages/config/eslint-web.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/notes/EditorMenu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notes/EditorMenu.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/notes/editor/editor-buttons/FormatButtons.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notes/editor/editor-buttons/FormatButtons.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/hooks/lib/tiptap/useTipTap.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/hooks/lib/tiptap/useTipTap.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -194,7 +185,6 @@
         <option value="$PROJECT_DIR$/apps/web/src/interface/editor/index.js" />
         <option value="$PROJECT_DIR$/apps/web/src/interface/editor/editor.js" />
         <option value="$PROJECT_DIR$/apps/web/src/context/redux/editor/index.js" />
-        <option value="$PROJECT_DIR$/apps/web/src/context/redux/editor/save-edit-to-cookie.middleware.js" />
         <option value="$PROJECT_DIR$/apps/web/src/context/redux/editor/editor.js" />
         <option value="$PROJECT_DIR$/apps/web/src/hooks/local-storage/index.js" />
         <option value="$PROJECT_DIR$/apps/web/src/interface/Landing/index.js" />
