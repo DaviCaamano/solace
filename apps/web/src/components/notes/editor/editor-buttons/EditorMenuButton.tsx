@@ -14,6 +14,7 @@ type UseButtonEvents = {
 };
 
 interface EditorMenuButtonTemplate extends PropsWithChildren {
+  id: string;
   active?: boolean | undefined;
   className?: string;
   color?: string;

@@ -1,5 +1,6 @@
 @import '../../../styles/tailwind/colors.js';
 $duration: 0.3333s;
+$backdropOpacity: 0.5;
 
 @keyframes fadein {
   from {
@@ -23,13 +24,13 @@ $duration: 0.3333s;
     opacity: 0;
   }
   to {
-    opacity: 0.3333;
+    opacity: $backdropOpacity;
   }
 }
 
 @keyframes backdropFadeout {
   from {
-    opacity: 0.3333;
+    opacity: $backdropOpacity;
   }
   to {
     opacity: 0;
@@ -50,6 +51,6 @@ $duration: 0.3333s;
 
 .sharedModal::backdrop {
   background-color: $mug;
-  opacity: 0.3333;
+  opacity: $backdropOpacity;
   animation: backdropFadein $duration;
 }

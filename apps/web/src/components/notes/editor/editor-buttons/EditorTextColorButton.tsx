@@ -13,8 +13,9 @@ interface EditorMenuButtonProps {
 export const EditorTextColorButton = ({ editor, open, setOpen }: EditorMenuButtonProps) => {
   const selectedColor = getColor(editor);
   return (
-    <div id={'color-picker'} className={'relative '}>
+    <div id={'editor-color-picker-container'} className={'relative '}>
       <EditorMenuButton
+        id={'editor-color-picker'}
         onClick={() => setOpen(open ? ColorBoard.none : ColorBoard.text)}
         className={'font-bold flex flex-col bg-latte bg-opacity-5 h-full'}
         color={selectedColor}

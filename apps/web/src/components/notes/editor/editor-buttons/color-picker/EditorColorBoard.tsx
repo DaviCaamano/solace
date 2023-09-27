@@ -1,5 +1,6 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import { editorColors } from '@constants/editor/editorColors';
+import { EditorColorTile } from './EditorColorTile';
 const MotionDiv = motion.div;
 
 interface PickerProps {
@@ -12,7 +13,7 @@ interface PickerProps {
 }
 export const EditorColorBoard = ({ open, setColor, positions: { xOpened, xClosed } }: PickerProps) => {
   const colors = Object.entries(editorColors).map(([name, color]: [string, string]) => (
-    <ColorTile key={'editor-color-tile-' + name} name={name} color={color} onClick={() => setColor(color)} />
+    <EditorColorTile key={'editor-color-tile-' + name} name={name} color={color} onClick={() => setColor(color)} />
   ));
 
   const containerAnimations = {
@@ -63,20 +64,3 @@ export const EditorColorBoard = ({ open, setColor, positions: { xOpened, xClosed
     </AnimatePresence>
   );
 };
-
-interface ColorProps {
-  color: string;
-  name: string;
-  onClick: () => void;
-}
-const ColorTile = ({ color, name, onClick }: ColorProps) => (
-  <button
-    id={'color-picker-tile-' + name}
-    className={'w-6 h-6 rounded-md border-white border-opacity-50 border m-1'}
-    style={{ backgroundColor: color }}
-    onClick={(event) => {
-      event?.preventDefault();
-      onClick();
-    }}
-  />
-);

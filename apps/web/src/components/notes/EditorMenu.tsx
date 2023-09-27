@@ -1,24 +1,28 @@
 import { Editor as TipTapEditor } from '@tiptap/react';
 import {
   BoldButton,
+  ClearLinkButton,
   EditorHighlightColorButton,
   EditorTextColorButton,
   ItalicsButton,
+  LinkButtonContainer,
   StrikeButton,
-  SubScript,
-  SuperScript,
+  SubScriptButton,
+  SuperScriptButton,
   UnderlineButton,
 } from '@components/notes';
 import { ColorBoard } from '@interface/editor';
 import { useState } from 'react';
-import { Modal } from '@components/shared';
+import { LinkModal } from '@components/notes/editor/LinkModal';
 
 interface EditorMenuProps {
   editor: TipTapEditor;
 }
 export const EditorMenu = ({ editor }: EditorMenuProps) => {
   const [colorBoard, setColorBoard] = useState<ColorBoard>(ColorBoard.none);
-  const [linkModalOpen, setLinkModalOpen] = useState<boolean>(true);
+  const [linkModalOpen, setLinkModalOpen] = useState<boolean>(false);
+  const [link, setLink] = useState<string>('');
+
   return (
     <div className={'flex flex-row h-8 w-full md:mb-2 relative'}>
       <BoldButton editor={editor} />
@@ -27,9 +31,10 @@ export const EditorMenu = ({ editor }: EditorMenuProps) => {
       <EditorTextColorButton editor={editor} open={colorBoard === ColorBoard.text} setOpen={setColorBoard} />
       <EditorHighlightColorButton editor={editor} open={colorBoard === ColorBoard.highlight} setOpen={setColorBoard} />
       <StrikeButton editor={editor} />
-      <SubScript editor={editor} />
-      <SuperScript editor={editor} />
-      <Modal open={linkModalOpen} setOpen={setLinkModalOpen} />
+      <SubScriptButton editor={editor} />
+      <SuperScriptButton editor={editor} />
+      <LinkButtonContainer editor={editor} setLink={setLink} setOpen={setLinkModalOpen} />
+      <LinkModal open={linkModalOpen} link={link} setLink={setLink} setOpen={setLinkModalOpen} editor={editor} />
     </div>
   );
 };

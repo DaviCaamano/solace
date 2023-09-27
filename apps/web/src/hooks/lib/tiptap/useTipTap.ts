@@ -10,6 +10,8 @@ import Highlight from '@tiptap/extension-highlight';
 import Strike from '@tiptap/extension-strike';
 import Subscript from '@tiptap/extension-subscript';
 import Superscript from '@tiptap/extension-superscript';
+import Link from '@tiptap/extension-link';
+
 import styles from './tip-tap.module.scss';
 
 Color.configure({
@@ -39,6 +41,12 @@ export const useTipTap = () => {
       Strike,
       Subscript,
       Superscript,
+      Link.configure({
+        protocols: ['ftp', 'mailto'],
+        HTMLAttributes: {
+          class: 'font-medium cursor-pointer',
+        },
+      }),
     ],
     content,
     autofocus: true,

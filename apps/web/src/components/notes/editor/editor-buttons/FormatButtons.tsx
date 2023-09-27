@@ -8,6 +8,7 @@ interface EditorMenuButtonProps {
 export const BoldButton = ({ editor }: EditorMenuButtonProps) => {
   return (
     <EditorMenuButton
+      id={'editor-bold-button'}
       active={editor.isActive('bold')}
       onClick={() => editor.chain().toggleBold().focus().run()}
       className={'font-bold'}
@@ -20,6 +21,7 @@ export const BoldButton = ({ editor }: EditorMenuButtonProps) => {
 export const ItalicsButton = ({ editor }: EditorMenuButtonProps) => {
   return (
     <EditorMenuButton
+      id={'editor-italic-button'}
       active={editor.isActive('italic')}
       onClick={() => editor.chain().toggleItalic().focus().run()}
       className={'italic'}
@@ -32,6 +34,7 @@ export const ItalicsButton = ({ editor }: EditorMenuButtonProps) => {
 export const UnderlineButton = ({ editor }: EditorMenuButtonProps) => {
   return (
     <EditorMenuButton
+      id={'editor-underline-button'}
       active={editor.isActive('underline')}
       onClick={() => editor.chain().toggleUnderline().focus().run()}
       className={'underline'}
@@ -44,6 +47,7 @@ export const UnderlineButton = ({ editor }: EditorMenuButtonProps) => {
 export const StrikeButton = ({ editor }: EditorMenuButtonProps) => {
   return (
     <EditorMenuButton
+      id={'editor-strike-button'}
       active={editor.isActive('strike')}
       onClick={() => editor.chain().focus().toggleStrike().run()}
       className={'font-medium relative px-1'}
@@ -62,9 +66,10 @@ export const StrikeButton = ({ editor }: EditorMenuButtonProps) => {
   );
 };
 
-export const SubScript = ({ editor }: EditorMenuButtonProps) => {
+export const SubScriptButton = ({ editor }: EditorMenuButtonProps) => {
   return (
     <EditorMenuButton
+      id={'editor-subscript-button'}
       active={editor.isActive('subscript')}
       onClick={() => editor.chain().focus().toggleSubscript().run()}
       className={'font-medium relative px-1'}
@@ -74,24 +79,10 @@ export const SubScript = ({ editor }: EditorMenuButtonProps) => {
   );
 };
 
-export const SuperScript = ({ editor }: EditorMenuButtonProps) => {
+export const SuperScriptButton = ({ editor }: EditorMenuButtonProps) => {
   return (
     <EditorMenuButton
-      active={editor.isActive('superscript')}
-      onClick={() => editor.chain().focus().toggleSuperscript().run()}
-      className={'font-medium relative px-1'}
-    >
-      X<sup>y</sup>
-    </EditorMenuButton>
-  );
-};
-
-interface LinkButtonProps extends EditorMenuButtonProps {
-  setOpen: Setter<boolean>;
-}
-export const SuperScript = ({ editor }: ) => {
-  return (
-    <EditorMenuButton
+      id={'editor-superscript-button'}
       active={editor.isActive('superscript')}
       onClick={() => editor.chain().focus().toggleSuperscript().run()}
       className={'font-medium relative px-1'}

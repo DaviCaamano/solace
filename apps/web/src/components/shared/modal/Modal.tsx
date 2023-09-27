@@ -1,30 +1,24 @@
-import { PropsWithChildren, useLayoutEffect, useRef, useState } from 'react';
+import { PropsWithChildren, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import styles from './modal.module.scss';
 import CloseIcon from '@mui/icons-material/Close';
 
-const animationSeconds = 0.3;
-enum Fade {
-  out,
-  in,
-}
-interface EditorLinkModalProps extends PropsWithChildren {
+export interface ModalProps extends PropsWithChildren {
   open: boolean;
-  setOpen: Setter<boolean>;
+  setOpen?: Setter<boolean>;
   onClose?: () => void;
 }
-export const Modal = ({ children, onClose, open, setOpen }: EditorLinkModalProps) => {
+export const Modal = ({ children, onClose, open, setOpen }: ModalProps) => {
   const dialogRef = useRef<HTMLDialogElement>(null);
-  const [fade, setFade] = useState<Fade>(Fade.in);
-  useLayoutEffect(() => {
-    if (open && !dialogRef.current?.open) {
-      setFade(Fade.in);
+  const dialogIsOpen = dialogRef.current?.open;
+  useEffect(() => {
+    if (open && !dialogIsOpen) {
       dialogRef.current?.showModal();
-    } else if (!open && dialogRef.current?.open) {
+    } else if (!open && dialogIsOpen) {
       dialogRef.current?.close();
     }
-  }, [open]);
+  }, [dialogIsOpen, open]);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const closeListener = () => {
       onClose?.();
     };
@@ -40,37 +34,29 @@ export const Modal = ({ children, onClose, open, setOpen }: EditorLinkModalProps
   return (
     <dialog
       ref={dialogRef}
-      className={`shared-modal ${styles.sharedModal} ${
-        fade === Fade.out && styles.fadeout
-      } relative bg-latte rounded-xl p-4 w-fit overflow-visible`}
+      className={`shared-modal ${styles.sharedModal} inline-block bg-latte rounded-xl relative scrollbar-none overflow-visible`}
     >
-      <div id={'shared-modal-content'} className={`w-full h-full ${styles.modalContent}`}>
-        <button>close</button>
-        {children}
-        {setOpen && <Close setFade={setFade} setOpen={setOpen} />}
-      </div>
+      {open && (
+        <div id={'shared-modal-content'} className={`p-4 rounded-xl overscroll-x-none ${styles.modalContent}`}>
+          {children}
+          {setOpen && <Close setOpen={setOpen} />}
+        </div>
+      )}
     </dialog>
   );
 };
 
 interface CloseButtonProps {
-  setFade: Setter<Fade>;
   setOpen: Setter<boolean>;
 }
-const Close = ({ setFade, setOpen }: CloseButtonProps) => (
+const Close = ({ setOpen }: CloseButtonProps) => (
   <div
-    className={'absolute bg-latte rounded-[2rem] flex justify-center items-center w-6 h-6'}
+    className={'absolute bg-latte rounded-[2rem] flex justify-center items-center w-4 h-4 cursor-pointer'}
     style={{
-      top: '-20px',
-      right: '-20px',
+      top: '10px',
+      right: '10px',
     }}
-    onClick={() => {
-      setFade(Fade.out);
-      setTimeout(() => {
-        setOpen(false);
-        setTimeout(() => setFade(Fade.in), 0);
-      }, animationSeconds * 1000);
-    }}
+    onClick={() => setOpen(false)}
   >
     <CloseIcon sx={{ fontSize: '1rem', fontWeight: '700' }} />
   </div>
