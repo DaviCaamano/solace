@@ -6,31 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="2101ad9f-8972-44d3-9c27-f093e4bebdd9" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/next-env.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/next-env.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/next.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/next.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/public/fonts/droid/Droid-Serif.css" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/public/fonts/droid/Droid-Serif.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/public/fonts/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/public/fonts/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/components/notes/editor/editor-buttons/FormatButtons.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notes/editor/editor-buttons/FormatButtons.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/components/providers/Redux.provider.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/providers/Redux.provider.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/context/redux/api/index.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/context/redux/api/notes/add-note.endpoint.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/context/redux/api/notes/endpoints/add-note.endpoint.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/context/redux/api/notes/delete-note.endpoint.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/context/redux/api/notes/endpoints/delete-note.endpoint.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/context/redux/api/notes/get-note.endpoint.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/context/redux/api/notes/endpoints/get-note.endpoint.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/context/redux/api/notes/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/context/redux/api/notes/endpoints/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/context/redux/api/notes/list-notes.endpoint.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/context/redux/api/notes/endpoints/list-notes.endpoint.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/context/redux/api/notes/notes.slice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/context/redux/api/notes/notes.slice.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/context/redux/api/notes/update-note.endpoint.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/context/redux/api/notes/endpoints/update-note.endpoint.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/context/redux/api/user/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/context/redux/api/user/endpoints/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/context/redux/api/user/login.endpoint.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/context/redux/api/user/endpoints/login.endpoint.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/context/redux/api/user/user.slice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/context/redux/api/user/user.slice.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/context/redux/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/context/redux/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/context/redux/store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/context/redux/store.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/hooks/context/useListNotes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/hooks/context/useListNotes.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/hooks/user/useLogin.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/hooks/user/useLogin.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/hooks/user/useUser.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/hooks/user/useUser.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/styles/editor/editor.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/styles/editor/editor.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/styles/global.css" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/styles/global.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/pages/_app.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/pages/_app.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/public/fonts/droid/droid-serif.font.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/public/fonts/droid/droid-serif.font.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/public/fonts/montserrat/montserrat.font.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/public/fonts/montserrat/montserrat.font.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/config/tailwind.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/packages/config/tailwind.config.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -112,11 +91,11 @@
       <recent name="C:\Users\davit\Projects\solace\packages\config\mkcert" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\davit\Projects\solace\apps\web\src\context\redux\api\notes\endpoints" />
+      <recent name="C:\Users\davit\Projects\solace\apps\web\src\context\redux\api\user\endpoints" />
       <recent name="C:\Users\davit\Projects\solace\apps\web\src\components\notes" />
       <recent name="C:\Users\davit\Projects\solace\packages\shared\types" />
       <recent name="C:\Users\davit\Projects\solace\packages\tsconfig\types" />
-      <recent name="C:\Users\davit\Projects\solace\packages\tsconfig" />
-      <recent name="C:\Users\davit\Projects\solace\packages\shared" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -169,7 +148,7 @@
       <workItem from="1695653767675" duration="20450000" />
       <workItem from="1695765753361" duration="2108000" />
       <workItem from="1695767918608" duration="1018000" />
-      <workItem from="1695769229596" duration="2232000" />
+      <workItem from="1695769229596" duration="3723000" />
     </task>
     <servers />
   </component>
@@ -240,6 +219,7 @@
         <option value="$PROJECT_DIR$/apps/web/src/components/notes/editor/editor-buttons/index.js" />
         <option value="$PROJECT_DIR$/apps/web/src/components/notes/editor/editor-buttons/FormatButtons.js" />
         <option value="$PROJECT_DIR$/apps/web/src/context/redux/api/user/user.slice.js" />
+        <option value="$PROJECT_DIR$/packages/config/tailwind/tailwindColors.js" />
       </list>
     </option>
   </component>

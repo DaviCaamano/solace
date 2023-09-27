@@ -1,3 +1,4 @@
+/** @type {import('tailwindcss').Config} */
 import colors from '../../apps/web/src/styles/tailwind/colors';
 const defaultTheme = require('tailwindcss/defaultTheme');
 
@@ -22,8 +23,8 @@ module.exports = {
         sans: ['var(--font-montserrat)', ...defaultTheme.fontFamily.sans],
         montserrat: ['var(--font-montserrat)', ...defaultTheme.fontFamily.sans],
         mono: ['var(--font-montserrat)', ...defaultTheme.fontFamily.mono],
-        serif: ['var(--font-droid)', ...defaultTheme.fontFamily.mono],
-        droid: ['var(--font-droid)', ...defaultTheme.fontFamily.mono],
+        serif: ['var(--font-droid)', ...defaultTheme.fontFamily.serif],
+        droid: ['var(--font-droid)', ...defaultTheme.fontFamily.serif],
       },
     },
   },

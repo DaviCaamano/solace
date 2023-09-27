@@ -100,5 +100,5 @@ export const montserratFont = localFont({
       style: 'italic',
     },
   ],
-  variable: '--montserrat',
+  variable: '--font-montserrat',
 });

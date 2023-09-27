@@ -23,5 +23,5 @@ export const droidFont = localFont({
       style: 'italic',
     },
   ],
-  variable: '--droid',
+  variable: '--font-droid',
 });
