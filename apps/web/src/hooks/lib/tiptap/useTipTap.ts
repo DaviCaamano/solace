@@ -11,6 +11,7 @@ import Strike from '@tiptap/extension-strike';
 import Subscript from '@tiptap/extension-subscript';
 import Superscript from '@tiptap/extension-superscript';
 import Link from '@tiptap/extension-link';
+import CharacterCount from '@tiptap/extension-character-count';
 
 import styles from './tip-tap.module.scss';
 
@@ -21,7 +22,8 @@ Color.configure({
 import Text from '@tiptap/extension-text';
 import { useEditorContext } from '@hooks';
 
-export const useTipTap = () => {
+const characterLimit = 10000;
+export const useTipTap = (): [TipTapEditor | null, number] => {
   const {
     editor: { content },
     setContent,
@@ -47,6 +49,9 @@ export const useTipTap = () => {
           class: 'font-medium cursor-pointer',
         },
       }),
+      CharacterCount.configure({
+        limit: characterLimit,
+      }),
     ],
     content,
     autofocus: true,
@@ -62,5 +67,5 @@ export const useTipTap = () => {
     },
   });
 
-  return editor;
+  return [editor, characterLimit];
 };

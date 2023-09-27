@@ -2194,6 +2194,11 @@
   resolved "https://registry.npmjs.org/@tiptap/extension-bullet-list/-/extension-bullet-list-2.1.11.tgz#bb72bbd8b7aaeb8c03ba9575886f7c1faec8e4e5"
   integrity sha512-SOOVH2aSmdMtjWL7TTLbN72xbAFz2G5jifT4UCXb7Qx6LsyhNCyDCu0ukOW8rSosGoSdmBXxAsD9sBJ1jEOmZw==
 
+"@tiptap/extension-character-count@^2.1.11":
+  version "2.1.11"
+  resolved "https://registry.npmjs.org/@tiptap/extension-character-count/-/extension-character-count-2.1.11.tgz#a2e8d58ae808e353238c1eec373f73108b78bffb"
+  integrity sha512-qR50YtvY+hgskUQSlHl/Bitx6xPJVQ2wuNWdw48s8LOjrE2cqAmAj7BmeBrh9481EbhgXZrt3m6UygFiMfiCiA==
+
 "@tiptap/extension-code-block@^2.1.11":
   version "2.1.11"
   resolved "https://registry.npmjs.org/@tiptap/extension-code-block/-/extension-code-block-2.1.11.tgz#5fa34d41d87f365d6bc1f8fdf3d5da0c5182df7c"
