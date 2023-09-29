@@ -1,7 +1,7 @@
 /** Must remain as JS file for the purposes of importing color definitions into SASS */
 const colors = {
   latte: '#FFF8E7',
-  'latte-darker': '#ded8c9',
+  'latte-darker': '#CBC5B8FF',
   'latte-lighter': '#fffaee',
   'latte-complement': '#e7eeff',
   mug: '#323C42',

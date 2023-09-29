@@ -5,11 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2101ad9f-8972-44d3-9c27-f093e4bebdd9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/apps/web/src/components/notes/editor/WordCount.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.prettierrc" beforeDir="false" afterPath="$PROJECT_DIR$/.prettierrc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/api/.eslintrc.js" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/.eslintrc.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/api/.prettierrc" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/.prettierrc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/api/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/.prettierrc" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/.prettierrc" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/web/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/components/notes/AddNote.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notes/AddNote.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/notes/EditorMenu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notes/EditorMenu.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/notes/editor/WordCount.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notes/editor/WordCount.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/notes/editor/editor-buttons/FormatButtons.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notes/editor/editor-buttons/FormatButtons.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/hooks/lib/tiptap/tip-tap.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/hooks/lib/tiptap/tip-tap.module.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/web/src/hooks/lib/tiptap/useTipTap.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/hooks/lib/tiptap/useTipTap.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/config/.eslintrc.js" beforeDir="false" afterPath="$PROJECT_DIR$/packages/config/.eslintrc.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/config/eslint-web.js" beforeDir="false" afterPath="$PROJECT_DIR$/packages/config/eslint-web.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/config/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/config/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -73,7 +83,7 @@
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;C:\\Users\\davit\\Projects\\solace\\node_modules\\eslint&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
@@ -152,6 +162,11 @@
       <workItem from="1695769229596" duration="11121000" />
       <workItem from="1695785801913" duration="5732000" />
       <workItem from="1695791670327" duration="6651000" />
+      <workItem from="1696013103373" duration="1784000" />
+      <workItem from="1696014946961" duration="157000" />
+      <workItem from="1696015122384" duration="144000" />
+      <workItem from="1696015283881" duration="383000" />
+      <workItem from="1696015689585" duration="1960000" />
     </task>
     <servers />
   </component>
@@ -159,67 +174,6 @@
     <option name="version" value="3" />
     <option name="exactExcludedFiles">
       <list>
-        <option value="$PROJECT_DIR$/apps/web/src/components/notes/EditorMenu.js" />
-        <option value="$PROJECT_DIR$/apps/web/pages/_document.js" />
-        <option value="$PROJECT_DIR$/apps/web/src/context/redux/api/notes/notes.slice.js" />
-        <option value="$PROJECT_DIR$/apps/web/src/components/providers/Redux.provider.js" />
-        <option value="$PROJECT_DIR$/apps/web/src/context/redux/api/api.slice.js" />
-        <option value="$PROJECT_DIR$/apps/web/pages/_app.js" />
-        <option value="$PROJECT_DIR$/apps/web/src/hooks/lib/tiptap/useTipTap.js" />
-        <option value="$PROJECT_DIR$/apps/web/src/components/global/Background.js" />
-        <option value="$PROJECT_DIR$/apps/web/src/hooks/local-storage/useClearLocalStorage.js" />
-        <option value="$PROJECT_DIR$/apps/web/pages/index.js" />
-        <option value="$PROJECT_DIR$/apps/web/src/components/sidebar/index.js" />
-        <option value="$PROJECT_DIR$/apps/web/src/components/sidebar/SideBarPane.js" />
-        <option value="$PROJECT_DIR$/apps/web/src/hooks/context/useRedux.js" />
-        <option value="$PROJECT_DIR$/apps/web/src/components/sidebar/SideBarHeader.js" />
-        <option value="$PROJECT_DIR$/apps/web/src/components/sidebar/SideBar.js" />
-        <option value="$PROJECT_DIR$/apps/web/src/hooks/context/index.js" />
-        <option value="$PROJECT_DIR$/apps/web/src/hooks/shared/index.js" />
-        <option value="$PROJECT_DIR$/apps/web/src/hooks/shared/useOutsideClick.js" />
-        <option value="$PROJECT_DIR$/apps/web/src/hooks/index.js" />
-        <option value="$PROJECT_DIR$/apps/web/src/hooks/user/index.js" />
-        <option value="$PROJECT_DIR$/apps/web/src/hooks/user/useLogin.js" />
-        <option value="$PROJECT_DIR$/apps/web/src/hooks/user/useUser.js" />
-        <option value="$PROJECT_DIR$/apps/web/src/utils/redux/index.js" />
-        <option value="$PROJECT_DIR$/apps/web/src/utils/redux/transformErrorResponse.js" />
-        <option value="$PROJECT_DIR$/apps/web/src/interface/editor/index.js" />
-        <option value="$PROJECT_DIR$/apps/web/src/interface/editor/editor.js" />
-        <option value="$PROJECT_DIR$/apps/web/src/context/redux/editor/index.js" />
-        <option value="$PROJECT_DIR$/apps/web/src/context/redux/editor/editor.js" />
-        <option value="$PROJECT_DIR$/apps/web/src/hooks/local-storage/index.js" />
-        <option value="$PROJECT_DIR$/apps/web/src/interface/Landing/index.js" />
-        <option value="$PROJECT_DIR$/apps/web/src/interface/Landing/ContentWindow.js" />
-        <option value="$PROJECT_DIR$/apps/web/src/hooks/context/useListNotes.js" />
-        <option value="$PROJECT_DIR$/apps/web/src/hooks/context/useEditorContext.js" />
-        <option value="$PROJECT_DIR$/apps/web/src/interface/cookie/index.js" />
-        <option value="$PROJECT_DIR$/apps/web/src/interface/cookie/cookie.js" />
-        <option value="$PROJECT_DIR$/apps/web/src/components/header/index.js" />
-        <option value="$PROJECT_DIR$/apps/web/src/components/header/UserMenu.js" />
-        <option value="$PROJECT_DIR$/apps/web/src/hooks/lib/tiptap/index.js" />
-        <option value="$PROJECT_DIR$/apps/web/src/context/redux/index.js" />
-        <option value="$PROJECT_DIR$/apps/web/src/context/redux/store.js" />
-        <option value="$PROJECT_DIR$/apps/web/src/components/providers/index.js" />
-        <option value="$PROJECT_DIR$/apps/web/src/hooks/css/index.js" />
-        <option value="$PROJECT_DIR$/apps/web/src/hooks/css/useButtonStyle.js" />
-        <option value="$PROJECT_DIR$/apps/web/src/hooks/css/useToggle.js" />
-        <option value="$PROJECT_DIR$/apps/web/src/styles/tailwind/index.js" />
-        <option value="$PROJECT_DIR$/apps/web/src/components/notes/index.js" />
-        <option value="$PROJECT_DIR$/apps/web/src/components/notes/AddNote.js" />
-        <option value="$PROJECT_DIR$/apps/web/src/components/notes/NoteList.js" />
-        <option value="$PROJECT_DIR$/apps/web/src/components/header/button/index.js" />
-        <option value="$PROJECT_DIR$/apps/web/src/components/header/button/UserMenuLogoutButton.js" />
-        <option value="$PROJECT_DIR$/apps/web/src/hooks/lib/index.js" />
-        <option value="$PROJECT_DIR$/apps/web/src/utils/responsive/index.js" />
-        <option value="$PROJECT_DIR$/apps/web/src/utils/responsive/responsive.js" />
-        <option value="$PROJECT_DIR$/apps/web/src/components/landing/index.js" />
-        <option value="$PROJECT_DIR$/apps/web/src/components/landing/NoteMenu.js" />
-        <option value="$PROJECT_DIR$/apps/web/src/components/landing/Content.js" />
-        <option value="$PROJECT_DIR$/apps/web/src/components/notes/editor/index.js" />
-        <option value="$PROJECT_DIR$/apps/web/src/components/notes/editor/TextEditor.js" />
-        <option value="$PROJECT_DIR$/apps/web/src/components/notes/editor/editor-buttons/index.js" />
-        <option value="$PROJECT_DIR$/apps/web/src/components/notes/editor/editor-buttons/FormatButtons.js" />
-        <option value="$PROJECT_DIR$/apps/web/src/context/redux/api/user/user.slice.js" />
         <option value="$PROJECT_DIR$/packages/config/tailwind/tailwindColors.js" />
       </list>
     </option>

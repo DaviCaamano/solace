@@ -1,5 +1,6 @@
 import { Editor as TipTapEditor } from '@tiptap/react';
 import { EditorMenuButton } from '@components/notes';
+import FormatQuoteIcon from '@mui/icons-material/FormatQuote';
 
 interface EditorMenuButtonProps {
   editor: TipTapEditor;
@@ -88,6 +89,21 @@ export const SuperScriptButton = ({ editor }: EditorMenuButtonProps) => {
       className={'font-medium relative px-1'}
     >
       X<sup>y</sup>
+    </EditorMenuButton>
+  );
+};
+
+export const BlockQuoteButton = ({ editor }: EditorMenuButtonProps) => {
+  /** Fix for BlockQuote Toggle Bug in TipTap */
+  const active = editor.isActive('blockquote');
+  return (
+    <EditorMenuButton
+      id={'editor-superscript-button'}
+      active={active}
+      onClick={() => editor.chain().focus().toggleBlockquote().run()}
+      className={'font-medium relative px-1'}
+    >
+      <FormatQuoteIcon className={'w-[1rem] h-[1rem]'} />
     </EditorMenuButton>
   );
 };
