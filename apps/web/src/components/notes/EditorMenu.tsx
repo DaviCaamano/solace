@@ -2,6 +2,7 @@ import { Editor as TipTapEditor } from '@tiptap/react';
 import {
   BlockQuoteButton,
   BoldButton,
+  BulletButton,
   EditorHighlightColorButton,
   EditorTextColorButton,
   ItalicsButton,
@@ -35,6 +36,7 @@ export const EditorMenu = ({ editor }: EditorMenuProps) => {
       <SuperScriptButton editor={editor} />
       <LinkButtonContainer editor={editor} setLink={setLink} setOpen={setLinkModalOpen} />
       <BlockQuoteButton editor={editor} />
+      <BulletButton editor={editor} />
       <LinkModal open={linkModalOpen} link={link} setLink={setLink} setOpen={setLinkModalOpen} editor={editor} />
     </div>
   );

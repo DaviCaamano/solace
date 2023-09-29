@@ -1,7 +1,7 @@
 import { Editor as TipTapEditor } from '@tiptap/react';
 import { EditorMenuButton } from '@components/notes';
 import FormatQuoteIcon from '@mui/icons-material/FormatQuote';
-
+import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
 interface EditorMenuButtonProps {
   editor: TipTapEditor;
 }
@@ -94,16 +94,27 @@ export const SuperScriptButton = ({ editor }: EditorMenuButtonProps) => {
 };
 
 export const BlockQuoteButton = ({ editor }: EditorMenuButtonProps) => {
-  /** Fix for BlockQuote Toggle Bug in TipTap */
-  const active = editor.isActive('blockquote');
   return (
     <EditorMenuButton
       id={'editor-superscript-button'}
-      active={active}
+      active={editor.isActive('blockquote')}
       onClick={() => editor.chain().focus().toggleBlockquote().run()}
       className={'font-medium relative px-1'}
     >
       <FormatQuoteIcon className={'w-[1rem] h-[1rem]'} />
+    </EditorMenuButton>
+  );
+};
+
+export const BulletButton = ({ editor }: EditorMenuButtonProps) => {
+  return (
+    <EditorMenuButton
+      id={'editor-superscript-button'}
+      active={editor.isActive('bulletList')}
+      onClick={() => editor.chain().focus().toggleBulletList().run()}
+      className={'font-medium relative px-1'}
+    >
+      <FormatListBulletedIcon className={'w-[1rem] h-[1rem]'} />
     </EditorMenuButton>
   );
 };

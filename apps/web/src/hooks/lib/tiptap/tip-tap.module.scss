@@ -9,34 +9,52 @@
   line-height: 2rem;
   font-size: 1.5rem;
   min-height: 100%;
+
+  /** Block Quote Classes */
+  blockquote {
+    @apply flex flex-row border-mug border-l-[2px] ml-4 pr-4 text-brown font-medium;
+  }
+  blockquote:before {
+    content: open-quote;
+  }
+  blockquote:after {
+    content: close-quote;
+  }
+  blockquote:before,
+  blockquote:after {
+    display: inline;
+    vertical-align: bottom;
+    font-size: 1.5rem;
+    top: 0.2rem;
+    position: relative;
+    color: $pink;
+  }
+  blockquote:before {
+    @apply ml-2 mr-1;
+  }
+  blockquote:after {
+    @apply ml-1;
+  }
+
+  ul {
+    @apply px-4;
+  }
+
+  ol,
+  li {
+    @apply px-4;
+  }
+
+  ol > p,
+  li > p {
+    @apply list-item list-disc;
+  }
+
+  ol > p::marker,
+  li > p::marker {
+  }
 }
 
-.blockquote {
-  @apply flex flex-row border-mug border-l-[2px] ml-4 text-brown font-medium;
-}
-
-.blockquote:before {
-  content: open-quote;
-}
-
-.blockquote:after {
-  content: close-quote;
-}
-
-.blockquote:before,
-.blockquote:after {
-  display: inline;
-  vertical-align: bottom;
-  font-size: 1.5rem;
-  top: 0.2rem;
-  position: relative;
-  color: $pink;
-}
-
-.blockquote:before {
-  @apply ml-2 mr-1;
-}
-
-.blockquote:after {
-  @apply ml-1;
+/** Bullet Point Classes */
+.bulletPoint {
 }

@@ -13,6 +13,8 @@ import Superscript from '@tiptap/extension-superscript';
 import Link from '@tiptap/extension-link';
 import CharacterCount from '@tiptap/extension-character-count';
 import Blockquote from '@tiptap/extension-blockquote';
+import BulletList from '@tiptap/extension-bullet-list';
+import ListItem from '@tiptap/extension-list-item';
 
 import styles from './tip-tap.module.scss';
 
@@ -53,11 +55,13 @@ export const useTipTap = (): [TipTapEditor | null, number] => {
       CharacterCount.configure({
         limit: characterLimit,
       }),
-      Blockquote.configure({
+      Blockquote,
+      BulletList.configure({
         HTMLAttributes: {
-          class: styles.blockquote,
+          class: 'list-disc',
         },
       }),
+      ListItem,
     ],
     content,
     autofocus: true,
@@ -75,5 +79,3 @@ export const useTipTap = (): [TipTapEditor | null, number] => {
 
   return [editor, characterLimit];
 };
-
-const blockQuoteStyle = 'flex border-mug border-left-1 ml-8 pl-8';
