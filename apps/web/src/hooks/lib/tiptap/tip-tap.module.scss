@@ -1,7 +1,7 @@
 @import '../../../styles/tailwind/colors.js';
 
 $nestedUl: 'ul > li';
-$rootUl: '.note-editor > .tiptap > .tt-bullet > li';
+$TwoNestedUl: '#{$nestedUl} > #{$nestedUl}';
 $FourNestedUl: '#{$nestedUl} > #{$nestedUl} > #{$nestedUl} > #{$nestedUl}';
 $EightNestedUl: '#{$FourNestedUl} > #{$FourNestedUl}';
 $TwelveNestedUl: '#{$EightNestedUl} > #{$FourNestedUl}';
@@ -49,31 +49,31 @@ $TwelveNestedUl: '#{$EightNestedUl} > #{$FourNestedUl}';
   }
 
   /** Support 20 levels of unordered list alternating bullets (ODD NUMBERS = DISK BULLET) */
-  #{$nestedUl} > p,
-  #{$nestedUl} > #{$nestedUl} > #{$nestedUl} > p,
-  #{$FourNestedUl} > #{$nestedUl} > p,
-  #{$FourNestedUl} > #{$nestedUl} > #{$nestedUl} > #{$nestedUl} > p,
-  #{$EightNestedUl} > #{$nestedUl} > p,
-  #{$EightNestedUl} > #{$nestedUl} > #{$nestedUl} > #{$nestedUl} > p,
-  #{$TwelveNestedUl} > #{$nestedUl} > p,
-  #{$TwelveNestedUl} > #{$nestedUl} > #{$nestedUl} > #{$nestedUl} > p,
-  #{$TwelveNestedUl} > #{$FourNestedUl} > #{$nestedUl} > p,
-  #{$TwelveNestedUl} > #{$FourNestedUl} > #{$nestedUl} > #{$nestedUl} > #{$nestedUl} > p {
+  #{$nestedUl} > p,                                                                     //one
+  #{$TwoNestedUl} > #{$nestedUl} > p,                                                   //three
+  #{$FourNestedUl} > #{$nestedUl} > p,                                                  //five
+  #{$FourNestedUl} > #{$TwoNestedUl} > #{$nestedUl} > p,                                //seven
+  #{$EightNestedUl} > #{$nestedUl} > p,                                                 //nine
+  #{$EightNestedUl} > #{$TwoNestedUl} > #{$nestedUl} > p,                               //eleven
+  #{$TwelveNestedUl} > #{$nestedUl} > p,                                                //thirteen
+  #{$TwelveNestedUl} > #{$TwoNestedUl} > #{$nestedUl} > p,                              //fifteen
+  #{$TwelveNestedUl} > #{$FourNestedUl} > #{$nestedUl} > p,                             //seventeen
+  #{$TwelveNestedUl} > #{$FourNestedUl} > #{$TwoNestedUl} > #{$nestedUl} > p            /** nineteen */ {
     @apply list-item;
     list-style-type: disc;
   }
 
   /** Support 20 levels of unordered list alternating bullets (EVEN NUMBERS = SQUARE BULLET) */
-  #{$nestedUl} > #{$nestedUl} > p,
-  #{$FourNestedUl} > p,
-  #{$FourNestedUl} > #{$nestedUl} > #{$nestedUl} > p,
-  #{$EightNestedUl} > p,
-  #{$EightNestedUl} > #{$nestedUl} > #{$nestedUl} > p,
-  #{$TwelveNestedUl} > p,
-  #{$TwelveNestedUl} > #{$nestedUl} > #{$nestedUl} > p,
-  #{$TwelveNestedUl} > #{$FourNestedUl} > p,
-  #{$TwelveNestedUl} > #{$FourNestedUl} > #{$nestedUl} > #{$nestedUl} > p,
-  #{$TwelveNestedUl} > #{$EightNestedUl} > p {
+  #{$TwoNestedUl} > p,                                                                  //two
+  #{$FourNestedUl} > p,                                                                 //four
+  #{$FourNestedUl} > #{$TwoNestedUl} > p,                                               //six
+  #{$EightNestedUl} > p,                                                                //eight
+  #{$EightNestedUl} > #{$TwoNestedUl} > p,                                              //ten
+  #{$TwelveNestedUl} > p,                                                               //twelve
+  #{$TwelveNestedUl} > #{$TwoNestedUl} > p,                                             //fourteen
+  #{$TwelveNestedUl} > #{$FourNestedUl} > p,                                            //sixteen
+  #{$TwelveNestedUl} > #{$FourNestedUl} > #{$TwoNestedUl} > p,                          //eighteen
+  #{$TwelveNestedUl} > #{$EightNestedUl} > p                                            /** twenty */ {
     @apply list-item;
     list-style-type: square;
   }
