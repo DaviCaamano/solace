@@ -10,10 +10,10 @@ import {
   ScriptButtonContainer,
   StrikeButton,
   UnderlineButton,
-} from '@components/notes';
+} from '@components/editor/index';
 import { ColorBoard } from '@interface/editor';
 import { useState } from 'react';
-import { LinkModal } from '@components/notes/editor/LinkModal';
+import { LinkModal } from '@components/editor/menu/LinkModal';
 
 interface EditorMenuProps {
   editor: TipTapEditor;

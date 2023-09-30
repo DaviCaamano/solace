@@ -1,5 +1,5 @@
 import { editorColors } from '@constants/editor/editorColors';
-import { EditorColorTile } from '@components/notes';
+import { EditorColorTile } from '@components/editor';
 
 interface LinkModalColorBoardProps {
   selectedColor: string | undefined;

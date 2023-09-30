@@ -1,6 +1,6 @@
 import { Editor as TipTapEditor } from '@tiptap/react';
 import colors from '@styles/tailwind/colors';
-import { EditorColorBoard, EditorMenuButton } from '@components/notes';
+import { EditorColorBoard, EditorMenuButton } from '@components/editor';
 import { editorColors } from '@constants/editor/editorColors';
 import { ColorBoard } from '@interface/editor';
 import HighLightIcon from '@images/icons/highlight-text.svg';

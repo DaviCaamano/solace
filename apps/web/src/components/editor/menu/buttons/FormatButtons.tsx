@@ -1,5 +1,5 @@
 import { Editor as TipTapEditor } from '@tiptap/react';
-import { EditorMenuButton } from '@components/notes';
+import { EditorMenuButton } from '@components/editor';
 
 interface EditorMenuButtonProps {
   editor: TipTapEditor;

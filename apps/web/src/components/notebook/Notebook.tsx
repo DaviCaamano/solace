@@ -1,6 +1,6 @@
 import { useListNotes } from '@hooks';
 
-export const NoteList = () => {
+export const Notebook = () => {
   const args = useListNotes();
   const { isLoading, isSuccess, isError, error, data: noteList } = args;
   if (isLoading) return <div>Loading...</div>;

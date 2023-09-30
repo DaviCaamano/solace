@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { EditorMenuButton } from '@components/notes';
+import { EditorMenuButton } from '@components/editor';
 import { motion } from 'framer-motion';
 import { Editor as TipTapEditor } from '@tiptap/react';
 const MotionDiv = motion.div;

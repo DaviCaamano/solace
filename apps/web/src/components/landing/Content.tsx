@@ -2,7 +2,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { NoteMenu } from '@components/landing';
 import { ReactNode, useState } from 'react';
 import { ContentWindow } from '@interface/Landing';
-import { AddNote } from '@components/notes';
+import { Editor } from '@components/editor';
 
 const MotionDiv = motion.div;
 
@@ -34,7 +34,7 @@ export const Content = () => {
           onExit: window === ContentWindow.menu ? Position.hideRight : Position.hideLeft,
         }}
       >
-        <AddNote />
+        <Editor />
       </Slider>
     </div>
   );

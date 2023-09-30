@@ -7,7 +7,11 @@ interface MenuContainerProps {
 }
 export const NoteMenu = ({ setContentWindow }: MenuContainerProps) => {
   return (
-    <div id={'menu-container'} className={'flex flex-1 flex-col md:flex-row justify-center items-center pb-[10%]'}>
+    <div
+      id={'menu-container'}
+      className={'flex flex-1 flex-col md:flex-row justify-center items-center pb-[10%]'}
+      data-testid={'note-menu-menu-container'}
+    >
       <AddNoteButton onClick={() => setContentWindow(ContentWindow.addNote)} />
       <div className={'flex flex-row md:flex-col m-2 sm:m-4'}>
         <NoteHistoryButton onClick={() => setContentWindow(ContentWindow.history)} />
@@ -32,6 +36,7 @@ export const AddNoteButton = ({ onClick }: NoteHistoryButtonProps) => {
   return (
     <div
       id={'menu-container'}
+      data-testid={'add-note-button-menu-container'}
       className={`${largeButtonDimensions} ${css}`}
       style={{ transition: 'all 0.75s ease' }}
       {...events}

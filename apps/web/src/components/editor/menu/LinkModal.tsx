@@ -4,7 +4,7 @@ import LinkIcon from '@mui/icons-material/Link';
 import { Editor as TipTapEditor } from '@tiptap/react';
 import CheckIcon from '@mui/icons-material/Check';
 import CloseIcon from '@mui/icons-material/Close';
-import { LinkModalColorBoard } from '@components/notes';
+import { LinkModalColorBoard } from '@components/editor';
 interface LinkModalProps {
   open: boolean;
   setOpen: Setter<boolean>;

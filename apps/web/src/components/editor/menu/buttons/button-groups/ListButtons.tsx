@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import { EditorMenuButton } from '@components/notes';
+import { EditorMenuButton } from '@components/editor';
 import { motion } from 'framer-motion';
 import { Editor as TipTapEditor } from '@tiptap/react';
-import FormatQuoteIcon from '@mui/icons-material/FormatQuote';
-import CodeIcon from '@mui/icons-material/Code';
+import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
+import FormatListNumberedIcon from '@mui/icons-material/FormatListNumbered';
 const MotionDiv = motion.div;
 
 const linkAnimations = {
@@ -23,7 +23,7 @@ interface EditorMenuButtonProps {
   editor: TipTapEditor;
 }
 
-export const BlockButtonContainer = ({ editor }: EditorMenuButtonProps) => {
+export const ListButtonContainer = ({ editor }: EditorMenuButtonProps) => {
   const [mousedOver, setMousedOver] = useState<boolean>(false);
 
   const events: LinkButtonMouseover = {
@@ -46,42 +46,42 @@ export const BlockButtonContainer = ({ editor }: EditorMenuButtonProps) => {
         {...events}
       >
         <div className={'relative w-full h-full rounded-md'}>
-          <CodeBlockButton editor={editor} />
-          <BlockQuoteButton editor={editor} />
+          <OrderedListButton editor={editor} />
+          <BulletButton editor={editor} />
         </div>
       </MotionDiv>
     </div>
   );
 };
 
-export const BlockQuoteButton = ({ editor }: EditorMenuButtonProps) => {
+export const BulletButton = ({ editor }: EditorMenuButtonProps) => {
   return (
     <div
-      id={'clear-link-button-container'}
+      id={'bullet-button-container'}
       className={'font-medium absolute bottom-0 left-0 h-8 w-8 bg-brown p-0 rounded-md'}
     >
       <EditorMenuButton
-        id={'editor-block-quote-button'}
-        active={editor.isActive('blockquote')}
-        onClick={() => editor.chain().focus().toggleBlockquote().run()}
+        id={'bullet-list-button'}
+        active={editor.isActive('bulletList')}
+        onClick={() => editor.chain().focus().toggleBulletList().run()}
         className={'font-medium relative px-1 w-8 h-8'}
       >
-        <FormatQuoteIcon className={'w-[1rem] h-[1rem]'} />
+        <FormatListBulletedIcon className={'w-8 h-8'} />
       </EditorMenuButton>
     </div>
   );
 };
 
-export const CodeBlockButton = ({ editor }: EditorMenuButtonProps) => {
+export const OrderedListButton = ({ editor }: EditorMenuButtonProps) => {
   return (
-    <div id={'code-block-button-container'} className={'font-medium relative h-8 w-8 bg-brown p-0 rounded-md'}>
+    <div id={'ordered-list-button-container'} className={'font-medium relative h-8 w-8 bg-brown p-0 rounded-md'}>
       <EditorMenuButton
-        id={'code-block-quote-button'}
-        active={editor.isActive('codeBlock')}
-        onClick={() => editor.chain().focus().toggleCodeBlock().run()}
+        id={'ordered-list-button'}
+        active={editor.isActive('orderedList')}
+        onClick={() => editor.chain().focus().toggleOrderedList().run()}
         className={'font-medium relative px-1 h-8 w-8'}
       >
-        <CodeIcon className={'w-[1rem] h-[1rem]'} />
+        <FormatListNumberedIcon className={'w-[1rem] h-[1rem]'} />
       </EditorMenuButton>
     </div>
   );
