@@ -34,7 +34,6 @@ export const EditorMenu = ({ editor }: EditorMenuProps) => {
       <ScriptButtonContainer editor={editor} />
       <ListButtonContainer editor={editor} />
       <LinkButtonContainer editor={editor} setLink={setLink} setOpen={setLinkModalOpen} />
-      <ScriptButtonContainer editor={editor} />
 
       <LinkModal open={linkModalOpen} link={link} setLink={setLink} setOpen={setLinkModalOpen} editor={editor} />
     </div>
