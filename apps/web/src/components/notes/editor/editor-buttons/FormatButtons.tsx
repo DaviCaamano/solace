@@ -1,6 +1,5 @@
 import { Editor as TipTapEditor } from '@tiptap/react';
 import { EditorMenuButton } from '@components/notes';
-import FormatQuoteIcon from '@mui/icons-material/FormatQuote';
 
 interface EditorMenuButtonProps {
   editor: TipTapEditor;
@@ -63,45 +62,6 @@ export const StrikeButton = ({ editor }: EditorMenuButtonProps) => {
           left: '50%',
         }}
       />
-    </EditorMenuButton>
-  );
-};
-
-export const BlockQuoteButton = ({ editor }: EditorMenuButtonProps) => {
-  return (
-    <EditorMenuButton
-      id={'editor-block-quote-button'}
-      active={editor.isActive('blockquote')}
-      onClick={() => editor.chain().focus().toggleBlockquote().run()}
-      className={'font-medium relative px-1'}
-    >
-      <FormatQuoteIcon className={'w-[1rem] h-[1rem]'} />
-    </EditorMenuButton>
-  );
-};
-
-export const SubScriptButton = ({ editor }: EditorMenuButtonProps) => {
-  return (
-    <EditorMenuButton
-      id={'editor-subscript-button'}
-      active={editor.isActive('subscript')}
-      onClick={() => editor.chain().focus().toggleSubscript().run()}
-      className={'font-medium relative px-1'}
-    >
-      X<sub>y</sub>
-    </EditorMenuButton>
-  );
-};
-
-export const SuperScriptButton = ({ editor }: EditorMenuButtonProps) => {
-  return (
-    <EditorMenuButton
-      id={'editor-superscript-button'}
-      active={editor.isActive('superscript')}
-      onClick={() => editor.chain().focus().toggleSuperscript().run()}
-      className={'font-medium relative px-1'}
-    >
-      X<sup>y</sup>
     </EditorMenuButton>
   );
 };

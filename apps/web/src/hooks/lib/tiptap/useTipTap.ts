@@ -16,6 +16,7 @@ import Blockquote from '@tiptap/extension-blockquote';
 import BulletList from '@tiptap/extension-bullet-list';
 import ListItem from '@tiptap/extension-list-item';
 import OrderedList from '@tiptap/extension-ordered-list';
+import CodeBlock from '@tiptap/extension-code-block';
 
 import styles from './tip-tap.module.scss';
 
@@ -66,6 +67,12 @@ export const useTipTap = (): [TipTapEditor | null, number] => {
       ListItem.configure({
         HTMLAttributes: {
           class: 'list-disc',
+        },
+      }),
+      CodeBlock.configure({
+        HTMLAttributes: {
+          class: styles.codeContainer,
+          spellcheck: false,
         },
       }),
     ],

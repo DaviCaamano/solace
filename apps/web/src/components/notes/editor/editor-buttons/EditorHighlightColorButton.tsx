@@ -4,6 +4,7 @@ import { EditorColorBoard, EditorMenuButton } from '@components/notes';
 import { editorColors } from '@constants/editor/editorColors';
 import { ColorBoard } from '@interface/editor';
 import HighLightIcon from '@images/icons/highlight-text.svg';
+import { hexOpacity } from '@utils/color';
 
 const defaultColor = colors.latte;
 interface EditorMenuButtonProps {
@@ -17,6 +18,7 @@ export const EditorHighlightColorButton = ({ editor, open, setOpen }: EditorMenu
   return (
     <div id={'color-picker'} className={'relative '}>
       <EditorMenuButton
+        id={'editor-highlight-button'}
         onClick={() => setOpen(open ? ColorBoard.none : ColorBoard.highlight)}
         className={'font-bold flex flex-col bg-latte bg-opacity-5 h-full'}
         color={selectedColor}
@@ -40,8 +42,8 @@ const Icon = ({ selectedColor }: { selectedColor?: string }) => {
     <HighLightIcon
       alt={'Click here to highlight text background.'}
       color={selectedColor}
-      width={'18px'}
-      className={'w-[18px] h-[18px]'}
+      width={'1.375rem'}
+      className={'w-[1.5rem] h-[1.75rem]'}
     />
   );
 };
