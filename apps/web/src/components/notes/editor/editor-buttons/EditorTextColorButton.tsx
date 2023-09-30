@@ -23,6 +23,7 @@ export const EditorTextColorButton = ({ editor, open, setOpen }: EditorMenuButto
         <Icon selectedColor={selectedColor} />
         <EditorColorBoard
           open={open}
+          selectedColor={selectedColor}
           setColor={(color: string) => editor.chain().focus().setColor(color).run()}
           positions={{
             xOpened: '71px',

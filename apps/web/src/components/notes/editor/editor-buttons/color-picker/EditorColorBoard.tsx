@@ -5,15 +5,22 @@ const MotionDiv = motion.div;
 
 interface PickerProps {
   open: boolean;
+  selectedColor?: string;
   setColor: (color: string) => void;
   positions: {
     xOpened: string;
     xClosed: string;
   };
 }
-export const EditorColorBoard = ({ open, setColor, positions: { xOpened, xClosed } }: PickerProps) => {
+export const EditorColorBoard = ({ open, selectedColor, setColor, positions: { xOpened, xClosed } }: PickerProps) => {
   const colors = Object.entries(editorColors).map(([name, color]: [string, string]) => (
-    <EditorColorTile key={'editor-color-tile-' + name} name={name} color={color} onClick={() => setColor(color)} />
+    <EditorColorTile
+      key={'editor-color-tile-' + name}
+      name={name}
+      color={color}
+      onClick={() => setColor(color)}
+      className={selectedColor === color ? 'border-4 border-latte' : ''}
+    />
   ));
 
   const containerAnimations = {

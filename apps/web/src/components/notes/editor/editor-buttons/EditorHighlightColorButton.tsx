@@ -25,6 +25,7 @@ export const EditorHighlightColorButton = ({ editor, open, setOpen }: EditorMenu
         <Icon selectedColor={selectedColor} />
         <EditorColorBoard
           open={open}
+          selectedColor={selectedColor}
           setColor={(color: string) => editor.chain().focus().toggleHighlight({ color }).run()}
           positions={{
             xOpened: '35px',
