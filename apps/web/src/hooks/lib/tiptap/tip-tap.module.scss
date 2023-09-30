@@ -1,5 +1,11 @@
 @import '../../../styles/tailwind/colors.js';
 
+$nestedUl: 'ul > li';
+$rootUl: '.note-editor > .tiptap > .tt-bullet > li';
+$FourNestedUl: '#{$nestedUl} > #{$nestedUl} > #{$nestedUl} > #{$nestedUl}';
+$EightNestedUl: '#{$FourNestedUl} > #{$FourNestedUl}';
+$TwelveNestedUl: '#{$EightNestedUl} > #{$FourNestedUl}';
+
 .editor {
   @apply w-full h-full bg-latte pl-8 pt-8 pr-4 pb-4 scrollbar-thin;
   background-image: linear-gradient($brown-dark 0.1em, transparent 0.1em),
@@ -36,22 +42,40 @@
     @apply ml-1;
   }
 
-  ul {
-    @apply px-4;
-  }
-
   ol,
+  ul,
   li {
-    @apply px-4;
+    @apply pl-4;
   }
 
-  ol > p,
-  li > p {
-    @apply list-item list-disc;
+  /** Support 20 levels of unordered list alternating bullets (ODD NUMBERS = DISK BULLET) */
+  #{$nestedUl} > p,
+  #{$nestedUl} > #{$nestedUl} > #{$nestedUl} > p,
+  #{$FourNestedUl} > #{$nestedUl} > p,
+  #{$FourNestedUl} > #{$nestedUl} > #{$nestedUl} > #{$nestedUl} > p,
+  #{$EightNestedUl} > #{$nestedUl} > p,
+  #{$EightNestedUl} > #{$nestedUl} > #{$nestedUl} > #{$nestedUl} > p,
+  #{$TwelveNestedUl} > #{$nestedUl} > p,
+  #{$TwelveNestedUl} > #{$nestedUl} > #{$nestedUl} > #{$nestedUl} > p,
+  #{$TwelveNestedUl} > #{$FourNestedUl} > #{$nestedUl} > p,
+  #{$TwelveNestedUl} > #{$FourNestedUl} > #{$nestedUl} > #{$nestedUl} > #{$nestedUl} > p {
+    @apply list-item;
+    list-style-type: disc;
   }
 
-  ol > p::marker,
-  li > p::marker {
+  /** Support 20 levels of unordered list alternating bullets (EVEN NUMBERS = SQUARE BULLET) */
+  #{$nestedUl} > #{$nestedUl} > p,
+  #{$FourNestedUl} > p,
+  #{$FourNestedUl} > #{$nestedUl} > #{$nestedUl} > p,
+  #{$EightNestedUl} > p,
+  #{$EightNestedUl} > #{$nestedUl} > #{$nestedUl} > p,
+  #{$TwelveNestedUl} > p,
+  #{$TwelveNestedUl} > #{$nestedUl} > #{$nestedUl} > p,
+  #{$TwelveNestedUl} > #{$FourNestedUl} > p,
+  #{$TwelveNestedUl} > #{$FourNestedUl} > #{$nestedUl} > #{$nestedUl} > p,
+  #{$TwelveNestedUl} > #{$EightNestedUl} > p {
+    @apply list-item;
+    list-style-type: square;
   }
 }
 

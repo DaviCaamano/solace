@@ -58,7 +58,7 @@ export const useTipTap = (): [TipTapEditor | null, number] => {
       Blockquote,
       BulletList.configure({
         HTMLAttributes: {
-          class: 'list-disc',
+          class: 'tt-bullet list-disc',
         },
       }),
       ListItem,
