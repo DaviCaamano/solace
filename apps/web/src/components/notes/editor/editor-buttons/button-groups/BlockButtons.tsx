@@ -23,7 +23,7 @@ interface EditorMenuButtonProps {
   editor: TipTapEditor;
 }
 
-export const ScriptButtonContainer = ({ editor }: EditorMenuButtonProps) => {
+export const BlockButtonContainer = ({ editor }: EditorMenuButtonProps) => {
   const [mousedOver, setMousedOver] = useState<boolean>(false);
 
   const events: LinkButtonMouseover = {

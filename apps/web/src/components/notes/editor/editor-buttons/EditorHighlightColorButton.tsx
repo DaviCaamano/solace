@@ -4,9 +4,8 @@ import { EditorColorBoard, EditorMenuButton } from '@components/notes';
 import { editorColors } from '@constants/editor/editorColors';
 import { ColorBoard } from '@interface/editor';
 import HighLightIcon from '@images/icons/highlight-text.svg';
-import { hexOpacity } from '@utils/color';
 
-const defaultColor = colors.latte;
+const defaultColor = colors.brown;
 interface EditorMenuButtonProps {
   editor: TipTapEditor;
   open: boolean;

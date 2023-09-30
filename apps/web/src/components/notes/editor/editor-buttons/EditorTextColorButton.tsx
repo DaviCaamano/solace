@@ -48,7 +48,7 @@ const Icon = ({ selectedColor }: { selectedColor?: string }) => (
 );
 
 //* Stroke Effect */
-const shadowColor = hexOpacity(colors.latte, 0.15);
+const shadowColor = hexOpacity(colors.coffee, 0.15);
 const textShadow = `-0.5px -0.5px 0 ${shadowColor}, 0.5px -0.5px 0 ${shadowColor}, -0.5px 0.5px 0 ${shadowColor}, 0.5px 0.5px 0 ${shadowColor}`;
 const getColor = (editor: TipTapEditor) => {
   const textColor = editor.getAttributes('textStyle').color;

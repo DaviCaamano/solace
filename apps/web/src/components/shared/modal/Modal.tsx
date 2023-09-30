@@ -1,4 +1,4 @@
-import { PropsWithChildren, useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { PropsWithChildren, useEffect, useRef } from 'react';
 import styles from './modal.module.scss';
 import CloseIcon from '@mui/icons-material/Close';
 
