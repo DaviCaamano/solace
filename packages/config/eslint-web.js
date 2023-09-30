@@ -1,6 +1,7 @@
 module.exports = {
   plugins: ['@typescript-eslint/eslint-plugin'],
   extends: ['next', 'plugin:@typescript-eslint/recommended', 'plugin:prettier/recommended'],
+  parser: '@typescript-eslint/parser',
   settings: {
     next: {
       rootDir: ['apps/*/', 'packages/*/'],
@@ -25,11 +26,7 @@ module.exports = {
     'import/no-unresolved': 'off',
     'security/detect-object-injection': 'off',
     'react/no-unknown-property': ['off', { ignore: ['JSX'] }],
-    'prettier/prettier': [
-      'error',
-      {
-        endOfLine: 'auto',
-      },
-    ],
+    'prettier/prettier': 'off',
+    'no-unused-vars': 'warn',
   },
 };

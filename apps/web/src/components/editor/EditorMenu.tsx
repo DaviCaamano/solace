@@ -7,13 +7,13 @@ import {
   ItalicsButton,
   LinkButtonContainer,
   ListButtonContainer,
+  LinkModal,
   ScriptButtonContainer,
   StrikeButton,
   UnderlineButton,
-} from '@components/editor/index';
+} from '@components/editor/menu';
 import { ColorBoard } from '@interface/editor';
 import { useState } from 'react';
-import { LinkModal } from '@components/editor/menu/LinkModal';
 
 interface EditorMenuProps {
   editor: TipTapEditor;
@@ -24,7 +24,7 @@ export const EditorMenu = ({ editor }: EditorMenuProps) => {
   const [link, setLink] = useState<string>('');
 
   return (
-    <div className={'flex flex-row h-8 w-full md:mb-2 relative'}>
+    <div id={'editor-menu'} className={'flex flex-row h-8 w-full md:mb-2 relative'}>
       <BoldButton editor={editor} />
       <ItalicsButton editor={editor} />
       <UnderlineButton editor={editor} />

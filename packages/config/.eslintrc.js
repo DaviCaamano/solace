@@ -1,10 +1,12 @@
 module.exports = {
-  extends: ['next', 'prettier'],
+  extends: ['next'],
   settings: {
     next: {
       rootDir: ['apps/*/', 'packages/*/'],
     },
   },
+  parser: '@typescript-eslint/parser',
+  plugins: ['eslint-plugin-prettier'],
   rules: {
     '@next/next/no-html-link-for-pages': 'off',
     'react/jsx-key': 'off',
@@ -24,11 +26,7 @@ module.exports = {
     'import/no-unresolved': 'off',
     'security/detect-object-injection': 'off',
     'react/no-unknown-property': ['off', { ignore: ['JSX'] }],
-    'prettier/prettier': [
-      'error',
-      {
-        endOfLine: 'auto',
-      },
-    ],
+    'prettier/prettier': 'off',
+    'no-unused-vars': 'warn',
   },
 };

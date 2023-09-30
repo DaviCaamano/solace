@@ -38,7 +38,9 @@ export const EditorMenuButton = ({ active, className, color, children, onClick }
 
   const css = pressed ? pressedCss : active ? onCss : offCss;
   return (
-    <div
+    <button
+      id={'editor-menu-button'}
+      name={'editor-menu-button'}
       className={
         'flex justify-center items-center w-8 mr-1 text-8 font-bold box-border ' +
         ` border-[1px] border-latte rounded-md text-latte bg-latte ${css} ${styles.noHighlight} ${className || ''}`
@@ -49,6 +51,6 @@ export const EditorMenuButton = ({ active, className, color, children, onClick }
       }}
     >
       {children}
-    </div>
+    </button>
   );
 };

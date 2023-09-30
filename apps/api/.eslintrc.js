@@ -28,15 +28,10 @@ module.exports = {
     '@typescript-eslint/no-var-requires': 'off',
     '@typescript-eslint/prefer-namespace-keyword': 'off',
     '@typescript-eslint/no-namespace': 'off',
-    '@typescript-eslint/no-unused-vars': 'warn',
+    'no-unused-vars': 'warn',
     'import/no-unresolved': 'off',
     'security/detect-object-injection': 'off',
     'react/no-unknown-property': ['off', { ignore: ['JSX'] }],
-    'prettier/prettier': [
-      'error',
-      {
-        endOfLine: 'auto',
-      },
-    ],
+    'prettier/prettier': 'off',
   },
 };

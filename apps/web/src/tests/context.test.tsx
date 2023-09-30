@@ -1,7 +1,10 @@
 import { render, screen } from '@testing-library/react';
-import { Content } from '@components/landing';
+import { Editor } from '@components/editor';
 
 test('click add note button', () => {
-  render(<Content />);
-  const linkElement = screen.getByTestId('add-note-button-menu-container');
+  render(<Editor />);
+  const linkElement = screen.getByRole('button', { name: 'editor-menu-button' });
+
+
+
 });

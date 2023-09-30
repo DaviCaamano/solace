@@ -40,6 +40,9 @@ export const Content = () => {
   );
 };
 
+/**
+ * Slider Animates its children, so they slide onto the screen on load and slide off on exit.
+ */
 interface SliderPosition {
   onLoad: Position;
   onExit: Position;
