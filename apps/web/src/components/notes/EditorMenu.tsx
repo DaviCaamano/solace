@@ -2,14 +2,13 @@ import { Editor as TipTapEditor } from '@tiptap/react';
 import {
   BlockQuoteButton,
   BoldButton,
-  BulletButton,
   EditorHighlightColorButton,
   EditorTextColorButton,
   ItalicsButton,
   LinkButtonContainer,
+  ListButtonContainer,
+  ScriptButtonContainer,
   StrikeButton,
-  SubScriptButton,
-  SuperScriptButton,
   UnderlineButton,
 } from '@components/notes';
 import { ColorBoard } from '@interface/editor';
@@ -32,11 +31,10 @@ export const EditorMenu = ({ editor }: EditorMenuProps) => {
       <EditorTextColorButton editor={editor} open={colorBoard === ColorBoard.text} setOpen={setColorBoard} />
       <EditorHighlightColorButton editor={editor} open={colorBoard === ColorBoard.highlight} setOpen={setColorBoard} />
       <StrikeButton editor={editor} />
-      <SubScriptButton editor={editor} />
-      <SuperScriptButton editor={editor} />
+      <ScriptButtonContainer editor={editor} />
+      <ListButtonContainer editor={editor} />
       <LinkButtonContainer editor={editor} setLink={setLink} setOpen={setLinkModalOpen} />
       <BlockQuoteButton editor={editor} />
-      <BulletButton editor={editor} />
       <LinkModal open={linkModalOpen} link={link} setLink={setLink} setOpen={setLinkModalOpen} editor={editor} />
     </div>
   );

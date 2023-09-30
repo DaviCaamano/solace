@@ -5,4 +5,4 @@ export * from './EditorHighlightColorButton';
 export * from './color-picker/EditorColorBoard';
 export * from './EditorMenuButton';
 export * from './FormatButtons';
-export * from './LinkButtons';
+export * from './button-groups';

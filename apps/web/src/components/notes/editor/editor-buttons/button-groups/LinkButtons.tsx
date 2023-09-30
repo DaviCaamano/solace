@@ -60,10 +60,10 @@ export const LinkButtonContainer = ({ editor, setLink, setOpen }: LinkButtonProp
 
 export const LinkButton = ({ editor, setLink, setOpen }: LinkButtonProps) => {
   return (
-      <div
-        id={'clear-link-button-container'}
-        className={'font-medium absolute bottom-0 left-0 h-8 w-8 bg-brown p-0 rounded-md'}
-      >
+    <div
+      id={'clear-link-button-container'}
+      className={'font-medium absolute bottom-0 left-0 h-8 w-8 bg-brown p-0 rounded-md'}
+    >
       <EditorMenuButton
         id={'editor-clear-link-button'}
         active={editor.isActive('link')}
@@ -81,15 +81,12 @@ export const LinkButton = ({ editor, setLink, setOpen }: LinkButtonProps) => {
 
 export const ClearLinkButton = ({ editor }: EditorMenuButtonProps) => {
   return (
-    <div
-      id={'clear-link-button-container'}
-      className={'font-medium relative h-8 w-8 bg-brown p-0 rounded-md'}
-    >
+    <div id={'clear-link-button-container'} className={'font-medium relative h-8 w-8 bg-brown p-0 rounded-md'}>
       <EditorMenuButton
         id={'editor-clear-link-button'}
         active={editor.isActive('link')}
         onClick={() => editor.commands.unsetLink()}
-        className={'h-8 w-8'}
+        className={'font-medium relative px-1 h-8 w-8'}
       >
         <LinkIcon className={'relative'} />
         <CloseIcon className={'absolute'} style={{ right: '0', bottom: '2px', fontSize: '18px', color: colors.pink }} />

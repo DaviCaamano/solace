@@ -15,6 +15,7 @@ import CharacterCount from '@tiptap/extension-character-count';
 import Blockquote from '@tiptap/extension-blockquote';
 import BulletList from '@tiptap/extension-bullet-list';
 import ListItem from '@tiptap/extension-list-item';
+import OrderedList from '@tiptap/extension-ordered-list';
 
 import styles from './tip-tap.module.scss';
 
@@ -58,10 +59,15 @@ export const useTipTap = (): [TipTapEditor | null, number] => {
       Blockquote,
       BulletList.configure({
         HTMLAttributes: {
-          class: 'tt-bullet list-disc',
+          class: 'list-disc',
         },
       }),
-      ListItem,
+      OrderedList,
+      ListItem.configure({
+        HTMLAttributes: {
+          class: 'list-disc',
+        },
+      }),
     ],
     content,
     autofocus: true,

@@ -2,7 +2,7 @@
 
 $nestedUl: 'ul > li';
 $TwoNestedUl: '#{$nestedUl} > #{$nestedUl}';
-$FourNestedUl: '#{$nestedUl} > #{$nestedUl} > #{$nestedUl} > #{$nestedUl}';
+$FourNestedUl: '#{$TwoNestedUl} > #{$TwoNestedUl}';
 $EightNestedUl: '#{$FourNestedUl} > #{$FourNestedUl}';
 $TwelveNestedUl: '#{$EightNestedUl} > #{$FourNestedUl}';
 
@@ -42,10 +42,26 @@ $TwelveNestedUl: '#{$EightNestedUl} > #{$FourNestedUl}';
     @apply ml-1;
   }
 
-  ol,
+  ul {
+    @apply pl-2;
+  }
+
+  /** List Classes */
   ul,
   li {
     @apply pl-4;
+  }
+
+  ol {
+    @apply ml-0 pl-9;
+  }
+
+  ol > li {
+    @apply list-decimal mr-0 pl-0;
+  }
+
+  #{$nestedUl} > p {
+    @apply pl-[2px];
   }
 
   /** Support 20 levels of unordered list alternating bullets (ODD NUMBERS = DISK BULLET) */

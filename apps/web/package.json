@@ -29,6 +29,7 @@
     "@tiptap/extension-italic": "^2.1.11",
     "@tiptap/extension-link": "^2.1.11",
     "@tiptap/extension-list-item": "^2.1.11",
+    "@tiptap/extension-ordered-list": "^2.1.11",
     "@tiptap/extension-strike": "^2.1.11",
     "@tiptap/extension-subscript": "^2.1.11",
     "@tiptap/extension-superscript": "^2.1.11",
