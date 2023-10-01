@@ -1,6 +1,6 @@
 import { Header } from '@components/header/Header';
-import { Notebook } from '@components/editor';
 import { Content } from '@components/landing';
+import { Notebook } from '@components/notebook';
 
 export default function Web() {
   return (

@@ -12,7 +12,11 @@ export const TextEditor = ({ editor }: EditorProps) => {
           outline: none !important;
         }
       `}</style>
-          <EditorContent editor={editor} className={'note-editor w-full h-full bg-latte text-coffee'} />
+          <EditorContent
+            editor={editor}
+            data-testid={'text-editor'}
+            className={'note-editor w-full h-full bg-latte text-coffee'}
+          />
         </div>
       </div>
     </div>

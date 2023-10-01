@@ -61,7 +61,7 @@ export const BlockQuoteButton = ({ editor }: EditorMenuButtonProps) => {
       className={'font-medium absolute bottom-0 left-0 h-8 w-8 bg-brown p-0 rounded-md'}
     >
       <EditorMenuButton
-        id={'editor-block-quote-button'}
+        name={'editor-block-quote-button'}
         active={editor.isActive('blockquote')}
         onClick={() => editor.chain().focus().toggleBlockquote().run()}
         className={'font-medium relative px-1 w-8 h-8'}
@@ -76,7 +76,7 @@ export const CodeBlockButton = ({ editor }: EditorMenuButtonProps) => {
   return (
     <div id={'code-block-button-container'} className={'font-medium relative h-8 w-8 bg-brown p-0 rounded-md'}>
       <EditorMenuButton
-        id={'code-block-quote-button'}
+        name={'code-block-quote-button'}
         active={editor.isActive('codeBlock')}
         onClick={() => editor.chain().focus().toggleCodeBlock().run()}
         className={'font-medium relative px-1 h-8 w-8'}

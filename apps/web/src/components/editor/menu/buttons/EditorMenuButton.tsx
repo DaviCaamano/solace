@@ -14,13 +14,13 @@ type UseButtonEvents = {
 };
 
 interface EditorMenuButtonTemplate extends PropsWithChildren {
-  id: string;
+  name: string;
   active?: boolean | undefined;
   className?: string;
   color?: string;
   onClick: () => void;
 }
-export const EditorMenuButton = ({ active, className, color, children, onClick }: EditorMenuButtonTemplate) => {
+export const EditorMenuButton = ({ active, className, color, children, onClick, name }: EditorMenuButtonTemplate) => {
   const [pressed, setPressed] = useState<boolean>(false);
 
   const events: UseButtonEvents = {
@@ -39,10 +39,10 @@ export const EditorMenuButton = ({ active, className, color, children, onClick }
   const css = pressed ? pressedCss : active ? onCss : offCss;
   return (
     <button
-      id={'editor-menu-button'}
-      name={'editor-menu-button'}
+      id={name}
+      name={name}
       className={
-        'flex justify-center items-center w-8 mr-1 text-8 font-bold box-border ' +
+        'editor-menu-button flex justify-center items-center w-8 mr-1 text-8 font-bold box-border ' +
         ` border-[1px] border-latte rounded-md text-latte bg-latte ${css} ${styles.noHighlight} ${className || ''}`
       }
       {...events}

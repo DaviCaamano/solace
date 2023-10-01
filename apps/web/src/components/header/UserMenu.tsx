@@ -1,7 +1,7 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import Link from 'next/link';
 import { UserMenuLogoutButton } from '@components/header/button';
-import { useOuterClicks } from '@hooks';
+import { useOuterClicks } from '@hooks/shared';
 import { Ref } from 'react';
 
 interface LoginPopupProps {

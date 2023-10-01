@@ -1,6 +1,7 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
   "display": "Default",
+  "moduleResolution": "node",
   "compilerOptions": {
     "composite": false,
     "declaration": true,
@@ -18,7 +19,14 @@
     "outDir": "dist",
     "paths": {
       "~*": ["../../apps/api/src/*"],
-      "@*": ["../../apps/web/src/*"],
+      "@components*": ["../../apps/web/src/components/*"],
+      "@constants*": ["../../apps/web/src/constants/*"],
+      "@context*": ["../../apps/web/src/context/*"],
+      "@hooks*": ["../../apps/web/src/hooks/*"],
+      "@interface*": ["../../apps/web/src/interface/*"],
+      "@styles*": ["../../apps/web/src/styles/*"],
+      "@tests*": ["../../apps/web/src/tests/*"],
+      "@utils*": ["../../apps/web/src/utils/*"],
       "#*": ["../../packages/shared/*"],
       "@pages/*": ["../../apps/web/pages/*"],
       "@images/*": ["../../apps/web/public/images/*"],
@@ -26,7 +34,8 @@
       "@fonts/*": ["../../apps/web/public/fonts/*"],
       "@public/*": ["../../apps/web/src/public/*"],
       "~interfaces/*": ["../../api/interfaces/*"],
-      "~utils/*": ["../../api/utils/*"]
+      "~utils/*": ["../../api/utils/*"],
+      "~root/*": ["../../*"]
     }
   }
 }

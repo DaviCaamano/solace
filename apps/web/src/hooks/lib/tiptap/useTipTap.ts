@@ -25,7 +25,7 @@ Color.configure({
 });
 
 import Text from '@tiptap/extension-text';
-import { useEditorContext } from '@hooks';
+import { useEditorContext } from '@hooks/context';
 
 const characterLimit = 10000;
 export const useTipTap = (): [TipTapEditor | null, number] => {

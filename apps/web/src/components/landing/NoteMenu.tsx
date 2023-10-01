@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import { ContentWindow } from '@interface/Landing';
-import { useButtonStyle } from '@hooks';
+import { useButtonStyle } from '@hooks/css';
 
 interface MenuContainerProps {
   setContentWindow: Setter<ContentWindow>;

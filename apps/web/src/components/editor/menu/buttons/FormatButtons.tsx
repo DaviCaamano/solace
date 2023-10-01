@@ -8,7 +8,7 @@ interface EditorMenuButtonProps {
 export const BoldButton = ({ editor }: EditorMenuButtonProps) => {
   return (
     <EditorMenuButton
-      id={'editor-bold-button'}
+      name={'editor-bold-button'}
       active={editor.isActive('bold')}
       onClick={() => editor.chain().toggleBold().focus().run()}
       className={'font-bold'}
@@ -21,7 +21,7 @@ export const BoldButton = ({ editor }: EditorMenuButtonProps) => {
 export const ItalicsButton = ({ editor }: EditorMenuButtonProps) => {
   return (
     <EditorMenuButton
-      id={'editor-italic-button'}
+      name={'editor-italic-button'}
       active={editor.isActive('italic')}
       onClick={() => editor.chain().toggleItalic().focus().run()}
       className={'italic'}
@@ -34,7 +34,7 @@ export const ItalicsButton = ({ editor }: EditorMenuButtonProps) => {
 export const UnderlineButton = ({ editor }: EditorMenuButtonProps) => {
   return (
     <EditorMenuButton
-      id={'editor-underline-button'}
+      name={'editor-underline-button'}
       active={editor.isActive('underline')}
       onClick={() => editor.chain().toggleUnderline().focus().run()}
       className={'underline'}
@@ -47,7 +47,7 @@ export const UnderlineButton = ({ editor }: EditorMenuButtonProps) => {
 export const StrikeButton = ({ editor }: EditorMenuButtonProps) => {
   return (
     <EditorMenuButton
-      id={'editor-strike-button'}
+      name={'editor-strike-button'}
       active={editor.isActive('strike')}
       onClick={() => editor.chain().focus().toggleStrike().run()}
       className={'font-medium relative px-1'}

@@ -14,7 +14,8 @@
     "pages",
     "next-env.d.ts",
     "../../packages/shared/types/global.d.ts",
-    "jest.setup.js",
+    "jest.config.ts",
+    "jest.setup.ts",
     ".next/types/**/*.ts"
   ],
   "exclude": ["**/node_modules", "node_modules"]

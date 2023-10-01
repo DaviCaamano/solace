@@ -10,3 +10,5 @@ declare global {
 
   type Tailwind = Record<string, string>;
 }
+
+interface ClipboardEvent extends Event {}

@@ -1,4 +1,4 @@
-import { useListNotes } from '@hooks';
+import { useListNotes } from '@hooks/context';
 
 export const Notebook = () => {
   const args = useListNotes();
