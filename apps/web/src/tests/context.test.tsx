@@ -4,14 +4,12 @@ import { Providers } from '@components/providers/Providers';
 import { setContent } from '@context/redux';
 
 describe('Editor Menu Buttons', () => {
-
-  render(
-    <Providers>
-      <Editor />
-    </Providers>,
-  );
-
   test('click bold button', () => {
+    render(
+      <Providers>
+        <Editor />
+      </Providers>,
+    );
     const onPaste = jest.fn();
     const { getByDisplayValue } = render(<input value='' onPaste={onPaste} onChange={() => {}} />);
 
