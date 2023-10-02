@@ -38,3 +38,22 @@ class DragEventMock extends Event {
   }
 }
 (globalThis as any).DragEvent = DragEventMock;
+
+//Fix JsDom issue: [TypeError: target.getClientRects is not a function]
+// @ts-ignore
+Range.prototype.getBoundingClientRect = () => ({
+  bottom: 0,
+  height: 0,
+  left: 0,
+  right: 0,
+  top: 0,
+  width: 0,
+});
+
+Range.prototype.getClientRects = () => ({
+  item: () => null,
+  length: 0,
+  [Symbol.iterator]: jest.fn(),
+});
+
+global.fetch = jest.fn();

@@ -65,7 +65,7 @@ export const LinkButton = ({ editor, setLink, setOpen }: LinkButtonProps) => {
       className={'font-medium absolute bottom-0 left-0 h-8 w-8 bg-brown p-0 rounded-md'}
     >
       <EditorMenuButton
-        name={'editor-clear-link-button'}
+        id={'editor-clear-link-button'}
         active={editor.isActive('link')}
         onClick={() => {
           setLink(editor.getAttributes('link').href || '');
@@ -83,7 +83,7 @@ export const ClearLinkButton = ({ editor }: EditorMenuButtonProps) => {
   return (
     <div id={'clear-link-button-container'} className={'font-medium relative h-8 w-8 bg-brown p-0 rounded-md'}>
       <EditorMenuButton
-        name={'editor-clear-link-button'}
+        id={'editor-clear-link-button'}
         active={editor.isActive('link')}
         onClick={() => editor.commands.unsetLink()}
         className={'font-medium relative px-1 h-8 w-8'}

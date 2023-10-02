@@ -1,49 +1,58 @@
-import { render, screen } from '@testing-library/react';
+import { screen } from '@testing-library/react';
+
 import { Editor } from '@components/editor';
 import { Providers } from '@components/providers/Providers';
-import { setContent } from '@context/redux';
+import { render } from '@utils/testing';
 
 describe('Editor Menu Buttons', () => {
-  test('click bold button', () => {
-    render(
+  test('Bold Button Click', async () => {
+    const { user } = render(
       <Providers>
-        <Editor />
+        <Editor initialText={'<p>init</p>'} />
       </Providers>,
     );
-    const onPaste = jest.fn();
-    const { getByDisplayValue } = render(<input value='' onPaste={onPaste} onChange={() => {}} />);
 
-    const inputElement = getByDisplayValue('');
+    const boldButton = screen.getByTestId('editor-bold-button');
+    const textElement = screen.getByText('init');
+    const testString = 'testing';
+    await user.click(boldButton);
+    await user.keyboard(testString);
 
-    // `ClipboardEvent` extends `Event`. Start with creating a new `Event`
-    // with 'paste' as the`typearg`
-    const clipboardEvent = new Event('paste', {
-      bubbles: true,
-      cancelable: true,
-      composed: true,
-    });
-
-    // set `clipboardData` and `getData` properties. Set your mocked properties here
-    clipboardEvent['clipboardData'] = {
-      getData: () => '123456',
-    };
-
-    // dispatch your event to trigger your event handlers
-    inputElement.dispatchEvent(clipboardEvent);
-
-    setContent('testing');
-    const textEditor = screen.getByTestId('text-editor');
-    const boldButton = screen.getByRole('button', { name: 'editor-bold-button' });
-    boldButton.click();
-    console.log(textEditor.children[0]);
+    expect(textElement.innerHTML).toMatch(/^<strong>/);
   });
-  //
-  // test('click italics button', () => {
-  //   setContent('testing');
-  //   const textEditor = screen.getByTestId('text-editor');
-  //   const italicButton = screen.getByRole('button', { name: 'editor-italic-button' });
-  // });
-  //
+
+  test('Bold italics Click', async () => {
+    const { user } = render(
+      <Providers>
+        <Editor initialText={'<p>init</p>'} />
+      </Providers>,
+    );
+
+    const boldButton = screen.getByTestId('editor-italic-button');
+    const textElement = screen.getByText('init');
+    const testString = 'testing';
+    await user.click(boldButton);
+    await user.keyboard(testString);
+
+    expect(textElement.innerHTML).toMatch(/^<em>/);
+  });
+
+  test('Bold underline Click', async () => {
+    const { user } = render(
+      <Providers>
+        <Editor initialText={'<p>init</p>'} />
+      </Providers>,
+    );
+
+    const boldButton = screen.getByTestId('editor-underline-button');
+    const textElement = screen.getByText('init');
+    const testString = 'testing';
+    await user.click(boldButton);
+    await user.keyboard(testString);
+
+    expect(textElement.innerHTML).toMatch(/^<em>/);
+  });
+
   // test('click underline button', () => {
   //   setContent('testing');
   //   const textEditor = screen.getByTestId('text-editor');

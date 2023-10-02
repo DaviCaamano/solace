@@ -59,7 +59,7 @@ export const SubScriptButton = ({ editor }: EditorMenuButtonProps) => {
       className={'font-medium absolute bottom-0 left-0 h-8 w-8 bg-brown p-0 rounded-md'}
     >
       <EditorMenuButton
-        name={'editor-subscript-button'}
+        id={'editor-subscript-button'}
         active={editor.isActive('subscript')}
         onClick={() => editor.chain().focus().toggleSubscript().run()}
         className={'font-medium relative px-1 w-8 h-8'}
@@ -74,7 +74,7 @@ export const SuperScriptButton = ({ editor }: EditorMenuButtonProps) => {
   return (
     <div id={'editor-list-button-container'} className={'font-medium relative h-8 w-8 bg-brown p-0 rounded-md'}>
       <EditorMenuButton
-        name={'editor-superscript-button'}
+        id={'editor-superscript-button'}
         active={editor.isActive('superscript')}
         onClick={() => editor.chain().focus().toggleSuperscript().run()}
         className={'font-medium relative px-1 h-8 w-8'}

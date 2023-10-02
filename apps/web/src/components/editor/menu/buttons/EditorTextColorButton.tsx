@@ -15,7 +15,7 @@ export const EditorTextColorButton = ({ editor, open, setOpen }: EditorMenuButto
   return (
     <div id={'editor-color-picker-container'} className={'relative '}>
       <EditorMenuButton
-        name={'editor-color-picker'}
+        id={'editor-color-picker'}
         onClick={() => setOpen(open ? ColorBoard.none : ColorBoard.text)}
         className={'font-bold flex flex-col bg-latte bg-opacity-5 h-full'}
         color={selectedColor}

@@ -26,9 +26,10 @@ Color.configure({
 
 import Text from '@tiptap/extension-text';
 import { useEditorContext } from '@hooks/context';
+import { useEffect } from 'react';
 
 const characterLimit = 10000;
-export const useTipTap = (): [TipTapEditor | null, number] => {
+export const useTipTap = (initialText?: string): [TipTapEditor | null, number] => {
   const {
     editor: { content },
     setContent,
@@ -76,7 +77,7 @@ export const useTipTap = (): [TipTapEditor | null, number] => {
         },
       }),
     ],
-    content,
+    content: initialText,
     autofocus: true,
     editable: true,
     injectCSS: false,
@@ -89,6 +90,19 @@ export const useTipTap = (): [TipTapEditor | null, number] => {
       },
     },
   });
+
+  /** Keep Redux in Sync with TipTap Editor */
+  useEffect(() => {
+    editor && setContent(editor?.getHTML());
+  }, [editor, setContent]);
+
+  /** Set initial Text content of editor (for testing purposes) */
+  useEffect(() => {
+    if (initialText && content === '') {
+      setContent(initialText);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return [editor, characterLimit];
 };

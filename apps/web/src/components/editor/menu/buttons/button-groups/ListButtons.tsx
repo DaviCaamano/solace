@@ -61,7 +61,7 @@ export const BulletButton = ({ editor }: EditorMenuButtonProps) => {
       className={'font-medium absolute bottom-0 left-0 h-8 w-8 bg-brown p-0 rounded-md'}
     >
       <EditorMenuButton
-        name={'bullet-list-button'}
+        id={'bullet-list-button'}
         active={editor.isActive('bulletList')}
         onClick={() => editor.chain().focus().toggleBulletList().run()}
         className={'font-medium relative px-1 w-8 h-8'}
@@ -76,7 +76,7 @@ export const OrderedListButton = ({ editor }: EditorMenuButtonProps) => {
   return (
     <div id={'ordered-list-button-container'} className={'font-medium relative h-8 w-8 bg-brown p-0 rounded-md'}>
       <EditorMenuButton
-        name={'ordered-list-button'}
+        id={'ordered-list-button'}
         active={editor.isActive('orderedList')}
         onClick={() => editor.chain().focus().toggleOrderedList().run()}
         className={'font-medium relative px-1 h-8 w-8'}
