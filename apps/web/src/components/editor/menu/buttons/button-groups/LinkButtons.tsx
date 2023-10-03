@@ -61,11 +61,11 @@ export const LinkButtonContainer = ({ editor, setLink, setOpen }: LinkButtonProp
 export const LinkButton = ({ editor, setLink, setOpen }: LinkButtonProps) => {
   return (
     <div
-      id={'clear-link-button-container'}
+      id={'link-button-container'}
       className={'font-medium absolute bottom-0 left-0 h-8 w-8 bg-brown p-0 rounded-md'}
     >
       <EditorMenuButton
-        id={'editor-clear-link-button'}
+        id={'editor-link-button'}
         active={editor.isActive('link')}
         onClick={() => {
           setLink(editor.getAttributes('link').href || '');

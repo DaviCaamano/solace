@@ -21,101 +21,201 @@ describe('Editor Menu Buttons', () => {
     expect(textElement.innerHTML).toMatch(/^<strong>/);
   });
 
-  test('Bold italics Click', async () => {
+  test('Italics Button Click', async () => {
     const { user } = render(
       <Providers>
         <Editor initialText={'<p>init</p>'} />
       </Providers>,
     );
 
-    const boldButton = screen.getByTestId('editor-italic-button');
+    const italicsButton = screen.getByTestId('editor-italic-button');
     const textElement = screen.getByText('init');
     const testString = 'testing';
-    await user.click(boldButton);
+    await user.click(italicsButton);
     await user.keyboard(testString);
 
     expect(textElement.innerHTML).toMatch(/^<em>/);
   });
 
-  test('Bold underline Click', async () => {
+  test('Underline Button Click', async () => {
     const { user } = render(
       <Providers>
         <Editor initialText={'<p>init</p>'} />
       </Providers>,
     );
 
-    const boldButton = screen.getByTestId('editor-underline-button');
+    const button = screen.getByTestId('editor-underline-button');
     const textElement = screen.getByText('init');
     const testString = 'testing';
-    await user.click(boldButton);
+    await user.click(button);
     await user.keyboard(testString);
 
-    expect(textElement.innerHTML).toMatch(/^<em>/);
+    expect(textElement.innerHTML).toMatch(/^<u>/);
   });
 
-  // test('click underline button', () => {
-  //   setContent('testing');
-  //   const textEditor = screen.getByTestId('text-editor');
-  //   const underlineButton = screen.getByRole('button', { name: 'editor-underline-button' });
-  // });
-  //
-  // test('click strike button', () => {
-  //   setContent('testing');
-  //   const textEditor = screen.getByTestId('text-editor');
-  //   const strikeButton = screen.getByRole('button', { name: 'editor-strike-button' });
-  // });
-  //
-  // test('click quote button', () => {
-  //   setContent('testing');
-  //   const textEditor = screen.getByTestId('text-editor');
-  //   const blockQuoteButton = screen.getByRole('button', { name: 'editor-block-quote-button' });
-  // });
-  //
-  // test('click code block button', () => {
-  //   setContent('testing');
-  //   const textEditor = screen.getByTestId('text-editor');
-  //   const codeBlockButton = screen.getByRole('button', { name: 'code-block-button-container' });
-  // });
-  //
-  // test('click highlight button', () => {
-  //   setContent('testing');
-  //   const textEditor = screen.getByTestId('text-editor');
-  //   const highlightButton = screen.getByRole('button', { name: 'editor-highlight-button' });
-  // });
-  //
-  // test('click link button', () => {
-  //   setContent('testing');
-  //   const textEditor = screen.getByTestId('text-editor');
-  //   const linkButton = screen.getByRole('button', { name: 'editor-clear-link-button' });
-  // });
-  //
-  // test('click clear link button', () => {
-  //   setContent('testing');
-  //   const textEditor = screen.getByTestId('text-editor');
-  //   const clearLinkButton = screen.getByRole('button', { name: 'editor-clear-link-button' });
-  // });
-  //
-  // test('click bullet button', () => {
-  //   setContent('testing');
-  //   const textEditor = screen.getByTestId('text-editor');
-  //   const bulletButton = screen.getByRole('button', { name: 'bullet-list-button' });
-  // });
-  //
-  // test('click ordered list button', () => {
-  //   setContent('testing');
-  //   const textEditor = screen.getByTestId('text-editor');
-  //   const orderedListButton = screen.getByRole('button', { name: 'ordered-list-button' });
-  // });
-  //
-  // test('click subscript button', () => {
-  //   setContent('testing');
-  //   const textEditor = screen.getByTestId('text-editor');
-  //   const subscriptButton = screen.getByRole('button', { name: 'editor-subscript-button' });
-  // });
-  //
-  // test('click superscript button', () => {
-  //   setContent('testing');
-  //   const textEditor = screen.getByTestId('text-editor');
-  //   const superScriptButton = screen.getByRole('button', { name: 'editor-superscript-button' });
-  // });
+  test('Text Color Button Click', async () => {
+    const { user } = render(
+      <Providers>
+        <Editor initialText={'<p>init</p>'} />
+      </Providers>,
+    );
+
+    const textColorButton = screen.getByTestId('editor-color-picker');
+    const textEditor = screen.getByTestId('text-editor');
+    const testString = 'testing';
+
+    //Open Color Board
+    await user.click(textColorButton);
+    const colorPickerElement = screen.getByTestId('color-picker');
+    //Click First Element in Color Board
+    await user.click(colorPickerElement.children[0]);
+    await user.keyboard(testString);
+    //Expect Color Span to have been added to editor.
+    expect(textEditor.children[0].innerHTML).toMatch(/^<p><span style="color:/);
+  });
+
+  test('Text Highlight Button Click', async () => {
+    const { user } = render(
+      <Providers>
+        <Editor initialText={'<p>init</p>'} />
+      </Providers>,
+    );
+
+    const textColorButton = screen.getByTestId('editor-highlight-button');
+    const textEditor = screen.getByTestId('text-editor');
+    const testString = 'testing';
+
+    //Open Color Board
+    await user.click(textColorButton);
+    const colorPickerElement = screen.getByTestId('color-picker');
+    //Click First Element in Color Board
+    await user.click(colorPickerElement.children[0]);
+    await user.keyboard(testString);
+    //Expect mark element with a background color to have been added to editor.
+    expect(textEditor.children[0].innerHTML).toMatch(/^<p><mark data-color="(.*)" style="background-color:/);
+  });
+
+  test('Strike Button Click', async () => {
+    const { user } = render(
+      <Providers>
+        <Editor initialText={'<p>init</p>'} />
+      </Providers>,
+    );
+
+    const button = screen.getByTestId('editor-strike-button');
+    const textElement = screen.getByText('init');
+    const testString = 'testing';
+    await user.click(button);
+    await user.keyboard(testString);
+    expect(textElement.innerHTML).toMatch(/^<s>/);
+  });
+
+  test('Strike Button Click', async () => {
+    const { user } = render(
+      <Providers>
+        <Editor initialText={'<p>init</p>'} />
+      </Providers>,
+    );
+
+    const button = screen.getByTestId('editor-strike-button');
+    const textElement = screen.getByText('init');
+    const testString = 'testing';
+    await user.click(button);
+    await user.keyboard(testString);
+    expect(textElement.innerHTML).toMatch(/^<s>/);
+  });
+
+  test('Subscript Button Click', async () => {
+    const { user } = render(
+      <Providers>
+        <Editor initialText={'<p>init</p>'} />
+      </Providers>,
+    );
+
+    const button = screen.getByTestId('editor-subscript-button');
+    const textElement = screen.getByText('init');
+    const testString = 'testing';
+    await user.click(button);
+    await user.keyboard(testString);
+    expect(textElement.innerHTML).toMatch(/^<sub>/);
+  });
+
+  test('Superscript Button Click', async () => {
+    const { user } = render(
+      <Providers>
+        <Editor initialText={'<p>init</p>'} />
+      </Providers>,
+    );
+
+    const button = screen.getByTestId('editor-superscript-button');
+    const textElement = screen.getByText('init');
+    const testString = 'testing';
+    await user.click(button);
+    await user.keyboard(testString);
+    expect(textElement.innerHTML).toMatch(/^<sup>/);
+  });
+
+  test('Bullet List Button Click', async () => {
+    const { user } = render(
+      <Providers>
+        <Editor initialText={'<p>init</p>'} />
+      </Providers>,
+    );
+
+    const button = screen.getByTestId('bullet-list-button');
+    const textEditor = screen.getByTestId('text-editor');
+    const testString = 'testing';
+    await user.click(button);
+    await user.keyboard(testString);
+    //Expect an unordered list to be created, and the first paragraph element to be stored in a list item element.
+    expect(textEditor.children[0].innerHTML).toMatch(/^<ul class="list-disc"><li class="list-disc"><p>/);
+  });
+
+  test('Ordered List Button Click', async () => {
+    const { user } = render(
+      <Providers>
+        <Editor initialText={'<p>init</p>'} />
+      </Providers>,
+    );
+
+    const button = screen.getByTestId('ordered-list-button');
+    const textEditor = screen.getByTestId('text-editor');
+    const testString = 'testing';
+    await user.click(button);
+    await user.keyboard(testString);
+    //Expect an ordered list to be created, and the first paragraph element to be stored in a list item element.
+    expect(textEditor.children[0].innerHTML).toMatch(/^<ol><li class="list-disc"><p>/);
+  });
+
+  test('Block Quote Button Click', async () => {
+    const { user } = render(
+      <Providers>
+        <Editor initialText={'<p>init</p>'} />
+      </Providers>,
+    );
+
+    const button = screen.getByTestId('editor-block-quote-button');
+    const textEditor = screen.getByTestId('text-editor');
+    const testString = 'testing';
+    await user.click(button);
+    await user.keyboard(testString);
+    //Expect a Block Quote Element to be created
+    expect(textEditor.children[0].innerHTML).toMatch(/^<blockquote>/);
+  });
+
+  test('Code Block Button Click', async () => {
+    const { user } = render(
+      <Providers>
+        <Editor initialText={'<p>init</p>'} />
+      </Providers>,
+    );
+
+    const button = screen.getByTestId('code-block-quote-button');
+    const textEditor = screen.getByTestId('text-editor');
+    const testString = 'testing';
+    await user.click(button);
+    await user.keyboard(testString);
+    //Expect a Code Block Element to be created
+    expect(textEditor.children[0].innerHTML).toMatch(/^<pre class="codeContainer" spellcheck="false"><code>/);
+  });
 });

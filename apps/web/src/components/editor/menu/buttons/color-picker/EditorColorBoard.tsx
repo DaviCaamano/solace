@@ -60,6 +60,7 @@ export const EditorColorBoard = ({ open, selectedColor, setColor, positions: { x
             >
               <div
                 id={'color-picker'}
+                data-testid={'color-picker'}
                 className={'flex flex-row flex-wrap p-2 rounded-xl w-[11.25rem] bg-mug border-mug border'}
               >
                 {colors}

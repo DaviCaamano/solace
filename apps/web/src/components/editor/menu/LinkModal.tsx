@@ -30,6 +30,7 @@ export const LinkModal = ({ open, editor, link, setLink, setOpen }: LinkModalPro
         <input
           type={'text'}
           name={'url-input'}
+          data-testid={'url-input'}
           value={link}
           placeholder={'https://www.example.com'}
           onChange={(event: ChangeEvent<HTMLInputElement>) => {
@@ -44,6 +45,7 @@ export const LinkModal = ({ open, editor, link, setLink, setOpen }: LinkModalPro
           <LinkModalColorBoard selectedColor={color} setColor={setColor} />
           <button
             id={'link-modal-confirm-button'}
+            data-testid={'link-modal-confirm-button'}
             className={`py-[1px] text-[12px] rounded-2xl text-latte w-[5rem] ${
               invalidUrl ? 'bg-pink' : 'bg-mug-light'
             }`}

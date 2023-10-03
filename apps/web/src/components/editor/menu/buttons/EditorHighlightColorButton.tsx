@@ -15,7 +15,7 @@ export const EditorHighlightColorButton = ({ editor, open, setOpen }: EditorMenu
   const selectedColor = getColor(editor);
 
   return (
-    <div id={'color-picker'} className={'relative '}>
+    <div id={'editor-highlight-button-container'} className={'relative '}>
       <EditorMenuButton
         id={'editor-highlight-button'}
         onClick={() => setOpen(open ? ColorBoard.none : ColorBoard.highlight)}
