@@ -72,9 +72,6 @@ export class NoteDatabaseService extends ComponentWithLogging {
     if (!title) {
       this.report('No title provided for create note', HttpStatus.BAD_REQUEST);
     }
-    if (!content) {
-      this.report('No content provided for create note', HttpStatus.BAD_REQUEST);
-    }
 
     try {
       return this.db.note.create({

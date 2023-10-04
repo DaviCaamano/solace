@@ -5,8 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2101ad9f-8972-44d3-9c27-f093e4bebdd9" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/apps/web/src/components/editor/hooks/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/web/src/components/editor/hooks/useNewNote.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/api/prisma/schema.prisma" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/prisma/schema.prisma" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/api/src/note/dto/note.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/note/dto/note.dto.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/api/src/note/note-database.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/note/note-database.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/api/src/note/note.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/note/note.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/landing/Content.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/landing/Content.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/landing/NoteMenu.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/landing/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/landing/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/notebook/AddNoteRow.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notebook/AddNoteRow.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/notebook/Notebook.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notebook/Notebook.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/notebook/notebook.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notebook/notebook.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/interface/Landing/ContentWindow.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/interface/Landing/ContentWindow.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -169,6 +180,7 @@
       <workItem from="1696344232475" duration="12204000" />
       <workItem from="1696442940875" duration="3389000" />
       <workItem from="1696446679824" duration="2960000" />
+      <workItem from="1696450672959" duration="6843000" />
     </task>
     <servers />
   </component>
@@ -220,7 +232,6 @@
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/packages/shared/interfaces/notes/notes.interface.ts</url>
           <line>40</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>

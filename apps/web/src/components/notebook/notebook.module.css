@@ -4,3 +4,10 @@
     repeating-linear-gradient(45deg, transparent, transparent 1px, #ccc 1px, #ccc 2px),
     /* on "bottom" */ linear-gradient(to bottom, #eee, #999);
 }
+
+.noteBook {
+  @apply w-[13.5rem] h-[13.5rem] sm:w-[21rem] sm:h-[21rem] lg:w-[31rem] lg:h-[31rem]
+  relative overflow-hidden
+  bg-mug
+  rounded-2xl border-latte border-[2px];
+}

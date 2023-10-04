@@ -21,28 +21,19 @@ export class NoteService extends ComponentWithLogging {
     });
   }
 
-  async list(userId: string): Promise<ListNotesResponse> {
-    const notes = await this.dbService.list(userId);
-    return { notes };
-  }
+  list = async (userId: string): Promise<ListNotesResponse> => ({
+    notes: await this.dbService.list(userId),
+  });
 
-  async get(id: string, userId: string): Promise<NoteResponse> {
-    const note = await this.dbService.get(id, userId);
-    return { note };
-  }
+  get = async (id: string, userId: string): Promise<NoteResponse> => ({ note: await this.dbService.get(id, userId) });
 
-  async create(newNote: CreateNoteDto): Promise<NoteResponse> {
-    const note = await this.dbService.create(newNote);
-    return { note };
-  }
+  create = async (newNote: CreateNoteDto): Promise<NoteResponse> => ({ note: await this.dbService.create(newNote) });
 
-  async update(updatedNote: UpdateNoteDto): Promise<NoteResponse> {
-    const note = await this.dbService.update(updatedNote);
-    return { note };
-  }
+  update = async (updatedNote: UpdateNoteDto): Promise<NoteResponse> => ({
+    note: await this.dbService.update(updatedNote),
+  });
 
-  async delete(id: string, userId: string): Promise<DeleteNoteResponse> {
-    const note = await this.dbService.delete(id, userId);
-    return { success: !!note };
-  }
+  delete = async (id: string, userId: string): Promise<DeleteNoteResponse> => ({
+    success: !!(await this.dbService.delete(id, userId)),
+  });
 }

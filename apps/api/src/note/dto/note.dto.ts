@@ -22,7 +22,10 @@ export class CreateNoteDto {
   title: string;
 
   @IsOptional()
-  content: string;
+  content?: string;
+
+  @IsOptional()
+  parent?: string;
 }
 
 export class UpdateNoteDto {

@@ -15,11 +15,11 @@ enum Position {
 }
 
 export const Content = () => {
-  const [window, setWindow] = useState<ContentWindow>(ContentWindow.menu);
+  const [window, setWindow] = useState<ContentWindow>(ContentWindow.notebook);
   return (
     <div id={'content'} className={'relative w-full flex-1'}>
       <Slider
-        open={window === ContentWindow.menu}
+        open={window === ContentWindow.notebook}
         position={{
           onLoad: Position.show,
           onExit: Position.left,
@@ -28,10 +28,10 @@ export const Content = () => {
         <Notebook setContentWindow={setWindow} />
       </Slider>
       <Slider
-        open={window === ContentWindow.addNote}
+        open={window === ContentWindow.editor}
         position={{
           onLoad: Position.hideRight,
-          onExit: window === ContentWindow.menu ? Position.hideRight : Position.hideLeft,
+          onExit: window === ContentWindow.notebook ? Position.hideRight : Position.hideLeft,
         }}
       >
         <Editor />
