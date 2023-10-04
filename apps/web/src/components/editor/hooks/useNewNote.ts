@@ -1,62 +1,34 @@
-import { Note } from '#interfaces/notes';
-import { useEffect, useRef, useState } from 'react';
+import { Note, UnsafeAddNoteTrigger, UnsafeNewNote } from '#interfaces/notes';
+import { MutableRefObject, useEffect, useRef, useState } from 'react';
 import { ContentWindow } from '@interface/Landing';
 import { useAddNoteMutation } from '@context/redux/api/notes/notes.slice';
 import { CreateNoteDto } from '~note/dto/note.dto';
 
-interface UnsafeNewNote extends Omit<CreateNoteDto, 'userId'> {
-  userId?: string;
-}
 /** Detects the creation of a new note and moves the user to the editor to edit that note */
 export const useNewNote = (
   noteList: Note[] | undefined,
   setContentWindow: Setter<ContentWindow>,
   setEditor: (title: string, content: string) => void,
-) => {
+): UnsafeAddNoteTrigger => {
   const [addNote] = useAddNoteMutation();
 
   /** Denotes when we are expecting a newly created Note to be reported */
   const [noteAdded, setNoteAdded] = useState<boolean>(false);
   const stickyList = useRef<Note[] | undefined>();
 
-  console.log(
-    `
-  
-  !!noteList`,
-    noteList?.length,
-    stickyList.current?.length,
-  );
   /** Detect when a new note was both expected and added then move user to editor to edit new note. */
   useEffect(() => {
-    if (noteList?.length !== stickyList.current?.length) {
-      const stickyNotes = stickyList.current;
-      console.log(
-        'noteAdded && noteList && stickyNotes',
-        noteAdded && noteList && stickyNotes,
-        '|',
-        noteAdded,
-        noteList?.length,
-        stickyNotes,
-      );
-      if (noteAdded && noteList && stickyNotes) {
-        const newNoteTitle = getNewNote(noteList, stickyNotes)?.title;
-        console.log('newNote', newNoteTitle, '|', noteList.length, stickyNotes?.length);
-        setNoteAdded(false);
-        stickyList.current = noteList;
-        if (newNoteTitle) {
-          setEditor(newNoteTitle, '');
-          setContentWindow(ContentWindow.editor);
-        }
-      } else {
-        stickyList.current = noteList;
-      }
-    } else {
-      stickyList.current = noteList;
-    }
+    handleNewNote({
+      noteList,
+      stickyList,
+      noteAdded,
+      setNoteAdded,
+      setEditor,
+      setContentWindow,
+    });
   }, [noteAdded, noteList, setContentWindow, setEditor]);
 
   return (newNote: UnsafeNewNote) => {
-    console.log('Ran');
     if (newNote?.userId) {
       setNoteAdded(true);
       addNote(newNote as CreateNoteDto);
@@ -82,4 +54,52 @@ const getNewNote = (noteList: Note[], stickyNoteList: Note[] | undefined) => {
     console.log('matchingStickyNote', id, !matchingStickyNote, '|', noteList.length, stickyNoteList?.length);
     return !matchingStickyNote;
   });
+};
+
+type NoteList = Note[] | undefined;
+interface HandleNewNoteArgs {
+  noteList: NoteList;
+  stickyList: MutableRefObject<NoteList>;
+  noteAdded: boolean;
+  setNoteAdded: Setter<boolean>;
+  setEditor: (title: string, content: string) => void;
+  setContentWindow: Setter<ContentWindow>;
+}
+
+/**
+ * Detect when noteList has been updated to include a new note which we were
+ * expecting.
+ * Update the stickyList ref when noteList has been updated.
+ *
+ * @param noteList - List of Notes belonging to the logged in user.
+ * @param stickyList - Copy of the above list for the purposes of detecting changes.
+ * @param noteAdded - flag to indicate that we are expecting a new note to be added.
+ * @param setNoteAdded
+ * @param setEditor
+ * @param setContentWindow
+ */
+const handleNewNote = ({
+  noteList,
+  stickyList,
+  noteAdded,
+  setNoteAdded,
+  setEditor,
+  setContentWindow,
+}: HandleNewNoteArgs) => {
+  if (noteList?.length !== stickyList.current?.length) {
+    const stickyNotes = stickyList.current;
+    if (noteAdded && noteList && stickyNotes) {
+      const newNoteTitle = getNewNote(noteList, stickyNotes)?.title;
+      setNoteAdded(false);
+      stickyList.current = noteList;
+      if (newNoteTitle) {
+        setEditor(newNoteTitle, '');
+        setContentWindow(ContentWindow.editor);
+      }
+    } else {
+      stickyList.current = noteList;
+    }
+  } else {
+    stickyList.current = noteList;
+  }
 };

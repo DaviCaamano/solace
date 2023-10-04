@@ -38,4 +38,7 @@ export interface DeleteNoteResponse {
   success: boolean;
 }
 
-export type AddNoteTrigger = (newNote: CreateNoteDto) => Promise<any>
+export interface UnsafeNewNote extends Omit<CreateNoteDto, 'userId'> {
+  userId?: string;
+}
+export type UnsafeAddNoteTrigger = (newNote: UnsafeNewNote) => void;
