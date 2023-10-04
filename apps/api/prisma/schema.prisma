@@ -24,13 +24,17 @@ model User {
 model Note {
     id                                        String                  @id @default(uuid())
     title                                     String
-    content                                   String
+    content                                   String?
     userId                                    String
+    parentId                                  String?
+
     status                                    NoteStatus
     createdAt                                 DateTime?               @default(now()) @ignore
     updatedAt                                 DateTime?               @updatedAt @ignore
 
-    User                                      User                @relation(fields: [userId], references: [id])
+    User                                      User                    @relation(fields: [userId], references: [id])
+    Parent                                    Note?                   @relation("parent", fields: [parentId], references: [id])
+    Children                                  Note[]                  @relation("parent")
 }
 
 enum NoteStatus {
