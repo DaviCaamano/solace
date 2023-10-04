@@ -9,5 +9,5 @@ export const render = (jsx: ReactElement<any, string | JSXElementConstructor<any
     // Import `render` from the framework library of your choice.
     // See https://testing-library.com/docs/dom-testing-library/install#wrappers
     ...renderTests(jsx),
-  };
+  } as any;
 };

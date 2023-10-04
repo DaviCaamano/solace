@@ -1,3 +1,13 @@
+import {
+  BaseQueryFn,
+  FetchArgs,
+  FetchBaseQueryError,
+  FetchBaseQueryMeta,
+  MutationDefinition,
+} from '@reduxjs/toolkit/dist/query/react';
+import { MutationTrigger } from '@reduxjs/toolkit/dist/query/react/buildHooks';
+import { CreateNoteDto } from '~note/dto/note.dto';
+
 export interface Note {
   id: string;
   title: string;
@@ -27,3 +37,5 @@ export interface ListNotesResponse {
 export interface DeleteNoteResponse {
   success: boolean;
 }
+
+export type AddNoteTrigger = (newNote: CreateNoteDto) => Promise<any>

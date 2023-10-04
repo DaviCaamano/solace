@@ -21,7 +21,7 @@ export class CreateNoteDto {
   @IsNotEmpty()
   title: string;
 
-  @IsNotEmpty()
+  @IsOptional()
   content: string;
 }
 

@@ -1,5 +1,5 @@
 import { AnimatePresence, motion } from 'framer-motion';
-import { NoteMenu } from '@components/landing';
+import { Notebook } from '@components/notebook';
 import { ReactNode, useState } from 'react';
 import { ContentWindow } from '@interface/Landing';
 import { Editor } from '@components/editor';
@@ -25,7 +25,7 @@ export const Content = () => {
           onExit: Position.left,
         }}
       >
-        <NoteMenu setContentWindow={setWindow} />
+        <Notebook setContentWindow={setWindow} />
       </Slider>
       <Slider
         open={window === ContentWindow.addNote}

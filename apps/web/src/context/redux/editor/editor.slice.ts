@@ -3,21 +3,30 @@ import { Editor } from '@interface/editor/editor';
 
 const initialState: Editor = {
   content: '',
+  title: '',
 };
 
 export const editorSlice = createSlice({
   name: 'editor',
   initialState,
   reducers: {
+    setEditor: (state: Editor, action: PayloadAction<Editor>) => {
+      state.content = action.payload.content;
+      state.title = action.payload.title;
+    },
     setContent: (state: Editor, action: PayloadAction<string>) => {
       state.content = action.payload;
     },
-    clearContent: (state: Editor) => {
+    reset: (state: Editor) => {
       state.content = '';
+      state.title = '';
+    },
+    setTitle: (state: Editor, action: PayloadAction<string>) => {
+      state.title = action.payload;
     },
   },
 });
 
-export const { setContent, clearContent } = editorSlice.actions;
+export const { reset, setEditor, setContent, setTitle } = editorSlice.actions;
 
 export default editorSlice.reducer;

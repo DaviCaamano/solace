@@ -1,7 +1,21 @@
-import { useUser } from '@hooks/user/useUser';
 import { useListNotesQuery } from '@context/redux/api/notes/notes.slice';
+import { useEffect, useRef } from 'react';
+import { User } from '#interfaces/user';
 
-export const useListNotes = () => {
-  const [, { data: user }] = useUser();
-  return useListNotesQuery({ userId: user?.id || '' }, { skip: !user?.id });
+export const useListNotes = (user: User | null | undefined) => {
+  const args = useListNotesQuery({ userId: user?.id || '' }, { skip: !user?.id });
+
+  const { isError, error } = args;
+
+  const isErrorRef = useRef<boolean>(isError);
+  useEffect(() => {
+    if (isErrorRef.current !== isError) {
+      isErrorRef.current = isError;
+      if (isError) {
+        console.log('Note List Error:', error);
+      }
+    }
+  });
+
+  return args;
 };
