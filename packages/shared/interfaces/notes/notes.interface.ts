@@ -15,7 +15,6 @@ export interface Note {
 export interface LinkedNote extends Note {
   children?: LinkedNote[];
 }
-export type NoteTree = LinkedNote[];
 export enum NoteStatus {
   active = 'ACTIVE',
   deleted = 'DELETED',

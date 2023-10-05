@@ -2,7 +2,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import { apiSlice } from '@context/redux/api/api.slice';
 import { setupListeners } from '@reduxjs/toolkit/query';
 import { saveEditToLocalStorageMiddleware } from '@context/redux/editor/save-edit-to-local-storage.middleware';
-import { editorSlice } from '@contextredux/editor';
+import { editorSlice } from '@context/redux/editor';
 
 export const store = configureStore({
   reducer: {

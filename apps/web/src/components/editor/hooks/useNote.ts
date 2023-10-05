@@ -57,14 +57,8 @@ export const useNote = (
  *      If that entry was expected (noteAdded state set to true;
  */
 const getNewNote = (noteList: Note[], stickyNoteList: Note[] | undefined) => {
-  console.log('noteList', noteList?.length);
   return noteList?.find(({ id }: Note) => {
-    const matchingStickyNote: Note | undefined = stickyNoteList?.find(({ id: stickyId }: Note) => {
-      if (id === stickyId) console.log('~ MATCH ~', id);
-      else console.log('-nomatch-', id);
-      return id === stickyId;
-    });
-    console.log('matchingStickyNote', id, !matchingStickyNote, '|', noteList.length, stickyNoteList?.length);
+    const matchingStickyNote: Note | undefined = stickyNoteList?.find(({ id: stickyId }: Note) => id === stickyId);
     return !matchingStickyNote;
   });
 };

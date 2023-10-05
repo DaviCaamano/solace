@@ -1,18 +1,35 @@
 import { PropsWithChildren } from 'react';
-
+import styles from '../notebook.module.css';
 interface AddNoteButtonProps {
+  disabled?: boolean;
   onClick: () => any;
 }
-export const AddNoteButton = ({ onClick }: AddNoteButtonProps) => <Button onClick={onClick}>+</Button>;
-export const RemoveNoteButton = ({ onClick }: AddNoteButtonProps) => <Button onClick={onClick}>-</Button>;
+export const AddNoteButton = ({ disabled, onClick }: AddNoteButtonProps) => (
+  <NoteRowButton disabled={disabled} onClick={onClick} name={'add-note-button'}>
+    +
+  </NoteRowButton>
+);
+export const RemoveNoteButton = ({ disabled, onClick }: AddNoteButtonProps) => (
+  <NoteRowButton disabled={disabled} onClick={onClick} name={'remove-note-button'}>
+    <span className={'relative top-[-1px]'}>-</span>
+  </NoteRowButton>
+);
 
-const Button = ({ children: title, onClick }: AddNoteButtonProps & PropsWithChildren) => (
+interface NoteRowButtonProps extends PropsWithChildren {
+  disabled?: boolean;
+  name: string;
+  onClick: () => any;
+}
+
+export const NoteRowButton = ({ children, disabled, name, onClick }: NoteRowButtonProps) => (
   <button
-    id={'add-note-button'}
-    data-testid={'add-note-button'}
-    className={'flex justify-center items-center rounded-3xl bg-mug-light h-6 min-w-6 w-6 ml-4'}
+    data-testid={name}
+    className={`note-row-button ${name} ${styles.noteRowButton} ${
+      disabled ? 'bg-mug-disabled cursor-not-allowed' : 'bg-mug-light cursor-pointer'
+    }`}
     onClick={onClick}
+    disabled={disabled}
   >
-    {title}
+    {children}
   </button>
 );

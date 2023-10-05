@@ -12,7 +12,7 @@ export const useListNotes = (user: User | null | undefined) => {
     if (isErrorRef.current !== isError) {
       isErrorRef.current = isError;
       if (isError) {
-        console.log('Note List Error:', error);
+        console.error('Note List Error:', error);
       }
     }
   });

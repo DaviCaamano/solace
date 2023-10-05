@@ -1,23 +1,40 @@
 import { Note, LinkedNote } from '#interfaces/notes';
 
 export const getNoteHeiarchy = (list: Note[]) => {
-  return collectFamilies(list)?.[1];
+  let rootNotes: Note[] = [];
+  const children: Note[] = [];
+  list.forEach((note: Note) => {
+    if (!note.parentId) {
+      rootNotes.push(note);
+    } else {
+      children.push(note);
+    }
+  });
+  return collectFamilies(rootNotes, children)?.[1];
 };
 
 /**
- * Go into the array of Notes and return an array of family trees of notes.
+ * Go into the array of Notes and return an array of note family trees.
+ * @param rootNotes - Note[]: A list of notes which are direct descendants of root (they have no parent)
  * @param list - Note[]: A list of notes which will be emptied out as its notes are pushed to the heiarchy array
- * @param heiarchy - ParentNote[]: array of family trees of notes.
+ * @param heiarchy - LinkedNote[]: array of family trees of notes.
  *    Each Note can point to a parent
  *    as well as its next sibling in line which forms a linked-list.
  */
-const collectFamilies = (list: Note[], heiarchy: LinkedNote[] = []): [Note[], LinkedNote[]] => {
-  if (!list || list.length === 0) {
+const collectFamilies = (rootNotes: Note[], list: Note[], heiarchy: LinkedNote[] = []): [Note[], LinkedNote[]] => {
+  if (!rootNotes?.length) {
     return [[] as Note[], heiarchy];
   }
-  const [notChildren, family] = getChildren(list[0], list);
-  heiarchy.push(family);
-  return collectFamilies(notChildren, heiarchy);
+  const parent = rootNotes?.shift() as Note;
+
+  if (!list || list.length === 0) {
+    heiarchy = [...heiarchy, parent, ...rootNotes];
+    return [[] as Note[], heiarchy];
+  }
+  const [unrelatedChildren, familyTree] = getChildren(parent, list);
+  heiarchy.push(familyTree);
+
+  return collectFamilies(rootNotes, unrelatedChildren, heiarchy);
 };
 
 /**
@@ -31,7 +48,7 @@ const getChildren = (parent: Note, noteList: Note[]): [Note[], LinkedNote] => {
   let unrelated = noteList.filter((note: Note) => {
     const { id, parentId } = note;
     //Remove Parent from NoteList
-    if (id !== parent.id) {
+    if (id === parent.id) {
       return false;
       // Remove Direct descendant of Parent from Note List and store them in children array
     } else if (parentId === parent.id) {
@@ -108,7 +125,7 @@ const sortChildren = (children: LinkedNote[] | undefined, parentId: string): Lin
 /**
  * Get the first child in a linked-list of children notes,
  * return that child element and a list of its unsorted siblings
- * @param children - ParentNote[] - An unsorted linked list of Notes
+ * @param children - LinkedNote[] - An unsorted linked list of Notes
  * @param parentId - string: the ID of the parent for error reporting.
  */
 const getFirstSibling = (children: LinkedNote[], parentId: string): [LinkedNote | undefined, LinkedNote[]] => {

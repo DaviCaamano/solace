@@ -74,34 +74,66 @@ export class NoteDatabaseService extends ComponentWithLogging {
       this.report('No title provided for create note', HttpStatus.BAD_REQUEST);
     }
 
-    try {
-      const query: Prisma.NoteCreateInput = {
-        title,
-        content,
-        status: NoteStatus.active,
-        User: {
-          connect: {
-            id: userId,
-          },
+    const query: Prisma.NoteCreateInput = {
+      title,
+      content,
+      status: NoteStatus.active,
+      User: {
+        connect: {
+          id: userId,
+        },
+      },
+    };
+    if (parentId) {
+      query.Parent = {
+        connect: {
+          id: parentId,
         },
       };
-      if (parentId) {
-        query.Parent = {
-          connect: {
-            id: parentId,
-          },
-        };
+    }
+
+    let newNote, previousFirstChild;
+
+    if (siblingId) {
+      query.Sibling = {
+        connect: {
+          id: siblingId,
+        },
+      };
+      /**
+       * Parent specified, but sibling is not.
+       * This child will be created as the first child (first displayed in ordered lists)
+       */
+    } else if (parentId) {
+      try {
+        previousFirstChild = await this.getFirstChild(parentId);
+      } catch (err: any) {
+        this.report('Failed to retrieve first child of parent');
       }
-      if (siblingId) {
-        query.Sibling = {
-          connect: {
-            id: siblingId,
-          },
-        };
-      }
-      return this.db.note.create({ data: query });
+    }
+
+    try {
+      newNote = await this.db.note.create({ data: query });
     } catch (err: any) {
       this.report('Failed to create note', err);
+    }
+
+    try {
+      if (previousFirstChild) {
+        await this.db.note.update({
+          where: { id: previousFirstChild.id },
+          data: {
+            siblingId: newNote.id,
+          },
+        });
+      }
+    } catch (err: any) {
+      if (newNote) {
+        this.report('Failed to update first child that was moved from first position. Deleting new Child entry');
+        await this.db.note.delete({ where: { id: newNote.id } });
+      } else {
+        this.report('Failed to update first child that was moved from first position.');
+      }
     }
   }
 
@@ -161,4 +193,6 @@ export class NoteDatabaseService extends ComponentWithLogging {
       this.report('Failed to delete note', err);
     }
   }
+
+  getFirstChild = (parentId: string) => this.db.note.findFirst({ where: { parentId, siblingId: null } });
 }

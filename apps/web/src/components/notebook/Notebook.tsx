@@ -1,9 +1,11 @@
 import { ContentWindow } from '@interface/Landing';
 import styles from './notebook.module.css';
-import { AddNoteRow } from '@components/notebook/AddNoteRow';
+import { AddNoteRow } from '@components/notebook/rows/AddNoteRow';
 import { useEditorContext, useListNotes } from '@hooks/context';
 import { useNote } from '@components/editor/hooks';
-import { NoteList } from '@components/notebook/NoteList';
+import { NoteList } from '@components/notebook/rows/NoteList';
+import { getNoteHeiarchy } from '@components/notebook/utils';
+import { useMemo } from 'react';
 
 interface NotebookProps {
   setContentWindow: Setter<ContentWindow>;
@@ -16,12 +18,20 @@ export const Notebook = ({ setContentWindow }: NotebookProps) => {
 
   const addNoteOnClick = (title: string) => addNote({ userId: user?.id, title });
 
+  const noteHeiarchy = useMemo(() => noteList && getNoteHeiarchy(noteList), [noteList]);
+
   if (isLoading) return <LoadingMessage />;
   if (isError) return <ErrorMessage error={error} />;
   return (
     <div id={'note-book'} className={styles.noteBook}>
       <Header />
-      <NoteList noteList={noteList} addNote={addNote} deleteNote={deleteNote} setEditor={setEditor} />
+      <NoteList
+        noteList={noteHeiarchy}
+        addNote={addNote}
+        deleteNote={deleteNote}
+        setEditor={setEditor}
+        userId={user?.id}
+      />
       <AddNoteRow onClick={addNoteOnClick} />
     </div>
   );

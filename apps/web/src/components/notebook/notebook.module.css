@@ -11,3 +11,27 @@
   bg-mug
   rounded-2xl border-latte border-[2px];
 }
+
+.noteRow {
+  @apply text-[24px] text-latte leading-8 flex justify-start items-center flex-col;
+}
+
+.childRow {
+  @apply h-8 text-[24px] text-latte pl-4 leading-8 justify-start items-center flex-row w-full;
+}
+
+.noteRowParent:hover {
+  .noteRowButtons {
+    display: flex;
+  }
+}
+
+.noteRowParent:not(hover) {
+  .noteRowButtons {
+    display: none;
+  }
+}
+
+.noteRowButton {
+  @apply flex justify-center items-center rounded-3xl text-latte text-[1.5rem] leading-[1.5rem] h-6 w-6;
+}
