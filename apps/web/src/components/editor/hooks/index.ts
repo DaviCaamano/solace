@@ -1,1 +1,1 @@
-export * from './useNewNote';
+export * from './useNote';

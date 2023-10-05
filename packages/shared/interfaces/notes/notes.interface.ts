@@ -1,23 +1,21 @@
-import {
-  BaseQueryFn,
-  FetchArgs,
-  FetchBaseQueryError,
-  FetchBaseQueryMeta,
-  MutationDefinition,
-} from '@reduxjs/toolkit/dist/query/react';
-import { MutationTrigger } from '@reduxjs/toolkit/dist/query/react/buildHooks';
-import { CreateNoteDto } from '~note/dto/note.dto';
+import { CreateNoteDto, DeleteNoteDto } from '~note/dto/note.dto';
 
 export interface Note {
   id: string;
   title: string;
   content: string;
+  parentId?: string;
+  siblingId?: string;
   createdAt: string;
   updatedAt: string;
   userId: string;
   status: NoteStatus;
 }
 
+export interface LinkedNote extends Note {
+  children?: LinkedNote[];
+}
+export type NoteTree = LinkedNote[];
 export enum NoteStatus {
   active = 'ACTIVE',
   deleted = 'DELETED',
@@ -38,7 +36,11 @@ export interface DeleteNoteResponse {
   success: boolean;
 }
 
-export interface UnsafeNewNote extends Omit<CreateNoteDto, 'userId'> {
+export interface UnsafeCreateNoteDto extends Omit<CreateNoteDto, 'userId'> {
   userId?: string;
 }
-export type UnsafeAddNoteTrigger = (newNote: UnsafeNewNote) => void;
+export interface UnsafeDeleteNoteDto extends Omit<DeleteNoteDto, 'userId'> {
+  userId?: string;
+}
+export type UnsafeAddNoteTrigger = (newNote: UnsafeCreateNoteDto) => void;
+export type UnsafeDeleteNoteTrigger = (deleteDto: UnsafeDeleteNoteDto) => void;

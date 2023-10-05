@@ -6,13 +6,13 @@ interface AddNoteButtonProps {
 export const AddNoteButton = ({ onClick }: AddNoteButtonProps) => <Button onClick={onClick}>+</Button>;
 export const RemoveNoteButton = ({ onClick }: AddNoteButtonProps) => <Button onClick={onClick}>-</Button>;
 
-const Button = ({ children, onClick }: AddNoteButtonProps & PropsWithChildren) => (
+const Button = ({ children: title, onClick }: AddNoteButtonProps & PropsWithChildren) => (
   <button
     id={'add-note-button'}
     data-testid={'add-note-button'}
     className={'flex justify-center items-center rounded-3xl bg-mug-light h-6 min-w-6 w-6 ml-4'}
     onClick={onClick}
   >
-    {children}
+    {title}
   </button>
 );

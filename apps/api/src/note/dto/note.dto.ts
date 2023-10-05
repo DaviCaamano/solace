@@ -25,7 +25,10 @@ export class CreateNoteDto {
   content?: string;
 
   @IsOptional()
-  parent?: string;
+  parentId?: string;
+
+  @IsOptional()
+  siblingId?: string;
 }
 
 export class UpdateNoteDto {

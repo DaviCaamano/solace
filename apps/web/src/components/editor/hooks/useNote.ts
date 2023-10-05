@@ -1,16 +1,23 @@
-import { Note, UnsafeAddNoteTrigger, UnsafeNewNote } from '#interfaces/notes';
+import {
+  Note,
+  UnsafeAddNoteTrigger,
+  UnsafeCreateNoteDto,
+  UnsafeDeleteNoteDto,
+  UnsafeDeleteNoteTrigger,
+} from '#interfaces/notes';
 import { MutableRefObject, useEffect, useRef, useState } from 'react';
 import { ContentWindow } from '@interface/Landing';
-import { useAddNoteMutation } from '@context/redux/api/notes/notes.slice';
-import { CreateNoteDto } from '~note/dto/note.dto';
+import { useAddNoteMutation, useDeleteNoteMutation } from '@context/redux/api/notes/notes.slice';
+import { CreateNoteDto, DeleteNoteDto } from '~note/dto/note.dto';
 
 /** Detects the creation of a new note and moves the user to the editor to edit that note */
-export const useNewNote = (
+export const useNote = (
   noteList: Note[] | undefined,
   setContentWindow: Setter<ContentWindow>,
   setEditor: (title: string, content: string) => void,
-): UnsafeAddNoteTrigger => {
+): [UnsafeAddNoteTrigger, UnsafeDeleteNoteTrigger] => {
   const [addNote] = useAddNoteMutation();
+  const [deleteNote] = useDeleteNoteMutation();
 
   /** Denotes when we are expecting a newly created Note to be reported */
   const [noteAdded, setNoteAdded] = useState<boolean>(false);
@@ -28,12 +35,18 @@ export const useNewNote = (
     });
   }, [noteAdded, noteList, setContentWindow, setEditor]);
 
-  return (newNote: UnsafeNewNote) => {
+  const addNoteCallback = (newNote: UnsafeCreateNoteDto) => {
     if (newNote?.userId) {
       setNoteAdded(true);
       addNote(newNote as CreateNoteDto);
     }
   };
+  const deleteNoteCallback = (newNote: UnsafeDeleteNoteDto) => {
+    if (newNote?.userId) {
+      deleteNote(newNote as DeleteNoteDto);
+    }
+  };
+  return [addNoteCallback, deleteNoteCallback];
 };
 
 /**

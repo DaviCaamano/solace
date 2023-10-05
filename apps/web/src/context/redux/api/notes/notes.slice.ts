@@ -17,6 +17,7 @@ export const notesSlice = apiSlice.injectEndpoints({
     addNote: addNoteEndpoint(builder),
     updateNote: updateNoteEndpoint(builder),
     deleteNote: deleteNoteEndpoint(builder),
+    //TODO ADD MOVE NOTE ENDPOINT
   }),
   overrideExisting: false,
 });

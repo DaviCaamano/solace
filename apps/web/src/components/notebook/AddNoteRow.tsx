@@ -1,5 +1,6 @@
 import { RefObject, useRef, useState } from 'react';
 import { AddNoteButton } from './buttons';
+import { NoteTitleInput } from '@components/notebook/NoteTitleInput';
 
 type InputRef = RefObject<HTMLInputElement>;
 interface AddNoteRowProps {
@@ -20,7 +21,7 @@ export const AddNoteRow = ({ onClick }: AddNoteRowProps) => {
 
   return (
     <div className={'h-8 text-[1.875rem] text-latte px-4 leading-8 flex justify-start items-center'}>
-      <TitleInput
+      <NoteTitleInput
         toggle={toggle}
         inputRef={inputRef}
         title={title}
@@ -32,35 +33,3 @@ export const AddNoteRow = ({ onClick }: AddNoteRowProps) => {
     </div>
   );
 };
-
-const TitleInput = ({
-  toggle,
-  inputRef,
-  onSubmit,
-  setToggle,
-  title,
-  setTitle,
-}: {
-  toggle: boolean;
-  inputRef: InputRef;
-  onSubmit: () => void;
-  setToggle: Setter<boolean>;
-  title: string;
-  setTitle: Setter<string>;
-}) => (
-  <input
-    id={'add-note-input'}
-    data-testid={'add-note-input'}
-    className={`${toggle ? 'block' : 'pointer-events-none'} flex-1 px-2 border-0 bg-mug text-xl`}
-    ref={inputRef}
-    placeholder={toggle ? 'Title' : ''}
-    onBlur={() => {
-      if (!title) {
-        setToggle(false);
-      }
-    }}
-    value={title}
-    onChange={(event) => setTitle(event.target.value)}
-    onKeyUp={(event) => event.key === 'Enter' && onSubmit()}
-  />
-);

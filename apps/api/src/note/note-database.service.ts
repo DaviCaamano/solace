@@ -5,6 +5,7 @@ import { CreateNoteDto, UpdateNoteDto } from '~note/dto/note.dto';
 import { DatabaseService } from '~persistence/prisma/database.service';
 import { NoteStatus } from '#interfaces/notes/notes.interface';
 import { HttpStatus } from '@nestjs/common/enums/http-status.enum';
+import { Prisma } from '@prisma/client';
 
 @Injectable()
 export class NoteDatabaseService extends ComponentWithLogging {
@@ -65,7 +66,7 @@ export class NoteDatabaseService extends ComponentWithLogging {
     }
   }
 
-  create({ userId, title, content }: CreateNoteDto): Promise<Note> {
+  async create({ userId, title, content, parentId, siblingId }: CreateNoteDto): Promise<Note> {
     if (!userId) {
       this.report('No user id provided for create note', HttpStatus.BAD_REQUEST);
     }
@@ -74,18 +75,31 @@ export class NoteDatabaseService extends ComponentWithLogging {
     }
 
     try {
-      return this.db.note.create({
-        data: {
-          title,
-          content,
-          status: NoteStatus.active,
-          User: {
-            connect: {
-              id: userId,
-            },
+      const query: Prisma.NoteCreateInput = {
+        title,
+        content,
+        status: NoteStatus.active,
+        User: {
+          connect: {
+            id: userId,
           },
         },
-      });
+      };
+      if (parentId) {
+        query.Parent = {
+          connect: {
+            id: parentId,
+          },
+        };
+      }
+      if (siblingId) {
+        query.Sibling = {
+          connect: {
+            id: siblingId,
+          },
+        };
+      }
+      return this.db.note.create({ data: query });
     } catch (err: any) {
       this.report('Failed to create note', err);
     }
