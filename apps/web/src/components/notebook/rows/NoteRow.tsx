@@ -22,7 +22,7 @@ export const NoteRow = ({ addNote, children, deleteNote, level = 0, name, note, 
 
   //TODO FOR NOTE ROW:
   //Send Note to Editor
-  //Allow creation of child note
+  // [Done] Allow creation of child note
   //Allow Deletion of Note
   // [Done] Display Note Children
   //    [Done] Recursively display children of children
