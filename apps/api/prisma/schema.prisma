@@ -17,8 +17,7 @@ model User {
     name                                    String?
     nickname                                String?
     picture                                 String?
-
-    Notes                                   Note[]
+    Notes                                   Note[]                  @relation(name: "Author")
 }
 
 model Note {
@@ -27,16 +26,18 @@ model Note {
     content                                 String?
     userId                                  String
     parentId                                String?
-    siblingId                               String?                 @unique
+    next                                    String?                 @unique
     status                                  NoteStatus
     createdAt                               DateTime?               @default(now()) @ignore
     updatedAt                               DateTime?               @updatedAt @ignore
 
-    User                                    User                    @relation(fields: [userId], references: [id])
-    Parent                                  Note?                   @relation("parent", fields: [parentId], references: [id])
-    Sibling                                 Note?                   @relation("sibling", fields: [siblingId], references: [id])
-    OlderSibling                            Note?                   @relation("sibling")
-    Children                                Note[]                  @relation("parent")
+    User                                    User                    @relation(name: "Author", fields: [userId], references: [id])
+
+    Parent                                  Note?                   @relation(name: "Parent", fields: [parentId], references: [id])
+    Children                                Note[]                  @relation(name: "Parent")
+
+    Next                                    Note?                   @relation(name: "Next", fields: [next], references: [id])
+    Prev                                    Note?                   @relation(name: "Next")
 }
 
 enum NoteStatus {

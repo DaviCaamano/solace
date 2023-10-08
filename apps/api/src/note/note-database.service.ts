@@ -1,9 +1,9 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { ComponentWithLogging } from '~utils/logging';
-import { NoteFindManyArgs, Note, NoteUpdateArgs } from 'prisma';
+import { Note, NoteUpdateArgs, User } from 'prisma';
 import { CreateNoteDto, UpdateNoteDto } from '~note/dto/note.dto';
 import { DatabaseService } from '~persistence/prisma/database.service';
-import { NoteStatus } from '#interfaces/notes/notes.interface';
+import { ListNotesResponse, NoteStatus } from '#interfaces/notes/notes.interface';
 import { HttpStatus } from '@nestjs/common/enums/http-status.enum';
 import { Prisma } from '@prisma/client';
 
@@ -24,23 +24,29 @@ export class NoteDatabaseService extends ComponentWithLogging {
     });
   }
 
-  list(userId: string, includeDeleted: boolean = false): Promise<Note[]> {
+  async list(userId: string): Promise<Note[]> {
     if (!userId) {
       this.report('No user id provided for list notes', HttpStatus.BAD_REQUEST);
     }
 
-    const query: NoteFindManyArgs = {
-      where: {
-        User: {
-          id: userId,
-        },
-      },
-    };
-    if (!includeDeleted) {
-      query.where.status = NoteStatus.active;
-    }
     try {
-      return this.db.note.findMany();
+      return correctParentIdCase(
+        await this.db.$queryRaw`
+        WITH RECURSIVE noteTree(id, title, content, status, next, parentId, depth) AS (
+            SELECT parent.id, parent.title, parent.content, parent.status, parent.next, parent."parentId", 0 as depth
+            FROM "Note" parent
+            WHERE parent."userId" = ${userId}
+              AND parent."parentId" is null
+              and parent."id" is not null
+            UNION ALL
+            SELECT child.id, child.title, child.content, child.status, child.next, child."parentId", noteTree."depth" + 1
+            FROM "Note" child
+                     INNER JOIN noteTree ON child."parentId" = noteTree."id"
+            where  child."id" is not null
+        )
+        SELECT *
+        FROM noteTree;`,
+      );
     } catch (err: any) {
       this.report('Failed to list notes', err);
     }
@@ -66,7 +72,7 @@ export class NoteDatabaseService extends ComponentWithLogging {
     }
   }
 
-  async create({ userId, title, content, parentId, siblingId }: CreateNoteDto): Promise<Note> {
+  async create({ userId, title, content, parentId, next }: CreateNoteDto): Promise<Note> {
     if (!userId) {
       this.report('No user id provided for create note', HttpStatus.BAD_REQUEST);
     }
@@ -84,6 +90,7 @@ export class NoteDatabaseService extends ComponentWithLogging {
         },
       },
     };
+
     if (parentId) {
       query.Parent = {
         connect: {
@@ -92,52 +99,22 @@ export class NoteDatabaseService extends ComponentWithLogging {
       };
     }
 
-    let newNote, previousFirstChild;
-
-    if (siblingId) {
-      query.Sibling = {
+    if (next) {
+      query.Next = {
         connect: {
-          id: siblingId,
+          id: next,
         },
       };
-      /**
-       * Parent specified, but sibling is not.
-       * This child will be created as the first child (first displayed in ordered lists)
-       */
-    } else if (parentId) {
-      try {
-        previousFirstChild = await this.getFirstChild(parentId);
-      } catch (err: any) {
-        this.report('Failed to retrieve first child of parent');
-      }
     }
 
     try {
-      newNote = await this.db.note.create({ data: query });
+      return await this.db.note.create({ data: query });
     } catch (err: any) {
       this.report('Failed to create note', err);
     }
-
-    try {
-      if (previousFirstChild) {
-        await this.db.note.update({
-          where: { id: previousFirstChild.id },
-          data: {
-            siblingId: newNote.id,
-          },
-        });
-      }
-    } catch (err: any) {
-      if (newNote) {
-        this.report('Failed to update first child that was moved from first position. Deleting new Child entry');
-        await this.db.note.delete({ where: { id: newNote.id } });
-      } else {
-        this.report('Failed to update first child that was moved from first position.');
-      }
-    }
   }
 
-  update({ id, userId, title, content, status }: UpdateNoteDto): Promise<Note> {
+  update({ id, userId, title, content, head, next, status }: UpdateNoteDto): Promise<Note> {
     if (!id) {
       this.report('No note id provided for update note', HttpStatus.BAD_REQUEST);
     }
@@ -154,6 +131,10 @@ export class NoteDatabaseService extends ComponentWithLogging {
       data: {},
     };
 
+    if (!title && !content && !status && !head && !next) {
+      this.report('Cannot Update Note: No fields to Update');
+    }
+
     if (title) {
       query.data.title = title;
     }
@@ -162,6 +143,12 @@ export class NoteDatabaseService extends ComponentWithLogging {
     }
     if (status) {
       query.data.status = status;
+    }
+    if (head) {
+      query.data.head = head;
+    }
+    if (next) {
+      query.data.next = next;
     }
 
     try {
@@ -193,6 +180,14 @@ export class NoteDatabaseService extends ComponentWithLogging {
       this.report('Failed to delete note', err);
     }
   }
-
-  getFirstChild = (parentId: string) => this.db.note.findFirst({ where: { parentId, siblingId: null } });
 }
+
+const correctParentIdCase = (notes: Note[]) => {
+  for (let index = 0; index < notes.length; index++) {
+    if (typeof notes[index].parentid !== 'undefined') {
+      notes[index].parentId = notes[index].parentid;
+      delete notes[index].parentid;
+    }
+  }
+  return notes;
+};

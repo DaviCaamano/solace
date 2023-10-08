@@ -28,7 +28,7 @@ export class CreateNoteDto {
   parentId?: string;
 
   @IsOptional()
-  siblingId?: string;
+  next?: string;
 }
 
 export class UpdateNoteDto {
@@ -43,6 +43,12 @@ export class UpdateNoteDto {
 
   @IsNotEmpty()
   content: string;
+
+  @IsOptional()
+  head: string;
+
+  @IsOptional()
+  next: string;
 
   @IsOptional()
   status: NoteStatus;

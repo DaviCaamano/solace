@@ -21,9 +21,7 @@ export class NoteService extends ComponentWithLogging {
     });
   }
 
-  list = async (userId: string): Promise<ListNotesResponse> => ({
-    notes: await this.dbService.list(userId),
-  });
+  list = async (userId: string): Promise<ListNotesResponse> => ({ notes: await this.dbService.list(userId) });
 
   get = async (id: string, userId: string): Promise<NoteResponse> => ({ note: await this.dbService.get(id, userId) });
 

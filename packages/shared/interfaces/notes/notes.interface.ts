@@ -1,11 +1,12 @@
 import { CreateNoteDto, DeleteNoteDto } from '~note/dto/note.dto';
+import { DragEvent } from 'react';
 
 export interface Note {
   id: string;
   title: string;
   content: string;
   parentId?: string;
-  siblingId?: string;
+  next?: string;
   createdAt: string;
   updatedAt: string;
   userId: string;
@@ -27,8 +28,13 @@ export interface NoteResponse {
   note: Note;
 }
 
+export interface TreeNote extends Note {
+  depth: number;
+  children?: TreeNote[]; //Not provided by Backend
+}
+
 export interface ListNotesResponse {
-  notes: Note[];
+  notes: TreeNote[];
 }
 
 export interface DeleteNoteResponse {
@@ -43,3 +49,10 @@ export interface UnsafeDeleteNoteDto extends Omit<DeleteNoteDto, 'userId'> {
 }
 export type UnsafeAddNoteTrigger = (newNote: UnsafeCreateNoteDto) => void;
 export type UnsafeDeleteNoteTrigger = (deleteDto: UnsafeDeleteNoteDto) => void;
+
+export interface NotebookDragEventsHandlers {
+  onDragStart: (event: DragEvent<HTMLDivElement>) => void;
+  onDragEnd: (event: React.DragEvent<HTMLDivElement>) => void;
+  onDragEnter: (event: DragEvent<HTMLDivElement>) => void;
+}
+export type NotebookDragEvents = (noteId: string) => NotebookDragEventsHandlers;

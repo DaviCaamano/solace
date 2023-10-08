@@ -1,21 +1,25 @@
 import {
   Note,
+  NotebookDragEvents,
   UnsafeAddNoteTrigger,
   UnsafeCreateNoteDto,
   UnsafeDeleteNoteDto,
   UnsafeDeleteNoteTrigger,
 } from '#interfaces/notes';
-import { MutableRefObject, useEffect, useRef, useState } from 'react';
+import { DragEvent, MutableRefObject, useEffect, useRef, useState } from 'react';
 import { ContentWindow } from '@interface/Landing';
 import { useAddNoteMutation, useDeleteNoteMutation } from '@context/redux/api/notes/notes.slice';
 import { CreateNoteDto, DeleteNoteDto } from '~note/dto/note.dto';
+import { Simulate } from 'react-dom/test-utils';
+import dragOver = Simulate.dragOver;
 
+type OpenEditorCallback = (title: string, content?: string, id?: string) => void;
 /** Detects the creation of a new note and moves the user to the editor to edit that note */
-export const useNote = (
+export const useNotebook = (
   noteList: Note[] | undefined,
   setContentWindow: Setter<ContentWindow>,
-  setEditor: (title: string, content: string) => void,
-): [UnsafeAddNoteTrigger, UnsafeDeleteNoteTrigger] => {
+  setEditor: (title: string, content: string, id?: string) => void,
+): [UnsafeAddNoteTrigger, UnsafeDeleteNoteTrigger, OpenEditorCallback, NotebookDragEvents] => {
   const [addNote] = useAddNoteMutation();
   const [deleteNote] = useDeleteNoteMutation();
 
@@ -46,7 +50,40 @@ export const useNote = (
       deleteNote(newNote as DeleteNoteDto);
     }
   };
-  return [addNoteCallback, deleteNoteCallback];
+
+  const dragItem = useRef<string | undefined>();
+  const dragOverItem = useRef<string | undefined>();
+
+  const onDragStart = (noteId: string) => (event: DragEvent<HTMLDivElement>) => {
+    dragItem.current = noteId;
+  };
+
+  const onDragEnter = (noteId: string) => (event: DragEvent<HTMLDivElement>) => {
+    dragOverItem.current = noteId;
+  };
+  const onDragEnd = (event: DragEvent<HTMLDivElement>) => {
+    // @ts-ignore
+    if (event.target?.style?.top) {
+      // @ts-ignore
+      event.target.style.x = event.y + 'px';
+    }
+
+    if (dragItem.current && dragOverItem.current) {
+      ///Handle Logic to swap these two noteId's in the linked list.
+    }
+  };
+
+  const dragEvents: NotebookDragEvents = (noteId: string) => ({
+    onDragStart: onDragStart(noteId),
+    onDragEnd,
+    onDragEnter: onDragEnter(noteId),
+  });
+
+  const openEditor = (title: string, content?: string, id?: string) => {
+    setEditor(title, content || '', id);
+    setContentWindow(ContentWindow.editor);
+  };
+  return [addNoteCallback, deleteNoteCallback, openEditor, dragEvents];
 };
 
 /**
@@ -56,7 +93,7 @@ export const useNote = (
  *      This is used to detect when a new entry has been added.
  *      If that entry was expected (noteAdded state set to true;
  */
-const getNewNote = (noteList: Note[], stickyNoteList: Note[] | undefined) => {
+const getNewNote = (noteList: Note[], stickyNoteList: Note[] | undefined): Note | undefined => {
   return noteList?.find(({ id }: Note) => {
     const matchingStickyNote: Note | undefined = stickyNoteList?.find(({ id: stickyId }: Note) => id === stickyId);
     return !matchingStickyNote;
@@ -69,7 +106,7 @@ interface HandleNewNoteArgs {
   stickyList: MutableRefObject<NoteList>;
   noteAdded: boolean;
   setNoteAdded: Setter<boolean>;
-  setEditor: (title: string, content: string) => void;
+  setEditor: (title: string, content: string, id?: string) => void;
   setContentWindow: Setter<ContentWindow>;
 }
 
@@ -96,11 +133,11 @@ const handleNewNote = ({
   if (noteList?.length !== stickyList.current?.length) {
     const stickyNotes = stickyList.current;
     if (noteAdded && noteList && stickyNotes) {
-      const newNoteTitle = getNewNote(noteList, stickyNotes)?.title;
+      const newNote: Note | undefined = getNewNote(noteList, stickyNotes);
       setNoteAdded(false);
       stickyList.current = noteList;
-      if (newNoteTitle) {
-        setEditor(newNoteTitle, '');
+      if (newNote) {
+        setEditor(newNote.title, '', newNote.id);
         setContentWindow(ContentWindow.editor);
       }
     } else {

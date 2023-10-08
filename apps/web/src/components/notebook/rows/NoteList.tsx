@@ -1,15 +1,23 @@
 import { NoteRow } from '@components/notebook/rows/NoteRow';
-import { LinkedNote, UnsafeAddNoteTrigger, UnsafeDeleteNoteTrigger } from '#interfaces/notes';
-
+import { NotebookDragEvents, TreeNote, UnsafeAddNoteTrigger, UnsafeDeleteNoteTrigger } from '#interfaces/notes';
 interface NoteListProps {
   addNote: UnsafeAddNoteTrigger;
   deleteNote: UnsafeDeleteNoteTrigger;
+  dragEvents: NotebookDragEvents;
   level?: number;
-  noteList?: LinkedNote[] | undefined;
-  setEditor: (title: string, content: string) => void;
+  noteList?: TreeNote[] | undefined;
+  openEditor: (title: string, content: string, id?: string) => void;
   userId: string | undefined;
 }
-export const NoteList = ({ addNote, deleteNote, level = 0, noteList, setEditor, userId }: NoteListProps) => {
+export const NoteList = ({
+  addNote,
+  deleteNote,
+  dragEvents,
+  level = 0,
+  noteList,
+  openEditor,
+  userId,
+}: NoteListProps) => {
   if (!noteList?.length) {
     return null;
   }
@@ -22,16 +30,18 @@ export const NoteList = ({ addNote, deleteNote, level = 0, noteList, setEditor, 
       addNote={addNote}
       deleteNote={deleteNote}
       level={level}
-      setEditor={setEditor}
+      openEditor={openEditor}
       userId={userId}
+      dragEvents={dragEvents}
     >
       <NoteList
         addNote={addNote}
         deleteNote={deleteNote}
         level={level + 1}
         noteList={note.children}
-        setEditor={setEditor}
+        openEditor={openEditor}
         userId={userId}
+        dragEvents={dragEvents}
       />
     </NoteRow>
   ));

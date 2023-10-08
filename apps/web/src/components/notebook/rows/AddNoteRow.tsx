@@ -1,4 +1,4 @@
-import { RefObject, useRef, useState } from 'react';
+import { useState } from 'react';
 import { AddNoteButton } from '../buttons';
 import { NoteTitleInput } from '@components/notebook/input/NoteTitleInput';
 
