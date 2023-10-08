@@ -1,9 +1,18 @@
-import { DragEvent, PropsWithChildren, useState } from 'react';
+import { PropsWithChildren, useState } from 'react';
 import { AddNoteButton, RemoveNoteButton } from '../buttons';
 import { LinkedNote, NotebookDragEvents, UnsafeAddNoteTrigger, UnsafeDeleteNoteTrigger } from '#interfaces/notes';
 import styles from '../notebook.module.css';
 import { AddChildRow } from './AddChildRow';
+import Draggable from 'react-draggable';
 
+interface DragPos {
+  x: number;
+  y: number;
+}
+const initialDragPos = {
+  x: 0,
+  y: 0,
+};
 interface NoteRowProps extends PropsWithChildren {
   addNote: UnsafeAddNoteTrigger;
   deleteNote: UnsafeDeleteNoteTrigger;
@@ -26,6 +35,20 @@ export const NoteRow = ({
   userId,
 }: NoteRowProps) => {
   const [createChildToggle, setCreateChildToggle] = useState<boolean>(false);
+  const [dragPos, setDragPos] = useState<DragPos | undefined>();
+  const [dragActive, setDragActive] = useState<boolean>(false);
+  const dragHandlers = {
+    ...dragEvents(note.id, {
+      onDrag: () => {},
+      onStart: () => {
+        setDragActive(true);
+      },
+      onStop: () => {
+        setDragPos(initialDragPos);
+        setDragActive(false);
+      },
+    }),
+  };
 
   const deleteNoteOnClick = () => {};
   const sendNoteToEditor = () => {
@@ -53,30 +76,30 @@ export const NoteRow = ({
 
   const marginLeft = level * 0.75 + 'rem';
   return (
-    <div
-      className={`note-row ${name} ${styles.noteRow}`}
-      data-testid={name}
-      style={{ marginLeft: marginLeft, width: `calc(100% - ${marginLeft})` }}
-      draggable
-      {...dragEvents(note.id)}
-    >
-      <div className={`note-row-parent ${styles.noteRowParent} h-8 w-full flex flex-row pl-4`}>
-        <div
-          className={'note-title flex-1 h-8 overflow-hidden whitespace-nowrap overflow-ellipsis cursor-pointer'}
-          onClick={sendNoteToEditor}
-        >
-          {note.title}
+    <Draggable axis={'y'} position={dragPos} {...dragHandlers}>
+      <div
+        className={`note-row ${name} ${styles.noteRow}`}
+        data-testid={name}
+        style={{ marginLeft: marginLeft, width: `calc(100% - ${marginLeft})` }}
+      >
+        <div className={`note-row-parent ${styles.noteRowParent} h-8 w-full flex flex-row pl-4`}>
+          <div
+            className={'note-title flex-1 h-8 overflow-hidden whitespace-nowrap overflow-ellipsis cursor-pointer'}
+            onClick={() => dragActive && sendNoteToEditor}
+          >
+            {note.title}
+          </div>
+          <RowButtons
+            createChildToggle={() => {
+              setCreateChildToggle(true);
+            }}
+            deleteNote={deleteNoteOnClick}
+          />
         </div>
-        <RowButtons
-          createChildToggle={() => {
-            setCreateChildToggle(true);
-          }}
-          deleteNote={deleteNoteOnClick}
-        />
+        <AddChildRow onSubmit={submitChildNote} setToggle={setCreateChildToggle} toggle={createChildToggle} />
+        {children}
       </div>
-      <AddChildRow onSubmit={submitChildNote} setToggle={setCreateChildToggle} toggle={createChildToggle} />
-      {children}
-    </div>
+    </Draggable>
   );
 };
 

@@ -51,8 +51,13 @@ export type UnsafeAddNoteTrigger = (newNote: UnsafeCreateNoteDto) => void;
 export type UnsafeDeleteNoteTrigger = (deleteDto: UnsafeDeleteNoteDto) => void;
 
 export interface NotebookDragEventsHandlers {
-  onDragStart: (event: DragEvent<HTMLDivElement>) => void;
-  onDragEnd: (event: React.DragEvent<HTMLDivElement>) => void;
-  onDragEnter: (event: DragEvent<HTMLDivElement>) => void;
+  onDrag: (event: DragEvent<HTMLDivElement>) => void;
+  onStart: (event: React.DragEvent<HTMLDivElement>) => void;
+  onStop: (event: DragEvent<HTMLDivElement>) => void;
 }
-export type NotebookDragEvents = (noteId: string) => NotebookDragEventsHandlers;
+export interface DragCallBacks {
+  onDrag?: () => void;
+  onStart?: () => void;
+  onStop?: () => void;
+}
+export type NotebookDragEvents = (noteId: string, callback?: DragCallBacks) => NotebookDragEventsHandlers;

@@ -1,4 +1,5 @@
 import {
+  DragCallBacks,
   Note,
   NotebookDragEvents,
   UnsafeAddNoteTrigger,
@@ -10,8 +11,6 @@ import { DragEvent, MutableRefObject, useEffect, useRef, useState } from 'react'
 import { ContentWindow } from '@interface/Landing';
 import { useAddNoteMutation, useDeleteNoteMutation } from '@context/redux/api/notes/notes.slice';
 import { CreateNoteDto, DeleteNoteDto } from '~note/dto/note.dto';
-import { Simulate } from 'react-dom/test-utils';
-import dragOver = Simulate.dragOver;
 
 type OpenEditorCallback = (title: string, content?: string, id?: string) => void;
 /** Detects the creation of a new note and moves the user to the editor to edit that note */
@@ -54,29 +53,32 @@ export const useNotebook = (
   const dragItem = useRef<string | undefined>();
   const dragOverItem = useRef<string | undefined>();
 
-  const onDragStart = (noteId: string) => (event: DragEvent<HTMLDivElement>) => {
+  const onDrag = (noteId: string, callback?: () => void) => (event: DragEvent<HTMLDivElement>) => {
+    event.stopPropagation();
+    callback?.();
+
     dragItem.current = noteId;
   };
 
-  const onDragEnter = (noteId: string) => (event: DragEvent<HTMLDivElement>) => {
+  const onDragStop = (noteId: string, callback?: () => void) => (event: DragEvent<HTMLDivElement>) => {
+    event.stopPropagation();
+    callback?.();
+
     dragOverItem.current = noteId;
   };
-  const onDragEnd = (event: DragEvent<HTMLDivElement>) => {
-    // @ts-ignore
-    if (event.target?.style?.top) {
-      // @ts-ignore
-      event.target.style.x = event.y + 'px';
-    }
+  const onDragStart = (callback?: () => void) => (event: DragEvent<HTMLDivElement>) => {
+    event.stopPropagation();
+    callback?.();
 
     if (dragItem.current && dragOverItem.current) {
       ///Handle Logic to swap these two noteId's in the linked list.
     }
   };
 
-  const dragEvents: NotebookDragEvents = (noteId: string) => ({
-    onDragStart: onDragStart(noteId),
-    onDragEnd,
-    onDragEnter: onDragEnter(noteId),
+  const dragEvents: NotebookDragEvents = (noteId: string, callback?: DragCallBacks) => ({
+    onDrag: onDrag(noteId, callback?.onDrag),
+    onStart: onDragStart(callback?.onStart),
+    onStop: onDragStop(noteId, callback?.onStop),
   });
 
   const openEditor = (title: string, content?: string, id?: string) => {
