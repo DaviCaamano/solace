@@ -23,17 +23,19 @@ export const NoteList = ({
   }
 
   return noteList?.map((note, index) => (
-    <NoteRow
-      key={'note-row-' + index}
-      name={'note-row-' + index}
-      note={note}
-      addNote={addNote}
-      deleteNote={deleteNote}
-      level={level}
-      openEditor={openEditor}
-      userId={userId}
-      dragEvents={dragEvents}
-    >
+    <div className={'note-row-container w-full'}>
+      <NoteRow
+        key={'note-row-' + index}
+        name={'note-row-' + index}
+        note={note}
+        addNote={addNote}
+        deleteNote={deleteNote}
+        descendants={getDescendantIds(note)}
+        level={level}
+        openEditor={openEditor}
+        userId={userId}
+        drag={dragEvents}
+      />
       <NoteList
         addNote={addNote}
         deleteNote={deleteNote}
@@ -43,6 +45,16 @@ export const NoteList = ({
         userId={userId}
         dragEvents={dragEvents}
       />
-    </NoteRow>
+    </div>
   ));
+};
+
+const getDescendantIds = (note: TreeNote, list: string[] = []) => {
+  list.push(note.id);
+  if (note.children) {
+    for (let child of note.children) {
+      getDescendantIds(child, list);
+    }
+  }
+  return list;
 };

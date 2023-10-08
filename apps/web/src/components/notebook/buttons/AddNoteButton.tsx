@@ -29,6 +29,7 @@ export const NoteRowButton = ({ children, disabled, name, onClick }: NoteRowButt
     }`}
     onClick={onClick}
     disabled={disabled}
+    onMouseDown={(event) => event.stopPropagation()}
   >
     {children}
   </button>

@@ -1,59 +1,42 @@
-import { PropsWithChildren, useState } from 'react';
-import { AddNoteButton, RemoveNoteButton } from '../buttons';
-import { LinkedNote, NotebookDragEvents, UnsafeAddNoteTrigger, UnsafeDeleteNoteTrigger } from '#interfaces/notes';
+import React, { PropsWithChildren, useState } from 'react';
+import {
+  DraggedNotes,
+  TreeNote,
+  NotebookDragEvents,
+  UnsafeAddNoteTrigger,
+  UnsafeDeleteNoteTrigger,
+} from '#interfaces/notes';
 import styles from '../notebook.module.css';
 import { AddChildRow } from './AddChildRow';
-import Draggable from 'react-draggable';
+import DragIndicatorIcon from '@mui/icons-material/DragIndicator';
+import { RowButtons } from '../buttons';
+import { DragRowWrapper, rowTargetCss } from '@components/notebook';
 
-interface DragPos {
-  x: number;
-  y: number;
-}
-const initialDragPos = {
-  x: 0,
-  y: 0,
-};
+type OpenEditor = (title: string, content: string, id?: string) => void;
 interface NoteRowProps extends PropsWithChildren {
   addNote: UnsafeAddNoteTrigger;
   deleteNote: UnsafeDeleteNoteTrigger;
-  dragEvents: NotebookDragEvents;
+  drag: NotebookDragEvents;
+  descendants: string[];
   level?: number;
   name: string;
-  note: LinkedNote;
-  openEditor: (title: string, content: string, id?: string) => void;
+  note: TreeNote;
+  openEditor: OpenEditor;
   userId: string | undefined;
 }
 export const NoteRow = ({
   addNote,
   children,
   deleteNote,
-  dragEvents,
+  descendants,
+  drag,
   level = 0,
   name,
   note,
   openEditor,
   userId,
 }: NoteRowProps) => {
-  const [createChildToggle, setCreateChildToggle] = useState<boolean>(false);
-  const [dragPos, setDragPos] = useState<DragPos | undefined>();
-  const [dragActive, setDragActive] = useState<boolean>(false);
-  const dragHandlers = {
-    ...dragEvents(note.id, {
-      onDrag: () => {},
-      onStart: () => {
-        setDragActive(true);
-      },
-      onStop: () => {
-        setDragPos(initialDragPos);
-        setDragActive(false);
-      },
-    }),
-  };
-
-  const deleteNoteOnClick = () => {};
-  const sendNoteToEditor = () => {
-    openEditor(note.title, note.content, note.id);
-  };
+  const [createToggle, setCreateToggle] = useState<boolean>(false);
 
   //TODO FOR NOTE ROW:
   // [Done] Send Note to Editor
@@ -64,7 +47,7 @@ export const NoteRow = ({
   // Allow Drag re-ordering of children ((SEE TODO IN notes.slice.ts))
   //    Allow change in dept of Note as part of reordering
 
-  const submitChildNote = (title: string) => {
+  const addChildSubmit = (title: string) => {
     if (userId) {
       addNote({
         userId,
@@ -74,48 +57,77 @@ export const NoteRow = ({
     }
   };
 
-  const marginLeft = level * 0.75 + 'rem';
+  const handlers = drag(note.id);
+  const {
+    active: { beingDragged: draggedNote, dropTarget },
+  } = handlers;
+
   return (
-    <Draggable axis={'y'} position={dragPos} {...dragHandlers}>
-      <div
-        className={`note-row ${name} ${styles.noteRow}`}
-        data-testid={name}
-        style={{ marginLeft: marginLeft, width: `calc(100% - ${marginLeft})` }}
-      >
-        <div className={`note-row-parent ${styles.noteRowParent} h-8 w-full flex flex-row pl-4`}>
-          <div
-            className={'note-title flex-1 h-8 overflow-hidden whitespace-nowrap overflow-ellipsis cursor-pointer'}
-            onClick={() => dragActive && sendNoteToEditor}
-          >
-            {note.title}
-          </div>
-          <RowButtons
-            createChildToggle={() => {
-              setCreateChildToggle(true);
-            }}
-            deleteNote={deleteNoteOnClick}
-          />
-        </div>
-        <AddChildRow onSubmit={submitChildNote} setToggle={setCreateChildToggle} toggle={createChildToggle} />
-        {children}
-      </div>
-    </Draggable>
+    <DragRowWrapper
+      containerName={name}
+      descendants={descendants}
+      beingDragged={draggedNote}
+      dropTarget={dropTarget}
+      handlers={handlers}
+      noteId={note.id}
+    >
+      <Row
+        deleteNote={deleteNote}
+        draggedNotes={handlers.active}
+        level={level}
+        containerName={name}
+        note={note}
+        openEditor={openEditor}
+        setCreateToggle={setCreateToggle}
+      />
+      <AddChildRow onSubmit={addChildSubmit} setToggle={setCreateToggle} toggle={createToggle} />
+      {children}
+    </DragRowWrapper>
   );
 };
 
-interface RowButtonsProps {
-  deleteNote: () => void;
-  createChildToggle: Setter<boolean>;
+interface RowProps {
+  deleteNote: UnsafeDeleteNoteTrigger;
+  draggedNotes: DraggedNotes;
+  level: number;
+  containerName: string;
+  note: TreeNote;
+  openEditor: OpenEditor;
+  setCreateToggle: Setter<boolean>;
 }
-const RowButtons = ({ createChildToggle, deleteNote }: RowButtonsProps) => {
+const Row = ({
+  deleteNote,
+  draggedNotes: { beingDragged, dropTarget },
+  level,
+  containerName,
+  note,
+  openEditor,
+  setCreateToggle,
+}: RowProps) => {
+  const marginRight = 0.5 + level + 'rem';
+  const dragButton = `${containerName}-drag-button ${styles.dragIndicator}`;
+
+  const deleteNoteOnClick = () => {};
+  const sendNoteToEditor = () => {
+    openEditor(note.title, note.content, note.id);
+  };
+
   return (
-    <div className={'row-buttons-container w-16 h-8'}>
-      <div className={`row-buttons ${styles.noteRowButtons} h-full flex-row justify-center items-center`}>
-        <AddNoteButton onClick={() => createChildToggle(true)} />
-        <div className={'ml-2'} />
-        <RemoveNoteButton onClick={deleteNote} />
-        <div className={'mr-2'} />
+    <div className={`note-row-parent ${styles.noteRowParent} ${rowTargetCss(beingDragged, dropTarget, note.id)}`}>
+      <DragIndicatorIcon className={dragButton} style={{ marginRight, fontSize: '2rem' }} />
+      <div
+        className={'note-title flex-1 h-8 overflow-hidden whitespace-nowrap overflow-ellipsis cursor-pointer'}
+        onClick={() => sendNoteToEditor()}
+      >
+        {note.title}
       </div>
+      <RowButtons
+        show={!beingDragged}
+        createChildToggle={() => {
+          setCreateToggle(true);
+        }}
+        deleteNote={deleteNoteOnClick}
+      />
     </div>
   );
 };

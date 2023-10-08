@@ -2,10 +2,10 @@ import { ContentWindow } from '@interface/Landing';
 import styles from './notebook.module.css';
 import { AddNoteRow } from '@components/notebook/rows/AddNoteRow';
 import { useEditorContext, useListNotes } from '@hooks/context';
-import { useNotebook } from '@components/editor/hooks';
 import { NoteList } from '@components/notebook/rows/NoteList';
 import { getNoteHeiarchy } from '@components/notebook/utils';
 import { useMemo } from 'react';
+import { useNotebook } from '@components/notebook/hooks';
 
 interface NotebookProps {
   setContentWindow: Setter<ContentWindow>;

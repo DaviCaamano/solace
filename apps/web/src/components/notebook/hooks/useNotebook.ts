@@ -1,5 +1,4 @@
 import {
-  DragCallBacks,
   Note,
   NotebookDragEvents,
   UnsafeAddNoteTrigger,
@@ -7,10 +6,11 @@ import {
   UnsafeDeleteNoteDto,
   UnsafeDeleteNoteTrigger,
 } from '#interfaces/notes';
-import { DragEvent, MutableRefObject, useEffect, useRef, useState } from 'react';
+import { MutableRefObject, useEffect, useRef, useState } from 'react';
 import { ContentWindow } from '@interface/Landing';
 import { useAddNoteMutation, useDeleteNoteMutation } from '@context/redux/api/notes/notes.slice';
 import { CreateNoteDto, DeleteNoteDto } from '~note/dto/note.dto';
+import { useDraggableRow } from '@components/notebook/hooks/useDraggableRow';
 
 type OpenEditorCallback = (title: string, content?: string, id?: string) => void;
 /** Detects the creation of a new note and moves the user to the editor to edit that note */
@@ -26,6 +26,7 @@ export const useNotebook = (
   const [noteAdded, setNoteAdded] = useState<boolean>(false);
   const stickyList = useRef<Note[] | undefined>();
 
+  const dragEvents = useDraggableRow();
   /** Detect when a new note was both expected and added then move user to editor to edit new note. */
   useEffect(() => {
     handleNewNote({
@@ -49,37 +50,6 @@ export const useNotebook = (
       deleteNote(newNote as DeleteNoteDto);
     }
   };
-
-  const dragItem = useRef<string | undefined>();
-  const dragOverItem = useRef<string | undefined>();
-
-  const onDrag = (noteId: string, callback?: () => void) => (event: DragEvent<HTMLDivElement>) => {
-    event.stopPropagation();
-    callback?.();
-
-    dragItem.current = noteId;
-  };
-
-  const onDragStop = (noteId: string, callback?: () => void) => (event: DragEvent<HTMLDivElement>) => {
-    event.stopPropagation();
-    callback?.();
-
-    dragOverItem.current = noteId;
-  };
-  const onDragStart = (callback?: () => void) => (event: DragEvent<HTMLDivElement>) => {
-    event.stopPropagation();
-    callback?.();
-
-    if (dragItem.current && dragOverItem.current) {
-      ///Handle Logic to swap these two noteId's in the linked list.
-    }
-  };
-
-  const dragEvents: NotebookDragEvents = (noteId: string, callback?: DragCallBacks) => ({
-    onDrag: onDrag(noteId, callback?.onDrag),
-    onStart: onDragStart(callback?.onStart),
-    onStop: onDragStop(noteId, callback?.onStop),
-  });
 
   const openEditor = (title: string, content?: string, id?: string) => {
     setEditor(title, content || '', id);
