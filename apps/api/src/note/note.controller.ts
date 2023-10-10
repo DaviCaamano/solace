@@ -1,7 +1,7 @@
 import { Body, Controller, Delete, Get, Post, Put, Query } from '@nestjs/common';
-import { NoteService } from './note.service';
-import { CreateNoteDto, DeleteNoteDto, GetNoteDto, ListNotesDto, UpdateNoteDto } from '~note/dto/note.dto';
-import { DeleteNoteResponse, ListNotesResponse, NoteResponse } from '#interfaces/notes';
+import { NoteService } from './services/note.service';
+import { CreateNoteDto, DeleteNoteDto, GetNoteDto, ListNotesDto, MoveNoteDto, UpdateNoteDto } from '~note/dto/note.dto';
+import { SuccessNoteResponse, ListNotesResponse, NoteResponse } from '#interfaces/notes';
 
 @Controller('note')
 export class NoteController {
@@ -27,8 +27,13 @@ export class NoteController {
     return this.noteService.update(updatedNote);
   }
 
+  @Put('move')
+  move(@Body() moveNoteData: MoveNoteDto): Promise<SuccessNoteResponse> {
+    return this.noteService.move(moveNoteData);
+  }
+
   @Delete()
-  delete(@Body() { id, userId }: DeleteNoteDto): Promise<DeleteNoteResponse> {
+  delete(@Body() { id, userId }: DeleteNoteDto): Promise<SuccessNoteResponse> {
     return this.noteService.delete(id, userId);
   }
 }

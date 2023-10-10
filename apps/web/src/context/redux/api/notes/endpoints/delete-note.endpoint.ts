@@ -1,4 +1,4 @@
-import { DeleteNoteResponse } from '#interfaces/notes';
+import { SuccessNoteResponse } from '#interfaces/notes';
 import { HttpMethod } from '#interfaces/http';
 import { ReduxQueryBuilder } from '#interfaces/redux';
 import { DeleteNoteDto } from '~note/dto/note.dto';
@@ -10,7 +10,7 @@ export const deleteNoteEndpoint = (builder: ReduxQueryBuilder) =>
       method: HttpMethod.delete,
       body,
     }),
-    transformResponse: ({ data: note }: FetchResponse<DeleteNoteResponse>) => {
+    transformResponse: ({ data: note }: FetchResponse<SuccessNoteResponse>) => {
       return note?.success || false;
     },
     invalidatesTags: [{ type: 'Note', id: 'LIST' }],

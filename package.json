@@ -18,14 +18,12 @@
     "migrate": "cross-env dotenv -e .env prisma migrate dev && prisma generate"
   },
   "dependencies": {
-    "@prisma/client": "^5.2.0",
     "cross-env": "^7.0.3",
     "dotenv": "^16.3.1"
   },
   "devDependencies": {
     "@testing-library/react": "^14.0.0",
     "dotenv-cli": "^7.3.0",
-    "prisma": "^5.2.0",
     "turbo": "^1.10.15"
   },
   "engines": {

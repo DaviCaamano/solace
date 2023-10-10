@@ -1,9 +1,9 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { ComponentWithLogging } from '~utils/logging';
-import { Note, NoteUpdateArgs, User } from 'prisma';
+import { Note, NoteUpdateArgs } from 'prisma';
 import { CreateNoteDto, UpdateNoteDto } from '~note/dto/note.dto';
 import { DatabaseService } from '~persistence/prisma/database.service';
-import { ListNotesResponse, NoteStatus } from '#interfaces/notes/notes.interface';
+import { NoteStatus } from '#interfaces/notes/notes.interface';
 import { HttpStatus } from '@nestjs/common/enums/http-status.enum';
 import { Prisma } from '@prisma/client';
 
@@ -61,12 +61,7 @@ export class NoteDatabaseService extends ComponentWithLogging {
     }
 
     try {
-      return this.db.note.findUnique({
-        where: {
-          id,
-          userId,
-        },
-      });
+      return this.db.note.findUnique({ where: { id, userId } });
     } catch (err: any) {
       this.report('Failed to get note', err);
     }
@@ -180,6 +175,8 @@ export class NoteDatabaseService extends ComponentWithLogging {
       this.report('Failed to delete note', err);
     }
   }
+
+
 }
 
 const correctParentIdCase = (notes: Note[]) => {

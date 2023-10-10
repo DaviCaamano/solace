@@ -1,13 +1,15 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { ComponentWithLogging } from '~utils/logging';
-import { NoteDatabaseService } from '~note/note-database.service';
-import { CreateNoteDto, UpdateNoteDto } from '~note/dto/note.dto';
-import { DeleteNoteResponse, ListNotesResponse, NoteResponse } from '#interfaces/notes';
+import { CreateNoteDto, MoveNoteDto, UpdateNoteDto } from '../dto/note.dto';
+import { SuccessNoteResponse, ListNotesResponse, NoteResponse } from '#interfaces/notes';
+import { NoteDatabaseService } from './note-database.service';
+import { NoteMoveService } from './note-move.service';
 
 @Injectable()
 export class NoteService extends ComponentWithLogging {
   constructor(
     private readonly dbService: NoteDatabaseService,
+    private readonly moveService: NoteMoveService,
     private readonly logger: Logger,
   ) {
     super();
@@ -31,7 +33,11 @@ export class NoteService extends ComponentWithLogging {
     note: await this.dbService.update(updatedNote),
   });
 
-  delete = async (id: string, userId: string): Promise<DeleteNoteResponse> => ({
+  move = async (moveNoteData: MoveNoteDto): Promise<SuccessNoteResponse> => ({
+    success: await this.moveService.move(moveNoteData),
+  });
+
+  delete = async (id: string, userId: string): Promise<SuccessNoteResponse> => ({
     success: !!(await this.dbService.delete(id, userId)),
   });
 }

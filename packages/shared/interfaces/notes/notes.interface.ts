@@ -34,7 +34,7 @@ export interface ListNotesResponse {
   notes: TreeNote[];
 }
 
-export interface DeleteNoteResponse {
+export interface SuccessNoteResponse {
   success: boolean;
 }
 

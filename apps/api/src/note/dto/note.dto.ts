@@ -1,5 +1,5 @@
-import { IsNotEmpty, IsOptional } from 'class-validator';
-import { NoteStatus } from '#interfaces/notes';
+import { isNotEmpty, IsNotEmpty, IsOptional } from 'class-validator';
+import { MoveNotePosition, NoteStatus } from '#interfaces/notes';
 
 export class ListNotesDto {
   @IsNotEmpty()
@@ -38,20 +38,34 @@ export class UpdateNoteDto {
   @IsNotEmpty()
   userId: string;
 
+  @IsOptional()
+  title?: string;
+
+  @IsOptional()
+  content?: string;
+
+  @IsOptional()
+  head?: string;
+
+  @IsOptional()
+  next?: string;
+
+  @IsOptional()
+  status?: NoteStatus;
+}
+
+export class MoveNoteDto {
   @IsNotEmpty()
-  title: string;
+  id: string;
 
   @IsNotEmpty()
-  content: string;
+  userId: string;
+
+  @IsNotEmpty()
+  position: MoveNotePosition;
 
   @IsOptional()
-  head: string;
-
-  @IsOptional()
-  next: string;
-
-  @IsOptional()
-  status: NoteStatus;
+  targetId: string;
 }
 
 export class DeleteNoteDto {
