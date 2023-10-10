@@ -34,7 +34,7 @@ export class NoteService extends ComponentWithLogging {
   });
 
   move = async (moveNoteData: MoveNoteDto): Promise<SuccessNoteResponse> => ({
-    success: await this.moveService.move(moveNoteData),
+    success: !!(await this.moveService.move(moveNoteData)),
   });
 
   delete = async (id: string, userId: string): Promise<SuccessNoteResponse> => ({

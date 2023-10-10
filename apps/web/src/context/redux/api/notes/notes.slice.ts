@@ -6,6 +6,7 @@ import {
   deleteNoteEndpoint,
   getNotesEndpoint,
   listNotesEndpoint,
+  moveNoteEndpoint,
   updateNoteEndpoint,
 } from '@context/redux/api/notes/endpoints';
 import { ReduxQueryBuilder } from '#interfaces/redux/redux.interfaces';
@@ -17,7 +18,7 @@ export const notesSlice = apiSlice.injectEndpoints({
     addNote: addNoteEndpoint(builder),
     updateNote: updateNoteEndpoint(builder),
     deleteNote: deleteNoteEndpoint(builder),
-    //TODO ADD MOVE NOTE ENDPOINT
+    moveNote: moveNoteEndpoint(builder),
   }),
   overrideExisting: false,
 });
@@ -30,4 +31,5 @@ export const {
   useAddNoteMutation,
   useUpdateNoteMutation,
   useDeleteNoteMutation,
+  useMoveNoteMutation,
 } = notesSlice;

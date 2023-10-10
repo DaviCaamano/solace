@@ -38,17 +38,15 @@ export class NoteMoveService extends ComponentWithLogging {
    *          The Note will be moved to the last spot on highest depth (aka: root nodes) in the user's heiarchy
    * @param userId - string: user which owns the note tree
    */
-  async move({ id, position, targetId, userId }: MoveNoteDto): Promise<any> {
-    let note: Note | undefined;
-    try {
-      note = await this.dbService.get(id, userId);
-    } catch (err: any) {
-      this.report('Failed to find note being moved (1)', err);
-    }
+  async move({ id, position, targetId, userId }: MoveNoteDto): Promise<Note | undefined> {
+    let note: Note | undefined = await this.dbService.get(id, userId);
+
     if (!note) {
-      this.report('Failed to find note being moved (2)');
+      this.report('Failed to find note being moved');
     }
+
     const { sibling, originalNext } = await this.detachNote(note, userId);
+
     try {
       switch (position) {
         case MoveNotePosition.aheadOf: {
@@ -140,7 +138,7 @@ export class NoteMoveService extends ComponentWithLogging {
      */
     try {
       return await this.db.note.update({
-        where: { userId, id: note.id },
+        where: { id: note.id, userId },
         data: { next: target.id, parentId: target.parentId },
       });
     } catch (err: any) {
@@ -195,7 +193,7 @@ export class NoteMoveService extends ComponentWithLogging {
         connect: firstChild.id,
       };
     }
-    this.db.note.update({ where: { id: note.id, userId }, data: updateData });
+    return this.db.note.update({ where: { id: note.id, userId }, data: updateData });
   }
 
   /**
