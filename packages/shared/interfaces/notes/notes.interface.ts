@@ -18,6 +18,12 @@ export enum NoteStatus {
   deleted = 'DELETED',
 }
 
+export enum MoveNotePosition {
+  childOf = 'childOf', //Move Note to position ahead of that targeted note
+  aheadOf = 'previous_row', //Move Note so that it is the first child of the targeted note
+  lastNote = 'last_note', //Move Note to be a root note in the last position
+}
+
 type NoteWithoutTimeSTamps = Omit<Note, 'createdAt' | 'updatedAt'>;
 export type NoteUpdate = Partial<NoteWithoutTimeSTamps> & Pick<Note, 'id'>;
 
@@ -58,19 +64,15 @@ export interface DragRowHandlers {
   position: DragPos | undefined;
 }
 export interface DragMouseHandlers {
-  onMouseEnter: () => void;
-  onMouseLeave: () => void;
+  row: { onMouseEnter: () => void; onMouseLeave: () => void };
+  zone: (moveType: MoveNotePosition) => { onMouseEnter: () => void; onMouseLeave: () => void };
 }
 export interface DragNoteHandlers {
   dragHandlers: DragRowHandlers;
-  mouseHandlers: (moveType: MoveNotePosition) => DragMouseHandlers;
+  mouseHandlers: DragMouseHandlers;
   state: DraggedNotes;
 }
-export enum MoveNotePosition {
-  childOf = 'childOf', //Move Note to position ahead of that targeted note
-  aheadOf = 'previous_row', //Move Note so that it is the first child of the targeted note
-  lastNote = 'last_note', //Move Note to be a root note in the last position
-}
+
 export interface DraggedNotes {
   beingDragged: TreeNote | undefined;
   hoveredOver: TreeNote | undefined;

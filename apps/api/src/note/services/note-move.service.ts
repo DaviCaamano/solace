@@ -6,6 +6,7 @@ import { NoteDatabaseService } from '~note/services/note-database.service';
 import { Note } from 'prisma';
 import { MoveNotePosition } from '#interfaces/notes';
 import { Prisma } from '@prisma/client';
+
 @Injectable()
 export class NoteMoveService extends ComponentWithLogging {
   constructor(
@@ -19,8 +20,8 @@ export class NoteMoveService extends ComponentWithLogging {
       debug: (...args: any) => logger.debug(args),
       error: (...args: any) => logger.error(args),
       log: (...args: any) => logger.log(args),
-      warn: (...args: any) => logger.warn(args),
       verbose: (...args: any) => logger.verbose(args),
+      warn: (...args: any) => logger.warn(args),
     });
   }
 
@@ -81,9 +82,37 @@ export class NoteMoveService extends ComponentWithLogging {
    *    If A: A.next = note.next
    */
   async detachNote(note: Note, userId: string) {
+    if (!note.next) {
+      return {
+        sibling: null,
+        originalNext: null,
+      };
+    }
     let sibling: Note | undefined;
     try {
-      sibling = await this.db.note.update({ where: { userId, next: note.id }, data: { next: note.next } });
+      sibling = await this.db.note.findUnique({ where: { next: note.id, userId } });
+    } catch (err: any) {
+      this.report('Failed to detach note, could not search for sibling.', err);
+    }
+
+    if (!sibling?.id) {
+      return {
+        sibling: null,
+        originalNext: null,
+      };
+    }
+
+    try {
+      sibling = await this.db.note.update({
+        where: { id: sibling.id, userId },
+        data: {
+          Next: {
+            connect: {
+              id: note.next,
+            },
+          },
+        },
+      });
     } catch (err: any) {
       this.report('Failed to detach note.', err);
     }
@@ -94,7 +123,7 @@ export class NoteMoveService extends ComponentWithLogging {
   }
 
   /** Undo operation done by detachNote function in this service */
-  async detachNote_Revert(sibling: Note, originalNext: string, userId: string) {
+  async detachNote_Revert(sibling: Note | null, originalNext: string | null, userId: string) {
     try {
       return this.db.note.update({ where: { userId, id: sibling.id }, data: { next: originalNext } });
     } catch (err: any) {
@@ -125,10 +154,30 @@ export class NoteMoveService extends ComponentWithLogging {
      *    If A: A.next = note
      * */
     let sibling: Note | undefined;
+
     try {
-      sibling = await this.db.note.update({ where: { userId, next: targetId }, data: { next: note.next } });
+      sibling = await this.db.note.findUnique({
+        where: { userId, next: targetId },
+      });
     } catch (err: any) {
-      this.report('Failed to detach note.', err);
+      this.report("Failed to update next property of target's previous sibling.", err);
+    }
+
+    if (sibling) {
+      try {
+        sibling = await this.db.note.update({
+          where: { userId, next: targetId },
+          data: {
+            Next: {
+              connect: {
+                id: note.id,
+              },
+            },
+          },
+        });
+      } catch (err: any) {
+        this.report("Failed to update next property of target's previous sibling.", err);
+      }
     }
 
     /**
@@ -180,7 +229,7 @@ export class NoteMoveService extends ComponentWithLogging {
    * @param userId - string: user which owns the note tree
    */
   async makeChildOf(note: Note, targetId: string, userId: string) {
-    const firstChild = this.findFirstChild(targetId, userId);
+    const firstChild = await this.findFirstChild(targetId, userId);
     const updateData: Prisma.NoteUpdateInput = {
       Parent: {
         connect: {
@@ -190,7 +239,9 @@ export class NoteMoveService extends ComponentWithLogging {
     };
     if (firstChild) {
       updateData.Next = {
-        connect: firstChild.id,
+        connect: {
+          id: firstChild.id,
+        },
       };
     }
     return this.db.note.update({ where: { id: note.id, userId }, data: updateData });
@@ -257,7 +308,9 @@ export class NoteMoveService extends ComponentWithLogging {
     };
     if (lastRoot) {
       updateData.Prev = {
-        connect: lastRoot.id,
+        connect: {
+          id: lastRoot.id,
+        },
       };
     }
     try {

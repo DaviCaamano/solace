@@ -10,7 +10,8 @@ import { arrayInsert } from '#utils/array';
  */
 export const getNoteHeiarchy = (list: TreeNote[]): TreeNote[] => {
   const levels = breakIntoLevels(list);
-  const tree = [...levels[0]];
+
+  const tree = sortList([...levels[0]]);
   return tree.map((parent: TreeNote) => {
     return getChildren(parent, levels)[0];
   });
@@ -36,7 +37,71 @@ const breakIntoLevels = (list: TreeNote[]): TreeNote[][] => {
     }
   }
 
+  /** Sort the Nodes on Each Level */
   return levels;
+};
+
+const sortList = (list: TreeNote[]) => {
+  let endNode: TreeNote | undefined;
+  const endLessList = list.filter((node: TreeNote) => {
+    if (!node) {
+      return false;
+    }
+    if (!node.next) {
+      endNode = node;
+      return false;
+    }
+    return true;
+  });
+
+  return [...sort(endLessList.map((node) => [node])), endNode];
+};
+/**
+ * Sort a flat single direction linked list without pointers (id by string)
+ * O(NLogN);
+ * */
+const sort = (list: TreeNote[][], max: number = 0, iter: number = 0) => {
+  if (!max) {
+    max = list.length * 2 + 1;
+  }
+  if (iter > 50) {
+    return list;
+  }
+  if (!list) {
+    return [];
+  }
+  if (list.length === 1) {
+    return list[0];
+  }
+
+  //Turn the array into an array of sublists.
+
+  for (let i = 0; i < list.length; i++) {
+    //Last element in outer loop's sub-list
+    const outer: TreeNote = list[i][list[i].length - 1];
+
+    for (let j = 0; j < list.length; j++) {
+      //Do not evaluate the same index against itself
+      if (i === j) {
+        continue;
+      }
+      //First element in inner loop's sublist
+      const inner: TreeNote = list[j][0];
+
+      //If one sub-list's points to the start the second sub-list
+      if (outer.next === inner.id) {
+        //Append the second sublist to the first sublist, remove from second sublist
+
+        list[i] = list[i].concat(...list[j]);
+        list.splice(j, 1);
+        //If you removed an index before i, reduce i by 1 to avoid jumping forward on the outer loop
+        j < i && i--;
+        //Reduce j by 1 to avoid jumping forward on the inner loop
+        j--;
+      }
+    }
+  }
+  return sort(list, max, ++iter);
 };
 
 /**
@@ -74,6 +139,7 @@ const getChildren = (parent: TreeNote, levels: TreeNote[][]): [TreeNote, TreeNot
       levels = filteredLevels;
       insertChild(childWithChildren, sortedChildren);
     }
+    parent.children = sortList(parent.children);
   }
 
   return [parent, levels];

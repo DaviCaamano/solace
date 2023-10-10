@@ -18,6 +18,7 @@ export const useNotebook = (
   noteList: Note[] | undefined,
   setContentWindow: Setter<ContentWindow>,
   setEditor: (title: string, content: string, id?: string) => void,
+  userId?: string,
 ): [UnsafeAddNoteTrigger, UnsafeDeleteNoteTrigger, OpenEditorCallback, NotebookDragEvents] => {
   const [addNote] = useAddNoteMutation();
   const [deleteNote] = useDeleteNoteMutation();
@@ -26,7 +27,7 @@ export const useNotebook = (
   const [noteAdded, setNoteAdded] = useState<boolean>(false);
   const stickyList = useRef<Note[] | undefined>();
 
-  const dragEvents = useDraggableRow();
+  const dragEvents = useDraggableRow(userId);
   /** Detect when a new note was both expected and added then move user to editor to edit new note. */
   useEffect(() => {
     handleNewNote({

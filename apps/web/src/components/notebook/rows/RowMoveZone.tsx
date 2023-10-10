@@ -1,9 +1,9 @@
-import { DraggedNotes, DragMouseHandlers, MoveNotePosition, TreeNote } from '#interfaces/notes';
+import { DraggedNotes, MoveNotePosition, TreeNote } from '#interfaces/notes';
 
 interface MoveZoneProps {
   draggedState: DraggedNotes;
   expand: boolean;
-  mouseHandlers: DragMouseHandlers;
+  mouseHandlers: { onMouseEnter: () => void; onMouseLeave: () => void };
   note: TreeNote;
   position: MoveNotePosition;
 }
@@ -42,7 +42,6 @@ export const RowMoveZone = ({ draggedState, expand, mouseHandlers, note, positio
   return (
     <div
       className={`move-zone  absolute transition-all  w-full opacity-50 ${bgColor}`}
-      onDragEnd={() => console.log('Dropping on Position:', position)}
       {...mouseHandlers}
       style={MoveZonePosition(expand, position)}
     />

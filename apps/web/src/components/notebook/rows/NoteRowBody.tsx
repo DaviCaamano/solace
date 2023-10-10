@@ -18,7 +18,7 @@ interface RowProps {
   draggedState: DraggedNotes;
   depth: number;
   containerName: string;
-  mouseHandlers: (moveType: MoveNotePosition) => DragMouseHandlers;
+  mouseHandlers: DragMouseHandlers;
   note: TreeNote;
   openEditor: OpenEditor;
   setCreateToggle: Setter<boolean>;
@@ -28,12 +28,13 @@ export const NoteRowBody = ({
   draggedState,
   depth,
   containerName,
-  mouseHandlers,
+  mouseHandlers: { row: rowHandlers, zone: zoneHandlers },
   note,
   openEditor,
   setCreateToggle,
 }: RowProps) => {
   const { beingDragged, hoveredOver } = draggedState;
+
   const marginRight = 0.5 + depth + 'rem';
   const dragButton = `${containerName}-drag-button ${styles.dragIndicator}`;
   const isHoveredNote =
@@ -52,12 +53,13 @@ export const NoteRowBody = ({
       initial={'contract'}
       animate={isHoveredNote ? 'expand' : 'contract'}
       transition={{ duration: 0.3333 }}
+      {...rowHandlers}
     >
       <div className={`note-row-parent ${styles.noteRowParent} ${rowTargetCss(beingDragged, note.id)}`}>
         <RowMoveZone
           draggedState={draggedState}
           expand={isHoveredNote}
-          mouseHandlers={mouseHandlers(MoveNotePosition.aheadOf)}
+          mouseHandlers={zoneHandlers(MoveNotePosition.aheadOf)}
           note={note}
           position={MoveNotePosition.aheadOf}
         />
@@ -81,7 +83,7 @@ export const NoteRowBody = ({
         <RowMoveZone
           draggedState={draggedState}
           expand={isHoveredNote}
-          mouseHandlers={mouseHandlers(MoveNotePosition.childOf)}
+          mouseHandlers={zoneHandlers(MoveNotePosition.childOf)}
           note={note}
           position={MoveNotePosition.childOf}
         />

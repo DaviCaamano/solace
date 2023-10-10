@@ -36,8 +36,9 @@ export const NoteRow = ({
   // Allow Deletion of Note
   // [Done] Display Note Children
   //    [Done] Recursively display children of children
-  // Allow Drag re-ordering of children ((SEE TODO IN notes.slice.ts))
-  //    Allow change in dept of Note as part of reordering
+  // Allow Drag re-ordering of children
+  // [Done] TODO IN notes.slice.ts
+  //    [Done] Allow change in dept of Note as part of reordering
 
   const addChildSubmit = (title: string) => {
     if (userId) {

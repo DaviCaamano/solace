@@ -14,7 +14,7 @@ interface NotebookProps {
 export const Notebook = ({ setContentWindow }: NotebookProps) => {
   const { setEditor, user } = useEditorContext();
   const { isLoading, isError, error, data: noteList } = useListNotes(user);
-  const [addNote, deleteNote, openEditor, dragEvents] = useNotebook(noteList, setContentWindow, setEditor);
+  const [addNote, deleteNote, openEditor, dragEvents] = useNotebook(noteList, setContentWindow, setEditor, user?.id);
 
   const addNoteOnClick = (title: string) => addNote({ userId: user?.id, title });
 

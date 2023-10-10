@@ -9,6 +9,7 @@ interface NoteListProps {
   openEditor: (title: string, content: string, id?: string) => void;
   userId: string | undefined;
 }
+
 export const NoteList = ({
   addNote,
   deleteNote,
@@ -23,9 +24,8 @@ export const NoteList = ({
   }
 
   return noteList?.map((note, index) => (
-    <div className={'note-row-container w-full'}>
+    <div key={`note-row-${note.id}`} className={'note-row-container w-full'}>
       <NoteRow
-        key={'note-row-' + index}
         name={'note-row-' + index}
         note={note}
         addNote={addNote}

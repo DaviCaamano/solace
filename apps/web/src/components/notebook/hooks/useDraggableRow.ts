@@ -1,5 +1,6 @@
 import { DragEvent, useState } from 'react';
 import { DraggedNotes, MoveNotePosition, NotebookDragEvents, TreeNote } from '#interfaces/notes';
+import { useMoveNoteMutation } from '@context/redux/api/notes/notes.slice';
 
 interface DragPos {
   x: number;
@@ -10,7 +11,7 @@ const initialDragPos = {
   y: 0,
 };
 
-export const useDraggableRow = (): NotebookDragEvents => {
+export const useDraggableRow = (userId?: string): NotebookDragEvents => {
   const [dragPos, setDragPos] = useState<DragPos | undefined>();
   const [draggedState, setDraggedState] = useState<DraggedNotes>({
     beingDragged: undefined,
@@ -18,12 +19,21 @@ export const useDraggableRow = (): NotebookDragEvents => {
     moveType: undefined,
   });
 
-  const onDragStop = () => () => {
-    // event.stopPropagation();
+  const [moveNote] = useMoveNoteMutation();
+
+  /**
+   * react-draggable's on drop event handlers.
+   * Triggers when the user picks up a row and drops it.
+   * if the user drags a row over another row's movement zones,
+   *    this handler will make a request to the backend to move the dragged row.
+   * */
+  const onDragStop = () => {
     setDragPos(initialDragPos);
-    const hoveredOver = draggedState.hoveredOver;
-    const movedTo = draggedState.moveType;
-    //TODO implement move call here
+
+    const { beingDragged, moveType, hoveredOver } = draggedState;
+    if (beingDragged && hoveredOver && moveType && userId) {
+      moveNote({ id: beingDragged.id, position: moveType, targetId: hoveredOver.id, userId });
+    }
     setDraggedState((prev: DraggedNotes) => ({
       ...prev,
       beingDragged: undefined,
@@ -31,6 +41,7 @@ export const useDraggableRow = (): NotebookDragEvents => {
       moveTo: undefined,
     }));
   };
+
   const onDragStart = (note: TreeNote) => (event: DragEvent<HTMLDivElement>) => {
     event.stopPropagation();
     setDraggedState((prev: DraggedNotes) => ({
@@ -39,12 +50,21 @@ export const useDraggableRow = (): NotebookDragEvents => {
     }));
   };
 
-  const onMouseEnter = (hoveredOver: TreeNote, moveType: MoveNotePosition) => () => {
+  const onZoneEnter = (hoveredOver: TreeNote, moveType: MoveNotePosition) => () => {
     if (draggedState) {
       setDraggedState((prev: DraggedNotes) => ({
         ...prev,
         hoveredOver,
         moveType,
+      }));
+    }
+  };
+
+  const onMouseEnter = (hoveredOver: TreeNote) => () => {
+    if (draggedState) {
+      setDraggedState((prev: DraggedNotes) => ({
+        ...prev,
+        hoveredOver,
       }));
     }
   };
@@ -66,10 +86,16 @@ export const useDraggableRow = (): NotebookDragEvents => {
       onStop: onDragStop,
       position: dragPos,
     },
-    mouseHandlers: (moveType: MoveNotePosition) => ({
-      onMouseEnter: onMouseEnter(note, moveType),
-      onMouseLeave: onMouseLeave(note),
-    }),
+    mouseHandlers: {
+      row: {
+        onMouseEnter: onMouseEnter(note),
+        onMouseLeave: onMouseLeave(note),
+      },
+      zone: (moveType: MoveNotePosition) => ({
+        onMouseEnter: onZoneEnter(note, moveType),
+        onMouseLeave: onMouseLeave(note),
+      }),
+    },
     state: draggedState,
   });
 };

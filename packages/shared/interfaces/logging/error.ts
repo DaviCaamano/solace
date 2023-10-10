@@ -15,7 +15,7 @@ export interface Error {
 }
 
 export interface ErrorResponse {
-  message: string[];
+  message: string;
   statusCode: number;
   error?: Error;
 }

@@ -63,11 +63,12 @@ export const errorHandler = (errorLogger: LoggingHandler): ErrorHandler => {
       statusCode: statusCode || HttpStatus.INTERNAL_SERVER_ERROR,
     };
 
-    const fullErrorString = util.inspect(errorLog, false, null, false);
+    // const fullErrorString = util.inspect(errorLog, false, null, false);
     errorLogger(
-      JSON.parse(
-        JSON.stringify(fullErrorString, (key, value) => (typeof value === 'bigint' ? value.toString() : value), '\t'),
-      ),
+      // JSON.parse(
+      //   JSON.stringify(fullErrorString, (key, value) => (typeof value === 'bigint' ? value.toString() : value), 2),
+      // ),
+      errorLog,
     );
     throw new HttpException(errorLog, errorLog.statusCode);
   }
