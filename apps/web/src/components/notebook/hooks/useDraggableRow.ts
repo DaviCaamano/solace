@@ -1,5 +1,5 @@
-import { DragEvent, useRef, useState } from 'react';
-import { DraggedNotes, NotebookDragEvents } from '#interfaces/notes';
+import { DragEvent, useState } from 'react';
+import { DraggedNotes, MoveNotePosition, NotebookDragEvents, TreeNote } from '#interfaces/notes';
 
 interface DragPos {
   x: number;
@@ -12,54 +12,64 @@ const initialDragPos = {
 
 export const useDraggableRow = (): NotebookDragEvents => {
   const [dragPos, setDragPos] = useState<DragPos | undefined>();
-  const [dragged, setDragged] = useState<DraggedNotes>({ beingDragged: undefined, dropTarget: undefined });
+  const [draggedState, setDraggedState] = useState<DraggedNotes>({
+    beingDragged: undefined,
+    hoveredOver: undefined,
+    moveType: undefined,
+  });
 
-  const onDragStop = (noteId: string) => (event: DragEvent<HTMLDivElement>) => {
+  const onDragStop = () => () => {
     // event.stopPropagation();
     setDragPos(initialDragPos);
-    setDragged((prev: DraggedNotes) => ({
+    const hoveredOver = draggedState.hoveredOver;
+    const movedTo = draggedState.moveType;
+    //TODO implement move call here
+    setDraggedState((prev: DraggedNotes) => ({
       ...prev,
       beingDragged: undefined,
+      hoveredOver: undefined,
+      moveTo: undefined,
     }));
-    //Move Request Here
   };
-  const onDragStart = (noteId: string) => (event: DragEvent<HTMLDivElement>) => {
+  const onDragStart = (note: TreeNote) => (event: DragEvent<HTMLDivElement>) => {
     event.stopPropagation();
-    setDragged((prev: DraggedNotes) => ({
+    setDraggedState((prev: DraggedNotes) => ({
       ...prev,
-      beingDragged: noteId,
+      beingDragged: note,
     }));
   };
 
-  const onMouseEnter = (noteId: string) => (event: DragEvent<HTMLDivElement>) => {
-    if (dragged) {
-      setDragged((prev: DraggedNotes) => ({
+  const onMouseEnter = (hoveredOver: TreeNote, moveType: MoveNotePosition) => () => {
+    if (draggedState) {
+      setDraggedState((prev: DraggedNotes) => ({
         ...prev,
-        dropTarget: noteId,
+        hoveredOver,
+        moveType,
       }));
     }
   };
-  const onMouseLeave = (noteId: string) => (event: DragEvent<HTMLDivElement>) => {
-    if (dragged) {
-      if (dragged.dropTarget === noteId) {
-        setDragged((prev: DraggedNotes) => ({
+  const onMouseLeave = (note: TreeNote) => () => {
+    if (draggedState) {
+      if (draggedState.hoveredOver?.id === note.id) {
+        setDraggedState((prev: DraggedNotes) => ({
           ...prev,
-          dropTarget: undefined,
+          hoveredOver: undefined,
+          moveType: undefined,
         }));
       }
     }
   };
 
-  return (noteId: string) => ({
+  return (note: TreeNote) => ({
     dragHandlers: {
-      onStart: onDragStart(noteId),
-      onStop: onDragStop(noteId),
+      onStart: onDragStart(note),
+      onStop: onDragStop,
       position: dragPos,
     },
-    dropHandlers: {
-      onMouseEnter: onMouseEnter(noteId),
-      onMouseLeave: onMouseLeave(noteId),
-    },
-    active: dragged,
+    mouseHandlers: (moveType: MoveNotePosition) => ({
+      onMouseEnter: onMouseEnter(note, moveType),
+      onMouseLeave: onMouseLeave(note),
+    }),
+    state: draggedState,
   });
 };

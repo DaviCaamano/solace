@@ -26,12 +26,12 @@ export const Notebook = ({ setContentWindow }: NotebookProps) => {
     <div id={'note-book'} className={styles.noteBook}>
       <Header />
       <NoteList
-        noteList={noteHeiarchy}
         addNote={addNote}
         deleteNote={deleteNote}
+        dragEvents={dragEvents}
+        noteList={noteHeiarchy}
         openEditor={openEditor}
         userId={user?.id}
-        dragEvents={dragEvents}
       />
       <AddNoteRow onClick={addNoteOnClick} />
     </div>

@@ -3,8 +3,8 @@ import { NotebookDragEvents, TreeNote, UnsafeAddNoteTrigger, UnsafeDeleteNoteTri
 interface NoteListProps {
   addNote: UnsafeAddNoteTrigger;
   deleteNote: UnsafeDeleteNoteTrigger;
+  depth?: number;
   dragEvents: NotebookDragEvents;
-  level?: number;
   noteList?: TreeNote[] | undefined;
   openEditor: (title: string, content: string, id?: string) => void;
   userId: string | undefined;
@@ -13,7 +13,7 @@ export const NoteList = ({
   addNote,
   deleteNote,
   dragEvents,
-  level = 0,
+  depth = 0,
   noteList,
   openEditor,
   userId,
@@ -31,7 +31,7 @@ export const NoteList = ({
         addNote={addNote}
         deleteNote={deleteNote}
         descendants={getDescendantIds(note)}
-        level={level}
+        depth={depth}
         openEditor={openEditor}
         userId={userId}
         drag={dragEvents}
@@ -39,7 +39,7 @@ export const NoteList = ({
       <NoteList
         addNote={addNote}
         deleteNote={deleteNote}
-        level={level + 1}
+        depth={depth + 1}
         noteList={note.children}
         openEditor={openEditor}
         userId={userId}

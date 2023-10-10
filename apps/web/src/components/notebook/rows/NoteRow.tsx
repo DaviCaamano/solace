@@ -1,16 +1,8 @@
 import React, { PropsWithChildren, useState } from 'react';
-import {
-  DraggedNotes,
-  TreeNote,
-  NotebookDragEvents,
-  UnsafeAddNoteTrigger,
-  UnsafeDeleteNoteTrigger,
-} from '#interfaces/notes';
-import styles from '../notebook.module.css';
+import { TreeNote, NotebookDragEvents, UnsafeAddNoteTrigger, UnsafeDeleteNoteTrigger } from '#interfaces/notes';
 import { AddChildRow } from './AddChildRow';
-import DragIndicatorIcon from '@mui/icons-material/DragIndicator';
-import { RowButtons } from '../buttons';
-import { DragRowWrapper, rowTargetCss } from '@components/notebook';
+
+import { DragRowWrapper, NoteRowBody } from '@components/notebook';
 
 type OpenEditor = (title: string, content: string, id?: string) => void;
 interface NoteRowProps extends PropsWithChildren {
@@ -18,7 +10,7 @@ interface NoteRowProps extends PropsWithChildren {
   deleteNote: UnsafeDeleteNoteTrigger;
   drag: NotebookDragEvents;
   descendants: string[];
-  level?: number;
+  depth?: number;
   name: string;
   note: TreeNote;
   openEditor: OpenEditor;
@@ -30,7 +22,7 @@ export const NoteRow = ({
   deleteNote,
   descendants,
   drag,
-  level = 0,
+  depth = 0,
   name,
   note,
   openEditor,
@@ -57,77 +49,36 @@ export const NoteRow = ({
     }
   };
 
-  const handlers = drag(note.id);
+  const handlers = drag(note);
   const {
-    active: { beingDragged: draggedNote, dropTarget },
+    state: { beingDragged },
+    mouseHandlers
   } = handlers;
 
+  const expanded = !!beingDragged && beingDragged?.id === note.id ;
+
   return (
-    <DragRowWrapper
-      containerName={name}
-      descendants={descendants}
-      beingDragged={draggedNote}
-      dropTarget={dropTarget}
-      handlers={handlers}
-      noteId={note.id}
-    >
-      <Row
-        deleteNote={deleteNote}
-        draggedNotes={handlers.active}
-        level={level}
+    <div className={`note-row-backdrop ${expanded && 'bg-mug-dark'}`}>
+      <DragRowWrapper
         containerName={name}
-        note={note}
-        openEditor={openEditor}
-        setCreateToggle={setCreateToggle}
-      />
-      <AddChildRow onSubmit={addChildSubmit} setToggle={setCreateToggle} toggle={createToggle} />
-      {children}
-    </DragRowWrapper>
-  );
-};
-
-interface RowProps {
-  deleteNote: UnsafeDeleteNoteTrigger;
-  draggedNotes: DraggedNotes;
-  level: number;
-  containerName: string;
-  note: TreeNote;
-  openEditor: OpenEditor;
-  setCreateToggle: Setter<boolean>;
-}
-const Row = ({
-  deleteNote,
-  draggedNotes: { beingDragged, dropTarget },
-  level,
-  containerName,
-  note,
-  openEditor,
-  setCreateToggle,
-}: RowProps) => {
-  const marginRight = 0.5 + level + 'rem';
-  const dragButton = `${containerName}-drag-button ${styles.dragIndicator}`;
-
-  const deleteNoteOnClick = () => {};
-  const sendNoteToEditor = () => {
-    openEditor(note.title, note.content, note.id);
-  };
-
-  return (
-    <div className={`note-row-parent ${styles.noteRowParent} ${rowTargetCss(beingDragged, dropTarget, note.id)}`}>
-      <DragIndicatorIcon className={dragButton} style={{ marginRight, fontSize: '2rem' }} />
-      <div
-        className={'note-title flex-1 h-8 overflow-hidden whitespace-nowrap overflow-ellipsis cursor-pointer'}
-        onClick={() => sendNoteToEditor()}
+        descendants={descendants}
+        beingDragged={beingDragged}
+        handlers={handlers}
+        noteId={note.id}
       >
-        {note.title}
-      </div>
-      <RowButtons
-        show={!beingDragged}
-        createChildToggle={() => {
-          setCreateToggle(true);
-        }}
-        deleteNote={deleteNoteOnClick}
-      />
+        <NoteRowBody
+          deleteNote={deleteNote}
+          draggedState={handlers.state}
+          depth={depth}
+          containerName={name}
+          mouseHandlers={mouseHandlers}
+          note={note}
+          openEditor={openEditor}
+          setCreateToggle={setCreateToggle}
+        />
+        <AddChildRow onSubmit={addChildSubmit} setToggle={setCreateToggle} toggle={createToggle} />
+        {children}
+      </DragRowWrapper>
     </div>
   );
 };

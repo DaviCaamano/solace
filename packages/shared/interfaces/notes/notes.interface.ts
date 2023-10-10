@@ -13,9 +13,6 @@ export interface Note {
   status: NoteStatus;
 }
 
-export interface LinkedNote extends Note {
-  children?: LinkedNote[];
-}
 export enum NoteStatus {
   active = 'ACTIVE',
   deleted = 'DELETED',
@@ -60,16 +57,23 @@ export interface DragRowHandlers {
   onStop: (event: DragEvent<HTMLDivElement>) => void;
   position: DragPos | undefined;
 }
+export interface DragMouseHandlers {
+  onMouseEnter: () => void;
+  onMouseLeave: () => void;
+}
 export interface DragNoteHandlers {
   dragHandlers: DragRowHandlers;
-  dropHandlers: {
-    onMouseEnter: (event: DragEvent<HTMLDivElement>) => void;
-    onMouseLeave: (event: DragEvent<HTMLDivElement>) => void;
-  };
-  active: DraggedNotes;
+  mouseHandlers: (moveType: MoveNotePosition) => DragMouseHandlers;
+  state: DraggedNotes;
+}
+export enum MoveNotePosition {
+  childOf = 'childOf', //Move Note to position ahead of that targeted note
+  aheadOf = 'previous_row', //Move Note so that it is the first child of the targeted note
+  lastNote = 'last_note', //Move Note to be a root note in the last position
 }
 export interface DraggedNotes {
-  beingDragged: string | undefined;
-  dropTarget: string | undefined;
+  beingDragged: TreeNote | undefined;
+  hoveredOver: TreeNote | undefined;
+  moveType: MoveNotePosition | undefined;
 }
-export type NotebookDragEvents = (noteId: string) => DragNoteHandlers;
+export type NotebookDragEvents = (note: TreeNote) => DragNoteHandlers;
