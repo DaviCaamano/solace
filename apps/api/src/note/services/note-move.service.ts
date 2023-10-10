@@ -4,9 +4,8 @@ import { DatabaseService } from '~persistence/prisma/database.service';
 import { MoveNoteDto } from '~note/dto/note.dto';
 import { NoteDatabaseService } from '~note/services/note-database.service';
 import { Note } from 'prisma';
-import { getTypeScriptInstance } from 'ts-loader/dist/instances';
 import { MoveNotePosition } from '#interfaces/notes';
-import { NoteUpdateInput } from '.prisma/client';
+import { Prisma } from '@prisma/client';
 @Injectable()
 export class NoteMoveService extends ComponentWithLogging {
   constructor(
@@ -56,8 +55,10 @@ export class NoteMoveService extends ComponentWithLogging {
           return this.moveAheadOf(note, targetId, userId);
         }
         case MoveNotePosition.childOf: {
+          return this.makeChildOf(note, targetId, userId);
         }
         case MoveNotePosition.lastNote: {
+          return this.addToEndOfRoot(note, userId);
         }
       }
     } catch (err: any) {
@@ -148,7 +149,7 @@ export class NoteMoveService extends ComponentWithLogging {
   }
 
   /**
-   * Revert changes to previous sibling of target
+   * Revert changes to previous sibling of target (performed in moveAheadOf function in this service.
    *    sibling.next => back to target
    */
   async moveAheadOf_Revert(err: any, targetId: string, userId, sibling?: Note) {
@@ -180,25 +181,37 @@ export class NoteMoveService extends ComponentWithLogging {
    * @param targetId - Note: Parent Note who is having a note inserted as its new first child
    * @param userId - string: user which owns the note tree
    */
-  async makeChildOf(note: Note, targetId: string, userId) {
+  async makeChildOf(note: Note, targetId: string, userId: string) {
     const firstChild = this.findFirstChild(targetId, userId);
-    const updateData: NoteUpdateInput = {
-      parentId: targetId,
+    const updateData: Prisma.NoteUpdateInput = {
+      Parent: {
+        connect: {
+          id: targetId,
+        },
+      },
     };
     if (firstChild) {
-      updateData.next = firstChild.id;
+      updateData.Next = {
+        connect: firstChild.id,
+      };
     }
     this.db.note.update({ where: { id: note.id, userId }, data: updateData });
   }
 
-  async findFirstChild(parentId: string, userId: string, attempt: number = 0) {
+  /**
+   * Given a parent, find the child in the highest position among the note's children
+   *   set parentId to null to find last root node
+   * @param parentId - string | null:
+   *    if string: will retrieve the first child element of a specified parent note or null if parent has no children
+   *    if null: will retrieve the firs
+   * @param userId - string: user which owns the note tree
+   * @param attempt - Attempt again in case a tree must be consolidated.
+   */
+  async findFirstChild(parentId: string | null, userId: string, attempt: number = 0) {
     let parent: Note | undefined;
     try {
-      parent = await this.db.note.findFirst({
-        where: { id: parentId, userId },
-        include: {
-          Children: true,
-        },
+      parent = await this.db.note.findMany({
+        where: { parentId, userId },
       });
     } catch (err: any) {
       this.report('Failed to find parent note to insert child into (1)', err);
@@ -221,9 +234,65 @@ export class NoteMoveService extends ComponentWithLogging {
     /** Should not execute if child list is properly structured */
     this.error("Unable to find first child, list of children not strongly linked. Consolidating User's Note Tree");
     await this.consolidateTree(userId);
-    return this.findFirstChild(parentId, userId, attempt + 1);
+    return this.findFirstChild(children, userId, attempt + 1);
   }
 
+  /**
+   * Move note to the end of the user's root notes.
+   * A root note has no parent notes.
+   * @param note - Note: note being moved.
+   * @param userId - string: user which owns the note tree
+   */
+  async addToEndOfRoot(note: Note, userId: string) {
+    let roots: Note[];
+    try {
+      roots = await this.db.note.findMany({ where: { parentId: null, userId } });
+    } catch (err: any) {
+      this.report(`Failed to retrieve list of root nodes for user: ${userId} (1)`, err);
+    }
+    if (!roots) {
+      this.report(`Failed to retrieve list of root nodes for user: ${userId} (2)`);
+    }
+    const lastRoot = roots.find(({ next }: Note) => !next);
+    const updateData: Prisma.NoteUpdateInput = {
+      Parent: null,
+    };
+    if (lastRoot) {
+      updateData.Prev = {
+        connect: lastRoot.id,
+      };
+    }
+    try {
+      return await this.db.note.update({
+        where: { id: note.id, userId },
+        data: updateData,
+      });
+    } catch (err: any) {
+      this.report("Failed to move note to end of user's root notes", err);
+    }
+  }
+
+  /**
+   * Revert changes to previous sibling of target (performed in addToEndOfRoot function in this service.
+   *    note.parent => back to original parent
+   */
+  async addToEndOfRoot_Revert(note: Note, userId: string, err: any) {
+    this.error(`Failed to insert note at end of user:${userId} root notes, reverting changes to note:${note.id}`, err);
+    try {
+      this.db.note.update({ where: { id: note.id }, data: { parentId: note.parentId } });
+    } catch (err: any) {
+      this.report(`Failed to revert note:${note.id} after making it a root note.`, err);
+    }
+    this.report(`Failed to insert note at end of user:${userId} root notes. Reverted changes to note:${note.id}`);
+  }
+
+  /**
+   * Use when a user's tree is suspected to have nodes that are not strongly linked.
+   * Moved any loose notes out of their current position and into the last nodes in the user's root nodes
+   * @param userId - ID of User whose tree is being investigated
+   * @param attempt - Due to critical nature of this fallback function, it will attempt to run up to 3 times in case of
+   *    error
+   */
   async consolidateTree(userId: string, attempt: number = 0) {
     try {
       //TODO Create function to consolidate a user's note tree.
