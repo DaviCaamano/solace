@@ -27,7 +27,7 @@
 }
 
 .noteRowParent {
-  @apply relative flex flex-col-reverse w-full px-2 rounded-l-md justify-center items-center;
+  @apply relative flex flex-col-reverse w-full pr-2 rounded-l-md justify-center items-center;
   -webkit-transition: background-color 200ms linear;
   -ms-transition: background-color 200ms linear;
   transition: background-color 200ms linear;

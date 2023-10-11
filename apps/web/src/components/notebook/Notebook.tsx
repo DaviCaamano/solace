@@ -6,6 +6,8 @@ import { NoteList } from '@components/notebook/rows/NoteList';
 import { getNoteHeiarchy } from '@components/notebook/utils';
 import { useMemo } from 'react';
 import { useNotebook } from '@components/notebook/hooks';
+import { MoveNotePosition } from '#interfaces/notes';
+import { EndOfTreeMoveZone } from '@components/notebook/move-row-zone/EndOfTreeMoveZone';
 
 interface NotebookProps {
   setContentWindow: Setter<ContentWindow>;
@@ -25,6 +27,7 @@ export const Notebook = ({ setContentWindow }: NotebookProps) => {
 
   const noteHeiarchy = useMemo(() => noteList && getNoteHeiarchy(noteList), [noteList]);
 
+  console.log('dragEvents.state.beingDragged', !!dragEvents.state.beingDragged);
   if (!noteHeiarchy || isLoading) return <LoadingMessage />;
   if (isError) return <ErrorMessage error={error} />;
   return (
@@ -38,11 +41,8 @@ export const Notebook = ({ setContentWindow }: NotebookProps) => {
         openEditor={openEditor}
         userId={user?.id}
       />
-      <AddNoteRow
-        addNoteHandlers={addNoteHandlers}
-        onClick={addNoteOnClick}
-        hide={!!dragEvents.state.beingDragged}
-      />
+      <EndOfTreeMoveZone dragEvents={dragEvents} position={MoveNotePosition.lastNote} />
+      <AddNoteRow addNoteHandlers={addNoteHandlers} onClick={addNoteOnClick} hide={!!dragEvents.state.beingDragged} />
     </div>
   );
 };

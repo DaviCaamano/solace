@@ -3,8 +3,8 @@ import { MoveNotePosition, TreeNote } from '#interfaces/notes';
 import styles from '@components/notebook/notebook.module.css';
 import DragIndicatorIcon from '@mui/icons-material/DragIndicator';
 import NorthIcon from '@mui/icons-material/North';
+import SouthIcon from '@mui/icons-material/South';
 import SubdirectoryArrowRightIcon from '@mui/icons-material/SubdirectoryArrowRight';
-
 const rowHeight = '2rem';
 const expandedRowHeight = '3.8rem';
 
@@ -102,6 +102,15 @@ const TextDragIcon = ({ moveType }: ZoneIconProps) => {
           <SubdirectoryArrowRightIcon
             className={'relative text-latte-lighter'}
             style={{ fontSize: '1.25rem', lineHeight: '100%' }}
+          />
+        </div>
+      );
+    case MoveNotePosition.lastNote:
+      return (
+        <div className={'title-icon-container absolute h-full flex justify-center items-center right-full w-3 pr-2'}>
+          <NorthIcon
+            className={'relative text-latte-lighter'}
+            style={{ fontSize: '1.25rem', lineHeight: '100%', transform: 'scaleY(-1)' }}
           />
         </div>
       );

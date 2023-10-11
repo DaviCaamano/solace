@@ -8,7 +8,7 @@ import {
 import styles from '@components/notebook/notebook.module.css';
 import { NoteRowTitle, RowButtons } from '@components/notebook';
 import { motion } from 'framer-motion';
-import { RowMoveZone } from '@components/notebook/rows/RowMoveZone';
+import { RowMoveZone } from '@components/notebook/move-row-zone/RowMoveZone';
 
 const MotionDiv = motion.div;
 

@@ -1,7 +1,8 @@
 import { DraggedNotes, MoveNotePosition, TreeNote } from '#interfaces/notes';
 import { colors } from '@styles/tailwind';
+import { CSSProperties } from 'react';
 
-interface MoveZoneProps {
+export interface MoveZoneProps {
   draggedState: DraggedNotes;
   expand: boolean;
   mouseHandlers: { onMouseEnter: () => void };
@@ -45,18 +46,42 @@ export const RowMoveZone = ({ draggedState, expand, mouseHandlers, note, positio
       className={'move-zone absolute transition-all w-full overflow-hidden px-[0.625rem]'}
       {...mouseHandlers}
       style={MoveZonePosition(expand, hovered, position)}
-    >
-      {/*{expand && <ZoneIcon position={position} hovered={hovered} />}*/}
-    </div>
+    ></div>
   );
 };
 
-const topBGColor = (hovered: boolean) => (hovered ? colors['mug-gray-off-light'] : colors['mug-gray-off']);
-const bottomBGColor = (hovered: boolean) => (hovered ? colors['mug-gray-light'] : colors['mug-gray']);
+const topBgColor = (hovered: boolean) => (hovered ? colors['mug-gray-off-light'] : colors['mug-gray-off']);
+const bottomBgColor = (hovered: boolean) => (hovered ? colors['mug-gray-light'] : colors['mug-gray']);
+const lastBgColor = (hovered: boolean) => (hovered ? colors['mug-gray-off-dark'] : colors['mug-gray-dark']);
 /** CSS styles for Zone */
 const MoveZonePosition = (expand: boolean, hovered: boolean, position: MoveNotePosition) => {
+  switch (position) {
+    case MoveNotePosition.aheadOf:
+      return {
+        top: '0.1rem',
+        height: expand ? '1.8rem' : 0,
+        backgroundColor: topBgColor(hovered),
+      };
+    case MoveNotePosition.childOf:
+      return {
+        bottom: '0.1rem',
+        height: expand ? '1.8rem' : 0,
+        backgroundColor: bottomBgColor(hovered),
+      };
+    case MoveNotePosition.lastNote: {
+      const style: CSSProperties = {
+        backgroundColor: lastBgColor(hovered),
+      };
+      if (expand) {
+        style.flex = 1;
+        style.minHeight = '3.6rem';
+      }
+      return style;
+    }
+  }
+
   const anchor = position === MoveNotePosition.aheadOf ? 'top' : 'bottom';
-  const backgroundColor = position === MoveNotePosition.aheadOf ? topBGColor(hovered) : bottomBGColor(hovered);
+  const backgroundColor = position === MoveNotePosition.aheadOf ? topBgColor(hovered) : bottomBgColor(hovered);
 
   return {
     [anchor]: expand ? '0.1rem' : 0,

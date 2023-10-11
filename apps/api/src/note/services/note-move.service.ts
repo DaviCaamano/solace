@@ -6,12 +6,6 @@ import { NoteDatabaseService } from '~note/services/note-database.service';
 import { Note } from 'prisma';
 import { DetachedNote, MoveNotePosition } from '#interfaces/notes';
 import { Prisma } from '@prisma/client';
-import {
-  NoteUpdateArgs,
-  NoteUpdateInput,
-  NoteUpdateManyWithoutParentNestedInput,
-  NoteUpdateOneWithoutPrevNestedInput,
-} from '.prisma/client';
 
 @Injectable()
 export class NoteMoveService extends ComponentWithLogging {
@@ -96,7 +90,6 @@ export class NoteMoveService extends ComponentWithLogging {
    *    If A: A.next = note.next
    */
   async detachNote(note: Note, userId: string): Promise<DetachedNote> {
-
     const originalParent = note.parentId;
     let sibling: Note | undefined;
     try {

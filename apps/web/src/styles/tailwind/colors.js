@@ -12,8 +12,10 @@ const colors = {
 
   'mug-gray': '#47535b',
   'mug-gray-light': '#56656e',
+  'mug-gray-dark': '#384349FF',
   'mug-gray-off': '#485964',
   'mug-gray-off-light': '#546a77',
+  'mug-gray-off-dark': '#42545EFF',
 
   tan: '#9F7D5F',
   brown: '#423832',
