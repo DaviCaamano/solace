@@ -41,6 +41,7 @@ const breakIntoLevels = (list: TreeNote[]): TreeNote[][] => {
   return levels;
 };
 
+/** Prep-function for Sort Function */
 const sortList = (list: TreeNote[]) => {
   let endNode: TreeNote | undefined;
   const endLessList = list.filter((node: TreeNote) => {
@@ -48,11 +49,21 @@ const sortList = (list: TreeNote[]) => {
       return false;
     }
     if (!node.next) {
+      //    TODO Add endpoint and ping it if this conditional is met.
+      //if(endNode) {
+      //    If this if statement is true, a user's list is not strongly linked
+      //    2 or more nodes do not have next fields (when only 1 should)
+      //}
       endNode = node;
       return false;
     }
     return true;
   });
+  //    TODO Add endpoint and ping it if this conditional is met.
+  //if(!endNode) {
+  //    If this if statement is true, a user's list is not strongly linked
+  //    every list should have 1 node without a next field (last item in list)
+  //}
 
   return [...sort(endLessList.map((node) => [node])), endNode];
 };
@@ -62,12 +73,15 @@ const sortList = (list: TreeNote[]) => {
  * */
 const sort = (list: TreeNote[][], max: number = 0, iter: number = 0) => {
   if (!max) {
-    max = list.length * 2 + 1;
+    max = list.length * list.length + 1;
   }
-  if (iter > 50) {
-    return list;
+  if (iter > max) {
+    //    TODO Add endpoint and ping it if this conditional is met.
+    //    If this if statement is true, a user's list is not strongly linked
+    //    This algorithm should never run O(N^2) unless the list is not strongly linked
+    return list[0];
   }
-  if (!list) {
+  if (!list || list.length === 0) {
     return [];
   }
   if (list.length === 1) {

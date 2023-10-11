@@ -28,7 +28,7 @@ export const Notebook = ({ setContentWindow }: NotebookProps) => {
       <NoteList
         addNote={addNote}
         deleteNote={deleteNote}
-        dragEvents={dragEvents}
+        dragHandlers={dragEvents}
         noteList={noteHeiarchy}
         openEditor={openEditor}
         userId={user?.id}

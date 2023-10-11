@@ -10,12 +10,18 @@ const colors = {
   'mug-disabled': '#808b8d',
   'mug-dark': '#1F262AFF',
 
+  'mug-gray': '#47535b',
+  'mug-gray-light': '#56656e',
+  'mug-gray-off': '#485964',
+  'mug-gray-off-light': '#546a77',
+
   tan: '#9F7D5F',
   brown: '#423832',
   'brown-dark': '#1C1A13FF',
   disabledText: '#DDDDDD',
 
   pink: '#FE5B63',
+  'pink-dark': '#753D3FFF',
   'pink-complement': '#5BFEF6',
   aqua: '#5BFEF6',
   'aqua-complement': '#FE5B63',

@@ -1,5 +1,11 @@
 import React, { PropsWithChildren, useState } from 'react';
-import { TreeNote, NotebookDragEvents, UnsafeAddNoteTrigger, UnsafeDeleteNoteTrigger } from '#interfaces/notes';
+import {
+  TreeNote,
+  NotebookDragEvents,
+  UnsafeAddNoteTrigger,
+  UnsafeDeleteNoteTrigger,
+  NoteLinage,
+} from '#interfaces/notes';
 import { AddChildRow } from './AddChildRow';
 
 import { DragRowWrapper, NoteRowBody } from '@components/notebook';
@@ -8,8 +14,7 @@ type OpenEditor = (title: string, content: string, id?: string) => void;
 interface NoteRowProps extends PropsWithChildren {
   addNote: UnsafeAddNoteTrigger;
   deleteNote: UnsafeDeleteNoteTrigger;
-  drag: NotebookDragEvents;
-  descendants: string[];
+  dragHandlers: NotebookDragEvents;
   depth?: number;
   name: string;
   note: TreeNote;
@@ -20,9 +25,7 @@ export const NoteRow = ({
   addNote,
   children,
   deleteNote,
-  descendants,
-  drag,
-  depth = 0,
+  dragHandlers,
   name,
   note,
   openEditor,
@@ -50,29 +53,18 @@ export const NoteRow = ({
     }
   };
 
-  const handlers = drag(note);
-  const {
-    state: { beingDragged },
-    mouseHandlers
-  } = handlers;
+  const handlers = dragHandlers.handlers(note);
+  const { beingDragged } = dragHandlers.state;
 
-  const expanded = !!beingDragged && beingDragged?.id === note.id ;
+  const expanded = !!beingDragged && beingDragged?.id === note.id;
 
   return (
     <div className={`note-row-backdrop ${expanded && 'bg-mug-dark'}`}>
-      <DragRowWrapper
-        containerName={name}
-        descendants={descendants}
-        beingDragged={beingDragged}
-        handlers={handlers}
-        noteId={note.id}
-      >
+      <DragRowWrapper containerName={name} beingDragged={beingDragged} handlers={handlers.dragHandlers} note={note}>
         <NoteRowBody
           deleteNote={deleteNote}
-          draggedState={handlers.state}
-          depth={depth}
+          dragHandlers={dragHandlers}
           containerName={name}
-          mouseHandlers={mouseHandlers}
           note={note}
           openEditor={openEditor}
           setCreateToggle={setCreateToggle}

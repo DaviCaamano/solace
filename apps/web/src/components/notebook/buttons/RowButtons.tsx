@@ -4,11 +4,10 @@ import { AddNoteButton, RemoveNoteButton } from '@components/notebook';
 interface RowButtonsProps {
   deleteNote: () => void;
   createChildToggle: Setter<boolean>;
-  show: boolean;
 }
-export const RowButtons = ({ createChildToggle, deleteNote, show }: RowButtonsProps) => {
+export const RowButtons = ({ createChildToggle, deleteNote }: RowButtonsProps) => {
   return (
-    <div className={'row-buttons-container w-16 h-8 ' + show ? 'block' : 'hidden'}>
+    <div className={'row-buttons-container absolute right-0 w-16 h-8 block'}>
       <div className={`row-buttons ${styles.noteRowButtons} h-full flex-row justify-center items-center`}>
         <AddNoteButton onClick={() => createChildToggle(true)} />
         <div className={'ml-2'} />

@@ -176,7 +176,39 @@ export class NoteDatabaseService extends ComponentWithLogging {
     }
   }
 
+  /**
+   * identifies if a node is the ancestor of another. Useful for avoiding things like infinite ancestor loops
+   * @param userId - string: user which owns the note tree
+   * @param descendant - string: id of descendant node
+   * @param ancestor - string: id of potential ancestor
+   */
+  async isAncestor(userId: string, descendant: string, ancestor: string): Promise<boolean> {
+    if (!userId) {
+      this.report('No user id provided for list notes', HttpStatus.BAD_REQUEST);
+    }
 
+    try {
+      const result = await this.db.$queryRaw`
+          WITH RECURSIVE noteTree(id, parentId) AS (
+              SELECT descendant."id",  descendant."parentId"
+              FROM "Note" descendant
+              WHERE descendant."userId" = ${userId}
+                AND descendant."id" = ${descendant}
+              UNION ALL
+                SELECT ancestor."id", ancestor."parentId"
+                FROM "Note" ancestor
+                INNER JOIN noteTree ON ancestor."id" = noteTree."parentid"
+                WHERE ancestor."userId" = ${userId}
+          )
+          SELECT COUNT(id)
+          FROM noteTree result
+          WHERE result."id" = ${ancestor};`;
+
+      return Number(result[0].count) !== 0;
+    } catch (err: any) {
+      this.report('Failed to list notes', err);
+    }
+  }
 }
 
 const correctParentIdCase = (notes: Note[]) => {

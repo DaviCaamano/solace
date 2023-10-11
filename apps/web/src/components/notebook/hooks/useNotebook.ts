@@ -28,6 +28,7 @@ export const useNotebook = (
   const stickyList = useRef<Note[] | undefined>();
 
   const dragEvents = useDraggableRow(userId);
+
   /** Detect when a new note was both expected and added then move user to editor to edit new note. */
   useEffect(() => {
     handleNewNote({

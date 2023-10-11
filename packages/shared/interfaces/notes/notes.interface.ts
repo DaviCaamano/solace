@@ -65,17 +65,25 @@ export interface DragRowHandlers {
 }
 export interface DragMouseHandlers {
   row: { onMouseEnter: () => void; onMouseLeave: () => void };
-  zone: (moveType: MoveNotePosition) => { onMouseEnter: () => void; onMouseLeave: () => void };
+  zone: (moveType: MoveNotePosition) => { onMouseEnter: () => void };
 }
 export interface DragNoteHandlers {
   dragHandlers: DragRowHandlers;
   mouseHandlers: DragMouseHandlers;
-  state: DraggedNotes;
 }
 
 export interface DraggedNotes {
   beingDragged: TreeNote | undefined;
   hoveredOver: TreeNote | undefined;
   moveType: MoveNotePosition | undefined;
+  disabled: string[];
 }
-export type NotebookDragEvents = (note: TreeNote) => DragNoteHandlers;
+export interface NotebookDragEvents {
+  handlers: (note: TreeNote) => DragNoteHandlers;
+  state: DraggedNotes;
+}
+
+export type NoteLinage = {
+  id: string;
+  depth: number;
+};

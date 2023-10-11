@@ -40,6 +40,10 @@ export class NoteMoveService extends ComponentWithLogging {
    * @param userId - string: user which owns the note tree
    */
   async move({ id, position, targetId, userId }: MoveNoteDto): Promise<Note | undefined> {
+
+    if (await this.dbService.isAncestor(userId, targetId, id)) {
+      return this.report('Cannot move Note: ancestors cannot target their own descendants');
+    }
     let note: Note | undefined = await this.dbService.get(id, userId);
 
     if (!note) {

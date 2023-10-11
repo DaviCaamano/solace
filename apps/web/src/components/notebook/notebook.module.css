@@ -27,7 +27,7 @@
 }
 
 .noteRowParent {
-  @apply relative flex w-full px-2 rounded-l-md justify-center items-center;
+  @apply relative flex flex-col-reverse w-full px-2 rounded-l-md justify-center items-center;
   -webkit-transition: background-color 200ms linear;
   -ms-transition: background-color 200ms linear;
   transition: background-color 200ms linear;
@@ -38,9 +38,16 @@
     }
 
     .dragIndicator {
-      pointer-events: all;
-      cursor: pointer;
-      opacity: 1;
+      &:not(.hideDragButton) {
+        pointer-events: all;
+        cursor: pointer;
+        opacity: 1;
+      }
+      &.hideDragButton {
+        opacity: 0;
+        cursor: none;
+        pointer-events: none;
+      }
     }
   }
 
@@ -52,6 +59,7 @@
     .dragIndicator {
       pointer-events: none;
       opacity: 0;
+      cursor: none;
     }
   }
 }

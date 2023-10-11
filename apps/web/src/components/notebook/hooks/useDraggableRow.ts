@@ -1,4 +1,4 @@
-import { DragEvent, useState } from 'react';
+import { DragEvent, useEffect, useState } from 'react';
 import { DraggedNotes, MoveNotePosition, NotebookDragEvents, TreeNote } from '#interfaces/notes';
 import { useMoveNoteMutation } from '@context/redux/api/notes/notes.slice';
 
@@ -17,7 +17,20 @@ export const useDraggableRow = (userId?: string): NotebookDragEvents => {
     beingDragged: undefined,
     hoveredOver: undefined,
     moveType: undefined,
+    disabled: [],
   });
+  const { beingDragged, moveType, hoveredOver } = draggedState;
+
+  useEffect(() => {
+    if (beingDragged) {
+      const disabled: string[] = [];
+      getAncestorsOfDragged(beingDragged, disabled);
+      setDraggedState((prev: DraggedNotes) => ({
+        ...prev,
+        disabled,
+      }));
+    }
+  }, [beingDragged]);
 
   const [moveNote] = useMoveNoteMutation();
 
@@ -29,8 +42,6 @@ export const useDraggableRow = (userId?: string): NotebookDragEvents => {
    * */
   const onDragStop = () => {
     setDragPos(initialDragPos);
-
-    const { beingDragged, moveType, hoveredOver } = draggedState;
     if (beingDragged && hoveredOver && moveType && userId) {
       moveNote({ id: beingDragged.id, position: moveType, targetId: hoveredOver.id, userId });
     }
@@ -54,22 +65,22 @@ export const useDraggableRow = (userId?: string): NotebookDragEvents => {
     if (draggedState) {
       setDraggedState((prev: DraggedNotes) => ({
         ...prev,
-        hoveredOver,
         moveType,
       }));
     }
   };
 
   const onMouseEnter = (hoveredOver: TreeNote) => () => {
-    if (draggedState) {
+    if (beingDragged) {
       setDraggedState((prev: DraggedNotes) => ({
         ...prev,
         hoveredOver,
       }));
     }
   };
+
   const onMouseLeave = (note: TreeNote) => () => {
-    if (draggedState) {
+    if (beingDragged) {
       if (draggedState.hoveredOver?.id === note.id) {
         setDraggedState((prev: DraggedNotes) => ({
           ...prev,
@@ -80,22 +91,30 @@ export const useDraggableRow = (userId?: string): NotebookDragEvents => {
     }
   };
 
-  return (note: TreeNote) => ({
-    dragHandlers: {
-      onStart: onDragStart(note),
-      onStop: onDragStop,
-      position: dragPos,
-    },
-    mouseHandlers: {
-      row: {
-        onMouseEnter: onMouseEnter(note),
-        onMouseLeave: onMouseLeave(note),
+  return {
+    handlers: (note: TreeNote) => ({
+      dragHandlers: {
+        onStart: onDragStart(note),
+        onStop: onDragStop,
+        position: dragPos,
       },
-      zone: (moveType: MoveNotePosition) => ({
-        onMouseEnter: onZoneEnter(note, moveType),
-        onMouseLeave: onMouseLeave(note),
-      }),
-    },
+      mouseHandlers: {
+        row: {
+          onMouseEnter: onMouseEnter(note),
+          onMouseLeave: onMouseLeave(note),
+        },
+        zone: (moveType: MoveNotePosition) => ({
+          onMouseEnter: onZoneEnter(note, moveType),
+        }),
+      },
+    }),
     state: draggedState,
+  };
+};
+
+const getAncestorsOfDragged = (node: TreeNote, list: string[]) => {
+  list.push(node.id);
+  node?.children?.forEach((note: TreeNote) => {
+    getAncestorsOfDragged(note, list);
   });
 };
