@@ -68,9 +68,8 @@ export const NoteRowBody = ({
           hoveredOver={hoveredOver}
           moveType={moveType}
           sendNoteToEditor={sendNoteToEditor}
-        >
-          {note.title}
-        </NoteRowTitle>
+          title={note.title}
+        />
         {!beingDragged && (
           <RowButtons createChildToggle={() => setCreateToggle(true)} markDelete={() => markDelete(note)} />
         )}

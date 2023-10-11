@@ -3,7 +3,7 @@ import { ComponentWithLogging } from '~utils/logging';
 import { Note, NoteUpdateArgs } from 'prisma';
 import { CreateNoteDto, UpdateNoteDto } from '~note/dto/note.dto';
 import { DatabaseService } from '~persistence/prisma/database.service';
-import { NoteStatus } from '#interfaces/notes/notes.interface';
+import { DetachedNote, NoteStatus } from '#interfaces/notes/notes.interface';
 import { HttpStatus } from '@nestjs/common/enums/http-status.enum';
 import { Prisma } from '@prisma/client';
 
@@ -35,14 +35,18 @@ export class NoteDatabaseService extends ComponentWithLogging {
         WITH RECURSIVE noteTree(id, title, content, status, next, parentId, depth) AS (
             SELECT parent.id, parent.title, parent.content, parent.status, parent.next, parent."parentId", 0 as depth
             FROM "Note" parent
-            WHERE parent."userId" = ${userId}
-              AND parent."parentId" is null
-              and parent."id" is not null
+            WHERE 
+                parent."userId" = ${userId}
+                AND parent."parentId" is null
+                AND parent."id" is not null
+                AND parent."status" = 'ACTIVE'
             UNION ALL
             SELECT child.id, child.title, child.content, child.status, child.next, child."parentId", noteTree."depth" + 1
             FROM "Note" child
-                     INNER JOIN noteTree ON child."parentId" = noteTree."id"
-            where  child."id" is not null
+            INNER JOIN noteTree ON child."parentId" = noteTree."id"
+            WHERE 
+                child."id" is not null
+                AND child."status" = 'ACTIVE'
         )
         SELECT *
         FROM noteTree;`,
@@ -153,13 +157,21 @@ export class NoteDatabaseService extends ComponentWithLogging {
     }
   }
 
-  delete(id: string, userId: string): Promise<Note> {
+  async delete(id: string, userId: string): Promise<Note> {
     if (!id) {
       this.report('No note id provided for delete note', HttpStatus.BAD_REQUEST);
     }
     if (!userId) {
       this.report('No user id provided for delete note', HttpStatus.BAD_REQUEST);
     }
+
+    const note = await this.get(id, userId);
+
+    if (!note) {
+      this.report('Note marked for deletion does not exist');
+    }
+
+    const { sibling, originalNext, originalParent } = await this.detachNote(note, userId);
 
     try {
       return this.db.note.update({
@@ -172,6 +184,12 @@ export class NoteDatabaseService extends ComponentWithLogging {
         },
       });
     } catch (err: any) {
+      if (sibling) {
+        this.error('Move Operation Failed, reverting note\'s previous sibling\'s "next" property', err);
+        await this.detachNote_Revert(id, sibling, originalNext, originalParent, userId);
+      } else {
+        this.error('Move Operation Failed', err);
+      }
       this.report('Failed to delete note', err);
     }
   }
@@ -209,7 +227,141 @@ export class NoteDatabaseService extends ComponentWithLogging {
       this.report('Failed to list notes', err);
     }
   }
+
+  /**
+   * Remove a note from its current position and return an object which can be used to reattach the note
+   * @param note - Note: The note being detatched from the NoteTree.
+   * @param userId - string: user which owns the note tree
+   *
+   * @return originalSibling - Note: the updated Sibling and the original 'next' property of the sibling
+   *    so the detachment can be reverted.
+   *
+   *  Find Note [A]: where A.next === note
+   *    If A: A.next = note.next
+   */
+  async detachNote(note: Note, userId: string): Promise<DetachedNote> {
+    const originalParent = note.parentId;
+    let sibling: Note | undefined;
+
+    console.log(
+      `
+    
+    note`,
+      note,
+      `
+    
+    `,
+    );
+    try {
+      sibling = await this.db.note.findUnique({ where: { next: note.id, userId } });
+    } catch (err: any) {
+      this.report('Failed to detach note, could not search for sibling.', err);
+    }
+
+    if (!sibling?.id) {
+      return {
+        sibling: null,
+        originalNext: null,
+        originalParent,
+      };
+    }
+
+    try {
+      const newSiblingNextPointer: Prisma.NoteUpdateOneWithoutPrevNestedInput = note.next
+        ? {
+            connect: {
+              id: note.next,
+            },
+          }
+        : {
+            disconnect: true,
+          };
+
+      sibling = await this.db.note.update({
+        where: { id: sibling.id, userId },
+        data: {
+          Next: newSiblingNextPointer,
+        },
+      });
+    } catch (err: any) {
+      this.report('Failed to detach note from sibling.', err);
+    }
+
+    try {
+      if (note.parentId) {
+        sibling = await this.db.note.update({
+          where: { id: note.id, userId },
+          data: {
+            Parent: {
+              disconnect: {
+                id: note.parentId,
+              },
+            },
+          },
+        });
+      }
+    } catch (err: any) {
+      this.report('Failed to detach note from parent.', err);
+    }
+    return {
+      sibling,
+      originalNext: note.id,
+      originalParent,
+    };
+  }
+
+  /** Undo operation done by detachNote function in this service */
+  async detachNote_Revert(
+    noteId: string,
+    sibling: Note | null,
+    originalNext: string | null,
+    originalParent: string | undefined,
+    userId: string,
+  ) {
+    try {
+      await this.db.note.update({ where: { userId, id: sibling.id }, data: { next: originalNext } });
+    } catch (err: any) {
+      this.error("Failed to revert target's previous sibling's \"next\" property. Consolidating User's Note Tree", err);
+      await this.consolidateTree(userId);
+    }
+    try {
+      const noteRecord = await this.db.note.findUnique({ where: { userId, id: noteId } });
+      if (noteRecord && noteRecord.parentId !== originalParent) {
+        this.db.note.update({ where: { userId, id: noteId }, data: { next: originalNext } });
+      }
+    } catch (err: any) {
+      this.error("Failed to revert target's previous sibling's \"next\" property. Consolidating User's Note Tree", err);
+      await this.consolidateTree(userId);
+    }
+  }
+
+  /**
+   * Use when a user's tree is suspected to have nodes that are not strongly linked.
+   * Moved any loose notes out of their current position and into the last nodes in the user's root nodes
+   * @param userId - ID of User whose tree is being investigated
+   * @param attempt - Due to critical nature of this fallback function, it will attempt to run up to 3 times in case of
+   *    error
+   */
+  async consolidateTree(userId: string, attempt: number = 0) {
+    try {
+      //TODO Create function to consolidate a user's note tree.
+      // Function should move any out-of-tree nodes onto the root of the tree.
+    } catch (err: any) {
+      if (attempt < MAX_CONSOLIDATION_ATTEMPT) {
+        this.error('FAILED TO CONSOLIDATE USER TREE', err);
+        await this.consolidateTree(userId, attempt + 1);
+      }
+      this.report(
+        '--CRITICAL FAILURE--\n' +
+          '`CRITICAL FAILURE: UNABLE TO CONSOLIDATE USER TREE [User: ${userId}]`' +
+          '\n--CRITICAL FAILURE--',
+        err,
+      );
+    }
+  }
 }
+
+const MAX_CONSOLIDATION_ATTEMPT = 3;
 
 const correctParentIdCase = (notes: Note[]) => {
   for (let index = 0; index < notes.length; index++) {

@@ -4,7 +4,7 @@ import { DatabaseService } from '~persistence/prisma/database.service';
 import { MoveNoteDto } from '~note/dto/note.dto';
 import { NoteDatabaseService } from '~note/services/note-database.service';
 import { Note } from 'prisma';
-import { DetachedNote, MoveNotePosition } from '#interfaces/notes';
+import { MoveNotePosition } from '#interfaces/notes';
 import { Prisma } from '@prisma/client';
 
 @Injectable()
@@ -54,7 +54,7 @@ export class NoteMoveService extends ComponentWithLogging {
       this.report('Failed to find note being moved');
     }
 
-    const { sibling, originalNext, originalParent } = await this.detachNote(note, userId);
+    const { sibling, originalNext, originalParent } = await this.dbService.detachNote(note, userId);
 
     try {
       switch (position) {
@@ -71,107 +71,10 @@ export class NoteMoveService extends ComponentWithLogging {
     } catch (err: any) {
       if (sibling) {
         this.error('Move Operation Failed, reverting note\'s previous sibling\'s "next" property', err);
-        await this.detachNote_Revert(note.id, sibling, originalNext, originalParent, userId);
+        await this.dbService.detachNote_Revert(note.id, sibling, originalNext, originalParent, userId);
       } else {
         this.error('Move Operation Failed', err);
       }
-    }
-  }
-
-  /**
-   * Remove a note from its current position and return an object which can be used to reattach the note
-   * @param note - Note: The note being detatched from the NoteTree.
-   * @param userId - string: user which owns the note tree
-   *
-   * @return originalSibling - Note: the updated Sibling and the original 'next' property of the sibling
-   *    so the detachment can be reverted.
-   *
-   *  Find Note [A]: where A.next === note
-   *    If A: A.next = note.next
-   */
-  async detachNote(note: Note, userId: string): Promise<DetachedNote> {
-    const originalParent = note.parentId;
-    let sibling: Note | undefined;
-    try {
-      sibling = await this.db.note.findUnique({ where: { next: note.id, userId } });
-    } catch (err: any) {
-      this.report('Failed to detach note, could not search for sibling.', err);
-    }
-
-    if (!sibling?.id) {
-      return {
-        sibling: null,
-        originalNext: null,
-        originalParent,
-      };
-    }
-
-    try {
-      const newSiblingNextPointer: Prisma.NoteUpdateOneWithoutPrevNestedInput = note.next
-        ? {
-            connect: {
-              id: note.next,
-            },
-          }
-        : {
-            disconnect: true,
-          };
-
-      sibling = await this.db.note.update({
-        where: { id: sibling.id, userId },
-        data: {
-          Next: newSiblingNextPointer,
-        },
-      });
-    } catch (err: any) {
-      this.report('Failed to detach note from sibling.', err);
-    }
-
-    try {
-      if (note.parentId) {
-        sibling = await this.db.note.update({
-          where: { id: note.parentId, userId },
-          data: {
-            Children: {
-              disconnect: {
-                id: note.id,
-              },
-            },
-          },
-        });
-      }
-    } catch (err: any) {
-      this.report('Failed to detach note from parent.', err);
-    }
-    return {
-      sibling,
-      originalNext: note.id,
-      originalParent,
-    };
-  }
-
-  /** Undo operation done by detachNote function in this service */
-  async detachNote_Revert(
-    noteId: string,
-    sibling: Note | null,
-    originalNext: string | null,
-    originalParent: string | undefined,
-    userId: string,
-  ) {
-    try {
-      await this.db.note.update({ where: { userId, id: sibling.id }, data: { next: originalNext } });
-    } catch (err: any) {
-      this.error("Failed to revert target's previous sibling's \"next\" property. Consolidating User's Note Tree", err);
-      await this.consolidateTree(userId);
-    }
-    try {
-      const noteRecord = await this.db.note.findUnique({ where: { userId, id: noteId } });
-      if (noteRecord && noteRecord.parentId !== originalParent) {
-        this.db.note.update({ where: { userId, id: noteId }, data: { next: originalNext } });
-      }
-    } catch (err: any) {
-      this.error("Failed to revert target's previous sibling's \"next\" property. Consolidating User's Note Tree", err);
-      await this.consolidateTree(userId);
     }
   }
 
@@ -255,7 +158,7 @@ export class NoteMoveService extends ComponentWithLogging {
           "Failed to revert target's previous sibling's \"next\" property. Consolidating User's Note Tree",
           err,
         );
-        await this.consolidateTree(userId);
+        await this.dbService.consolidateTree(userId);
       }
     } else {
       this.report("Failed to update note's parent and next properties", err);
@@ -335,7 +238,7 @@ export class NoteMoveService extends ComponentWithLogging {
     }
     /** Should not execute if child list is properly structured */
     this.error("Unable to find first child, list of children not strongly linked. Consolidating User's Note Tree");
-    await this.consolidateTree(userId);
+    await this.dbService.consolidateTree(userId);
     return this.findFirstChild(children, userId, attempt + 1);
   }
 
@@ -383,31 +286,4 @@ export class NoteMoveService extends ComponentWithLogging {
 
     return alreadyChildOfTarget || alreadyAheadOf || alreadyLastNote;
   }
-
-  /**
-   * Use when a user's tree is suspected to have nodes that are not strongly linked.
-   * Moved any loose notes out of their current position and into the last nodes in the user's root nodes
-   * @param userId - ID of User whose tree is being investigated
-   * @param attempt - Due to critical nature of this fallback function, it will attempt to run up to 3 times in case of
-   *    error
-   */
-  async consolidateTree(userId: string, attempt: number = 0) {
-    try {
-      //TODO Create function to consolidate a user's note tree.
-      // Function should move any out-of-tree nodes onto the root of the tree.
-    } catch (err: any) {
-      if (attempt < MAX_CONSOLIDATION_ATTEMPT) {
-        this.error('FAILED TO CONSOLIDATE USER TREE', err);
-        await this.consolidateTree(userId, attempt + 1);
-      }
-      this.report(
-        '--CRITICAL FAILURE--\n' +
-          '`CRITICAL FAILURE: UNABLE TO CONSOLIDATE USER TREE [User: ${userId}]`' +
-          '\n--CRITICAL FAILURE--',
-        err,
-      );
-    }
-  }
 }
-
-const MAX_CONSOLIDATION_ATTEMPT = 3;

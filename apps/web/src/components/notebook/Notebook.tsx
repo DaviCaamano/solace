@@ -28,6 +28,7 @@ export const Notebook = ({ setContentWindow }: NotebookProps) => {
 
   const noteHeiarchy = useMemo(() => noteList && getNoteHeiarchy(noteList), [noteList]);
 
+  console.log('noteHeiarchy', noteHeiarchy);
   if (!noteHeiarchy || isLoading) return <LoadingMessage />;
   if (isError) return <ErrorMessage error={error} />;
   return (

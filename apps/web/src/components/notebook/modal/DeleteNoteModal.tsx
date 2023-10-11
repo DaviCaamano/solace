@@ -16,13 +16,17 @@ export const DeleteNoteModal = ({ deleteNoteHandler: { markDelete, setMarkDelete
   if (!userId || !markDelete) {
     return null;
   }
+  const onClick = async () => {
+    await deleteNote({ id: markDelete.id, userId });
+    setMarkDelete(undefined);
+  };
+
   return (
     <Modal open={!!markDelete} close={() => setMarkDelete(undefined)}>
       <div
         id={'note-book-delete-modal'}
         className={'relative w-[43.75rem] flex flex-col mb-[-0.25rem] pt-4  justify-center items-center'}
         style={{ maxWidth: 'calc(100vw - 1.25rem)' }}
-        onSubmit={() => deleteNote({ id: markDelete.id, userId })}
       >
         <div className={'flex justify-center absolute w-full pointer-events-none my-4'} style={{ top: '-15px' }}>
           <DeleteForeverIcon className={'text-mug-light w-[2rem]'} />
@@ -40,7 +44,7 @@ export const DeleteNoteModal = ({ deleteNoteHandler: { markDelete, setMarkDelete
             id={'delete-modal-confirm-button'}
             data-testid={'delete-modal-confirm-button'}
             className={'py-[1px] text-[12px] rounded-2xl text-latte w-[5rem] bg-mug-light'}
-            onClick={() => deleteNote({ id: markDelete.id, userId })}
+            onClick={onClick}
           >
             <CheckIcon />
           </button>

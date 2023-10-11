@@ -29,15 +29,6 @@ export const NoteRow = ({
   const setCreateToggle = (flag: boolean) => {
     setNewNoteToggle(flag ? note.id : undefined);
   };
-  //TODO FOR NOTE ROW:
-  // [Done] Send Note to Editor
-  // [Done] Allow creation of child note
-  // Allow Deletion of Note
-  // [Done] Display Note Children
-  //    [Done] Recursively display children of children
-  // [Done] Allow Drag re-ordering of children
-  // [Done] TODO IN notes.slice.ts
-  //    [Done] Allow change in dept of Note as part of reordering
 
   const addChildSubmit = (title: string) => {
     if (userId) {
