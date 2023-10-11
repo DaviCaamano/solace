@@ -53,6 +53,11 @@ export interface UnsafeDeleteNoteDto extends Omit<DeleteNoteDto, 'userId'> {
 export type UnsafeAddNoteTrigger = (newNote: UnsafeCreateNoteDto) => void;
 export type UnsafeDeleteNoteTrigger = (deleteDto: UnsafeDeleteNoteDto) => void;
 
+export interface DetachedNote {
+  sibling: Note | undefined;
+  originalNext: string | undefined;
+  originalParent: string | undefined;
+}
 /** Drag Row Types */
 interface DragPos {
   x: number;

@@ -1,8 +1,5 @@
 import { DraggedNotes, MoveNotePosition, TreeNote } from '#interfaces/notes';
-import SubdirectoryArrowRightIcon from '@mui/icons-material/SubdirectoryArrowRight';
-import NorthIcon from '@mui/icons-material/North';
 import { colors } from '@styles/tailwind';
-import { hexOpacity } from '@utils/color';
 
 interface MoveZoneProps {
   draggedState: DraggedNotes;
@@ -51,22 +48,6 @@ export const RowMoveZone = ({ draggedState, expand, mouseHandlers, note, positio
     >
       {/*{expand && <ZoneIcon position={position} hovered={hovered} />}*/}
     </div>
-  );
-};
-
-interface ZoneIconProps {
-  hovered: boolean;
-  position: MoveNotePosition;
-}
-const ZoneIcon = ({ hovered, position }: ZoneIconProps) => {
-  const iconColor = hovered ? 'opacity-100 text-latte-lighter' : 'opacity-30 text-latte';
-  return position === MoveNotePosition.aheadOf ? (
-    <NorthIcon className={`${iconColor} relative`} style={{ fontSize: '1.25rem', bottom: '5px' }} />
-  ) : (
-    <SubdirectoryArrowRightIcon
-      className={`relative left-[5px] ${iconColor} relative`}
-      style={{ fontSize: '1.25rem', bottom: '6px' }}
-    />
   );
 };
 

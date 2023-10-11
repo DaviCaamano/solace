@@ -26,5 +26,5 @@ export const DragRowWrapper = ({ containerName, children, beingDragged, handlers
 
 export const rowTargetCss = (beingDragged: TreeNote | undefined, noteId: string | undefined) => {
   const isDragged = beingDragged?.id && beingDragged?.id === noteId;
-  return isDragged ? 'bg-pink text-coffee font-semibold z-50 pointer-events-none opacity-30' : '';
+  return isDragged ? 'bg-pink text-coffee font-semibold z-50 pointer-events-none opacity-50' : '';
 };

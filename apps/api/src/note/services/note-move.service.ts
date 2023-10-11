@@ -4,7 +4,7 @@ import { DatabaseService } from '~persistence/prisma/database.service';
 import { MoveNoteDto } from '~note/dto/note.dto';
 import { NoteDatabaseService } from '~note/services/note-database.service';
 import { Note } from 'prisma';
-import { MoveNotePosition } from '#interfaces/notes';
+import { DetachedNote, MoveNotePosition } from '#interfaces/notes';
 import { Prisma } from '@prisma/client';
 
 @Injectable()
@@ -40,17 +40,21 @@ export class NoteMoveService extends ComponentWithLogging {
    * @param userId - string: user which owns the note tree
    */
   async move({ id, position, targetId, userId }: MoveNoteDto): Promise<Note | undefined> {
-
     if (await this.dbService.isAncestor(userId, targetId, id)) {
       return this.report('Cannot move Note: ancestors cannot target their own descendants');
     }
     let note: Note | undefined = await this.dbService.get(id, userId);
 
+    /** Redundant Operation, cancelling */
+    if (await this.redundantMoveCheck(note, targetId, position)) {
+      return note;
+    }
+
     if (!note) {
       this.report('Failed to find note being moved');
     }
 
-    const { sibling, originalNext } = await this.detachNote(note, userId);
+    const { sibling, originalNext, originalParent } = await this.detachNote(note, userId);
 
     try {
       switch (position) {
@@ -67,7 +71,7 @@ export class NoteMoveService extends ComponentWithLogging {
     } catch (err: any) {
       if (sibling) {
         this.error('Move Operation Failed, reverting note\'s previous sibling\'s "next" property', err);
-        await this.detachNote_Revert(sibling, originalNext, userId);
+        await this.detachNote_Revert(note.id, sibling, originalNext, originalParent, userId);
       } else {
         this.error('Move Operation Failed', err);
       }
@@ -85,13 +89,15 @@ export class NoteMoveService extends ComponentWithLogging {
    *  Find Note [A]: where A.next === note
    *    If A: A.next = note.next
    */
-  async detachNote(note: Note, userId: string) {
+  async detachNote(note: Note, userId: string): Promise<DetachedNote> {
     if (!note.next) {
       return {
         sibling: null,
         originalNext: null,
+        originalParent: null,
       };
     }
+    const originalParent = note.parentId;
     let sibling: Note | undefined;
     try {
       sibling = await this.db.note.findUnique({ where: { next: note.id, userId } });
@@ -103,6 +109,7 @@ export class NoteMoveService extends ComponentWithLogging {
       return {
         sibling: null,
         originalNext: null,
+        originalParent,
       };
     }
 
@@ -112,24 +119,57 @@ export class NoteMoveService extends ComponentWithLogging {
         data: {
           Next: {
             connect: {
-              id: note.next,
+              id: note.next || null,
             },
           },
         },
       });
     } catch (err: any) {
-      this.report('Failed to detach note.', err);
+      this.report('Failed to detach note from sibling.', err);
+    }
+
+    try {
+      if (note.parentId) {
+        sibling = await this.db.note.update({
+          where: { id: note.parentId, userId },
+          data: {
+            Children: {
+              disconnect: {
+                id: note.id,
+              },
+            },
+          },
+        });
+      }
+    } catch (err: any) {
+      this.report('Failed to detach note from parent.', err);
     }
     return {
       sibling,
       originalNext: note.id,
+      originalParent,
     };
   }
 
   /** Undo operation done by detachNote function in this service */
-  async detachNote_Revert(sibling: Note | null, originalNext: string | null, userId: string) {
+  async detachNote_Revert(
+    noteId: string,
+    sibling: Note | null,
+    originalNext: string | null,
+    originalParent: string | undefined,
+    userId: string,
+  ) {
     try {
-      return this.db.note.update({ where: { userId, id: sibling.id }, data: { next: originalNext } });
+      await this.db.note.update({ where: { userId, id: sibling.id }, data: { next: originalNext } });
+    } catch (err: any) {
+      this.error("Failed to revert target's previous sibling's \"next\" property. Consolidating User's Note Tree", err);
+      await this.consolidateTree(userId);
+    }
+    try {
+      const noteRecord = await this.db.note.findUnique({ where: { userId, id: noteId } });
+      if (noteRecord && noteRecord.parentId !== originalParent) {
+        this.db.note.update({ where: { userId, id: noteId }, data: { next: originalNext } });
+      }
     } catch (err: any) {
       this.error("Failed to revert target's previous sibling's \"next\" property. Consolidating User's Note Tree", err);
       await this.consolidateTree(userId);
@@ -234,6 +274,8 @@ export class NoteMoveService extends ComponentWithLogging {
    */
   async makeChildOf(note: Note, targetId: string, userId: string) {
     const firstChild = await this.findFirstChild(targetId, userId);
+
+    console.log('firstChild', firstChild);
     const updateData: Prisma.NoteUpdateInput = {
       Parent: {
         connect: {
@@ -241,13 +283,18 @@ export class NoteMoveService extends ComponentWithLogging {
         },
       },
     };
-    if (firstChild) {
+    if (firstChild?.id) {
       updateData.Next = {
         connect: {
           id: firstChild.id,
         },
       };
+    } else {
+      updateData.Next = {
+        disconnect: true,
+      };
     }
+
     return this.db.note.update({ where: { id: note.id, userId }, data: updateData });
   }
 
@@ -256,15 +303,19 @@ export class NoteMoveService extends ComponentWithLogging {
    *   set parentId to null to find last root node
    * @param parentId - string | null:
    *    if string: will retrieve the first child element of a specified parent note or null if parent has no children
-   *    if null: will retrieve the firs
+   *    if null: will retrieve the first root element
    * @param userId - string: user which owns the note tree
    * @param attempt - Attempt again in case a tree must be consolidated.
    */
   async findFirstChild(parentId: string | null, userId: string, attempt: number = 0) {
     let parent: Note | undefined;
     try {
-      parent = await this.db.note.findMany({
-        where: { parentId, userId },
+      console.log('parentId, userId', parentId, userId);
+      parent = await this.db.note.findFirst({
+        where: { id: parentId, userId },
+        include: {
+          Children: true,
+        },
       });
     } catch (err: any) {
       this.report('Failed to find parent note to insert child into (1)', err);
@@ -272,14 +323,19 @@ export class NoteMoveService extends ComponentWithLogging {
     if (!parent) {
       this.report('Failed to find parent note to insert child into (2)');
     }
+    console.log('parent', parent);
 
     const children = parent.Children;
+    console.log('Children', parent.Children);
+
     if (!children?.length) {
       return null;
     }
 
     const nextIds: string[] = children.map(({ next }: Note) => next);
+    console.log('nextIds', nextIds);
     for (let child of children) {
+      console.log('!includes', child.id, !nextIds.includes(child.id));
       if (!nextIds.includes(child.id)) {
         return child;
       }
@@ -327,18 +383,14 @@ export class NoteMoveService extends ComponentWithLogging {
     }
   }
 
-  /**
-   * Revert changes to previous sibling of target (performed in addToEndOfRoot function in this service.
-   *    note.parent => back to original parent
-   */
-  async addToEndOfRoot_Revert(note: Note, userId: string, err: any) {
-    this.error(`Failed to insert note at end of user:${userId} root notes, reverting changes to note:${note.id}`, err);
-    try {
-      this.db.note.update({ where: { id: note.id }, data: { parentId: note.parentId } });
-    } catch (err: any) {
-      this.report(`Failed to revert note:${note.id} after making it a root note.`, err);
+  async redundantMoveCheck(note: Note, targetId: string, position: MoveNotePosition) {
+    const alreadyChildOfTarget = position === MoveNotePosition.childOf && note.parentId === targetId;
+    const alreadyAheadOf = position === MoveNotePosition.aheadOf && note.next === targetId;
+    const alreadyLastNote = position === MoveNotePosition.lastNote && !note.next && !note.parentId;
+    if (alreadyChildOfTarget || alreadyAheadOf || alreadyLastNote) {
+      /** Already Parent */
+      return true;
     }
-    this.report(`Failed to insert note at end of user:${userId} root notes. Reverted changes to note:${note.id}`);
   }
 
   /**
