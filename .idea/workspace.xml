@@ -5,17 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2101ad9f-8972-44d3-9c27-f093e4bebdd9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/apps/web/src/components/notebook/move-row-zone/EndOfTreeMoveZone.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/web/src/components/notebook/move-row-zone/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/api/src/note/services/note-move.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/note/services/note-move.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/api/src/note/dto/note.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/note/dto/note.dto.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/web/src/components/notebook/Notebook.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notebook/Notebook.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/components/notebook/notebook.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notebook/notebook.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/components/notebook/rows/NoteRowBody.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notebook/rows/NoteRowBody.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/components/notebook/rows/NoteRowTitle.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notebook/rows/NoteRowTitle.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/components/notebook/rows/RowMoveZone.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notebook/move-row-zone/RowMoveZone.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/components/notebook/rows/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notebook/rows/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/styles/tailwind/colors.js" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/styles/tailwind/colors.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/notebook/hooks/useNotebook.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notebook/hooks/useNotebook.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/notebook/rows/NoteRow.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notebook/rows/NoteRow.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/tests/mocks/svg.js" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/tests/mocks/svg.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -193,7 +187,7 @@
       <workItem from="1696742655761" duration="38230000" />
       <workItem from="1696872224930" duration="64975000" />
       <workItem from="1696988842594" duration="2483000" />
-      <workItem from="1697015620497" duration="11959000" />
+      <workItem from="1697015620497" duration="12945000" />
     </task>
     <servers />
   </component>

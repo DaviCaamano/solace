@@ -27,7 +27,6 @@ export const Notebook = ({ setContentWindow }: NotebookProps) => {
 
   const noteHeiarchy = useMemo(() => noteList && getNoteHeiarchy(noteList), [noteList]);
 
-  console.log('dragEvents.state.beingDragged', !!dragEvents.state.beingDragged);
   if (!noteHeiarchy || isLoading) return <LoadingMessage />;
   if (isError) return <ErrorMessage error={error} />;
   return (

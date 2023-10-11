@@ -29,4 +29,5 @@ module.exports = {
     'prettier/prettier': 'off',
     '@typescript-eslint/no-unused-vars': 'warn',
   },
+  ignorePatterns: ['**/*/svg.js'],
 };

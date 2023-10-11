@@ -3,7 +3,6 @@ import {
   NewNoteToggle,
   Note,
   NotebookDragEvents,
-  UnsafeAddNoteTrigger,
   UnsafeCreateNoteDto,
   UnsafeDeleteNoteDto,
   UnsafeDeleteNoteTrigger,

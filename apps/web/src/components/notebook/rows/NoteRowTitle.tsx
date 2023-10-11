@@ -3,7 +3,6 @@ import { MoveNotePosition, TreeNote } from '#interfaces/notes';
 import styles from '@components/notebook/notebook.module.css';
 import DragIndicatorIcon from '@mui/icons-material/DragIndicator';
 import NorthIcon from '@mui/icons-material/North';
-import SouthIcon from '@mui/icons-material/South';
 import SubdirectoryArrowRightIcon from '@mui/icons-material/SubdirectoryArrowRight';
 const rowHeight = '2rem';
 const expandedRowHeight = '3.8rem';

@@ -1,4 +1,4 @@
-import React, { PropsWithChildren, useState } from 'react';
+import React, { PropsWithChildren } from 'react';
 import { TreeNote, NotebookDragEvents, UnsafeDeleteNoteTrigger, AddNoteHandlers } from '#interfaces/notes';
 import { AddChildRow } from './AddChildRow';
 

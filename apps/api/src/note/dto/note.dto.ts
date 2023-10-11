@@ -1,4 +1,4 @@
-import { isNotEmpty, IsNotEmpty, IsOptional } from 'class-validator';
+import { IsNotEmpty, IsOptional } from 'class-validator';
 import { MoveNotePosition, NoteStatus } from '#interfaces/notes';
 
 export class ListNotesDto {
