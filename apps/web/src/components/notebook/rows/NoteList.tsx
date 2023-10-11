@@ -1,10 +1,10 @@
 import { NoteRow } from '@components/notebook/rows/NoteRow';
-import { AddNoteHandlers, NotebookDragEvents, TreeNote, UnsafeDeleteNoteTrigger } from '#interfaces/notes';
+import { AddNoteHandlers, NotebookDragEvents, TreeNote } from '#interfaces/notes';
 interface NoteListProps {
   addNoteHandlers: AddNoteHandlers;
-  deleteNote: UnsafeDeleteNoteTrigger;
   depth?: number;
   dragHandlers: NotebookDragEvents;
+  markDelete: Setter<TreeNote | undefined>;
   noteList?: TreeNote[] | undefined;
   openEditor: (title: string, content: string, id?: string) => void;
   userId: string | undefined;
@@ -12,9 +12,9 @@ interface NoteListProps {
 
 export const NoteList = ({
   addNoteHandlers,
-  deleteNote,
   depth = 0,
   dragHandlers,
+  markDelete,
   noteList,
   openEditor,
   userId,
@@ -30,7 +30,7 @@ export const NoteList = ({
           addNoteHandlers={addNoteHandlers}
           name={'note-row-' + index}
           note={note}
-          deleteNote={deleteNote}
+          markDelete={markDelete}
           depth={depth}
           dragHandlers={dragHandlers}
           openEditor={openEditor}
@@ -38,7 +38,7 @@ export const NoteList = ({
         />
         <NoteList
           addNoteHandlers={addNoteHandlers}
-          deleteNote={deleteNote}
+          markDelete={markDelete}
           depth={depth + 1}
           dragHandlers={dragHandlers}
           noteList={note.children}

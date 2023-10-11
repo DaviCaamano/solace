@@ -1,20 +1,14 @@
-import {
-  DraggedNotes,
-  MoveNotePosition,
-  NotebookDragEvents,
-  TreeNote,
-  UnsafeDeleteNoteTrigger,
-} from '#interfaces/notes';
+import { DraggedNotes, MoveNotePosition, NotebookDragEvents, TreeNote } from '#interfaces/notes';
 import styles from '@components/notebook/notebook.module.css';
-import { NoteRowTitle, RowButtons } from '@components/notebook';
 import { motion } from 'framer-motion';
+import { NoteRowTitle, RowButtons } from '@components/notebook';
 import { RowMoveZone } from '@components/notebook/move-row-zone/RowMoveZone';
 
 const MotionDiv = motion.div;
 
 type OpenEditor = (title: string, content: string, id?: string) => void;
 interface RowProps {
-  deleteNote: UnsafeDeleteNoteTrigger;
+  markDelete: Setter<TreeNote | undefined>;
   dragHandlers: NotebookDragEvents;
   containerName: string;
   note: TreeNote;
@@ -22,7 +16,7 @@ interface RowProps {
   setCreateToggle: (flag: boolean) => void;
 }
 export const NoteRowBody = ({
-  deleteNote,
+  markDelete,
   dragHandlers: { handlers, state: draggedState },
   containerName,
   note,
@@ -36,8 +30,6 @@ export const NoteRowBody = ({
 
   let [isHoveredNote, animation] = animationState({ beingDragged, draggedState, hoveredOver, note });
 
-  //TODO IMPLEMENT DELETE WITH THIS
-  const deleteNoteOnClick = () => {};
   const sendNoteToEditor = () => {
     openEditor(note.title, note.content, note.id);
   };
@@ -80,12 +72,7 @@ export const NoteRowBody = ({
           {note.title}
         </NoteRowTitle>
         {!beingDragged && (
-          <RowButtons
-            createChildToggle={() => {
-              setCreateToggle(true);
-            }}
-            deleteNote={deleteNoteOnClick}
-          />
+          <RowButtons createChildToggle={() => setCreateToggle(true)} markDelete={() => markDelete(note)} />
         )}
       </div>
     </MotionDiv>

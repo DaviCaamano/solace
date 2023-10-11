@@ -1,5 +1,5 @@
 import React, { PropsWithChildren } from 'react';
-import { TreeNote, NotebookDragEvents, UnsafeDeleteNoteTrigger, AddNoteHandlers } from '#interfaces/notes';
+import { TreeNote, NotebookDragEvents, AddNoteHandlers } from '#interfaces/notes';
 import { AddChildRow } from './AddChildRow';
 
 import { DragRowWrapper, NoteRowBody } from '@components/notebook';
@@ -7,9 +7,9 @@ import { DragRowWrapper, NoteRowBody } from '@components/notebook';
 type OpenEditor = (title: string, content: string, id?: string) => void;
 interface NoteRowProps extends PropsWithChildren {
   addNoteHandlers: AddNoteHandlers;
-  deleteNote: UnsafeDeleteNoteTrigger;
   dragHandlers: NotebookDragEvents;
   depth?: number;
+  markDelete: Setter<TreeNote | undefined>;
   name: string;
   note: TreeNote;
   openEditor: OpenEditor;
@@ -18,8 +18,8 @@ interface NoteRowProps extends PropsWithChildren {
 export const NoteRow = ({
   addNoteHandlers: { addNote, newNoteToggle, setNewNoteToggle },
   children,
-  deleteNote,
   dragHandlers,
+  markDelete,
   name,
   note,
   openEditor,
@@ -58,7 +58,7 @@ export const NoteRow = ({
     <div className={`note-row-backdrop ${expanded && 'bg-mug-dark'}`}>
       <DragRowWrapper containerName={name} beingDragged={beingDragged} handlers={handlers.dragHandlers} note={note}>
         <NoteRowBody
-          deleteNote={deleteNote}
+          markDelete={markDelete}
           dragHandlers={dragHandlers}
           containerName={name}
           note={note}

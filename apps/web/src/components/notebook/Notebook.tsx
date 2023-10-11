@@ -8,6 +8,7 @@ import { useMemo } from 'react';
 import { useNotebook } from '@components/notebook/hooks';
 import { MoveNotePosition } from '#interfaces/notes';
 import { EndOfTreeMoveZone } from '@components/notebook/move-row-zone/EndOfTreeMoveZone';
+import { DeleteNoteModal } from '@components/notebook/modal/DeleteNoteModal';
 
 interface NotebookProps {
   setContentWindow: Setter<ContentWindow>;
@@ -16,7 +17,7 @@ interface NotebookProps {
 export const Notebook = ({ setContentWindow }: NotebookProps) => {
   const { setEditor, user } = useEditorContext();
   const { isLoading, isError, error, data: noteList } = useListNotes(user);
-  const [addNoteHandlers, deleteNote, openEditor, dragEvents] = useNotebook(
+  const [addNoteHandlers, deleteNoteHandler, openEditor, dragEvents] = useNotebook(
     noteList,
     setContentWindow,
     setEditor,
@@ -34,7 +35,7 @@ export const Notebook = ({ setContentWindow }: NotebookProps) => {
       <Header />
       <NoteList
         addNoteHandlers={addNoteHandlers}
-        deleteNote={deleteNote}
+        markDelete={deleteNoteHandler.setMarkDelete}
         dragHandlers={dragEvents}
         noteList={noteHeiarchy}
         openEditor={openEditor}
@@ -42,6 +43,7 @@ export const Notebook = ({ setContentWindow }: NotebookProps) => {
       />
       <EndOfTreeMoveZone dragEvents={dragEvents} position={MoveNotePosition.lastNote} />
       <AddNoteRow addNoteHandlers={addNoteHandlers} onClick={addNoteOnClick} hide={!!dragEvents.state.beingDragged} />
+      <DeleteNoteModal deleteNoteHandler={deleteNoteHandler} userId={user?.id} />
     </div>
   );
 };

@@ -1,17 +1,17 @@
 import {
   AddNoteHandlers,
+  DeleteNoteHandler,
   NewNoteToggle,
   Note,
   NotebookDragEvents,
+  TreeNote,
   UnsafeCreateNoteDto,
-  UnsafeDeleteNoteDto,
-  UnsafeDeleteNoteTrigger,
 } from '#interfaces/notes';
 import { MutableRefObject, useEffect, useRef, useState } from 'react';
 import { ContentWindow } from '@interface/Landing';
-import { useAddNoteMutation, useDeleteNoteMutation } from '@context/redux/api/notes/notes.slice';
-import { CreateNoteDto, DeleteNoteDto } from '~note/dto/note.dto';
+import { CreateNoteDto } from '~note/dto/note.dto';
 import { useDraggableRow } from '@components/notebook/hooks/useDraggableRow';
+import { useAddNoteMutation } from '@context/redux/api/notes/notes.slice';
 
 type OpenEditorCallback = (title: string, content?: string, id?: string) => void;
 /** Detects the creation of a new note and moves the user to the editor to edit that note */
@@ -20,9 +20,13 @@ export const useNotebook = (
   setContentWindow: Setter<ContentWindow>,
   setEditor: (title: string, content: string, id?: string) => void,
   userId?: string,
-): [AddNoteHandlers, UnsafeDeleteNoteTrigger, OpenEditorCallback, NotebookDragEvents] => {
+): [AddNoteHandlers, DeleteNoteHandler, OpenEditorCallback, NotebookDragEvents] => {
   const [addNote] = useAddNoteMutation();
-  const [deleteNote] = useDeleteNoteMutation();
+
+  /**
+   * Mark a note for deletion, this will raise a modal which will prompt the user to confirm the deletion.
+   */
+  const [markDelete, setMarkDelete] = useState<TreeNote | undefined>(undefined);
 
   /**
    * Only one new-note input should display at a time. This state should hold the ID of the note who is
@@ -55,10 +59,9 @@ export const useNotebook = (
     setNewNoteToggle(undefined);
   };
 
-  const deleteNoteCallback = (newNote: UnsafeDeleteNoteDto) => {
-    if (newNote?.userId) {
-      deleteNote(newNote as DeleteNoteDto);
-    }
+  const deleteNoteHandler: DeleteNoteHandler = {
+    markDelete,
+    setMarkDelete,
   };
 
   const openEditor = (title: string, content?: string, id?: string) => {
@@ -67,7 +70,7 @@ export const useNotebook = (
   };
 
   const addNoteToggle: AddNoteHandlers = { addNote: addNoteCallback, newNoteToggle, setNewNoteToggle };
-  return [addNoteToggle, deleteNoteCallback, openEditor, dragEvents];
+  return [addNoteToggle, deleteNoteHandler, openEditor, dragEvents];
 };
 
 /**

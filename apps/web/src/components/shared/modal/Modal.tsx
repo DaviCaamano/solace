@@ -4,10 +4,10 @@ import CloseIcon from '@mui/icons-material/Close';
 
 export interface ModalProps extends PropsWithChildren {
   open: boolean;
-  setOpen?: Setter<boolean>;
+  close?: () => void;
   onClose?: () => void;
 }
-export const Modal = ({ children, onClose, open, setOpen }: ModalProps) => {
+export const Modal = ({ children, onClose, open, close }: ModalProps) => {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const dialogIsOpen = dialogRef.current?.open;
   useEffect(() => {
@@ -39,7 +39,7 @@ export const Modal = ({ children, onClose, open, setOpen }: ModalProps) => {
       {open && (
         <div id={'shared-modal-content'} className={`p-4 rounded-xl overscroll-x-none ${styles.modalContent}`}>
           {children}
-          {setOpen && <Close setOpen={setOpen} />}
+          {close && <Close onClick={close} />}
         </div>
       )}
     </dialog>
@@ -47,16 +47,16 @@ export const Modal = ({ children, onClose, open, setOpen }: ModalProps) => {
 };
 
 interface CloseButtonProps {
-  setOpen: Setter<boolean>;
+  onClick: () => void;
 }
-const Close = ({ setOpen }: CloseButtonProps) => (
+const Close = ({ onClick }: CloseButtonProps) => (
   <div
     className={'absolute bg-latte rounded-[2rem] flex justify-center items-center w-4 h-4 cursor-pointer'}
     style={{
       top: '10px',
       right: '10px',
     }}
-    onClick={() => setOpen(false)}
+    onClick={onClick}
   >
     <CloseIcon sx={{ fontSize: '1rem', fontWeight: '700' }} />
   </div>

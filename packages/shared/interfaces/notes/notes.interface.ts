@@ -74,9 +74,15 @@ export interface DragMouseHandlers {
   row: { onMouseEnter: () => void; onMouseLeave: () => void };
   zone: (moveType: MoveNotePosition) => { onMouseEnter: () => void };
 }
+
 export interface DragNoteHandlers {
   dragHandlers: DragRowHandlers;
   mouseHandlers: DragMouseHandlers;
+}
+
+export interface DeleteNoteHandler {
+  markDelete: TreeNote | undefined;
+  setMarkDelete: Setter<TreeNote | undefined>;
 }
 
 export interface DraggedNotes {
@@ -96,3 +102,4 @@ export interface AddNoteHandlers {
   newNoteToggle: NewNoteToggle;
   setNewNoteToggle: Setter<NewNoteToggle>;
 }
+

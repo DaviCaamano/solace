@@ -1,6 +1,7 @@
 import { PropsWithChildren } from 'react';
 import ClearIcon from '@mui/icons-material/Clear';
 import styles from '../notebook.module.css';
+import { DeleteNoteHandler } from '#interfaces/notes';
 interface AddNoteButtonProps {
   disabled?: boolean;
   onClick: () => any;
