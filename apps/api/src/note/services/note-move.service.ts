@@ -6,6 +6,12 @@ import { NoteDatabaseService } from '~note/services/note-database.service';
 import { Note } from 'prisma';
 import { DetachedNote, MoveNotePosition } from '#interfaces/notes';
 import { Prisma } from '@prisma/client';
+import {
+  NoteUpdateArgs,
+  NoteUpdateInput,
+  NoteUpdateManyWithoutParentNestedInput,
+  NoteUpdateOneWithoutPrevNestedInput,
+} from '.prisma/client';
 
 @Injectable()
 export class NoteMoveService extends ComponentWithLogging {
@@ -46,7 +52,7 @@ export class NoteMoveService extends ComponentWithLogging {
     let note: Note | undefined = await this.dbService.get(id, userId);
 
     /** Redundant Operation, cancelling */
-    if (await this.redundantMoveCheck(note, targetId, position)) {
+    if (this.redundantMoveCheck(note, targetId, position)) {
       return note;
     }
 
@@ -90,13 +96,7 @@ export class NoteMoveService extends ComponentWithLogging {
    *    If A: A.next = note.next
    */
   async detachNote(note: Note, userId: string): Promise<DetachedNote> {
-    if (!note.next) {
-      return {
-        sibling: null,
-        originalNext: null,
-        originalParent: null,
-      };
-    }
+
     const originalParent = note.parentId;
     let sibling: Note | undefined;
     try {
@@ -114,14 +114,20 @@ export class NoteMoveService extends ComponentWithLogging {
     }
 
     try {
+      const newSiblingNextPointer: Prisma.NoteUpdateOneWithoutPrevNestedInput = note.next
+        ? {
+            connect: {
+              id: note.next,
+            },
+          }
+        : {
+            disconnect: true,
+          };
+
       sibling = await this.db.note.update({
         where: { id: sibling.id, userId },
         data: {
-          Next: {
-            connect: {
-              id: note.next || null,
-            },
-          },
+          Next: newSiblingNextPointer,
         },
       });
     } catch (err: any) {
@@ -275,7 +281,6 @@ export class NoteMoveService extends ComponentWithLogging {
   async makeChildOf(note: Note, targetId: string, userId: string) {
     const firstChild = await this.findFirstChild(targetId, userId);
 
-    console.log('firstChild', firstChild);
     const updateData: Prisma.NoteUpdateInput = {
       Parent: {
         connect: {
@@ -310,7 +315,6 @@ export class NoteMoveService extends ComponentWithLogging {
   async findFirstChild(parentId: string | null, userId: string, attempt: number = 0) {
     let parent: Note | undefined;
     try {
-      console.log('parentId, userId', parentId, userId);
       parent = await this.db.note.findFirst({
         where: { id: parentId, userId },
         include: {
@@ -323,19 +327,15 @@ export class NoteMoveService extends ComponentWithLogging {
     if (!parent) {
       this.report('Failed to find parent note to insert child into (2)');
     }
-    console.log('parent', parent);
 
     const children = parent.Children;
-    console.log('Children', parent.Children);
 
     if (!children?.length) {
       return null;
     }
 
     const nextIds: string[] = children.map(({ next }: Note) => next);
-    console.log('nextIds', nextIds);
     for (let child of children) {
-      console.log('!includes', child.id, !nextIds.includes(child.id));
       if (!nextIds.includes(child.id)) {
         return child;
       }
@@ -383,14 +383,12 @@ export class NoteMoveService extends ComponentWithLogging {
     }
   }
 
-  async redundantMoveCheck(note: Note, targetId: string, position: MoveNotePosition) {
+  redundantMoveCheck(note: Note, targetId: string, position: MoveNotePosition) {
     const alreadyChildOfTarget = position === MoveNotePosition.childOf && note.parentId === targetId;
     const alreadyAheadOf = position === MoveNotePosition.aheadOf && note.next === targetId;
     const alreadyLastNote = position === MoveNotePosition.lastNote && !note.next && !note.parentId;
-    if (alreadyChildOfTarget || alreadyAheadOf || alreadyLastNote) {
-      /** Already Parent */
-      return true;
-    }
+
+    return alreadyChildOfTarget || alreadyAheadOf || alreadyLastNote;
   }
 
   /**

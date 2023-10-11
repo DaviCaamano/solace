@@ -1,4 +1,6 @@
 import {
+  AddNoteHandlers,
+  NewNoteToggle,
   Note,
   NotebookDragEvents,
   UnsafeAddNoteTrigger,
@@ -19,15 +21,20 @@ export const useNotebook = (
   setContentWindow: Setter<ContentWindow>,
   setEditor: (title: string, content: string, id?: string) => void,
   userId?: string,
-): [UnsafeAddNoteTrigger, UnsafeDeleteNoteTrigger, OpenEditorCallback, NotebookDragEvents] => {
+): [AddNoteHandlers, UnsafeDeleteNoteTrigger, OpenEditorCallback, NotebookDragEvents] => {
   const [addNote] = useAddNoteMutation();
   const [deleteNote] = useDeleteNoteMutation();
 
+  /**
+   * Only one new-note input should display at a time. This state should hold the ID of the note who is
+   * creating a child note or 'ROOT' if the notebook is creating a new root note.
+   */
+  const [newNoteToggle, setNewNoteToggle] = useState<NewNoteToggle>(undefined);
   /** Denotes when we are expecting a newly created Note to be reported */
   const [noteAdded, setNoteAdded] = useState<boolean>(false);
   const stickyList = useRef<Note[] | undefined>();
 
-  const dragEvents = useDraggableRow(userId);
+  const dragEvents = useDraggableRow(userId, setNewNoteToggle);
 
   /** Detect when a new note was both expected and added then move user to editor to edit new note. */
   useEffect(() => {
@@ -46,7 +53,9 @@ export const useNotebook = (
       setNoteAdded(true);
       addNote(newNote as CreateNoteDto);
     }
+    setNewNoteToggle(undefined);
   };
+
   const deleteNoteCallback = (newNote: UnsafeDeleteNoteDto) => {
     if (newNote?.userId) {
       deleteNote(newNote as DeleteNoteDto);
@@ -57,7 +66,9 @@ export const useNotebook = (
     setEditor(title, content || '', id);
     setContentWindow(ContentWindow.editor);
   };
-  return [addNoteCallback, deleteNoteCallback, openEditor, dragEvents];
+
+  const addNoteToggle: AddNoteHandlers = { addNote: addNoteCallback, newNoteToggle, setNewNoteToggle };
+  return [addNoteToggle, deleteNoteCallback, openEditor, dragEvents];
 };
 
 /**

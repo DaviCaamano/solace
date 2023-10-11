@@ -1,5 +1,5 @@
 import { DragEvent, useEffect, useState } from 'react';
-import { DraggedNotes, MoveNotePosition, NotebookDragEvents, TreeNote } from '#interfaces/notes';
+import { DraggedNotes, MoveNotePosition, NewNoteToggle, NotebookDragEvents, TreeNote } from '#interfaces/notes';
 import { useMoveNoteMutation } from '@context/redux/api/notes/notes.slice';
 
 interface DragPos {
@@ -11,7 +11,10 @@ const initialDragPos = {
   y: 0,
 };
 
-export const useDraggableRow = (userId?: string): NotebookDragEvents => {
+export const useDraggableRow = (
+  userId: string | undefined,
+  setNewNoteToggle: Setter<NewNoteToggle>,
+): NotebookDragEvents => {
   const [dragPos, setDragPos] = useState<DragPos | undefined>();
   const [draggedState, setDraggedState] = useState<DraggedNotes>({
     beingDragged: undefined,
@@ -59,6 +62,7 @@ export const useDraggableRow = (userId?: string): NotebookDragEvents => {
       ...prev,
       beingDragged: note,
     }));
+    setNewNoteToggle(undefined);
   };
 
   const onZoneEnter = (hoveredOver: TreeNote, moveType: MoveNotePosition) => () => {

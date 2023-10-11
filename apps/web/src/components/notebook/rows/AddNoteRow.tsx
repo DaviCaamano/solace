@@ -1,33 +1,42 @@
 import { useState } from 'react';
 import { AddNoteButton } from '../buttons';
 import { NoteTitleInput } from '@components/notebook/input/NoteTitleInput';
+import { AddNoteHandlers } from '#interfaces/notes';
 
 interface AddNoteRowProps {
+  addNoteHandlers: AddNoteHandlers;
   hide: boolean;
   onClick: (title: string) => void;
 }
-export const AddNoteRow = ({ hide, onClick }: AddNoteRowProps) => {
-  const [toggle, setToggle] = useState<boolean>(false);
+export const AddNoteRow = ({
+  addNoteHandlers: { newNoteToggle, setNewNoteToggle },
+  hide,
+  onClick,
+}: AddNoteRowProps) => {
+  const toggle = newNoteToggle === 'ROOT';
   const [title, setTitle] = useState<string>('');
   const addNote = () => {
     if (toggle && title) {
       onClick(title);
     } else {
-      setToggle(true);
+      setNewNoteToggle('ROOT');
     }
   };
 
+  const hideRow = (typeof newNoteToggle !== 'undefined' && newNoteToggle !== 'ROOT') || hide;
   return (
     <div
       className={`h-8 text-[1.875rem] text-latte pl-4 pr-2 leading-8 flex justify-start items-center ${
-        hide && 'hidden'
+        hideRow && 'hidden'
       }`}
     >
       <NoteTitleInput
         toggle={toggle}
         title={title}
         setTitle={setTitle}
-        onBlur={() => setToggle(false)}
+        onBlur={() => {
+          setNewNoteToggle(undefined);
+        }}
         onSubmit={() => onClick(title)}
       />
       <AddNoteButton onClick={addNote} />

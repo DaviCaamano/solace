@@ -58,7 +58,8 @@ export interface DetachedNote {
   originalNext: string | undefined;
   originalParent: string | undefined;
 }
-/** Drag Row Types */
+/** Component Interfaces */
+
 interface DragPos {
   x: number;
   y: number;
@@ -68,6 +69,7 @@ export interface DragRowHandlers {
   onStop: (event: DragEvent<HTMLDivElement>) => void;
   position: DragPos | undefined;
 }
+
 export interface DragMouseHandlers {
   row: { onMouseEnter: () => void; onMouseLeave: () => void };
   zone: (moveType: MoveNotePosition) => { onMouseEnter: () => void };
@@ -88,7 +90,9 @@ export interface NotebookDragEvents {
   state: DraggedNotes;
 }
 
-export type NoteLinage = {
-  id: string;
-  depth: number;
-};
+export type NewNoteToggle = string | 'ROOT' | undefined;
+export interface AddNoteHandlers {
+  addNote: UnsafeAddNoteTrigger;
+  newNoteToggle: NewNoteToggle;
+  setNewNoteToggle: Setter<NewNoteToggle>;
+}

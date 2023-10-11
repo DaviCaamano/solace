@@ -19,7 +19,7 @@ interface RowProps {
   containerName: string;
   note: TreeNote;
   openEditor: OpenEditor;
-  setCreateToggle: Setter<boolean>;
+  setCreateToggle: (flag: boolean) => void;
 }
 export const NoteRowBody = ({
   deleteNote,

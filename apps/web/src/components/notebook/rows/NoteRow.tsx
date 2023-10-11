@@ -1,18 +1,12 @@
 import React, { PropsWithChildren, useState } from 'react';
-import {
-  TreeNote,
-  NotebookDragEvents,
-  UnsafeAddNoteTrigger,
-  UnsafeDeleteNoteTrigger,
-  NoteLinage,
-} from '#interfaces/notes';
+import { TreeNote, NotebookDragEvents, UnsafeDeleteNoteTrigger, AddNoteHandlers } from '#interfaces/notes';
 import { AddChildRow } from './AddChildRow';
 
 import { DragRowWrapper, NoteRowBody } from '@components/notebook';
 
 type OpenEditor = (title: string, content: string, id?: string) => void;
 interface NoteRowProps extends PropsWithChildren {
-  addNote: UnsafeAddNoteTrigger;
+  addNoteHandlers: AddNoteHandlers;
   deleteNote: UnsafeDeleteNoteTrigger;
   dragHandlers: NotebookDragEvents;
   depth?: number;
@@ -22,7 +16,7 @@ interface NoteRowProps extends PropsWithChildren {
   userId: string | undefined;
 }
 export const NoteRow = ({
-  addNote,
+  addNoteHandlers: { addNote, newNoteToggle, setNewNoteToggle },
   children,
   deleteNote,
   dragHandlers,
@@ -31,15 +25,17 @@ export const NoteRow = ({
   openEditor,
   userId,
 }: NoteRowProps) => {
-  const [createToggle, setCreateToggle] = useState<boolean>(false);
-
+  const createToggle = newNoteToggle === note.id;
+  const setCreateToggle = (flag: boolean) => {
+    setNewNoteToggle(flag ? note.id : undefined);
+  };
   //TODO FOR NOTE ROW:
   // [Done] Send Note to Editor
   // [Done] Allow creation of child note
   // Allow Deletion of Note
   // [Done] Display Note Children
   //    [Done] Recursively display children of children
-  // Allow Drag re-ordering of children
+  // [Done] Allow Drag re-ordering of children
   // [Done] TODO IN notes.slice.ts
   //    [Done] Allow change in dept of Note as part of reordering
 
@@ -69,7 +65,7 @@ export const NoteRow = ({
           openEditor={openEditor}
           setCreateToggle={setCreateToggle}
         />
-        <AddChildRow onSubmit={addChildSubmit} setToggle={setCreateToggle} toggle={createToggle} />
+        <AddChildRow onSubmit={addChildSubmit} setCreateToggle={setCreateToggle} createToggle={createToggle} />
         {children}
       </DragRowWrapper>
     </div>

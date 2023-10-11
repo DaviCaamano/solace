@@ -1,34 +1,32 @@
 import styles from '../notebook.module.css';
-import { RefObject, useEffect, useRef, useState } from 'react';
-type InputRef = RefObject<HTMLInputElement>;
+import { useState } from 'react';
 import CheckIcon from '@mui/icons-material/Check';
-import CloseIcon from '@mui/icons-material/Close';
 import { NoteTitleInput } from '../input';
 import { NoteRowButton } from '@components/notebook';
 
 interface NoteChildRowProps {
   onSubmit: (title: string) => void;
-  setToggle: Setter<boolean>;
-  toggle: boolean;
+  setCreateToggle: (flag: boolean) => void;
+  createToggle: boolean;
 }
 
-export const AddChildRow = ({ onSubmit, setToggle, toggle }: NoteChildRowProps) => {
+export const AddChildRow = ({ createToggle, onSubmit, setCreateToggle }: NoteChildRowProps) => {
   const [title, setTitle] = useState<string>('');
 
   return (
-    <div className={`note-child-row ${styles.childRow} ${toggle ? 'flex' : 'hidden'}`}>
+    <div className={`note-child-row ${styles.childRow} ${createToggle ? 'flex' : 'hidden'}`}>
       <NoteTitleInput
-        toggle={toggle}
+        toggle={createToggle}
         title={title}
         setTitle={setTitle}
-        onBlur={() => !title && setToggle(false)}
+        onBlur={() => !title && setCreateToggle(false)}
         onSubmit={() => onSubmit(title)}
       />
       <NoteRowButton
         name={'add-new-child-note'}
         onClick={() => {
           title && onSubmit(title);
-          setToggle(false);
+          setCreateToggle(false);
         }}
       >
         <CheckIcon sx={{ width: '1rem' }} />

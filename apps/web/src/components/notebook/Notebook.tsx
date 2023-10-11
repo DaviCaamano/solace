@@ -14,9 +14,14 @@ interface NotebookProps {
 export const Notebook = ({ setContentWindow }: NotebookProps) => {
   const { setEditor, user } = useEditorContext();
   const { isLoading, isError, error, data: noteList } = useListNotes(user);
-  const [addNote, deleteNote, openEditor, dragEvents] = useNotebook(noteList, setContentWindow, setEditor, user?.id);
+  const [addNoteHandlers, deleteNote, openEditor, dragEvents] = useNotebook(
+    noteList,
+    setContentWindow,
+    setEditor,
+    user?.id,
+  );
 
-  const addNoteOnClick = (title: string) => addNote({ userId: user?.id, title });
+  const addNoteOnClick = (title: string) => addNoteHandlers.addNote({ userId: user?.id, title });
 
   const noteHeiarchy = useMemo(() => noteList && getNoteHeiarchy(noteList), [noteList]);
 
@@ -26,14 +31,18 @@ export const Notebook = ({ setContentWindow }: NotebookProps) => {
     <div id={'note-book'} className={styles.noteBook}>
       <Header />
       <NoteList
-        addNote={addNote}
+        addNoteHandlers={addNoteHandlers}
         deleteNote={deleteNote}
         dragHandlers={dragEvents}
         noteList={noteHeiarchy}
         openEditor={openEditor}
         userId={user?.id}
       />
-      <AddNoteRow onClick={addNoteOnClick} hide={!!dragEvents.state.beingDragged} />
+      <AddNoteRow
+        addNoteHandlers={addNoteHandlers}
+        onClick={addNoteOnClick}
+        hide={!!dragEvents.state.beingDragged}
+      />
     </div>
   );
 };
