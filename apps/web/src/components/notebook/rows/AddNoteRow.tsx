@@ -3,9 +3,10 @@ import { AddNoteButton } from '../buttons';
 import { NoteTitleInput } from '@components/notebook/input/NoteTitleInput';
 
 interface AddNoteRowProps {
+  hide: boolean;
   onClick: (title: string) => void;
 }
-export const AddNoteRow = ({ onClick }: AddNoteRowProps) => {
+export const AddNoteRow = ({ hide, onClick }: AddNoteRowProps) => {
   const [toggle, setToggle] = useState<boolean>(false);
   const [title, setTitle] = useState<string>('');
   const addNote = () => {
@@ -17,7 +18,11 @@ export const AddNoteRow = ({ onClick }: AddNoteRowProps) => {
   };
 
   return (
-    <div className={'h-8 text-[1.875rem] text-latte pl-4 pr-2 leading-8 flex justify-start items-center'}>
+    <div
+      className={`h-8 text-[1.875rem] text-latte pl-4 pr-2 leading-8 flex justify-start items-center ${
+        hide && 'hidden'
+      }`}
+    >
       <NoteTitleInput
         toggle={toggle}
         title={title}

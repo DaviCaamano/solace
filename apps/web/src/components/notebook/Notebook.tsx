@@ -33,7 +33,7 @@ export const Notebook = ({ setContentWindow }: NotebookProps) => {
         openEditor={openEditor}
         userId={user?.id}
       />
-      <AddNoteRow onClick={addNoteOnClick} />
+      <AddNoteRow onClick={addNoteOnClick} hide={!!dragEvents.state.beingDragged} />
     </div>
   );
 };

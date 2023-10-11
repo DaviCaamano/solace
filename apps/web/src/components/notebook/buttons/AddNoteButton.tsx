@@ -1,4 +1,5 @@
 import { PropsWithChildren } from 'react';
+import ClearIcon from '@mui/icons-material/Clear';
 import styles from '../notebook.module.css';
 interface AddNoteButtonProps {
   disabled?: boolean;
@@ -11,7 +12,9 @@ export const AddNoteButton = ({ disabled, onClick }: AddNoteButtonProps) => (
 );
 export const RemoveNoteButton = ({ disabled, onClick }: AddNoteButtonProps) => (
   <NoteRowButton disabled={disabled} onClick={onClick} name={'remove-note-button'}>
-    <span className={'relative top-[-1px]'}>-</span>
+    <span className={'relative top-[-1px]'}>
+      <ClearIcon style={{ fontSize: '16px' }} />
+    </span>
   </NoteRowButton>
 );
 

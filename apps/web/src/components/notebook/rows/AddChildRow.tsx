@@ -21,22 +21,17 @@ export const AddChildRow = ({ onSubmit, setToggle, toggle }: NoteChildRowProps) 
         toggle={toggle}
         title={title}
         setTitle={setTitle}
-        onBlur={() => {}}
+        onBlur={() => !title && setToggle(false)}
         onSubmit={() => onSubmit(title)}
       />
       <NoteRowButton
-        disabled={!title}
         name={'add-new-child-note'}
         onClick={() => {
-          onSubmit(title);
+          title && onSubmit(title);
           setToggle(false);
         }}
       >
         <CheckIcon sx={{ width: '1rem' }} />
-      </NoteRowButton>
-      <div className={'mr-2'} />
-      <NoteRowButton name={'cancel-new-child-note'} onClick={() => setToggle(false)}>
-        <CloseIcon sx={{ width: '1rem' }} />
       </NoteRowButton>
       <div className={'mr-2'} />
     </div>

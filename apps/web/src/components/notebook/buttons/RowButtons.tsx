@@ -1,6 +1,5 @@
 import styles from '@components/notebook/notebook.module.css';
 import { AddNoteButton, RemoveNoteButton } from '@components/notebook';
-
 interface RowButtonsProps {
   deleteNote: () => void;
   createChildToggle: Setter<boolean>;
