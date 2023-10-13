@@ -26,14 +26,16 @@ Color.configure({
 
 import Text from '@tiptap/extension-text';
 import { useEditor } from '@hooks/context';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 
 const characterLimit = 10000;
-export const useTipTap = (initialText?: string): [TipTapEditor | null, number] => {
+export const useTipTap = (): [TipTapEditor | null, number] => {
   const {
-    editor: { content },
+    editor: { id: noteId, content },
     setContent,
   } = useEditor();
+
+  const stickyNoteId = useRef<string | undefined>();
 
   const editor: TipTapEditor | null = useTipTapEditor({
     extensions: [
@@ -77,7 +79,7 @@ export const useTipTap = (initialText?: string): [TipTapEditor | null, number] =
         },
       }),
     ],
-    content: initialText,
+    content: content,
     autofocus: true,
     editable: true,
     injectCSS: false,
@@ -96,13 +98,13 @@ export const useTipTap = (initialText?: string): [TipTapEditor | null, number] =
     editor && setContent(editor?.getHTML());
   }, [editor, setContent]);
 
-  /** Set initial Text content of editor (for testing purposes) */
+  /** Set initial Text content of editor when the note changes */
   useEffect(() => {
-    if (initialText && content === '') {
-      setContent(initialText);
+    if (noteId && stickyNoteId.current !== noteId) {
+      stickyNoteId.current = noteId;
+      setContent(content);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [noteId]);
 
   return [editor, characterLimit];
 };

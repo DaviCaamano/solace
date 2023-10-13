@@ -10,7 +10,7 @@ export const useEditor = () => {
 
   return {
     reset: () => dispatch(reset()),
-    setEditor: (title: string, content: string) => dispatch(setEditor({ title, content })),
+    setEditor: (title: string, content: string, id?: string) => dispatch(setEditor({ id, title, content })),
     setContent: (content: string) => dispatch(setContent(content)),
     setTitle: (content: string) => dispatch(setTitle(content)),
     editor: useAppSelector((state: RootState) => state.editor),

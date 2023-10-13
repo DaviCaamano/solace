@@ -123,9 +123,7 @@ export class NoteDatabaseService extends ComponentWithLogging {
     const query: NoteUpdateArgs = {
       where: {
         id,
-        User: {
-          id: userId,
-        },
+        userId,
       },
       data: {},
     };
@@ -151,7 +149,7 @@ export class NoteDatabaseService extends ComponentWithLogging {
     }
 
     try {
-      return this.db.user.update(query);
+      return this.db.note.update(query);
     } catch (err: any) {
       this.report('Failed to update note', err);
     }
@@ -243,15 +241,6 @@ export class NoteDatabaseService extends ComponentWithLogging {
     const originalParent = note.parentId;
     let sibling: Note | undefined;
 
-    console.log(
-      `
-    
-    note`,
-      note,
-      `
-    
-    `,
-    );
     try {
       sibling = await this.db.note.findUnique({ where: { next: note.id, userId } });
     } catch (err: any) {

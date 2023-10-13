@@ -3,11 +3,9 @@ import { EditorMenu } from '@components/editor/EditorMenu';
 import { WordCount } from '@components/editor/menu/WordCount';
 import { TextEditor } from './menu';
 
-interface EditorProps {
-  initialText?: string;
-}
-export const Editor = ({ initialText }: EditorProps) => {
-  const [editor, characterLimit] = useTipTap(initialText);
+
+export const Editor = () => {
+  const [editor, characterLimit] = useTipTap();
 
   if (!editor) {
     return null;

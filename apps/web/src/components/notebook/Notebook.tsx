@@ -24,7 +24,6 @@ export const Notebook = ({ setContentWindow }: NotebookProps) => {
     user?.id,
   );
 
-  console.log('noteList', noteList);
   const addNoteOnClick = (title: string) => addNoteHandlers.addNote({ userId: user?.id, title });
 
   const noteHeiarchy = useMemo(() => noteList && getNoteHeiarchy(noteList), [noteList]);

@@ -30,10 +30,7 @@ export const NoteRowBody = ({
 
   let [isHoveredNote, animation] = animationState({ beingDragged, draggedState, hoveredOver, note });
 
-  const sendNoteToEditor = () => {
-    openEditor(note.title, note.content, note.id);
-  };
-
+  const sendNoteToEditor = () => openEditor(note.title, note.content, note.id);
   return (
     <MotionDiv
       id={'note-row-body-animator'}
