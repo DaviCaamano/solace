@@ -45,7 +45,7 @@ export const Tooltip = ({
   name,
   children,
   content,
-  distance = '1rem',
+  distance = '1.5rem',
   open,
   setOpen,
   wrapper,

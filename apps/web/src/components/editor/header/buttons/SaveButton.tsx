@@ -5,13 +5,14 @@ import { Tooltip } from '@components/shared';
 import { CSSProperties, useCallback } from 'react';
 import { useSaveKeybinding } from '../../menu/buttons/hooks';
 import styles from '../../menu/buttons/editor-buttons.module.scss';
+import { LoginRequired } from '@components/editor';
 
 export const SaveButton = () => {
   const { editor, user, setEditor } = useEditor();
   const [save] = useUpdateNoteMutation();
   const stale = editor.stale;
 
-  const onClick = useCallback(() => {
+  const saveNote = useCallback(() => {
     if (editor.id && user?.id) {
       save({ id: editor.id, title: editor.title, content: editor.content, userId: user.id })
         .then(() => setEditor({ stale: false }))
@@ -21,18 +22,20 @@ export const SaveButton = () => {
 
   const disabled = !user?.id;
 
-  useSaveKeybinding(onClick);
+  useSaveKeybinding(saveNote);
   return (
     <Tooltip
       name={'save-button-tooltip'}
       content={<ToolTipContent loggedIn={!!user?.id} stale={stale} />}
       {...tooltipStyle}
     >
-      <SaveIcon
-        className={`${styles.saveButton} ${disabled && styles.disabled} ${stale && styles.stale}`}
-        onClick={onClick}
-        style={{ fontSize: '2rem' }}
-      />
+      <LoginRequired isLoggedIn={!!user}>
+        <SaveIcon
+          className={`${styles.saveButton} ${disabled && styles.disabled} ${stale && styles.stale}`}
+          onClick={saveNote}
+          style={{ fontSize: '2rem' }}
+        />
+      </LoginRequired>
     </Tooltip>
   );
 };

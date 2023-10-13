@@ -9,14 +9,14 @@ interface EditorProps {
 export const TextEditor = ({ editor: tipTapEditor, setContentWindow }: EditorProps) => {
   return (
     <div id={'add-note'} className={'flex flex-col md:flex-row justify-center items-center'}>
-      <div className={`${editorDimensions} rounded-2xl bg-latte w-full h-[100px]`}>
-        <div className={'w-full h-full relative'}>
+      <div className={`${editorDimensions} rounded-2xl bg-mug w-full h-[100px]`}>
+        <div className={'w-full h-full flex flex-col relative rounded-2xl'}>
           <EditorHeader setContentWindow={setContentWindow} />
           <EditorStyle />
           <EditorContent
             editor={tipTapEditor}
             data-testid={'text-editor'}
-            className={'note-editor w-full h-full bg-latte text-latte'}
+            className={'note-editor w-full flex-1 bg-mug text-latte rounded-b-2xl'}
           />
         </div>
       </div>

@@ -7,9 +7,9 @@ $EightNestedUl: '#{$FourNestedUl} > #{$FourNestedUl}';
 $TwelveNestedUl: '#{$EightNestedUl} > #{$FourNestedUl}';
 
 .editor {
-  @apply w-full h-full bg-mug pl-8 pt-2 pr-4 pb-4 scrollbar-thin;
+  @apply w-full h-full bg-mug pl-8 pt-4 pr-4 pb-4 scrollbar-thin rounded-b-2xl;
   line-height: 1.5rem;
-  font-size: 1rem;
+  font-size: 1.25rem;
   min-height: 100%;
 
   /** Block Quote Classes */
@@ -101,7 +101,7 @@ $TwelveNestedUl: '#{$EightNestedUl} > #{$FourNestedUl}';
 }
 
 .header {
-  @apply w-full bg-latte flex flex-row relative;
+  @apply w-full bg-latte flex flex-row relative rounded-t-2xl;
   vertical-align: top;
   background:
           /* On "top" */
@@ -110,5 +110,5 @@ $TwelveNestedUl: '#{$EightNestedUl} > #{$FourNestedUl}';
 }
 
 .title {
-  @apply w-full pl-8 pr-[5rem] py-2 text-[1.2rem] font-semibold text-coffee;
+  @apply w-full min-h-[2.8125rem] pl-8 pr-[5rem] py-2 text-[1.5rem] font-semibold text-coffee;
 }

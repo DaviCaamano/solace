@@ -66,7 +66,7 @@ export const BulletButton = ({ editor }: EditorMenuButtonProps) => {
         onClick={() => editor.chain().focus().toggleBulletList().run()}
         className={'font-medium relative px-1 w-8 h-8'}
       >
-        <FormatListBulletedIcon className={'w-8 h-8'} />
+        <FormatListBulletedIcon className={'w-[1.375rem] h-[1.375rem]'} />
       </EditorMenuButton>
     </div>
   );
@@ -81,7 +81,7 @@ export const OrderedListButton = ({ editor }: EditorMenuButtonProps) => {
         onClick={() => editor.chain().focus().toggleOrderedList().run()}
         className={'font-medium relative px-1 h-8 w-8'}
       >
-        <FormatListNumberedIcon className={'w-[1rem] h-[1rem]'} />
+        <FormatListNumberedIcon className={'w-[1.375rem] h-[1.375rem]'} />
       </EditorMenuButton>
     </div>
   );

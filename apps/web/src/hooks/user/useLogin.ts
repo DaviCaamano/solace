@@ -5,6 +5,7 @@ import { User } from '#interfaces/user/user.interface';
 
 interface useLoginResponse {
   isLoading: boolean;
+  isLoggedOut: boolean;
   error: string | undefined;
   user: User | undefined;
 }
@@ -27,8 +28,12 @@ export const useLogin = (): useLoginResponse => {
     }
   }, [authZeroUser, login, user]);
 
+  // /** Null if it is not yet clear if the user has logged in with both authzero and the backend yet */
+  // const userLoggedIn: boolean | null;
+
   return {
     isLoading: authZeroIsLoading || isLoading,
+    isLoggedOut: !authZeroUser && !authZeroIsLoading && !user && !isLoading,
     user: isSuccess ? (user as User) : undefined,
     error: (authZeroError?.message || authZeroError || (error as Error)?.message || error) as string | undefined,
   };

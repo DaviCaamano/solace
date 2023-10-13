@@ -2,16 +2,15 @@ import Link from 'next/link';
 import { UserMenu } from '@components/header/index';
 import { ReactNode, useEffect, useState } from 'react';
 import { useLogin } from '@hooks/user';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 export const Header = () => {
-  const { isLoading, error, user } = useLogin();
+  const { isLoading, isLoggedOut, error } = useLogin();
+
   return (
     <HeaderBar>
-     <UserMenu loggedIn={!!user?.id} />
+      <UserMenu loggedIn={!isLoading && !isLoggedOut} />
       <ErrorMessage error={error} />
-      <LoadingLink show={isLoading} />
-      <LoginLink show={!error && !user && !isLoading} />
+      <LoginLink show={!isLoading && isLoggedOut} />
     </HeaderBar>
   );
 };
@@ -35,19 +34,3 @@ const LoginLink = ({ show }: { show: boolean }) => (
     </span>
   </Link>
 );
-
-const LoadingLink = ({ show }: { show: boolean }) => {
-  const [ready, setReady] = useState<boolean>(false);
-  useEffect(() => {
-    setTimeout(() => setReady(true), 1500);
-  });
-  return (
-    <span
-      className={`absolute right-5 text-xl text-disabledText hover:underline cursor-none fade_7 ${
-        !ready || !show ? 'fadeOut pointer-events-none' : 'opacity-50'
-      }`}
-    >
-      Loading...
-    </span>
-  );
-};

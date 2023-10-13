@@ -6,6 +6,7 @@ import { colors } from '@styles/tailwind';
 import styles from '../../menu/buttons/editor-buttons.module.scss';
 import NotebookIcon from '@images/icons/notebook.svg';
 import { ContentWindow } from '@interface/Landing';
+import { LoginRequired } from '../LoginRequired';
 
 interface NotebookButtonProps {
   setContentWindow: Setter<ContentWindow>;
@@ -25,12 +26,14 @@ export const NotebookButton = ({ setContentWindow }: NotebookButtonProps) => {
 
   return (
     <Tooltip name={'notebook-button-tooltip'} content={<ToolTipContent loggedIn={!!user?.id} />} {...tooltipStyle}>
-      <NotebookIcon
-        alt={'Click here to see your notebook, where all of your notes are saved.'}
-        className={`${styles.notebookButton} `}
-        onClick={onClick}
-        color={colors.mug}
-      />
+      <LoginRequired isLoggedIn={!!user}>
+        <NotebookIcon
+          alt={'Click here to see your notebook, where all of your notes are saved.'}
+          className={`${styles.notebookButton} `}
+          onClick={onClick}
+          color={colors.mug}
+        />
+      </LoginRequired>
     </Tooltip>
   );
 };
