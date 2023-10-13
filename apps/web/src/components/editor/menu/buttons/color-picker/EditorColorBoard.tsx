@@ -75,7 +75,6 @@ export const EditorColorBoard = ({ open, selectedColor, setColor, positions: { x
 
 const selectedCSS = (selectedColor: string | undefined, color: string) => {
   if (selectedColor === color) {
-    console.log('SELECTED:', color, selectedColor);
     if (invertHighlightForColor.includes(color)) {
       return 'border-4 border-mug-gray';
     }

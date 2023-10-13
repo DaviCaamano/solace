@@ -17,6 +17,7 @@ import BulletList from '@tiptap/extension-bullet-list';
 import ListItem from '@tiptap/extension-list-item';
 import OrderedList from '@tiptap/extension-ordered-list';
 import CodeBlock from '@tiptap/extension-code-block';
+import History from '@tiptap/extension-history';
 
 import styles from './tip-tap.module.scss';
 
@@ -32,7 +33,7 @@ const characterLimit = 10000;
 export const useTipTap = (): [TipTapEditor | null, number] => {
   const {
     editor: { id: noteId, content },
-    setContent,
+    setEditor,
   } = useEditor();
 
   const stickyNoteId = useRef<string | undefined>();
@@ -78,14 +79,14 @@ export const useTipTap = (): [TipTapEditor | null, number] => {
           spellcheck: false,
         },
       }),
+      History,
     ],
     content: content,
     autofocus: true,
     editable: true,
     injectCSS: false,
     onUpdate: ({ editor }) => {
-      console.log('~~~~~~~~~~~~~~~~');
-      setContent(editor.getHTML());
+      setEditor({ content: editor.getHTML(), stale: true });
     },
     editorProps: {
       attributes: {
@@ -94,18 +95,13 @@ export const useTipTap = (): [TipTapEditor | null, number] => {
     },
   });
 
-  /** Keep Redux in Sync with TipTap Editor */
-  useEffect(() => {
-    editor && setContent(editor?.getHTML());
-  }, [editor, setContent]);
-
   /** Set initial Text content of editor when the note changes */
   useEffect(() => {
     if (noteId && stickyNoteId.current !== noteId) {
       stickyNoteId.current = noteId;
-      setContent(content);
+      setEditor({ content, stale: false });
     }
-  }, [content, noteId, setContent]);
+  }, [content, noteId, setEditor]);
 
   return [editor, characterLimit];
 };

@@ -5,28 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2101ad9f-8972-44d3-9c27-f093e4bebdd9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/apps/web/src/components/editor/EditorHeader.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/web/src/components/editor/menu/buttons/hooks/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/web/src/components/editor/menu/buttons/hooks/useSaveKeybinding.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/public/images/icons/add-note.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/public/images/icons/note-history.svg" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/public/images/icons/notebook.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/public/images/icons/schedule-note.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/components/editor/Editor.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/editor/Editor.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/components/editor/EditorMenu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/editor/EditorMenu.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/components/editor/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/editor/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/components/editor/menu/TextEditor.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/editor/menu/TextEditor.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/components/editor/menu/buttons/EditorTextColorButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/editor/menu/buttons/EditorTextColorButton.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/web/src/components/editor/menu/buttons/SaveButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/editor/menu/buttons/SaveButton.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/components/editor/menu/buttons/color-picker/EditorColorBoard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/editor/menu/buttons/color-picker/EditorColorBoard.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/web/src/components/editor/menu/buttons/editor-buttons.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/editor/menu/buttons/editor-buttons.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/components/landing/Content.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/landing/Content.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/editor/menu/buttons/hooks/useSaveKeybinding.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/editor/menu/buttons/hooks/useSaveKeybinding.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/notebook/hooks/useNotebook.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notebook/hooks/useNotebook.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/notebook/modal/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notebook/modal/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/notebook/rows/NoteList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notebook/rows/NoteList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/notebook/rows/NoteRow.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notebook/rows/NoteRow.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/notebook/rows/NoteRowBody.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notebook/rows/NoteRowBody.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/web/src/components/shared/tooltip/Tooltip.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/shared/tooltip/Tooltip.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/constants/editor/editorColors.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/constants/editor/editorColors.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/hooks/lib/tiptap/tip-tap.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/hooks/lib/tiptap/tip-tap.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/context/redux/editor/editor.slice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/context/redux/editor/editor.slice.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/hooks/context/useEditor.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/hooks/context/useEditor.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/web/src/hooks/lib/tiptap/useTipTap.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/hooks/lib/tiptap/useTipTap.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/styles/global.css" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/styles/global.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/interface/editor/editor.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/interface/editor/editor.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/web/src/styles/tailwind/colors.js" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/styles/tailwind/colors.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/tests/context.test.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/tests/context.test.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -205,7 +201,7 @@
       <workItem from="1696872224930" duration="64975000" />
       <workItem from="1696988842594" duration="2483000" />
       <workItem from="1697015620497" duration="19585000" />
-      <workItem from="1697156739930" duration="19776000" />
+      <workItem from="1697156739930" duration="22983000" />
     </task>
     <servers />
   </component>
@@ -254,7 +250,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/apps/web/src/styles/tailwind/colors.js</url>
-          <line>30</line>
+          <line>31</line>
           <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="1" />
         </line-breakpoint>

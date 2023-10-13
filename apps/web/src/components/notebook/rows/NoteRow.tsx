@@ -3,8 +3,9 @@ import { TreeNote, NotebookDragEvents, AddNoteHandlers } from '#interfaces/notes
 import { AddChildRow } from './AddChildRow';
 
 import { DragRowWrapper, NoteRowBody } from '@components/notebook';
+import { Editor } from '@interface/editor';
 
-type OpenEditor = (title: string, content: string, id?: string) => void;
+type OpenEditor = (editor: Editor) => void;
 interface NoteRowProps extends PropsWithChildren {
   addNoteHandlers: AddNoteHandlers;
   dragHandlers: NotebookDragEvents;

@@ -18,5 +18,4 @@ export const editorColors = {
   latte: colors.latte,
 };
 
-
 export const invertHighlightForColor = [colors.latte];

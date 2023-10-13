@@ -8,7 +8,7 @@ describe('Editor Menu Buttons', () => {
   test('Bold Button Click', async () => {
     const { user } = render(
       <Providers>
-        <Editor initialText={'<p>init</p>'} />
+        <Editor setContentWindow={(() => {}) as any} />
       </Providers>,
     );
 
@@ -24,7 +24,7 @@ describe('Editor Menu Buttons', () => {
   test('Italics Button Click', async () => {
     const { user } = render(
       <Providers>
-        <Editor initialText={'<p>init</p>'} />
+        <Editor setContentWindow={(() => {}) as any} />
       </Providers>,
     );
 
@@ -40,7 +40,7 @@ describe('Editor Menu Buttons', () => {
   test('Underline Button Click', async () => {
     const { user } = render(
       <Providers>
-        <Editor initialText={'<p>init</p>'} />
+        <Editor setContentWindow={(() => {}) as any} />
       </Providers>,
     );
 
@@ -56,7 +56,7 @@ describe('Editor Menu Buttons', () => {
   test('Text Color Button Click', async () => {
     const { user } = render(
       <Providers>
-        <Editor initialText={'<p>init</p>'} />
+        <Editor setContentWindow={(() => {}) as any} />
       </Providers>,
     );
 
@@ -77,7 +77,7 @@ describe('Editor Menu Buttons', () => {
   test('Text Highlight Button Click', async () => {
     const { user } = render(
       <Providers>
-        <Editor initialText={'<p>init</p>'} />
+        <Editor setContentWindow={(() => {}) as any} />
       </Providers>,
     );
 
@@ -98,7 +98,7 @@ describe('Editor Menu Buttons', () => {
   test('Strike Button Click', async () => {
     const { user } = render(
       <Providers>
-        <Editor initialText={'<p>init</p>'} />
+        <Editor setContentWindow={(() => {}) as any} />
       </Providers>,
     );
 
@@ -113,7 +113,7 @@ describe('Editor Menu Buttons', () => {
   test('Strike Button Click', async () => {
     const { user } = render(
       <Providers>
-        <Editor initialText={'<p>init</p>'} />
+        <Editor setContentWindow={(() => {}) as any} />
       </Providers>,
     );
 
@@ -128,7 +128,7 @@ describe('Editor Menu Buttons', () => {
   test('Subscript Button Click', async () => {
     const { user } = render(
       <Providers>
-        <Editor initialText={'<p>init</p>'} />
+        <Editor setContentWindow={(() => {}) as any} />
       </Providers>,
     );
 
@@ -143,7 +143,7 @@ describe('Editor Menu Buttons', () => {
   test('Superscript Button Click', async () => {
     const { user } = render(
       <Providers>
-        <Editor initialText={'<p>init</p>'} />
+        <Editor setContentWindow={(() => {}) as any} />
       </Providers>,
     );
 
@@ -158,7 +158,7 @@ describe('Editor Menu Buttons', () => {
   test('Bullet List Button Click', async () => {
     const { user } = render(
       <Providers>
-        <Editor initialText={'<p>init</p>'} />
+        <Editor setContentWindow={(() => {}) as any} />
       </Providers>,
     );
 
@@ -174,7 +174,7 @@ describe('Editor Menu Buttons', () => {
   test('Ordered List Button Click', async () => {
     const { user } = render(
       <Providers>
-        <Editor initialText={'<p>init</p>'} />
+        <Editor setContentWindow={(() => {}) as any} />
       </Providers>,
     );
 
@@ -190,7 +190,7 @@ describe('Editor Menu Buttons', () => {
   test('Block Quote Button Click', async () => {
     const { user } = render(
       <Providers>
-        <Editor initialText={'<p>init</p>'} />
+        <Editor setContentWindow={(() => {}) as any} />
       </Providers>,
     );
 
@@ -206,7 +206,7 @@ describe('Editor Menu Buttons', () => {
   test('Code Block Button Click', async () => {
     const { user } = render(
       <Providers>
-        <Editor initialText={'<p>init</p>'} />
+        <Editor setContentWindow={(() => {}) as any} />
       </Providers>,
     );
 

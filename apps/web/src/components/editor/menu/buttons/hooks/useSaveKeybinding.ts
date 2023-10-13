@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect } from 'react';
 
 type CallBack = (event: KeyboardEvent) => void;
 export const useSaveKeybinding = (callback: CallBack) => {

@@ -102,4 +102,3 @@ export interface AddNoteHandlers {
   newNoteToggle: NewNoteToggle;
   setNewNoteToggle: Setter<NewNoteToggle>;
 }
-

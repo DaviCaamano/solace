@@ -3,10 +3,11 @@ import styles from '@components/notebook/notebook.module.css';
 import { motion } from 'framer-motion';
 import { NoteRowTitle, RowButtons } from '@components/notebook';
 import { RowMoveZone } from '@components/notebook/move-row-zone/RowMoveZone';
+import { Editor } from '@interface/editor';
 
 const MotionDiv = motion.div;
 
-type OpenEditor = (title: string, content: string, id?: string) => void;
+type OpenEditor = (editor: Editor) => void;
 interface RowProps {
   markDelete: Setter<TreeNote | undefined>;
   dragHandlers: NotebookDragEvents;
@@ -30,7 +31,7 @@ export const NoteRowBody = ({
 
   let [isHoveredNote, animation] = animationState({ beingDragged, draggedState, hoveredOver, note });
 
-  const sendNoteToEditor = () => openEditor(note.title, note.content, note.id);
+  const sendNoteToEditor = () => openEditor({ title: note.title, content: note.content, id: note.id, stale: false });
   return (
     <MotionDiv
       id={'note-row-body-animator'}

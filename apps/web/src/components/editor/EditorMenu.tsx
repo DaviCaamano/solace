@@ -11,7 +11,6 @@ import {
   ScriptButtonContainer,
   StrikeButton,
   UnderlineButton,
-  SaveButton,
 } from '@components/editor/menu';
 import { ColorBoard } from '@interface/editor';
 import { useState } from 'react';

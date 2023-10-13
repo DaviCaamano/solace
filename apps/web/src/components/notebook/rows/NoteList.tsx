@@ -1,12 +1,13 @@
 import { NoteRow } from '@components/notebook/rows/NoteRow';
 import { AddNoteHandlers, NotebookDragEvents, TreeNote } from '#interfaces/notes';
+import { Editor } from '@interface/editor';
 interface NoteListProps {
   addNoteHandlers: AddNoteHandlers;
   depth?: number;
   dragHandlers: NotebookDragEvents;
   markDelete: Setter<TreeNote | undefined>;
   noteList?: TreeNote[] | undefined;
-  openEditor: (title: string, content: string, id?: string) => void;
+  openEditor: (editor: Editor) => void;
   userId: string | undefined;
 }
 

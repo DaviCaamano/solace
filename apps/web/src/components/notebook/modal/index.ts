@@ -1,1 +1,1 @@
-export * from './NoteBookDeleteModal';
+export * from './DeleteNoteModal';

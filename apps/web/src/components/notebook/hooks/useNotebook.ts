@@ -12,13 +12,14 @@ import { ContentWindow } from '@interface/Landing';
 import { CreateNoteDto } from '~note/dto/note.dto';
 import { useDraggableRow } from '@components/notebook/hooks/useDraggableRow';
 import { useAddNoteMutation } from '@context/redux/api/notes/notes.slice';
+import { Editor } from '@interface/editor';
 
-type OpenEditorCallback = (title: string, content?: string, id?: string) => void;
+type OpenEditorCallback = (editor: Editor) => void;
 /** Detects the creation of a new note and moves the user to the editor to edit that note */
 export const useNotebook = (
   noteList: Note[] | undefined,
   setContentWindow: Setter<ContentWindow>,
-  setEditor: (title: string, content: string, id?: string) => void,
+  setEditor: (editor: Editor) => void,
   userId?: string,
 ): [AddNoteHandlers, DeleteNoteHandler, OpenEditorCallback, NotebookDragEvents] => {
   const [addNote] = useAddNoteMutation();
@@ -64,8 +65,8 @@ export const useNotebook = (
     setMarkDelete,
   };
 
-  const openEditor = (title: string, content?: string, id?: string) => {
-    setEditor(title, content || '', id);
+  const openEditor = ({ content, id, stale, title }: Editor) => {
+    setEditor({ content: content || '', title, id, stale });
     setContentWindow(ContentWindow.editor);
   };
 
@@ -93,7 +94,7 @@ interface HandleNewNoteArgs {
   stickyList: MutableRefObject<NoteList>;
   noteAdded: boolean;
   setNoteAdded: Setter<boolean>;
-  setEditor: (title: string, content: string, id?: string) => void;
+  setEditor: (editor: Editor) => void;
   setContentWindow: Setter<ContentWindow>;
 }
 
@@ -124,7 +125,7 @@ const handleNewNote = ({
       setNoteAdded(false);
       stickyList.current = noteList;
       if (newNote) {
-        setEditor(newNote.title, '', newNote.id);
+        setEditor({ title: newNote.title, content: '', id: newNote.id, stale: false });
         setContentWindow(ContentWindow.editor);
       }
     } else {

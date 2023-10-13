@@ -8,9 +8,11 @@
 }
 
 .saveButton {
-  @apply font-medium relative px-1 w-8 h-8 border-mug border-[2px] transition-all;
+  &:not(.stale) {
+    @apply font-medium relative px-1 w-8 h-8 transition-all;
+  }
 
-  &:not(.disabled):hover {
-    background-color: $disabledText;
+  &.stale {
+    @apply bg-red-400;
   }
 }
