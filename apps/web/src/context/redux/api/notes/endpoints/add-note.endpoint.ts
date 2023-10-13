@@ -10,8 +10,8 @@ export const addNoteEndpoint = (builder: ReduxQueryBuilder) =>
       method: HttpMethod.post,
       body,
     }),
-    transformResponse: ({ data: note }: FetchResponse<NoteResponse>) => {
-      return note?.note || null;
+    transformResponse: (resp: NoteResponse) => {
+      return resp?.note || null;
     },
     invalidatesTags: [{ type: 'Note', id: 'LIST' }],
   });

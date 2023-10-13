@@ -249,16 +249,12 @@ export class NoteMoveService extends ComponentWithLogging {
    * @param userId - string: user which owns the note tree
    */
   async addToEndOfRoot(note: Note, userId: string) {
-    let roots: Note[];
+    let lastRoot: Note;
     try {
-      roots = await this.db.note.findMany({ where: { parentId: null, userId } });
+      lastRoot = await this.db.note.findFirst({ where: { parentId: null, next: null, userId } });
     } catch (err: any) {
       this.report(`Failed to retrieve list of root nodes for user: ${userId} (1)`, err);
     }
-    if (!roots) {
-      this.report(`Failed to retrieve list of root nodes for user: ${userId} (2)`);
-    }
-    const lastRoot = roots.find(({ next }: Note) => !next);
     const updateData: Prisma.NoteUpdateInput = {
       Parent: null,
     };

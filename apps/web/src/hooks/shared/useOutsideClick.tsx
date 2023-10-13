@@ -52,7 +52,7 @@ export const useOuterClicks = (
       document.removeEventListener('mousedown', handleClickOutside);
       document.removeEventListener('keydown', handleEsc);
     };
-  }, [callback, onEscape, ref]);
+  }, [callback, excluded, onEscape, ref]);
 
   return ref;
 };

@@ -1,7 +1,6 @@
 import { AnimatePresence, motion } from 'framer-motion';
-import { editorColors, invertHighlightForColor } from '@constants/editor/editorColors';
+import { editorColors } from '@constants/editor/editorColors';
 import { EditorColorTile } from './EditorColorTile';
-import { colors } from '@styles/tailwind';
 const MotionDiv = motion.div;
 
 interface PickerProps {

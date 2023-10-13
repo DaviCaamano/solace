@@ -5,22 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2101ad9f-8972-44d3-9c27-f093e4bebdd9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/apps/web/src/components/editor/header/LoginRequired.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/web/src/components/landing/ContentSlider.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/web/src/components/landing/hooks/UserNavigation.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/web/src/components/landing/hooks/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/api/prisma/migrations/20231013122322_optional_note_title/migration.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/components/editor/header/EditorHeader.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/editor/header/EditorHeader.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/api/prisma/schema.prisma" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/prisma/schema.prisma" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/api/src/note/services/note-database.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/note/services/note-database.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/api/src/note/services/note-move.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/note/services/note-move.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/editor/header/LoginRequired.tsx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/web/src/components/editor/header/buttons/NotebookButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/editor/header/buttons/NotebookButton.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/web/src/components/editor/header/buttons/SaveButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/editor/header/buttons/SaveButton.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/web/src/components/editor/header/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/editor/header/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/components/editor/menu/TextEditor.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/editor/menu/TextEditor.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/components/editor/menu/buttons/button-groups/ListButtons.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/editor/menu/buttons/button-groups/ListButtons.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/components/header/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/header/Header.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/components/landing/Content.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/landing/Content.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/components/landing/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/landing/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/components/shared/tooltip/Tooltip.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/shared/tooltip/Tooltip.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/hooks/lib/tiptap/tip-tap.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/hooks/lib/tiptap/tip-tap.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/editor/menu/buttons/editor-buttons.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/editor/menu/buttons/editor-buttons.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/editor/menu/buttons/hooks/useSaveKeybinding.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/editor/menu/buttons/hooks/useSaveKeybinding.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/landing/hooks/UserNavigation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/landing/hooks/UserNavigation.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/context/redux/api/notes/endpoints/add-note.endpoint.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/context/redux/api/notes/endpoints/add-note.endpoint.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/context/redux/editor/save-edit-to-local-storage.middleware.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/context/redux/store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/context/redux/store.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/web/src/hooks/lib/tiptap/useTipTap.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/hooks/lib/tiptap/useTipTap.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/web/src/hooks/user/useLogin.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/hooks/user/useLogin.ts" afterDir="false" />
     </list>
@@ -201,7 +200,8 @@
       <workItem from="1696872224930" duration="64975000" />
       <workItem from="1696988842594" duration="2483000" />
       <workItem from="1697015620497" duration="19585000" />
-      <workItem from="1697156739930" duration="36192000" />
+      <workItem from="1697156739930" duration="41520000" />
+      <workItem from="1697199928894" duration="1334000" />
     </task>
     <servers />
   </component>
@@ -251,7 +251,6 @@
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/apps/web/src/styles/tailwind/colors.js</url>
           <line>31</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>

@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { UserMenu } from '@components/header/index';
-import { ReactNode, useEffect, useState } from 'react';
+import { ReactNode } from 'react';
 import { useLogin } from '@hooks/user';
 
 export const Header = () => {

@@ -71,12 +71,9 @@ export class NoteDatabaseService extends ComponentWithLogging {
     }
   }
 
-  async create({ userId, title, content, parentId, next }: CreateNoteDto): Promise<Note> {
+  async create({ userId, title, content, parentId = null, next = null }: CreateNoteDto): Promise<Note> {
     if (!userId) {
       this.report('No user id provided for create note', HttpStatus.BAD_REQUEST);
-    }
-    if (!title) {
-      this.report('No title provided for create note', HttpStatus.BAD_REQUEST);
     }
 
     const query: Prisma.NoteCreateInput = {
@@ -102,6 +99,21 @@ export class NoteDatabaseService extends ComponentWithLogging {
       query.Next = {
         connect: {
           id: next,
+        },
+      };
+    } else {
+      let lastNode: Note;
+      try {
+        lastNode = await this.db.note.findFirst({
+          select: { id: true },
+          where: { parentId: parentId, next: null, userId, status: NoteStatus.active },
+        });
+      } catch (err: any) {
+        this.report(`Failed to retrieve final root node for user: ${userId} (used for note creation) (1)`, err);
+      }
+      query.Prev = {
+        connect: {
+          id: lastNode.id,
         },
       };
     }

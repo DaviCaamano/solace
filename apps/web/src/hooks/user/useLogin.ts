@@ -32,7 +32,7 @@ export const useLogin = (): useLoginResponse => {
   // const userLoggedIn: boolean | null;
 
   return {
-    isLoading: authZeroIsLoading || isLoading,
+    isLoading: authZeroIsLoading || isLoading || !!(!user && authZeroUser),
     isLoggedOut: !authZeroUser && !authZeroIsLoading && !user && !isLoading,
     user: isSuccess ? (user as User) : undefined,
     error: (authZeroError?.message || authZeroError || (error as Error)?.message || error) as string | undefined,

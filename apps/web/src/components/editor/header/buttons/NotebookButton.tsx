@@ -6,34 +6,43 @@ import { colors } from '@styles/tailwind';
 import styles from '../../menu/buttons/editor-buttons.module.scss';
 import NotebookIcon from '@images/icons/notebook.svg';
 import { ContentWindow } from '@interface/Landing';
-import { LoginRequired } from '../LoginRequired';
+import { LocalStorage } from '@interface/cookie';
+import add from 'date-fns/add';
+import { useRouter } from 'next/router';
 
 interface NotebookButtonProps {
   setContentWindow: Setter<ContentWindow>;
 }
 export const NotebookButton = ({ setContentWindow }: NotebookButtonProps) => {
+  const router = useRouter();
   const { editor, reset, user } = useEditor();
   const [save] = useUpdateNoteMutation();
 
+  /**
+   * If user is not logged in, save the content of the editor to local storage.
+   * This content will be used to create a new note for the user upon login with "Untitled" as the title.
+   */
   const onClick = useCallback(() => {
-    if (editor.id && user?.id) {
+    if (!user?.id) {
+      localStorage.setItem(LocalStorage.editorContent, editor.content);
+      localStorage.setItem(LocalStorage.expiration, add(new Date(), { days: 7 }).toString());
+      router.push('/api/auth/login').then();
+    } else if (editor.id) {
       save({ id: editor.id, title: editor.title, content: editor.content, userId: user.id }).then(() => {
         reset();
         setContentWindow(ContentWindow.notebook);
       });
     }
-  }, [editor.content, editor.id, editor.title, reset, save, setContentWindow, user?.id]);
+  }, [editor.content, editor.id, editor.title, reset, router, save, setContentWindow, user?.id]);
 
   return (
     <Tooltip name={'notebook-button-tooltip'} content={<ToolTipContent loggedIn={!!user?.id} />} {...tooltipStyle}>
-      <LoginRequired isLoggedIn={!!user}>
-        <NotebookIcon
-          alt={'Click here to see your notebook, where all of your notes are saved.'}
-          className={`${styles.notebookButton} `}
-          onClick={onClick}
-          color={colors.mug}
-        />
-      </LoginRequired>
+      <NotebookIcon
+        alt={'Click here to see your notebook, where all of your notes are saved.'}
+        className={`${styles.notebookButton} `}
+        onClick={onClick}
+        color={colors.mug}
+      />
     </Tooltip>
   );
 };

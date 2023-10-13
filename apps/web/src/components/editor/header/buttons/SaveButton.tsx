@@ -5,37 +5,46 @@ import { Tooltip } from '@components/shared';
 import { CSSProperties, useCallback } from 'react';
 import { useSaveKeybinding } from '../../menu/buttons/hooks';
 import styles from '../../menu/buttons/editor-buttons.module.scss';
-import { LoginRequired } from '@components/editor';
+import { useRouter } from 'next/router';
+import { LocalStorage } from '@interface/cookie';
+import add from 'date-fns/add';
 
 export const SaveButton = () => {
   const { editor, user, setEditor } = useEditor();
   const [save] = useUpdateNoteMutation();
   const stale = editor.stale;
+  const router = useRouter();
 
-  const saveNote = useCallback(() => {
-    if (editor.id && user?.id) {
+  /**
+   * If user is not logged in, save the content of the editor to local storage.
+   * This content will be used to create a new note for the user upon login with "Untitled" as the title.
+   */
+  const onClick = useCallback(() => {
+    if (!user?.id) {
+      localStorage.setItem(LocalStorage.editorContent, editor.content);
+      localStorage.setItem(LocalStorage.expiration, add(new Date(), { days: 7 }).toString());
+      router.push('/api/auth/login').then();
+    } else if (editor.id) {
       save({ id: editor.id, title: editor.title, content: editor.content, userId: user.id })
         .then(() => setEditor({ stale: false }))
         .catch(() => setEditor({ stale: true }));
     }
-  }, [editor.content, editor.id, editor.title, save, setEditor, user?.id]);
+  }, [editor.content, editor.id, editor.title, router, save, setEditor, user]);
 
   const disabled = !user?.id;
 
-  useSaveKeybinding(saveNote);
+  useSaveKeybinding(onClick, !user?.id);
   return (
     <Tooltip
       name={'save-button-tooltip'}
       content={<ToolTipContent loggedIn={!!user?.id} stale={stale} />}
       {...tooltipStyle}
     >
-      <LoginRequired isLoggedIn={!!user}>
-        <SaveIcon
-          className={`${styles.saveButton} ${disabled && styles.disabled} ${stale && styles.stale}`}
-          onClick={saveNote}
-          style={{ fontSize: '2rem' }}
-        />
-      </LoginRequired>
+      <SaveIcon
+        className={`${styles.saveButton} ${disabled && styles.disabled} ${stale && styles.stale}`}
+        onClick={onClick}
+        style={{ fontSize: '2rem' }}
+      />
     </Tooltip>
   );
 };

@@ -98,7 +98,7 @@ export const useTipTap = (): [TipTapEditor | null, number] => {
   /** Redundant focus command for navigation from other windows*/
   useEffect(() => {
     editor?.commands.focus();
-  }, [editor?.commands]);
+  }, [editor]);
 
   /** Set initial Text content of editor when the note changes */
   useEffect(() => {
