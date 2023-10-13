@@ -34,6 +34,7 @@ export const editorSlice = createSlice({
       state.id = undefined;
       state.content = '';
       state.title = '';
+      state.stale = false;
     },
     setTitle: (state: Editor, action: PayloadAction<string>) => {
       state.title = action.payload;

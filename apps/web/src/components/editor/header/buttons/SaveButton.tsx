@@ -3,8 +3,8 @@ import { useEditor } from '@hooks/context';
 import { useUpdateNoteMutation } from '@context/redux/api/notes/notes.slice';
 import { Tooltip } from '@components/shared';
 import { CSSProperties, useCallback } from 'react';
-import { useSaveKeybinding } from './hooks';
-import { colors } from '@styles/tailwind';
+import { useSaveKeybinding } from '../../menu/buttons/hooks';
+import styles from '../../menu/buttons/editor-buttons.module.scss';
 
 export const SaveButton = () => {
   const { editor, user, setEditor } = useEditor();
@@ -28,18 +28,22 @@ export const SaveButton = () => {
       content={<ToolTipContent loggedIn={!!user?.id} stale={stale} />}
       {...tooltipStyle}
     >
-      <SaveIcon style={{ fontSize: '2rem', color: getSaveIconColor(disabled, stale) }} />
+      <SaveIcon
+        className={`${styles.saveButton} ${disabled && styles.disabled} ${stale && styles.stale}`}
+        onClick={onClick}
+        style={{ fontSize: '2rem' }}
+      />
     </Tooltip>
   );
 };
 
 const ToolTipContent = ({ loggedIn, stale }: { loggedIn: boolean; stale: boolean | undefined }) =>
   !stale ? (
-    <span className={'text-[12px]'}>Saved!</span>
+    'Saved!'
   ) : loggedIn ? (
-    <span className={'text-[12px]'}>Ctrl-S</span>
+    'Ctrl-S'
   ) : (
-    <span className={'text-[12px]'}>
+    <span>
       Please <span className={'underline'}>Login</span> to Save your note.
     </span>
   );
@@ -55,6 +59,3 @@ const tooltipStyle = {
     } as CSSProperties,
   },
 };
-
-const getSaveIconColor = (disabled?: boolean, stale?: boolean) =>
-  !stale ? colors['mug-disabled-light'] : disabled ? colors['brown'] : colors['mug'];

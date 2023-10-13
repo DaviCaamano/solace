@@ -5,4 +5,3 @@ export * from './EditorTextColorButton';
 export * from './EditorHighlightColorButton';
 export * from './EditorMenuButton';
 export * from './FormatButtons';
-export * from './SaveButton';

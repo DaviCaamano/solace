@@ -8,11 +8,20 @@
 }
 
 .saveButton {
+  @apply text-[2rem] cursor-pointer text-mug transition-all;
+
   &:not(.stale) {
-    @apply font-medium relative px-1 w-8 h-8 transition-all;
+    @apply text-mug-disabled-light cursor-default;
   }
 
-  &.stale {
-    @apply bg-red-400;
+  &:not(stale).disabled {
+    @apply text-brown cursor-default;
   }
+}
+
+.notebookButton {
+  @apply text-[2rem] cursor-pointer text-mug transition-all;
+  width: 26px;
+  height: 26px;
+  color: $mug;
 }

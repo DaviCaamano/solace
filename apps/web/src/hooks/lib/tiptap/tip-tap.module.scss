@@ -110,5 +110,5 @@ $TwelveNestedUl: '#{$EightNestedUl} > #{$FourNestedUl}';
 }
 
 .title {
-  @apply w-full pl-8 pr-12 py-2 text-[1.2rem] font-semibold text-coffee;
+  @apply w-full pl-8 pr-[5rem] py-2 text-[1.2rem] font-semibold text-coffee;
 }

@@ -2,9 +2,13 @@ import { useEditor } from '@hooks/context';
 import { useUpdateNoteMutation } from '@context/redux/api/notes/notes.slice';
 import styles from '@hooks/lib/tiptap/tip-tap.module.scss';
 import { FocusEventHandler } from 'react';
-import { SaveButton } from '@components/editor/menu';
+import { ContentWindow } from '@interface/Landing';
+import { NotebookButton, SaveButton } from '@components/editor/header/buttons';
 
-export const EditorHeader = () => {
+interface EditorHeaderProps {
+  setContentWindow: Setter<ContentWindow>;
+}
+export const EditorHeader = ({ setContentWindow }: EditorHeaderProps) => {
   const { editor, setTitle, user } = useEditor();
   const [save] = useUpdateNoteMutation();
   const onBlur: FocusEventHandler<HTMLDivElement> = (event) => {
@@ -21,11 +25,13 @@ export const EditorHeader = () => {
         className={styles.title}
         contentEditable
         onBlur={onBlur}
+        onChange={() => console.log('does this work???')}
         placeholder={'Untitled'}
         suppressContentEditableWarning={true}
       >
         {editor?.title}
       </div>
+      <NotebookButton setContentWindow={setContentWindow} />
       <SaveButton />
     </div>
   );

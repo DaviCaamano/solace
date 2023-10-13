@@ -1,15 +1,17 @@
 import { EditorContent, Editor as TipTapEditor } from '@tiptap/react';
 import { EditorHeader } from '@components/editor';
+import { ContentWindow } from '@interface/Landing';
 
 interface EditorProps {
   editor: TipTapEditor;
+  setContentWindow: Setter<ContentWindow>;
 }
-export const TextEditor = ({ editor: tipTapEditor }: EditorProps) => {
+export const TextEditor = ({ editor: tipTapEditor, setContentWindow }: EditorProps) => {
   return (
     <div id={'add-note'} className={'flex flex-col md:flex-row justify-center items-center'}>
       <div className={`${editorDimensions} rounded-2xl bg-latte w-full h-[100px]`}>
         <div className={'w-full h-full relative'}>
-          <EditorHeader />
+          <EditorHeader setContentWindow={setContentWindow} />
           <EditorStyle />
           <EditorContent
             editor={tipTapEditor}
