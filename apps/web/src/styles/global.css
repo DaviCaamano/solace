@@ -111,3 +111,11 @@ span div {
     }
   }
 }
+
+/** Adds placeholder functionality to contentEditable elements */
+[contenteditable='true']:empty:before {
+  content: attr(placeholder);
+  pointer-events: none;
+  display: block; /* For Firefox */
+  color: #624c34ff;
+}

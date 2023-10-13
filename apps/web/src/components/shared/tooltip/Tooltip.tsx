@@ -10,13 +10,14 @@ export interface ToolTipProps extends PropsWithChildren {
   anchor?: ToolTipAnchor;
   distance?: string;
   content: string | ReactNode;
+  name?: string;
   open?: boolean;
   setOpen?: Setter<boolean>;
   wrapper?: {
     style?: CSSProperties;
     className?: string;
   };
-  tip?: {
+  tooltip?: {
     style?: CSSProperties;
     className?: string;
   };
@@ -41,13 +42,14 @@ export interface ToolTipProps extends PropsWithChildren {
  */
 export const Tooltip = ({
   anchor = ToolTipAnchor.bottom,
+  name,
   children,
   content,
   distance = '1rem',
   open,
   setOpen,
   wrapper,
-  tip,
+  tooltip,
 }: ToolTipProps) => {
   const [selfManagedOpen, setSelfManagedOpen] = useState<boolean>(false);
 
@@ -58,20 +60,18 @@ export const Tooltip = ({
     onMouseLeave: () => setIsOpen(false),
   };
   return (
-    <div className={`tooltip relative w-max h-max ${wrapper?.className}`} style={wrapper?.style} {...events}>
+    <div className={`tooltip ${name} relative w-max h-max ${wrapper?.className}`} style={wrapper?.style} {...events}>
       {children}
       <div
         className={
-          'tooltip-framer absolute rounded-lg bg-mug text-latte border-[1px] border-latte w-max justify-center ' +
-          `items-center text-center fade_3 pointer-events-none ${tip?.className} ${
+          'tooltip-framer absolute rounded-lg bg-mug-gray-dark text-latte border-[1px] border-latte w-max justify-center ' +
+          `items-center text-center fade_3 pointer-events-none p-1 ${tooltip?.className} ${
             isOpen ? 'inline-flex fadeIn' : 'fadeOut'
           }`
         }
-        style={{ ...getPosition(anchor, distance), ...tip?.style }}
+        style={{ ...getPosition(anchor, distance), ...tooltip?.style }}
       >
-        <div className={'border-[1px] rounded-lg border-mug'}>
-          <div className={'border-[1px] rounded-lg border-latte p-1'}>{content}</div>
-        </div>
+        {content}
       </div>
     </div>
   );

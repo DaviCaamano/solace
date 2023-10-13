@@ -4,7 +4,7 @@ import { EditorColorBoard, EditorMenuButton } from '@components/editor';
 import { hexOpacity } from '@utils/color';
 import { ColorBoard } from '@interface/editor';
 
-const defaultColor = colors.coffee;
+const defaultColor = colors.latte;
 interface EditorMenuButtonProps {
   editor: TipTapEditor;
   open: boolean;

@@ -14,6 +14,9 @@ export const editorColors = {
   'hot-orange': '#ff5722',
   brown: '#795548',
   'dark-blue': '#607d8b',
-  mug: colors.mug,
   coffee: colors.coffee,
+  latte: colors.latte,
 };
+
+
+export const invertHighlightForColor = [colors.latte];

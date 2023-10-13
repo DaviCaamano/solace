@@ -38,7 +38,6 @@ export const EditorMenu = ({ editor }: EditorMenuProps) => {
       <LinkButtonContainer editor={editor} setLink={setLink} setOpen={setLinkModalOpen} />
       <BlockButtonContainer editor={editor} />
 
-      <SaveButton />
       <LinkModal open={linkModalOpen} link={link} setLink={setLink} setOpen={setLinkModalOpen} editor={editor} />
     </div>
   );

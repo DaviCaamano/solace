@@ -7,18 +7,14 @@ $EightNestedUl: '#{$FourNestedUl} > #{$FourNestedUl}';
 $TwelveNestedUl: '#{$EightNestedUl} > #{$FourNestedUl}';
 
 .editor {
-  @apply w-full h-full bg-latte pl-8 pt-8 pr-4 pb-4 scrollbar-thin;
-  background-image: linear-gradient($brown-dark 0.1em, transparent 0.1em),
-    linear-gradient(90deg, transparent 28px, $mug 28px, $mug 30px, transparent 26px);
-  background-size: 100% 2rem;
-  background-attachment: local;
-  line-height: 2rem;
-  font-size: 1.5rem;
+  @apply w-full h-full bg-mug pl-8 pt-2 pr-4 pb-4 scrollbar-thin;
+  line-height: 1.5rem;
+  font-size: 1rem;
   min-height: 100%;
 
   /** Block Quote Classes */
   blockquote {
-    @apply flex flex-row border-mug border-l-[2px] ml-4 pr-4 text-brown font-medium;
+    @apply flex flex-row border-mug border-l-[2px] ml-4 pr-4 text-latte-lighter font-medium;
   }
   blockquote:before {
     content: open-quote;
@@ -30,7 +26,7 @@ $TwelveNestedUl: '#{$EightNestedUl} > #{$FourNestedUl}';
   blockquote:after {
     display: inline;
     vertical-align: bottom;
-    font-size: 1.5rem;
+    font-size: 1rem;
     top: 0.2rem;
     position: relative;
     color: $pink;
@@ -102,4 +98,17 @@ $TwelveNestedUl: '#{$EightNestedUl} > #{$FourNestedUl}';
 
 .codeContainer > code {
   @apply font-thin break-all w-full max-w-full pr-8;
+}
+
+.header {
+  @apply w-full bg-latte flex flex-row relative;
+  vertical-align: top;
+  background:
+          /* On "top" */
+    repeating-linear-gradient(45deg, transparent, transparent 1px, #ccc 1px, #ccc 2px),
+    /* on "bottom" */ linear-gradient(to bottom, #eee, #999);
+}
+
+.title {
+  @apply w-full pl-8 pr-12 py-2 text-[1.2rem] font-semibold text-coffee;
 }

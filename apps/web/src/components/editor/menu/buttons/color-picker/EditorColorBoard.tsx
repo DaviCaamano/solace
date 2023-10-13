@@ -1,5 +1,5 @@
 import { AnimatePresence, motion } from 'framer-motion';
-import { editorColors } from '@constants/editor/editorColors';
+import { editorColors, invertHighlightForColor } from '@constants/editor/editorColors';
 import { EditorColorTile } from './EditorColorTile';
 const MotionDiv = motion.div;
 
@@ -19,7 +19,7 @@ export const EditorColorBoard = ({ open, selectedColor, setColor, positions: { x
       name={name}
       color={color}
       onClick={() => setColor(color)}
-      className={selectedColor === color ? 'border-4 border-latte' : ''}
+      className={selectedCSS(selectedColor, color)}
     />
   ));
 
@@ -71,4 +71,15 @@ export const EditorColorBoard = ({ open, selectedColor, setColor, positions: { x
       )}
     </AnimatePresence>
   );
+};
+
+const selectedCSS = (selectedColor: string | undefined, color: string) => {
+  if (selectedColor === color) {
+    console.log('SELECTED:', color, selectedColor);
+    if (invertHighlightForColor.includes(color)) {
+      return 'border-4 border-mug-gray';
+    }
+    return 'border-4 border-latte';
+  }
+  return '';
 };

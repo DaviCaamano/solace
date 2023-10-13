@@ -84,6 +84,7 @@ export const useTipTap = (): [TipTapEditor | null, number] => {
     editable: true,
     injectCSS: false,
     onUpdate: ({ editor }) => {
+      console.log('~~~~~~~~~~~~~~~~');
       setContent(editor.getHTML());
     },
     editorProps: {
@@ -104,7 +105,7 @@ export const useTipTap = (): [TipTapEditor | null, number] => {
       stickyNoteId.current = noteId;
       setContent(content);
     }
-  }, [noteId]);
+  }, [content, noteId, setContent]);
 
   return [editor, characterLimit];
 };

@@ -34,7 +34,7 @@ export const Content = () => {
           onExit: window === ContentWindow.notebook ? Position.hideRight : Position.hideLeft,
         }}
       >
-        <Editor />
+        <Editor setContentWindow={setWindow}/>
       </Slider>
     </div>
   );

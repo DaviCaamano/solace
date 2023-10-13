@@ -29,6 +29,8 @@ const colors = {
   'aqua-complement': '#FE5B63',
 
   coffee: '#1C160F',
+  'coffee-light': '#624C34FF',
+
 };
 
 module.exports = colors;

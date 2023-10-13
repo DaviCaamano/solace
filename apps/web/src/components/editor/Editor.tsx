@@ -2,9 +2,12 @@ import { useTipTap } from '@hooks/lib/tiptap';
 import { EditorMenu } from '@components/editor/EditorMenu';
 import { WordCount } from '@components/editor/menu/WordCount';
 import { TextEditor } from './menu';
+import { ContentWindow } from '@interface/Landing';
 
-
-export const Editor = () => {
+interface EditorProps {
+  setContentWindow: Setter<ContentWindow>;
+}
+export const Editor = ({ setContentWindow }: EditorProps) => {
   const [editor, characterLimit] = useTipTap();
 
   if (!editor) {

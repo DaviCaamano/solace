@@ -1,21 +1,20 @@
 import { EditorContent, Editor as TipTapEditor } from '@tiptap/react';
+import { EditorHeader } from '@components/editor';
+
 interface EditorProps {
   editor: TipTapEditor;
 }
-export const TextEditor = ({ editor }: EditorProps) => {
+export const TextEditor = ({ editor: tipTapEditor }: EditorProps) => {
   return (
     <div id={'add-note'} className={'flex flex-col md:flex-row justify-center items-center'}>
-      <div className={`${editorDimensions} rounded-2xl bg-latte overflow-hidden w-full h-[100px]`}>
+      <div className={`${editorDimensions} rounded-2xl bg-latte w-full h-[100px]`}>
         <div className={'w-full h-full relative'}>
-          <style>{`
-        .ProseMirror-focused {
-          outline: none !important;
-        }
-      `}</style>
+          <EditorHeader />
+          <EditorStyle />
           <EditorContent
-            editor={editor}
+            editor={tipTapEditor}
             data-testid={'text-editor'}
-            className={'note-editor w-full h-full bg-latte text-coffee'}
+            className={'note-editor w-full h-full bg-latte text-latte'}
           />
         </div>
       </div>
@@ -23,3 +22,5 @@ export const TextEditor = ({ editor }: EditorProps) => {
   );
 };
 const editorDimensions = 'w-[20rem] h-[20rem] sm:w-[31rem] sm:h-[31rem] lg:w-[46rem] lg:h-[46rem]';
+
+const EditorStyle = () => <style>{'.ProseMirror-focused { outline: none !important; }'}</style>;

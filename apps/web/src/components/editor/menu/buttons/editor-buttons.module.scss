@@ -1,6 +1,16 @@
+@import '../../../../styles/tailwind/colors.js';
+
 .noHighlight {
   -webkit-user-select: none; /* Chrome/Safari */
   -moz-user-select: none; /* Firefox */
   -ms-user-select: none; /* IE10+ */
   user-select: none;
+}
+
+.saveButton {
+  @apply font-medium relative px-1 w-8 h-8 border-mug border-[2px] transition-all;
+
+  &:not(.disabled):hover {
+    background-color: $disabledText;
+  }
 }

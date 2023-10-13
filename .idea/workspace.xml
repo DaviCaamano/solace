@@ -5,11 +5,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2101ad9f-8972-44d3-9c27-f093e4bebdd9" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/apps/web/src/components/editor/EditorHeader.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/web/src/components/editor/menu/buttons/hooks/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/web/src/components/editor/menu/buttons/hooks/useSaveKeybinding.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/components/editor/menu/buttons/EditorMenuButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/editor/menu/buttons/EditorMenuButton.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/public/images/icons/add-note.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/public/images/icons/note-history.svg" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/public/images/icons/notebook.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/public/images/icons/schedule-note.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/editor/Editor.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/editor/Editor.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/editor/EditorMenu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/editor/EditorMenu.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/editor/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/editor/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/editor/menu/TextEditor.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/editor/menu/TextEditor.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/editor/menu/buttons/EditorTextColorButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/editor/menu/buttons/EditorTextColorButton.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/web/src/components/editor/menu/buttons/SaveButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/editor/menu/buttons/SaveButton.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/editor/menu/buttons/color-picker/EditorColorBoard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/editor/menu/buttons/color-picker/EditorColorBoard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/editor/menu/buttons/editor-buttons.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/editor/menu/buttons/editor-buttons.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/landing/Content.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/landing/Content.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/web/src/components/shared/tooltip/Tooltip.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/shared/tooltip/Tooltip.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/constants/editor/editorColors.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/constants/editor/editorColors.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/hooks/lib/tiptap/tip-tap.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/hooks/lib/tiptap/tip-tap.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/hooks/lib/tiptap/useTipTap.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/hooks/lib/tiptap/useTipTap.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/web/src/styles/global.css" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/styles/global.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/styles/tailwind/colors.js" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/styles/tailwind/colors.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,11 +115,11 @@
       <recent name="C:\Users\davit\Projects\solace\packages\config\mkcert" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\davit\Projects\solace\apps\web\src\components\editor\menu\buttons\hooks" />
+      <recent name="C:\Users\davit\Projects\solace\apps\web\src\components\editor" />
       <recent name="C:\Users\davit\Projects\solace\apps\web\src\components\notebook\move-row-zone" />
       <recent name="C:\Users\davit\Projects\solace\apps\api\src\note\services" />
       <recent name="C:\Users\davit\Projects\solace\apps\web\src\components\notebook" />
-      <recent name="C:\Users\davit\Projects\solace\apps\web\src\components\notebook\input" />
-      <recent name="C:\Users\davit\Projects\solace\apps\web\src\components\notebook\rows" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -188,7 +205,7 @@
       <workItem from="1696872224930" duration="64975000" />
       <workItem from="1696988842594" duration="2483000" />
       <workItem from="1697015620497" duration="19585000" />
-      <workItem from="1697156739930" duration="9067000" />
+      <workItem from="1697156739930" duration="19776000" />
     </task>
     <servers />
   </component>
@@ -231,5 +248,17 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/apps/web/src/styles/tailwind/colors.js</url>
+          <line>30</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
