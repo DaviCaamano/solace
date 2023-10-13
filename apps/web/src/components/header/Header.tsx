@@ -1,5 +1,5 @@
-import Link from 'next/link';
-import { UserMenu } from '@components/header/index';
+import { LoginLink } from './LoginLink';
+import { UserMenu } from './UserMenu';
 import { ReactNode } from 'react';
 import { useLogin } from '@hooks/user';
 
@@ -23,14 +23,4 @@ const HeaderBar = ({ children, className }: { children?: ReactNode; className?: 
 
 const ErrorMessage = ({ error }: { error?: string }) => (
   <span className={`absolute right-5 fade_7 ${!error && 'fadeOut pointer-events-none'}`}>{error}</span>
-);
-
-const LoginLink = ({ show }: { show: boolean }) => (
-  <Link href={'/api/auth/login'}>
-    <span
-      className={`absolute right-5 text-xl text-latte hover:underline fade_7 ${!show && 'fadeOut pointer-events-none'}`}
-    >
-      Login
-    </span>
-  </Link>
 );
