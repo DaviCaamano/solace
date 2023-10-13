@@ -74,4 +74,7 @@ export class DeleteNoteDto {
 
   @IsNotEmpty()
   userId: string;
+
+  @IsOptional()
+  deleteChildren?: boolean;
 }
