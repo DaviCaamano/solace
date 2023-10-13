@@ -1,6 +1,7 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import { editorColors, invertHighlightForColor } from '@constants/editor/editorColors';
 import { EditorColorTile } from './EditorColorTile';
+import { colors } from '@styles/tailwind';
 const MotionDiv = motion.div;
 
 interface PickerProps {
@@ -16,10 +17,10 @@ export const EditorColorBoard = ({ open, selectedColor, setColor, positions: { x
   const colors = Object.entries(editorColors).map(([name, color]: [string, string]) => (
     <EditorColorTile
       key={'editor-color-tile-' + name}
-      name={name}
       color={color}
+      name={name}
       onClick={() => setColor(color)}
-      className={selectedCSS(selectedColor, color)}
+      selectedColor={selectedColor}
     />
   ));
 
@@ -71,14 +72,4 @@ export const EditorColorBoard = ({ open, selectedColor, setColor, positions: { x
       )}
     </AnimatePresence>
   );
-};
-
-const selectedCSS = (selectedColor: string | undefined, color: string) => {
-  if (selectedColor === color) {
-    if (invertHighlightForColor.includes(color)) {
-      return 'border-4 border-mug-gray';
-    }
-    return 'border-4 border-latte';
-  }
-  return '';
 };

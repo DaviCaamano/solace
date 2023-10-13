@@ -25,7 +25,6 @@ export const EditorHeader = ({ setContentWindow }: EditorHeaderProps) => {
         className={styles.title}
         contentEditable
         onBlur={onBlur}
-        onChange={() => console.log('does this work???')}
         placeholder={'Untitled'}
         suppressContentEditableWarning={true}
       >

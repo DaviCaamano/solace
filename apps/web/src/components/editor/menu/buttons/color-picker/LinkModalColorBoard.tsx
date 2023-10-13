@@ -11,8 +11,8 @@ export const LinkModalColorBoard = ({ selectedColor, setColor }: LinkModalColorB
       key={'editor-color-tile-' + name}
       name={name}
       color={color}
+      selectedColor={selectedColor}
       onClick={() => setColor(color)}
-      className={selectedColor === color ? 'border-4 border-latte' : ''}
     />
   ));
 
