@@ -10,12 +10,11 @@ export const Content = () => {
   const [window, setWindow] = useState<ContentWindow>(ContentWindow.notebook);
   return (
     <div id={'content'} className={'relative w-full flex-1'}>
-      {' '}
       <AnimatePresence>
-        <Slider open={window === ContentWindow.notebook}>
+        <Slider key={'editor-notebook'} open={window === ContentWindow.notebook}>
           <Notebook setContentWindow={setWindow} />
         </Slider>
-        <Slider open={window === ContentWindow.editor}>
+        <Slider key={'editor-content'} open={window === ContentWindow.editor}>
           <Editor setContentWindow={setWindow} />
         </Slider>
       </AnimatePresence>

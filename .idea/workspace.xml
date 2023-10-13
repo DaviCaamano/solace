@@ -6,8 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="2101ad9f-8972-44d3-9c27-f093e4bebdd9" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/public/images/icons/notebook.svg" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/public/images/icons/notebook.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/header/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/header/Header.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/header/UserMenu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/header/UserMenu.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/web/src/components/landing/Content.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/landing/Content.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/hooks/shared/useOutsideClick.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/hooks/shared/useOutsideClick.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -186,7 +188,7 @@
       <workItem from="1696872224930" duration="64975000" />
       <workItem from="1696988842594" duration="2483000" />
       <workItem from="1697015620497" duration="19585000" />
-      <workItem from="1697156739930" duration="27556000" />
+      <workItem from="1697156739930" duration="29781000" />
     </task>
     <servers />
   </component>
