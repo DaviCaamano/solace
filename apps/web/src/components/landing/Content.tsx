@@ -6,36 +6,19 @@ import { Editor } from '@components/editor';
 
 const MotionDiv = motion.div;
 
-enum Position {
-  show = 'show',
-  left = 'left',
-  right = 'right',
-  hideLeft = 'hideLeft',
-  hideRight = 'hideRight',
-}
-
 export const Content = () => {
   const [window, setWindow] = useState<ContentWindow>(ContentWindow.notebook);
   return (
     <div id={'content'} className={'relative w-full flex-1'}>
-      <Slider
-        open={window === ContentWindow.notebook}
-        position={{
-          onLoad: Position.show,
-          onExit: Position.left,
-        }}
-      >
-        <Notebook setContentWindow={setWindow} />
-      </Slider>
-      <Slider
-        open={window === ContentWindow.editor}
-        position={{
-          onLoad: Position.hideRight,
-          onExit: window === ContentWindow.notebook ? Position.hideRight : Position.hideLeft,
-        }}
-      >
-        <Editor setContentWindow={setWindow} />
-      </Slider>
+      {' '}
+      <AnimatePresence>
+        <Slider open={window === ContentWindow.notebook}>
+          <Notebook setContentWindow={setWindow} />
+        </Slider>
+        <Slider open={window === ContentWindow.editor}>
+          <Editor setContentWindow={setWindow} />
+        </Slider>
+      </AnimatePresence>
     </div>
   );
 };
@@ -43,68 +26,49 @@ export const Content = () => {
 /**
  * Slider Animates its children, so they slide onto the screen on load and slide off on exit.
  */
-interface SliderPosition {
-  onLoad: Position;
-  onExit: Position;
-}
+
 interface SliderProps {
   open: boolean;
   children: ReactNode;
-  position: SliderPosition;
+  showOnload?: boolean;
 }
-const Slider = ({ children, open, position: { onLoad, onExit } }: SliderProps) => {
+const Slider = ({ children, open }: SliderProps) => {
+  if (!open) {
+    return null;
+  }
   return (
-    <AnimatePresence>
-      {open && (
-        <MotionDiv
-          className={'absolute'}
-          initial={onLoad}
-          animate={open ? Position.show : onExit}
-          variants={animations}
-          transition={{ duration: 0.5, delay: open ? 0 : 0.5 }}
-          exit={onExit}
-          style={{
-            right: '50%',
-            top: '50%',
-          }}
-        >
-          <div
-            className={'w-full h-full'}
-            style={{
-              transform: 'translate(50%, -50%)',
-            }}
-          >
-            {children}
-          </div>
-        </MotionDiv>
-      )}
-      )
-    </AnimatePresence>
+    <MotionDiv
+      className={'absolute'}
+      initial={'hide'}
+      animate={open ? 'show' : 'hide'}
+      variants={animations}
+      transition={{ duration: 0.3 }}
+      exit={'hide'}
+      style={{
+        right: '50%',
+        top: '50%',
+      }}
+    >
+      <div
+        className={'w-full h-full'}
+        style={{
+          transform: 'translate(50%, -50%)',
+        }}
+      >
+        {children}
+      </div>
+    </MotionDiv>
   );
 };
 
 /** Animations for Content Windows */
 const animations = {
-  [Position.show]: {
-    x: 0,
-    opacity: 1,
-  },
-  [Position.hideLeft]: {
-    x: '-100vw',
-    opacity: 1,
-  },
-  [Position.hideRight]: {
-    x: '+100vw',
-    opacity: 1,
-  },
-  /** offscreen to the left */
-  [Position.left]: {
-    x: '-100vw',
+  hide: {
+    y: '-0.5rem',
     opacity: 0,
   },
-  /** offscreen to the right */
-  [Position.right]: {
-    x: '+100vw',
-    opacity: 0,
+  show: {
+    y: 0,
+    opacity: 1,
   },
 };
