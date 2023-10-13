@@ -1,10 +1,12 @@
 import { PropsWithChildren, useState } from 'react';
 
 import styles from '@components/editor/menu/buttons/editor-buttons.module.scss';
+import { colors } from '@styles/tailwind';
 
 const onCss = 'border-[2px] bg-opacity-20';
 const pressedCss = 'border-[2px] bg-opacity-50';
 const offCss = 'bg-opacity-0';
+const disabledCss = 'bg-mug-disabled';
 
 type UseButtonEvents = {
   onMouseUp: () => void;
@@ -18,9 +20,18 @@ interface EditorMenuButtonTemplate extends PropsWithChildren {
   active?: boolean | undefined;
   className?: string;
   color?: string;
+  disabled?: boolean;
   onClick: () => void;
 }
-export const EditorMenuButton = ({ active, className, color, children, onClick, id }: EditorMenuButtonTemplate) => {
+export const EditorMenuButton = ({
+  active,
+  className,
+  color,
+  children,
+  disabled = false,
+  onClick,
+  id,
+}: EditorMenuButtonTemplate) => {
   const [pressed, setPressed] = useState<boolean>(false);
 
   const events: UseButtonEvents = {
@@ -36,18 +47,18 @@ export const EditorMenuButton = ({ active, className, color, children, onClick, 
     onClick: onClick,
   };
 
-  const css = pressed ? pressedCss : active ? onCss : offCss;
+  const css = disabled ? disabledCss : pressed ? pressedCss : active ? onCss : offCss;
   return (
     <button
       id={id}
       data-testid={id}
       className={
         'editor-menu-button flex justify-center items-center w-8 mr-1 text-8 font-bold box-border ' +
-        ` border-[1px] border-latte rounded-md text-latte bg-latte ${css} ${styles.noHighlight} ${className || ''}`
+        ` border-[1px] border-latte rounded-md text-latte ${css} ${styles.noHighlight} ${className || ''} `
       }
       {...events}
       style={{
-        color: color,
+        color: disabled ? colors.brown : color,
       }}
     >
       {children}

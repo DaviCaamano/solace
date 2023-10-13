@@ -63,7 +63,9 @@ export const Tooltip = ({
       <div
         className={
           'tooltip-framer absolute rounded-lg bg-mug text-latte border-[1px] border-latte w-max justify-center ' +
-          `items-center text-center ${tip?.className} ${isOpen ? 'inline-flex' : 'hidden'}`
+          `items-center text-center fade_3 pointer-events-none ${tip?.className} ${
+            isOpen ? 'inline-flex fadeIn' : 'fadeOut'
+          }`
         }
         style={{ ...getPosition(anchor, distance), ...tip?.style }}
       >

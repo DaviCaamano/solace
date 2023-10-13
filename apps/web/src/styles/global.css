@@ -33,10 +33,6 @@ span div {
   box-sizing: border-box;
 }
 
-.fade {
-  @apply transition-opacity;
-  transition-duration: 3000ms;
-}
 .fade_1 {
   @apply transition-opacity;
   transition-duration: 100ms;
