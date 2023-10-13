@@ -1,7 +1,7 @@
 import { ContentWindow } from '@interface/Landing';
 import styles from './notebook.module.css';
 import { AddNoteRow } from '@components/notebook/rows/AddNoteRow';
-import { useEditorContext, useListNotes } from '@hooks/context';
+import { useEditor, useListNotes } from '@hooks/context';
 import { NoteList } from '@components/notebook/rows/NoteList';
 import { getNoteHeiarchy } from '@components/notebook/utils';
 import { useMemo } from 'react';
@@ -15,7 +15,7 @@ interface NotebookProps {
 }
 
 export const Notebook = ({ setContentWindow }: NotebookProps) => {
-  const { setEditor, user } = useEditorContext();
+  const { setEditor, user } = useEditor();
   const { isLoading, isError, error, data: noteList } = useListNotes(user);
   const [addNoteHandlers, deleteNoteHandler, openEditor, dragEvents] = useNotebook(
     noteList,
@@ -24,11 +24,10 @@ export const Notebook = ({ setContentWindow }: NotebookProps) => {
     user?.id,
   );
 
+  console.log('noteList', noteList);
   const addNoteOnClick = (title: string) => addNoteHandlers.addNote({ userId: user?.id, title });
 
   const noteHeiarchy = useMemo(() => noteList && getNoteHeiarchy(noteList), [noteList]);
-
-  console.log('noteHeiarchy', noteHeiarchy);
   if (!noteHeiarchy || isLoading) return <LoadingMessage />;
   if (isError) return <ErrorMessage error={error} />;
   return (

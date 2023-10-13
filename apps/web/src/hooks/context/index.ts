@@ -1,3 +1,3 @@
-export * from './useEditorContext';
+export * from './useEditor';
 export * from './useListNotes';
 export * from './useRedux';

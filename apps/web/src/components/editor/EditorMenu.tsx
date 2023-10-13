@@ -11,6 +11,7 @@ import {
   ScriptButtonContainer,
   StrikeButton,
   UnderlineButton,
+  SaveButton,
 } from '@components/editor/menu';
 import { ColorBoard } from '@interface/editor';
 import { useState } from 'react';
@@ -37,6 +38,7 @@ export const EditorMenu = ({ editor }: EditorMenuProps) => {
       <LinkButtonContainer editor={editor} setLink={setLink} setOpen={setLinkModalOpen} />
       <BlockButtonContainer editor={editor} />
 
+      <SaveButton />
       <LinkModal open={linkModalOpen} link={link} setLink={setLink} setOpen={setLinkModalOpen} editor={editor} />
     </div>
   );

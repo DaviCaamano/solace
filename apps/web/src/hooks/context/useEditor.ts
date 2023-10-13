@@ -4,7 +4,7 @@ import { reset, RootState, setEditor, setContent, setTitle } from '@context/redu
 import { useAppSelector } from '@hooks/context/useRedux';
 import { useUser } from '@hooks/user/useUser';
 
-export const useEditorContext = () => {
+export const useEditor = () => {
   const dispatch = useDispatch();
   const [, { data: user }] = useUser();
 

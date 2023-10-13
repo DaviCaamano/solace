@@ -1,7 +1,7 @@
 export interface Editor {
+  id?: string;
   content: string;
   title: string;
-  id?: string;
 }
 
 export enum ColorBoard {
