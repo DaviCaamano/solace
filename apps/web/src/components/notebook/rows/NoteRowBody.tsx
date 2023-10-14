@@ -1,9 +1,9 @@
 import { DraggedNotes, MoveNotePosition, NotebookDragEvents, TreeNote } from '#interfaces/notes';
-import styles from '@components/notebook/notebook.module.css';
+import styles from '@components/notebook/notebook.module.scss';
 import { motion } from 'framer-motion';
-import { NoteRowTitle, RowButtons } from '@components/notebook';
+import { NoteRowTitle } from '@components/notebook';
 import { RowMoveZone } from '@components/notebook/move-row-zone/RowMoveZone';
-import { Editor } from '@interface/editor';
+import { Editor, EditorViewMode } from '@interface/editor';
 
 const MotionDiv = motion.div;
 
@@ -31,11 +31,18 @@ export const NoteRowBody = ({
 
   let [isHoveredNote, animation] = animationState({ beingDragged, draggedState, hoveredOver, note });
 
-  const sendNoteToEditor = () => openEditor({ title: note.title, content: note.content, id: note.id, stale: false });
+  const sendNoteToPreview = () =>
+    openEditor({
+      title: note.title,
+      content: note.content,
+      id: note.id,
+      stale: false,
+      viewMode: EditorViewMode.preview,
+    });
   return (
     <MotionDiv
       id={'note-row-body-animator'}
-      className={'w-full flex justify-center'}
+      className={'w-full flex justify-center border-b border-latte py-6 '}
       variants={animations}
       initial={'normal'}
       animate={animation}
@@ -65,12 +72,12 @@ export const NoteRowBody = ({
           note={note}
           hoveredOver={hoveredOver}
           moveType={moveType}
-          sendNoteToEditor={sendNoteToEditor}
+          sendNoteToEditor={sendNoteToPreview}
           title={note.title}
         />
-        {!beingDragged && (
-          <RowButtons createChildToggle={() => setCreateToggle(true)} markDelete={() => markDelete(note)} />
-        )}
+        {/*{!beingDragged && (*/}
+        {/*  <RowButtons createChildToggle={() => setCreateToggle(true)} markDelete={() => markDelete(note)} />*/}
+        {/*)}*/}
       </div>
     </MotionDiv>
   );

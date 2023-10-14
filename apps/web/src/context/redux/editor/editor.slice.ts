@@ -1,10 +1,11 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
-import { Editor } from '@interface/editor/editor';
+import { Editor, EditorViewMode } from '@interface/editor/editor';
 
 const initialState: Editor = {
   content: '',
   title: '',
   stale: true,
+  viewMode: EditorViewMode.preview,
 };
 
 export const editorSlice = createSlice({
@@ -26,6 +27,9 @@ export const editorSlice = createSlice({
       if (newState.hasOwnProperty('stale')) {
         state.stale = newState.stale;
       }
+      if (newState.hasOwnProperty('stale') && newState.viewMode) {
+        state.viewMode = newState.viewMode;
+      }
     },
     setContent: (state: Editor, action: PayloadAction<string>) => {
       state.content = action.payload;
@@ -39,9 +43,12 @@ export const editorSlice = createSlice({
     setTitle: (state: Editor, action: PayloadAction<string>) => {
       state.title = action.payload;
     },
+    setViewMode: (state: Editor, action: PayloadAction<EditorViewMode>) => {
+      state.viewMode = action.payload;
+    },
   },
 });
 
-export const { reset, setEditor, setContent, setTitle } = editorSlice.actions;
+export const { reset, setEditor, setContent, setTitle, setViewMode } = editorSlice.actions;
 
 export default editorSlice.reducer;

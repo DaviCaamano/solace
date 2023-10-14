@@ -52,6 +52,7 @@
     "local-ssl-proxy": "^2.0.5",
     "next": "13.4.12",
     "node-sass-json-importer": "^4.3.0",
+    "phosphor-react": "^1.4.1",
     "prettier": "^3.0.2",
     "react": "18.2.0",
     "react-color": "^2.19.3",

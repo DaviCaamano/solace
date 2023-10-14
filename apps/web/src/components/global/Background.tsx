@@ -4,7 +4,7 @@ interface BackgroundProps {
 }
 export const Background = ({ children }: BackgroundProps) => {
   return (
-    <div id={'global-background'} className={'relative w-full h-full overflow-hidden bg-brown min-w-[100vw]'}>
+    <div id={'global-background'} className={'relative w-full h-full overflow-hidden bg-chalkboard min-w-[100vw]'}>
       <div
         id={'global-background-framer'}
         className={

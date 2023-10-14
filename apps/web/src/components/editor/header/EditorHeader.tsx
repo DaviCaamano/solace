@@ -9,9 +9,9 @@ import { Editor } from '@interface/editor';
 import { UpdateNoteDto } from '~note/dto/note.dto';
 
 interface EditorHeaderProps {
-  setContentWindow: Setter<ContentWindow>;
+  setWindow: Setter<ContentWindow>;
 }
-export const EditorHeader = ({ setContentWindow }: EditorHeaderProps) => {
+export const EditorHeader = ({ setWindow }: EditorHeaderProps) => {
   const { editor, setTitle, user } = useEditor();
   const [save] = useUpdateNoteMutation();
 
@@ -27,7 +27,7 @@ export const EditorHeader = ({ setContentWindow }: EditorHeaderProps) => {
       >
         {user ? editor?.title : ''}
       </div>
-      <NotebookButton setContentWindow={setContentWindow} />
+      <NotebookButton setWindow={setWindow} />
       <SaveButton />
     </div>
   );

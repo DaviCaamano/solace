@@ -1,4 +1,4 @@
-import styles from '../notebook.module.css';
+import styles from '../notebook.module.scss';
 import { useState } from 'react';
 import CheckIcon from '@mui/icons-material/Check';
 import { NoteTitleInput } from '../input';

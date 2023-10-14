@@ -12,14 +12,15 @@ import { ContentWindow } from '@interface/Landing';
 import { CreateNoteDto } from '~note/dto/note.dto';
 import { useDraggableRow } from '@components/notebook/hooks/useDraggableRow';
 import { useAddNoteMutation } from '@context/redux/api/notes/notes.slice';
-import { Editor } from '@interface/editor';
+import { Editor, EditorViewMode } from '@interface/editor';
 
 type OpenEditorCallback = (editor: Editor) => void;
 /** Detects the creation of a new note and moves the user to the editor to edit that note */
 export const useNotebook = (
+  window: ContentWindow,
   noteList: Note[] | undefined,
-  setContentWindow: Setter<ContentWindow>,
-  setEditor: (editor: Editor) => void,
+  setWindow: Setter<ContentWindow>,
+  setEditor: (editor: Partial<Editor>) => void,
   userId?: string,
 ): [AddNoteHandlers, DeleteNoteHandler, OpenEditorCallback, NotebookDragEvents] => {
   const [addNote] = useAddNoteMutation();
@@ -48,9 +49,9 @@ export const useNotebook = (
       noteAdded,
       setNoteAdded,
       setEditor,
-      setContentWindow,
+      setWindow,
     });
-  }, [noteAdded, noteList, setContentWindow, setEditor]);
+  }, [noteAdded, noteList, setWindow, setEditor]);
 
   const addNoteCallback = (newNote: UnsafeCreateNoteDto) => {
     if (newNote?.userId) {
@@ -65,9 +66,14 @@ export const useNotebook = (
     setMarkDelete,
   };
 
-  const openEditor = ({ content, id, stale, title }: Editor) => {
+  const openEditor = ({ content, id, stale, title, viewMode }: Editor) => {
     setEditor({ content: content || '', title, id, stale });
-    setContentWindow(ContentWindow.editor);
+    console.log('~~~~', 2);
+    if (viewMode === EditorViewMode.editor && window !== ContentWindow.editor) {
+      setWindow(ContentWindow.editor);
+    } else if (viewMode === EditorViewMode.preview && window !== ContentWindow.notebook) {
+      setWindow(ContentWindow.notebook);
+    }
   };
 
   const addNoteToggle: AddNoteHandlers = { addNote: addNoteCallback, newNoteToggle, setNewNoteToggle };
@@ -94,8 +100,8 @@ interface HandleNewNoteArgs {
   stickyList: MutableRefObject<NoteList>;
   noteAdded: boolean;
   setNoteAdded: Setter<boolean>;
-  setEditor: (editor: Editor) => void;
-  setContentWindow: Setter<ContentWindow>;
+  setEditor: (editor: Partial<Editor>) => void;
+  setWindow: Setter<ContentWindow>;
 }
 
 /**
@@ -108,16 +114,9 @@ interface HandleNewNoteArgs {
  * @param noteAdded - flag to indicate that we are expecting a new note to be added.
  * @param setNoteAdded
  * @param setEditor
- * @param setContentWindow
+ * @param setWindow
  */
-const handleNewNote = ({
-  noteList,
-  stickyList,
-  noteAdded,
-  setNoteAdded,
-  setEditor,
-  setContentWindow,
-}: HandleNewNoteArgs) => {
+const handleNewNote = ({ noteList, stickyList, noteAdded, setNoteAdded, setEditor, setWindow }: HandleNewNoteArgs) => {
   if (noteList?.length !== stickyList.current?.length) {
     const stickyNotes = stickyList.current;
     if (noteAdded && noteList && stickyNotes) {
@@ -126,7 +125,8 @@ const handleNewNote = ({
       stickyList.current = noteList;
       if (newNote) {
         setEditor({ title: newNote.title, content: '', id: newNote.id, stale: false });
-        setContentWindow(ContentWindow.editor);
+        console.log('~~~~', 3);
+        setWindow(ContentWindow.editor);
       }
     } else {
       stickyList.current = noteList;

@@ -5,9 +5,9 @@ import { TextEditor } from './menu';
 import { ContentWindow } from '@interface/Landing';
 
 interface EditorProps {
-  setContentWindow: Setter<ContentWindow>;
+  setWindow: Setter<ContentWindow>;
 }
-export const Editor = ({ setContentWindow }: EditorProps) => {
+export const Editor = ({ setWindow }: EditorProps) => {
   const [editor, characterLimit] = useTipTap();
 
   if (!editor) {
@@ -16,7 +16,7 @@ export const Editor = ({ setContentWindow }: EditorProps) => {
   return (
     <div className={'flex flex-col-reverse'}>
       <WordCount editor={editor} characterLimit={characterLimit} />
-      <TextEditor editor={editor} setContentWindow={setContentWindow} />
+      <TextEditor editor={editor} setWindow={setWindow} />
       <EditorMenu editor={editor} />
     </div>
   );

@@ -1,4 +1,4 @@
-import styles from '@components/notebook/notebook.module.css';
+import styles from '@components/notebook/notebook.module.scss';
 import Draggable from 'react-draggable';
 import { DragRowHandlers, TreeNote } from '#interfaces/notes';
 import { PropsWithChildren, useRef } from 'react';

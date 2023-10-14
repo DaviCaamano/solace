@@ -30,7 +30,7 @@ export const NoteTitleInput = ({
     <input
       id={'add-note-input'}
       data-testid={'add-note-input'}
-      className={`${toggle ? 'block' : 'pointer-events-none'} flex-1 px-2 border-0 bg-mug text-xl mr-4`}
+      className={`${toggle ? 'block' : 'pointer-events-none'} flex-1 px-2 border-0 bg-chalkboard text-xl mr-4`}
       ref={inputRef}
       placeholder={toggle ? 'Title' : ''}
       onBlur={() => {

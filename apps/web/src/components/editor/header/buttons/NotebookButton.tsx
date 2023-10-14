@@ -11,9 +11,9 @@ import add from 'date-fns/add';
 import { useRouter } from 'next/router';
 
 interface NotebookButtonProps {
-  setContentWindow: Setter<ContentWindow>;
+  setWindow: Setter<ContentWindow>;
 }
-export const NotebookButton = ({ setContentWindow }: NotebookButtonProps) => {
+export const NotebookButton = ({ setWindow }: NotebookButtonProps) => {
   const router = useRouter();
   const { editor, reset, user } = useEditor();
   const [save] = useUpdateNoteMutation();
@@ -30,10 +30,11 @@ export const NotebookButton = ({ setContentWindow }: NotebookButtonProps) => {
     } else if (editor.id) {
       save({ id: editor.id, title: editor.title, content: editor.content, userId: user.id }).then(() => {
         reset();
-        setContentWindow(ContentWindow.notebook);
+        console.log('~~~~', 1);
+        setWindow(ContentWindow.notebook);
       });
     }
-  }, [editor.content, editor.id, editor.title, reset, router, save, setContentWindow, user?.id]);
+  }, [editor.content, editor.id, editor.title, reset, router, save, setWindow, user?.id]);
 
   return (
     <Tooltip name={'notebook-button-tooltip'} content={<ToolTipContent loggedIn={!!user?.id} />} {...tooltipStyle}>

@@ -37,15 +37,6 @@ export const NoteList = ({
           openEditor={openEditor}
           userId={userId}
         />
-        <NoteList
-          addNoteHandlers={addNoteHandlers}
-          markDelete={markDelete}
-          depth={depth + 1}
-          dragHandlers={dragHandlers}
-          noteList={note.children}
-          openEditor={openEditor}
-          userId={userId}
-        />
       </div>
     );
   });

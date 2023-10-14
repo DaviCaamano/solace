@@ -5,9 +5,47 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2101ad9f-8972-44d3-9c27-f093e4bebdd9" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/apps/web/public/images/icons/notebook-bullet.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/web/public/images/shared/global/bg-0-320.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/web/src/components/notebook/NotebookHeader.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/web/src/components/notebook/rows/FocusRow.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/web/src/interface/notebook/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/web/src/interface/notebook/notebook.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/api/src/note/dto/note.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/note/dto/note.dto.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/components/notebook/modal/DeleteNoteModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notebook/modal/DeleteNoteModal.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/public/images/shared/global/bg-0-319.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/public/images/shared/global/bg-320-785.webp" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/public/images/shared/global/bg-320-785.webp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/public/images/shared/global/bg-786.webp" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/public/images/shared/global/bg-786.webp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/editor/Editor.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/editor/Editor.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/editor/header/EditorHeader.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/editor/header/EditorHeader.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/editor/header/buttons/NotebookButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/editor/header/buttons/NotebookButton.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/editor/menu/TextEditor.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/editor/menu/TextEditor.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/global/Background.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/global/Background.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/landing/Content.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/landing/Content.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/landing/ContentSlider.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/landing/ContentSlider.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/notebook/Notebook.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notebook/Notebook.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/notebook/buttons/AddNoteButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notebook/buttons/AddNoteButton.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/notebook/buttons/RowButtons.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notebook/buttons/RowButtons.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/notebook/hooks/useNotebook.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notebook/hooks/useNotebook.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/notebook/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notebook/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/notebook/input/NoteTitleInput.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notebook/input/NoteTitleInput.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/notebook/move-row-zone/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notebook/move-row-zone/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/notebook/notebook.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notebook/notebook.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/notebook/rows/AddChildRow.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notebook/rows/AddChildRow.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/notebook/rows/AddNoteRow.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notebook/rows/AddNoteRow.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/notebook/rows/DragRowWrapper.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notebook/rows/DragRowWrapper.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/notebook/rows/NoteList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notebook/rows/NoteList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/notebook/rows/NoteRowBody.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notebook/rows/NoteRowBody.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/notebook/rows/NoteRowTitle.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notebook/rows/NoteRowTitle.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/notebook/rows/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notebook/rows/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/notebook/utils/getNoteHeiarchy.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notebook/utils/getNoteHeiarchy.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/context/redux/editor/editor.slice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/context/redux/editor/editor.slice.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/context/redux/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/context/redux/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/hooks/lib/tiptap/useTipTap.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/hooks/lib/tiptap/useTipTap.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/interface/editor/editor.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/interface/editor/editor.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/styles/tailwind/colors.js" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/styles/tailwind/colors.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/tests/context.test.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/tests/context.test.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,11 +134,11 @@
       <recent name="C:\Users\davit\Projects\solace\packages\config\mkcert" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\davit\Projects\solace\apps\web\public\images\shared\global" />
+      <recent name="C:\Users\davit\Projects\solace\apps\web\src\context\redux" />
       <recent name="C:\Users\davit\Projects\solace\apps\web\src\components\header" />
       <recent name="C:\Users\davit\Projects\solace\apps\web\src\components\editor\header\buttons" />
       <recent name="C:\Users\davit\Projects\solace\apps\web\src\components\editor\header" />
-      <recent name="C:\Users\davit\Projects\solace\apps\web\src\components\editor" />
-      <recent name="C:\Users\davit\Projects\solace\apps\web\src\components\editor\menu\buttons\hooks" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -187,7 +225,8 @@
       <workItem from="1696988842594" duration="2483000" />
       <workItem from="1697015620497" duration="19585000" />
       <workItem from="1697156739930" duration="41520000" />
-      <workItem from="1697199928894" duration="9205000" />
+      <workItem from="1697199928894" duration="16002000" />
+      <workItem from="1697221178309" duration="12524000" />
     </task>
     <servers />
   </component>
@@ -236,8 +275,13 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/apps/web/src/styles/tailwind/colors.js</url>
-          <line>31</line>
+          <line>33</line>
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/apps/web/src/styles/tailwind/colors.js</url>
+          <line>37</line>
+          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

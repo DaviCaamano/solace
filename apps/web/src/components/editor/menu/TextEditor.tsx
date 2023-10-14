@@ -4,14 +4,14 @@ import { ContentWindow } from '@interface/Landing';
 
 interface EditorProps {
   editor: TipTapEditor;
-  setContentWindow: Setter<ContentWindow>;
+  setWindow: Setter<ContentWindow>;
 }
-export const TextEditor = ({ editor: tipTapEditor, setContentWindow }: EditorProps) => {
+export const TextEditor = ({ editor: tipTapEditor, setWindow }: EditorProps) => {
   return (
     <div id={'add-note'} className={'flex flex-col md:flex-row justify-center items-center'}>
       <div className={`${editorDimensions} rounded-2xl bg-mug w-full h-[100px]`}>
         <div className={'w-full h-full flex flex-col relative rounded-2xl'}>
-          <EditorHeader setContentWindow={setContentWindow} />
+          <EditorHeader setWindow={setWindow} />
           <EditorStyle />
           <EditorContent
             editor={tipTapEditor}

@@ -11,10 +11,10 @@ export const Content = () => {
     <div id={'content'} className={'relative w-full flex-1'}>
       <AnimatePresence>
         <ContentSlider key={'editor-notebook'} open={window === ContentWindow.notebook}>
-          <Notebook setContentWindow={setWindow} />
+          <Notebook window={window} setWindow={setWindow} />
         </ContentSlider>
         <ContentSlider key={'editor-content'} open={window === ContentWindow.editor}>
-          <Editor setContentWindow={setWindow} />
+          <Editor setWindow={setWindow} />
         </ContentSlider>
       </AnimatePresence>
     </div>

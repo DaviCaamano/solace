@@ -1,10 +1,14 @@
 import { MoveNotePosition, TreeNote } from '#interfaces/notes';
-import styles from '@components/notebook/notebook.module.css';
+import styles from '@components/notebook/notebook.module.scss';
 import DragIndicatorIcon from '@mui/icons-material/DragIndicator';
 import NorthIcon from '@mui/icons-material/North';
 import SubdirectoryArrowRightIcon from '@mui/icons-material/SubdirectoryArrowRight';
+
+import { CaretRight } from 'phosphor-react';
 import { useMouseOver } from '@hooks/html/useMouseOver';
 import { capitalize } from '#utils/string';
+import { colors } from '@styles/tailwind';
+
 const rowHeight = '2rem';
 const expandedRowHeight = '3.8rem';
 
@@ -38,9 +42,10 @@ export const NoteRowTitle = ({
   const height = animation === 'expand' ? expandedRowHeight : rowHeight;
   return (
     <div
-      className={`row-body relative w-full flex flex-row ${hoveredOver && 'pointer-events-none'}`}
+      className={`row-body relative w-full flex flex-row ${hoveredOver && 'pointer-events-none'} `}
       style={{ height }}
     >
+      {/*<NotebookBullet color={colors['pink']} className={'w-4 h-4 relative top-[6px] mx-2'} />*/}
       <DragIcon hide={!!beingDragged || !!hoveredOver} containerName={containerName} />
       <div
         className={'row-body-framer absolute flex flex-row transition-all flex-1'}
@@ -58,7 +63,9 @@ export const NoteRowTitle = ({
           onClick={sendNoteToEditor}
         >
           <TextDragIcon moveType={rowBeingDragged && moveType} />
-          <span className={`row-title-text ${mousedOver && 'underline'}`}>{capitalize(title || 'Untitled')}</span>
+          <span className={`row-title-text text-[1.75rem] `}>{capitalize(title || 'Untitled')}</span>
+          <div className={'flex-1'} />
+          <CaretRight size={32} color={colors.tan} weight='bold' />
         </div>
       </div>
     </div>

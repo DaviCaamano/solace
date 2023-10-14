@@ -20,22 +20,24 @@ import CodeBlock from '@tiptap/extension-code-block';
 import History from '@tiptap/extension-history';
 
 import styles from './tip-tap.module.scss';
+import Text from '@tiptap/extension-text';
+import { useEditor } from '@hooks/context';
+import { useEffect, useRef } from 'react';
+import { EditorViewMode } from '@interface/editor';
 
 Color.configure({
   types: ['textStyle'],
 });
 
-import Text from '@tiptap/extension-text';
-import { useEditor } from '@hooks/context';
-import { useEffect, useRef } from 'react';
-
 const characterLimit = 10000;
-export const useTipTap = (): [TipTapEditor | null, number] => {
+export const useTipTap = (viewMode: EditorViewMode = EditorViewMode.editor): [TipTapEditor | null, number] => {
+  const isPreview = viewMode === EditorViewMode.preview;
+
   const {
-    editor: { id: noteId, content },
+    editor: { id: noteId, content, viewMode: editorViewMode },
     setEditor,
   } = useEditor();
-
+  const disabled = viewMode === editorViewMode;
   const stickyNoteId = useRef<string | undefined>();
 
   const editor: TipTapEditor | null = useTipTapEditor({
@@ -82,8 +84,8 @@ export const useTipTap = (): [TipTapEditor | null, number] => {
       History,
     ],
     content: content,
-    autofocus: true,
-    editable: true,
+    autofocus: !isPreview,
+    editable: !isPreview,
     injectCSS: false,
     onUpdate: ({ editor }) => {
       setEditor({ content: editor.getHTML(), stale: true });
@@ -95,12 +97,17 @@ export const useTipTap = (): [TipTapEditor | null, number] => {
     },
   });
 
+  /** Inject Content of note when view mode changes*/
+  useEffect(() => {
+    editor?.commands.setContent(content);
+  }, [content, editor, viewMode]);
+
   /** Redundant focus command for navigation from other windows*/
   useEffect(() => {
     editor?.commands.focus();
   }, [editor]);
 
-  /** Set initial Text content of editor when the note changes */
+  /** Set Text content of editor when the note changes */
   useEffect(() => {
     if (noteId && stickyNoteId.current !== noteId) {
       stickyNoteId.current = noteId;

@@ -19,6 +19,8 @@ const colors = {
   'mug-gray-off-dark': '#42545EFF',
 
   tan: '#9F7D5F',
+  'tan-light': '#CCA17AFF',
+
   brown: '#423832',
   'brown-dark': '#1C1A13FF',
   disabledText: '#DDDDDD',
@@ -31,6 +33,9 @@ const colors = {
 
   coffee: '#1C160F',
   'coffee-light': '#624C34FF',
+
+
+  chalkboard: '#25272c',
 
 };
 
