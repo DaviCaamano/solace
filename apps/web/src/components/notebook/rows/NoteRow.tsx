@@ -2,8 +2,9 @@ import React, { PropsWithChildren } from 'react';
 import { TreeNote, NotebookDragEvents, AddNoteHandlers } from '#interfaces/notes';
 import { AddChildRow } from './AddChildRow';
 
-import { DragRowWrapper, NoteRowBody } from '@components/notebook';
 import { Editor } from '@interface/editor';
+import { DragRowWrapper } from './DragRowWrapper';
+import { NoteRowBody } from './NoteRowBody';
 
 type OpenEditor = (editor: Editor) => void;
 interface NoteRowProps extends PropsWithChildren {

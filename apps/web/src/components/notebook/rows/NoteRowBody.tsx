@@ -1,9 +1,9 @@
 import { DraggedNotes, MoveNotePosition, NotebookDragEvents, TreeNote } from '#interfaces/notes';
 import styles from '@components/notebook/notebook.module.scss';
 import { motion } from 'framer-motion';
-import { NoteRowTitle } from '@components/notebook';
 import { RowMoveZone } from '@components/notebook/move-row-zone/RowMoveZone';
 import { Editor, EditorViewMode } from '@interface/editor';
+import { NoteRowTitle } from './NoteRowTitle';
 
 const MotionDiv = motion.div;
 

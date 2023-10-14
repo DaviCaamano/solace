@@ -8,7 +8,7 @@ import { useNotebook } from '@components/notebook/hooks';
 import { EndOfTreeMoveZone } from '@components/notebook/move-row-zone';
 import { DeleteNoteModal } from '@components/notebook/modal';
 import { MoveNotePosition } from '#interfaces/notes';
-import { NotebookHeader } from '@components/notebook';
+import { NotebookHeader } from './header';
 
 interface NotebookProps {
   window: ContentWindow;

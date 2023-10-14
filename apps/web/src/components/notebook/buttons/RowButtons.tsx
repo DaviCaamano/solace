@@ -1,5 +1,5 @@
 import styles from '@components/notebook/notebook.module.scss';
-import { AddNoteButton, RemoveNoteButton } from '@components/notebook';
+import { AddNoteButton, RemoveNoteButton } from './AddNoteButton';
 interface RowButtonsProps {
   createChildToggle: Setter<boolean>;
   markDelete: () => void;

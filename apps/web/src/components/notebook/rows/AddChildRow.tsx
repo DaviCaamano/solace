@@ -2,7 +2,7 @@ import styles from '../notebook.module.scss';
 import { useState } from 'react';
 import CheckIcon from '@mui/icons-material/Check';
 import { NoteTitleInput } from '../input';
-import { NoteRowButton } from '@components/notebook';
+import { NoteRowButton } from '../buttons';
 
 interface NoteChildRowProps {
   onSubmit: (title: string) => void;

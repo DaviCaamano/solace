@@ -1,10 +1,12 @@
 import styles from '@components/notebook/notebook.module.scss';
 import WestIcon from '@mui/icons-material/West';
 import { NotebookDragEvents, TreeNote } from '#interfaces/notes';
-import { ArrowLeft } from 'phosphor-react';
 
-import { colors } from '@styles/tailwind';
 import { Editor, EditorViewMode } from '@interface/editor';
+import React from 'react';
+import { HeaderBackButton } from './HeaderBackButton';
+import { NoteSettingsButton } from './NoteSettingsButton';
+
 interface NotebookHeader {
   dragEvents: NotebookDragEvents;
   selectedNote: TreeNote | undefined;
@@ -39,31 +41,11 @@ export const NotebookHeader = ({ dragEvents: { state }, selectedNote, noteList, 
   return (
     <div id={'notebook-header'} className={`${styles.header} ${rowBeingDragged ? '' : ''}`}>
       <DragIndicator show={rowBeingDragged} />
-      <BackButton show={showBackButton} onClick={goBack} />
+      <HeaderBackButton show={showBackButton} onClick={goBack} />
+      <NoteSettingsButton />
     </div>
   );
 };
-
-interface BackButtonProps {
-  show: boolean;
-  onClick: () => void;
-}
-const BackButton = ({ onClick, show }: BackButtonProps) => (
-  <div className={`${styles.headerBack} ${show ? 'block' : 'hidden'}`}>
-    <div className={styles.headerBackBackground} />
-    <div className={styles.headerBackIconContainer}>
-      <div className={styles.headerBackIconFramer} onClick={onClick}>
-        <ArrowLeft
-          size={44}
-          color={colors.mug}
-          weight={'bold'}
-          style={{ zIndex: 1 }}
-          className={styles.headerBackIcon}
-        />
-      </div>
-    </div>
-  </div>
-);
 
 interface DragIndicatorProps {
   show: boolean;

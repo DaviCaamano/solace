@@ -2,24 +2,18 @@
 
 .header {
   @apply flex border-b-[2px] h-12 border-latte;
-  &:not(.dragActive) {
-    @apply justify-start items-center;
-    background:
-            /* On "top" */
-      repeating-linear-gradient(45deg, transparent, transparent 1px, $tan 1px, $tan 2px),
-      /* on "bottom" */ linear-gradient(to bottom, $latte, $tan);
-  }
-  &.dragActive {
-    @apply justify-center items-center;
-    background:
-            /* On "top" */
-      repeating-linear-gradient(45deg, transparent, transparent 1px, $tan 1px, $tan 2px),
-      /* on "bottom" */ linear-gradient(to bottom, $latte, $tan);
-  }
+  background:
+          /* On "top" */
+    repeating-linear-gradient(45deg, transparent, transparent 1px, $tan 1px, $tan 2px),
+    /* on "bottom" */ linear-gradient(to bottom, $latte, $tan);
 }
 
 .headerDragIcon {
   @apply relative text-mug;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
   stroke: $latte;
   stroke-opacity: 0.5;
   stroke-width: 0.125rem;
