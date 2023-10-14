@@ -33,13 +33,9 @@ export const Notebook = ({ window, setWindow }: NotebookProps) => {
   if (isError) return <ErrorMessage error={error} />;
   return (
     <div id={'note-book'} className={styles.noteBook}>
-      <NotebookHeader
-        dragEvents={dragEvents}
-        selectedNote={noteHeiarchy.selectedNote}
-        setEditor={setEditor}
-        noteList={noteList}
-      />
-      <FocusRow editor={editor} setWindow={setWindow} />
+      <DeleteNoteModal deleteNoteHandler={deleteNoteHandler} userId={user?.id} />
+      <AddNoteRow addNoteHandlers={addNoteHandlers} onClick={addNoteOnClick} hide={!!dragEvents.state.beingDragged} />
+      <EndOfTreeMoveZone dragEvents={dragEvents} position={MoveNotePosition.lastNote} />
       <NoteList
         addNoteHandlers={addNoteHandlers}
         markDelete={deleteNoteHandler.setMarkDelete}
@@ -48,9 +44,14 @@ export const Notebook = ({ window, setWindow }: NotebookProps) => {
         openEditor={openEditor}
         userId={user?.id}
       />
-      <EndOfTreeMoveZone dragEvents={dragEvents} position={MoveNotePosition.lastNote} />
-      <AddNoteRow addNoteHandlers={addNoteHandlers} onClick={addNoteOnClick} hide={!!dragEvents.state.beingDragged} />
-      <DeleteNoteModal deleteNoteHandler={deleteNoteHandler} userId={user?.id} />
+      <FocusRow editor={editor} setWindow={setWindow} />
+      <NotebookHeader
+        deleteNoteHandler={deleteNoteHandler}
+        dragEvents={dragEvents}
+        selectedNote={noteHeiarchy.selectedNote}
+        setEditor={setEditor}
+        noteList={noteList}
+      />
     </div>
   );
 };

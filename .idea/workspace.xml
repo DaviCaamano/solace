@@ -5,12 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2101ad9f-8972-44d3-9c27-f093e4bebdd9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/apps/web/src/components/notebook/header/HeaderBackButton.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/web/src/components/notebook/header/NoteSettingsButton.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/web/src/components/notebook/header/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/components/notebook/NotebookHeader.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notebook/header/NotebookHeader.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/components/notebook/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notebook/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/web/src/components/shared/menu/PopupMenu.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/web/src/components/shared/menu/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/header/UserMenu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/header/UserMenu.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/header/button/UserMenuLogoutButton.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/header/button/index.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/notebook/Notebook.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notebook/Notebook.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/notebook/header/HeaderBackButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notebook/header/HeaderBackButton.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/notebook/header/NoteSettingsButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notebook/header/NoteSettingsButton.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/notebook/header/NotebookHeader.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notebook/header/NotebookHeader.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/notebook/modal/DeleteNoteModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notebook/modal/DeleteNoteModal.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/web/src/components/notebook/notebook.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notebook/notebook.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/hooks/shared/useOutsideClick.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/hooks/shared/useOutsideClick.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,11 +106,11 @@
       <recent name="C:\Users\davit\Projects\solace\packages\config\mkcert" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\davit\Projects\solace\apps\web\src\components\notebook\header" />
       <recent name="C:\Users\davit\Projects\solace\apps\web\public\images\shared\global" />
       <recent name="C:\Users\davit\Projects\solace\apps\web\src\context\redux" />
       <recent name="C:\Users\davit\Projects\solace\apps\web\src\components\header" />
       <recent name="C:\Users\davit\Projects\solace\apps\web\src\components\editor\header\buttons" />
-      <recent name="C:\Users\davit\Projects\solace\apps\web\src\components\editor\header" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -191,7 +198,7 @@
       <workItem from="1697015620497" duration="19585000" />
       <workItem from="1697156739930" duration="41520000" />
       <workItem from="1697199928894" duration="16002000" />
-      <workItem from="1697221178309" duration="13067000" />
+      <workItem from="1697221178309" duration="17364000" />
     </task>
     <servers />
   </component>

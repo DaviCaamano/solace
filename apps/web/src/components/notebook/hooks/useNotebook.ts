@@ -68,7 +68,6 @@ export const useNotebook = (
 
   const openEditor = ({ content, id, stale, title, viewMode }: Editor) => {
     setEditor({ content: content || '', title, id, stale });
-    console.log('~~~~', 2);
     if (viewMode === EditorViewMode.editor && window !== ContentWindow.editor) {
       setWindow(ContentWindow.editor);
     } else if (viewMode === EditorViewMode.preview && window !== ContentWindow.notebook) {
@@ -125,7 +124,6 @@ const handleNewNote = ({ noteList, stickyList, noteAdded, setNoteAdded, setEdito
       stickyList.current = noteList;
       if (newNote) {
         setEditor({ title: newNote.title, content: '', id: newNote.id, stale: false });
-        console.log('~~~~', 3);
         setWindow(ContentWindow.editor);
       }
     } else {

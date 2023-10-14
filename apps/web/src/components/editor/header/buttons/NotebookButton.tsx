@@ -30,7 +30,6 @@ export const NotebookButton = ({ setWindow }: NotebookButtonProps) => {
     } else if (editor.id) {
       save({ id: editor.id, title: editor.title, content: editor.content, userId: user.id }).then(() => {
         reset();
-        console.log('~~~~', 1);
         setWindow(ContentWindow.notebook);
       });
     }

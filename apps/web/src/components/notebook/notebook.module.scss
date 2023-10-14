@@ -1,7 +1,7 @@
 @import '../../styles/tailwind/colors.js';
 
 .header {
-  @apply flex border-b-[2px] h-12 border-latte;
+  @apply relative flex border-b-[2px] h-12 border-latte;
   background:
           /* On "top" */
     repeating-linear-gradient(45deg, transparent, transparent 1px, $tan 1px, $tan 2px),
@@ -40,7 +40,7 @@
 }
 
 .headerBackIconFramer {
-  @apply absolute bg-latte overflow-hidden relative cursor-pointer;
+  @apply absolute bg-latte overflow-hidden cursor-pointer;
   transform: rotate(45deg);
 }
 
@@ -51,8 +51,26 @@
   left: 2px;
 }
 
+.noteSettingsButton {
+  @apply absolute cursor-pointer w-[1.625rem] h-[1.625rem];
+  right: 0.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.noteSettingsButtonIcon {
+  stroke: $latte;
+  stroke-opacity: 1;
+  stroke-width: 3px;
+  stroke-linejoin: round;
+  paint-order: stroke;
+  opacity: 0.8;
+  user-select: none;
+}
+
 .noteBook {
-  @apply w-full h-[80vh] sm:mx-auto
+  @apply flex flex-col-reverse justify-end
+  w-full h-[80vh] sm:mx-auto
   lg:w-[40rem] lg:h-[50rem]
   relative overflow-hidden
   bg-chalkboard
