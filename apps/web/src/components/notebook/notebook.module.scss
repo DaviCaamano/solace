@@ -79,7 +79,7 @@
 }
 
 .noteRow {
-  @apply text-[24px] text-latte leading-8 flex justify-start items-start flex-col w-full;
+  @apply text-[1.5rem] w-full h-[3.125rem] text-latte leading-8 flex justify-start items-start flex-col;
   position: relative !important;
 }
 
@@ -92,7 +92,7 @@
 }
 
 .noteRowParent {
-  @apply relative flex flex-col-reverse w-full pr-2 rounded-l-md justify-center items-center;
+  @apply relative h-full flex flex-col-reverse w-full pr-2 rounded-l-md justify-center items-center;
   -webkit-transition: background-color 200ms linear;
   -ms-transition: background-color 200ms linear;
   transition: background-color 200ms linear;
@@ -138,11 +138,12 @@
 }
 
 .focusRow {
-  @apply w-full h-[9.25rem] border-y-[2px] border-tan overflow-hidden opacity-50;
+  @apply relative w-full h-[9.25rem] border-y-[2px] border-tan overflow-hidden opacity-50 flex flex-col-reverse;
 }
 
 .focusRowTitle {
-  @apply h-[4rem] w-full text-[2rem] text-latte font-semibold text-center cursor-pointer;
+  @apply relative flex justify-center items-center
+  h-[4rem] w-full text-[2rem] text-latte font-semibold text-center cursor-pointer;
 }
 
 .preview {

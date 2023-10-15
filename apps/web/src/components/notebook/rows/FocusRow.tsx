@@ -3,6 +3,8 @@ import { EditorContent } from '@tiptap/react';
 import { Editor, EditorViewMode } from '@interface/editor';
 import styles from '../notebook.module.scss';
 import { ContentWindow } from '@interface/Landing';
+import { CaretRight } from 'phosphor-react';
+import { colors } from '@styles/tailwind';
 
 interface FocusRowProps {
   editor: Editor;
@@ -14,8 +16,10 @@ export const FocusRow = ({ editor: { title, viewMode }, setWindow }: FocusRowPro
   }
   return (
     <div className={`focus-row ${styles.focusRow}`} onClick={() => setWindow(ContentWindow.editor)}>
-      <div className={`focus-row-title ${styles.focusRowTitle}`}>{title}</div>
       <NotePreview />
+      <div className={`focus-row-title ${styles.focusRowTitle}`}>
+        {title} <Caret />
+      </div>
     </div>
   );
 };
@@ -40,3 +44,9 @@ const NotePreview = () => {
 };
 
 const EditorStyle = () => <style>{'.ProseMirror-focused { outline: none !important; }'}</style>;
+
+const Caret = () => (
+  <div className={'absolute'} style={{ right: 0, bottom: '0', transform: 'translateY(50%)' }}>
+    <CaretRight size={32} color={colors.tan} weight='bold' />
+  </div>
+);

@@ -1,69 +1,53 @@
 import { MoveNotePosition, TreeNote } from '#interfaces/notes';
 import styles from '@components/notebook/notebook.module.scss';
 import DragIndicatorIcon from '@mui/icons-material/DragIndicator';
-import NorthIcon from '@mui/icons-material/North';
-import SubdirectoryArrowRightIcon from '@mui/icons-material/SubdirectoryArrowRight';
 
 import { CaretRight } from 'phosphor-react';
-import { useMouseOver } from '@hooks/html/useMouseOver';
 import { capitalize } from '#utils/string';
 import { colors } from '@styles/tailwind';
+import { RowZoneIcon } from './RowZoneIcon';
+import { CSSProperties } from 'react';
 
-const rowHeight = '2rem';
-const expandedRowHeight = '3.8rem';
-
-interface TitleProps {
-  animation: string;
-  beingDragged: TreeNote | undefined;
+interface NoteRowTitleProps {
+  rowDragged: TreeNote | undefined;
   containerName: string;
   hoveredOver: TreeNote | undefined;
+  isDragged: boolean;
+  isHovered: boolean;
   moveType: MoveNotePosition | undefined;
   note: TreeNote;
-  sendNoteToEditor: () => void;
   title: string | undefined;
 }
 export const NoteRowTitle = ({
-  animation,
-  beingDragged,
+  rowDragged,
   containerName,
   hoveredOver,
+  isDragged,
+  isHovered,
   moveType,
-  note: { id, depth },
-  sendNoteToEditor,
+  note: { id },
   title,
-}: TitleProps) => {
-  const [mousedOver, events] = useMouseOver();
-
-  const topPosition = moveType === MoveNotePosition.aheadOf;
-  const bottomPosition = moveType === MoveNotePosition.childOf;
-  const rowBeingDragged = beingDragged?.id === id;
-  const additionalMargin = rowBeingDragged && bottomPosition ? 1.25 : 0;
-  const left = 1.75 + additionalMargin + (rowBeingDragged ? hoveredOver?.depth || depth : depth);
-  const height = animation === 'expand' ? expandedRowHeight : rowHeight;
+}: NoteRowTitleProps) => {
+  const rowBeingDragged = rowDragged?.id === id;
   return (
     <div
       className={`row-body relative w-full flex flex-row ${hoveredOver && 'pointer-events-none'} `}
-      style={{ height }}
+      style={{ height: '2rem' }}
     >
-      {/*<NotebookBullet color={colors['pink']} className={'w-4 h-4 relative top-[6px] mx-2'} />*/}
-      <DragIcon hide={!!beingDragged || !!hoveredOver} containerName={containerName} />
+      <DragIcon hide={!!rowDragged || !!hoveredOver} containerName={containerName} />
       <div
-        className={'row-body-framer absolute flex flex-row transition-all flex-1'}
-        style={{
-          ...framerStyle(rowBeingDragged, hoveredOver, topPosition, left),
-        }}
-        {...events}
+        className={'row-body-framer absolute flex flex-row transition-all flex-1 left-[2rem]'}
+        style={{ width: 'calc(100% - 2rem)' }}
       >
         <div
           className={
-            'relative note-title w-full h-full flex justify-start items-center whitespace-nowrap ' +
+            'relative note-title w-full h-full flex flex-row justify-start items-center whitespace-nowrap ' +
             'overflow-ellipsis cursor-pointer text-latte transition-all '
           }
-          style={{ height: rowHeight }}
-          onClick={sendNoteToEditor}
+          style={{ height: '2rem' }}
         >
-          <TextDragIcon moveType={rowBeingDragged && moveType} />
-          <span className={`row-title-text text-[1.75rem] `}>{capitalize(title || 'Untitled')}</span>
+          <RowZoneIcon moveType={rowBeingDragged && moveType} />
+          <Title isDragged={isDragged} isHovered={isHovered} moveType={moveType} title={title} />
           <div className={'flex-1'} />
           <CaretRight size={32} color={colors.tan} weight='bold' />
         </div>
@@ -82,62 +66,26 @@ const DragIcon = ({ hide, containerName }: DragIconProps) => {
   return <DragIndicatorIcon className={dragButton} style={{ fontSize: '2rem' }} />;
 };
 
-const topFramerStyle = {
-  top: 0,
-};
-const bottomFramerStyle = {
-  top: '50%',
-  transform: 'translateY(-50%)',
-};
-const framerStyle = (
-  rowBeingDragged: boolean,
-  hoveredOver: TreeNote | undefined,
-  topPosition: boolean,
-  left: number,
-) => {
-  if (rowBeingDragged || (hoveredOver && !topPosition)) {
-    return {
-      ...topFramerStyle,
-      left: left + 'rem',
-      width: `calc(100% - ${left}rem)`,
-    };
-  }
-  return {
-    ...bottomFramerStyle,
-    left: left + 'rem',
-    width: `calc(100% - ${left}rem)`,
-  };
-};
-interface ZoneIconProps {
-  moveType: MoveNotePosition | boolean | undefined;
+interface TitleProps {
+  isDragged: boolean;
+  isHovered: boolean;
+  moveType: MoveNotePosition | undefined;
+  title: string | undefined;
 }
-const TextDragIcon = ({ moveType }: ZoneIconProps) => {
-  switch (moveType) {
-    case MoveNotePosition.aheadOf:
-      return (
-        <div className={'title-icon-container absolute h-full flex justify-center items-center right-full w-3 pr-2'}>
-          <NorthIcon className={'relative text-latte-lighter'} style={{ fontSize: '1.25rem', lineHeight: '100%' }} />
-        </div>
-      );
-    case MoveNotePosition.childOf:
-      return (
-        <div className={'title-icon-container absolute h-full flex justify-center items-center right-full w-3 pr-2'}>
-          <SubdirectoryArrowRightIcon
-            className={'relative text-latte-lighter'}
-            style={{ fontSize: '1.25rem', lineHeight: '100%' }}
-          />
-        </div>
-      );
-    case MoveNotePosition.lastNote:
-      return (
-        <div className={'title-icon-container absolute h-full flex justify-center items-center right-full w-3 pr-2'}>
-          <NorthIcon
-            className={'relative text-latte-lighter'}
-            style={{ fontSize: '1.25rem', lineHeight: '100%', transform: 'scaleY(-1)' }}
-          />
-        </div>
-      );
-    default:
-      return null;
+const Title = ({ isDragged, isHovered, moveType, title }: TitleProps) => {
+  let shift: CSSProperties | undefined;
+  if (isHovered) {
+    if (moveType === MoveNotePosition.aheadOf) {
+      shift = { transform: 'translateY(25%)' };
+    } else if (moveType === MoveNotePosition.childOf) {
+      shift = { transform: 'translateY(-25%)' };
+    }
+  } else if (isDragged && moveType === MoveNotePosition.childOf) {
+    shift = { marginLeft: isDragged ? '24px' : undefined };
   }
+  return (
+    <div className={'row-title-text relative text-[1.75rem] transition-all'} style={shift}>
+      {capitalize(title || 'Untitled')}
+    </div>
+  );
 };

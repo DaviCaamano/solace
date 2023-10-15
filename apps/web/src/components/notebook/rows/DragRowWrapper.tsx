@@ -1,30 +1,38 @@
 import styles from '@components/notebook/notebook.module.scss';
-import Draggable from 'react-draggable';
-import { DragRowHandlers, TreeNote } from '#interfaces/notes';
-import { PropsWithChildren, useRef } from 'react';
+import { DragWrapperHandlers } from '#interfaces/notes';
+import React, { PropsWithChildren, RefObject } from 'react';
+import { DraggableCore } from 'react-draggable';
+
 interface DragRowWrapperProps extends PropsWithChildren {
   containerName: string;
-  beingDragged: TreeNote | undefined;
-  handlers: DragRowHandlers;
-  note: TreeNote;
+  dragRef: RefObject<HTMLDivElement>;
+  isDragged: boolean;
+  handlers: DragWrapperHandlers;
+  yOffset: number;
 }
-export const DragRowWrapper = ({ containerName, children, beingDragged, handlers, note }: DragRowWrapperProps) => {
-  //Necessary to fix findDomNode deprecated error in react-draggable
-  const nodeRef = useRef(null);
+export const DragRowWrapper = ({
+  containerName,
+  children,
+  dragRef,
+  isDragged,
+  handlers,
+  yOffset,
+}: DragRowWrapperProps) => {
+  const css = isDragged ? 'text-coffee font-semibold z-50 pointer-events-none opacity-50' : '';
+  console.log('yOffset:', yOffset);
+
   return (
-    <Draggable axis={'y'} {...handlers} nodeRef={nodeRef} handle={`.${containerName}-drag-button`}>
+    <DraggableCore {...handlers} nodeRef={dragRef}>
       <div
-        className={`note-row relative ${containerName} ${styles.noteRow} ${rowTargetCss(beingDragged, note.id)}`}
+        className={`note-row relative ${containerName} ${styles.noteRow} ${css}`}
         data-testid={containerName}
-        ref={nodeRef}
+        ref={dragRef}
+        style={{
+          transform: `translateY(${yOffset}px)`,
+        }}
       >
         {children}
       </div>
-    </Draggable>
+    </DraggableCore>
   );
-};
-
-export const rowTargetCss = (beingDragged: TreeNote | undefined, noteId: string | undefined) => {
-  const isDragged = beingDragged?.id && beingDragged?.id === noteId;
-  return isDragged ? 'bg-pink text-coffee font-semibold z-50 pointer-events-none opacity-50' : '';
 };

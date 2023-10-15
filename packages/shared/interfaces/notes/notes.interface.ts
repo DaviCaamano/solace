@@ -1,5 +1,6 @@
 import { CreateNoteDto, DeleteNoteDto } from '~note/dto/note.dto';
-import { DragEvent } from 'react';
+import { RefObject } from 'react';
+import { DraggableEventHandler } from 'react-draggable';
 
 export interface Note {
   id: string;
@@ -18,10 +19,20 @@ export enum NoteStatus {
   deleted = 'DELETED',
 }
 
+/**
+ * Determines Dropdown behavior
+ *  MoveNotePosition.aheadOf - On Dropdown, move dragged row to position in front of the row dropped on.
+ *  MoveNotePosition.childOf - On Dropdown, move dragged row to the position of first child of the row dropped on.
+ *  MoveNotePosition.lastChild - On Dropdown, move dragged row to the last position of the root nodes
+ *  MoveNotePosition.elevate - On Dropdown, move dragged row to the position after it's parent.
+ *      This removes the node as a child of its parent and makes it a child of its grandparent
+ *        or null if the parent is a root node.
+ */
 export enum MoveNotePosition {
-  childOf = 'childOf', //Move Note to position ahead of that targeted note
-  aheadOf = 'previous_row', //Move Note so that it is the first child of the targeted note
-  lastNote = 'last_note', //Move Note to be a root note in the last position
+  childOf = 'childOf',
+  aheadOf = 'previous_row',
+  lastNote = 'last_note',
+  elevate = 'elevate',
 }
 
 type NoteWithoutTimeSTamps = Omit<Note, 'createdAt' | 'updatedAt'>;
@@ -51,7 +62,6 @@ export interface UnsafeDeleteNoteDto extends Omit<DeleteNoteDto, 'userId'> {
   userId?: string;
 }
 export type UnsafeAddNoteTrigger = (newNote: UnsafeCreateNoteDto) => void;
-export type UnsafeDeleteNoteTrigger = (deleteDto: UnsafeDeleteNoteDto) => void;
 
 export interface DetachedNote {
   sibling: Note | undefined;
@@ -60,45 +70,48 @@ export interface DetachedNote {
 }
 /** Component Interfaces */
 
-interface DragPos {
-  x: number;
-  y: number;
-}
-export interface DragRowHandlers {
-  onStart: (event: DragEvent<HTMLDivElement>) => void;
-  onStop: (event: DragEvent<HTMLDivElement>) => void;
-  position: DragPos | undefined;
-}
-
-export interface DragMouseHandlers {
-  row: { onMouseEnter: () => void; onMouseLeave: () => void };
-  zone: (moveType: MoveNotePosition) => { onMouseEnter: () => void };
-}
-
-export interface DragNoteHandlers {
-  dragHandlers: DragRowHandlers;
-  mouseHandlers: DragMouseHandlers;
-}
-
 export interface DeleteNoteHandler {
   markDelete: TreeNote | undefined;
   setMarkDelete: Setter<TreeNote | undefined>;
 }
 
 export interface DraggedNotes {
-  beingDragged: TreeNote | undefined;
+  rowDragged: TreeNote | undefined;
   hoveredOver: TreeNote | undefined;
   moveType: MoveNotePosition | undefined;
   disabled: string[];
 }
-export interface NotebookDragEvents {
-  handlers: (note: TreeNote) => DragNoteHandlers;
-  state: DraggedNotes;
-}
 
-export type NewNoteToggle = string | 'ROOT' | undefined;
+export type NewNoteToggle = string | 'ROOT_LAST' | 'ROOT_FIST' | undefined;
 export interface AddNoteHandlers {
   addNote: UnsafeAddNoteTrigger;
   newNoteToggle: NewNoteToggle;
   setNewNoteToggle: Setter<NewNoteToggle>;
+}
+
+/** Drag Row Interfaces */
+
+export interface UseDraggableHandler {
+  handlers: DragHandlers;
+  state: DraggedNotes;
+  isDragged: boolean;
+  isHovered: boolean;
+  ancestorIsHovered: boolean;
+  ref: RefObject<HTMLDivElement>;
+  y: number;
+}
+export interface DragHandlers {
+  zone: DragZoneHandler;
+  row: DragRowHandlers;
+  drag: DragWrapperHandlers;
+}
+export type DragZoneHandler = (moveType: MoveNotePosition) => { onMouseEnter: () => void };
+export interface DragRowHandlers {
+  onMouseEnter: () => void;
+  onMouseLeave: () => void;
+}
+export interface DragWrapperHandlers {
+  onStart: DraggableEventHandler;
+  onDrag: DraggableEventHandler;
+  onStop: DraggableEventHandler;
 }

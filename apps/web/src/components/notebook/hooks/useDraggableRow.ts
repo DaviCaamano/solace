@@ -1,41 +1,117 @@
-import { DragEvent, useEffect, useState } from 'react';
-import { DraggedNotes, MoveNotePosition, NewNoteToggle, NotebookDragEvents, TreeNote } from '#interfaces/notes';
+import { DragEvent, useEffect, useRef, useState } from 'react';
+import { DraggedNotes, MoveNotePosition, NewNoteToggle, TreeNote, UseDraggableHandler } from '#interfaces/notes';
 import { useMoveNoteMutation } from '@context/redux/api/notes/notes.slice';
+import { DraggableData, DraggableEventHandler } from 'react-draggable';
 
-interface DragPos {
-  x: number;
+export type UseDraggableState = [
+  DraggedNotes,
+  Setter<DraggedNotes>,
+  userId: string | undefined,
+  setNewNoteToggle: Setter<NewNoteToggle>,
+];
+/** Provides the shared state for dragged elements as well as an easy-to-pass argument for the useDraggable hook */
+export const useDraggableState = (
+  userId: string | undefined,
+  setNewNoteToggle: Setter<NewNoteToggle>,
+): UseDraggableState => {
+  const [drag, setDrag] = useState<DraggedNotes>({
+    /** The row being dragged */
+    rowDragged: undefined,
+    /** The row that the dragged row is currently hovering over */
+    hoveredOver: undefined,
+    /**
+     * Determines Dropdown behavior
+     *  MoveNotePosition.aheadOf - On Dropdown, move dragged row to position in front of the row dropped on.
+     *  MoveNotePosition.childOf - On Dropdown, move dragged row to the position of first child of the row dropped on.
+     *  MoveNotePosition.lastChild - On Dropdown, move dragged row to the last position of the root nodes
+     *  MoveNotePosition.elevate - On Dropdown, move dragged row to the position after its parent.
+     *      This removes the node as a child of its parent and makes it a child of its grandparent
+     *        or null if the parent is a root node.
+     */
+    moveType: undefined,
+    /** Dropdown target is invalid (is an ancestor of the row being dragged) */
+    disabled: [],
+  });
+
+  return [drag, setDrag, userId, setNewNoteToggle];
+};
+
+const MINIMUM_DRAG_TIME = 50;
+export type DragPosition = {
+  /** start time of the click. Drag is only activated after MINIMUM_DRAG_TIME in milliseconds has passed. */
+  start: number | undefined;
+  /** Drag has been started if true. */
+  active: boolean;
+  /** Element's y position at the start of the drag. */
   y: number;
-}
-const initialDragPos = {
-  x: 0,
+};
+
+const initialPos: DragPosition = {
+  start: undefined,
+  active: false,
   y: 0,
 };
 
-export const useDraggableRow = (
-  userId: string | undefined,
-  setNewNoteToggle: Setter<NewNoteToggle>,
-): NotebookDragEvents => {
-  const [dragPos, setDragPos] = useState<DragPos | undefined>();
-  const [draggedState, setDraggedState] = useState<DraggedNotes>({
-    beingDragged: undefined,
-    hoveredOver: undefined,
-    moveType: undefined,
-    disabled: [],
-  });
-  const { beingDragged, moveType, hoveredOver } = draggedState;
+export const useDraggable = (
+  [drag, setDrag, userId, setNewNoteToggle]: UseDraggableState,
+  note: TreeNote,
+  onClick?: () => void,
+): UseDraggableHandler => {
+  const { rowDragged, moveType, hoveredOver } = drag;
+  const [moveNote] = useMoveNoteMutation();
 
+  const [{ start, active, y }, setPos] = useState<DragPosition>(initialPos);
+  const setY = (newY: number) => setPos((prev: DragPosition) => ({ ...prev, y: newY }));
+  /** the element that will be dragged */
+  const element = useRef<HTMLDivElement>(null);
+  const row = element.current;
+  /**
+   * sets Disabled Flag when a row is picked up and dragged
+   */
   useEffect(() => {
-    if (beingDragged) {
+    if (rowDragged) {
       const disabled: string[] = [];
-      getAncestorsOfDragged(beingDragged, disabled);
-      setDraggedState((prev: DraggedNotes) => ({
+      getAncestorsOfDragged(rowDragged, disabled);
+      setDrag((prev: DraggedNotes) => ({
         ...prev,
         disabled,
       }));
     }
-  }, [beingDragged]);
+  }, [rowDragged, setDrag]);
 
-  const [moveNote] = useMoveNoteMutation();
+  /**
+   * on mouse down, start the clock to evaluate whether this is a click or a drag.
+   *
+   * It is a click if the onDragStop function runs before MINIMUM_DRAG_TIME has passed in milliseconds.
+   */
+  const onDragStart: DraggableEventHandler = (event: DragEvent<HTMLDivElement>) => {
+    setPos((prev: DragPosition) => ({ ...prev, start: Date.now(), y: 0 }));
+    event.stopPropagation(); //Stop Click, it will be triggered in onDragStop.
+  };
+
+  /** Runs once-per-drag operations */
+  const checkDrag = () => {
+    if (!active && start && Date.now() - start > MINIMUM_DRAG_TIME) {
+      setPos((prev: DragPosition) => ({ ...prev, active: true }));
+      setDrag((prev: DraggedNotes) => ({
+        ...prev,
+        rowDragged: note,
+      }));
+      setNewNoteToggle(undefined);
+    }
+    return active && !!row;
+  };
+
+  /** Runs during drag on frame update (constantly) */
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const onDrag: DraggableEventHandler = (_, { deltaY }: DraggableData) => {
+    const newPos = y + deltaY;
+    setY(newPos);
+
+    if (checkDrag()) {
+      (row as HTMLDivElement).style.transform = `translateY(${newPos})`;
+    }
+  };
 
   /**
    * react-draggable's on drop event handlers.
@@ -43,50 +119,59 @@ export const useDraggableRow = (
    * if the user drags a row over another row's movement zones,
    *    this handler will make a request to the backend to move the dragged row.
    * */
-  const onDragStop = () => {
-    setDragPos(initialDragPos);
-    if (beingDragged && hoveredOver && moveType && userId) {
-      moveNote({ id: beingDragged.id, position: moveType, targetId: hoveredOver.id, userId });
+  const onDragStop: DraggableEventHandler = () => {
+    /** Mouse up happened before MINIMUM_DRAG_TIME and will be counted as a click instead of a drag */
+    if (!active) {
+      return onClick?.();
     }
-    setDraggedState((prev: DraggedNotes) => ({
+    setPos(initialPos);
+    if (!!row) {
+      (row as HTMLDivElement).style.transform = '';
+    }
+    if (hoveredOver && moveType && userId) {
+      /** Drag ended while on top of another row and on top of one of their movement zones. */
+      moveNote({ id: note.id, position: moveType, targetId: hoveredOver.id, userId });
+    }
+    /** Reset state after move operation */
+    setDrag((prev: DraggedNotes) => ({
       ...prev,
-      beingDragged: undefined,
+      rowDragged: undefined,
       hoveredOver: undefined,
       moveTo: undefined,
     }));
   };
 
-  const onDragStart = (note: TreeNote) => (event: DragEvent<HTMLDivElement>) => {
-    event.stopPropagation();
-    setDraggedState((prev: DraggedNotes) => ({
-      ...prev,
-      beingDragged: note,
-    }));
-    setNewNoteToggle(undefined);
-  };
-
-  const onZoneEnter = (hoveredOver: TreeNote, moveType: MoveNotePosition) => () => {
-    if (draggedState) {
-      setDraggedState((prev: DraggedNotes) => ({
+  const onZoneEnter = (zoneMoveType: MoveNotePosition) => () => {
+    if (drag) {
+      setDrag((prev: DraggedNotes) => ({
         ...prev,
-        moveType,
+        moveType: zoneMoveType,
       }));
     }
   };
 
-  const onMouseEnter = (hoveredOver: TreeNote) => () => {
-    if (beingDragged) {
-      setDraggedState((prev: DraggedNotes) => ({
+  /**
+   * For the Row when not being dragged,
+   *    If another row is being dragged and the cursor enters this row's space, report this row as hovered over
+   */
+  const onMouseEnter = () => {
+    if (rowDragged) {
+      setDrag((prev: DraggedNotes) => ({
         ...prev,
-        hoveredOver,
+        hoveredOver: note,
       }));
     }
   };
 
-  const onMouseLeave = (note: TreeNote) => () => {
-    if (beingDragged) {
-      if (draggedState.hoveredOver?.id === note.id) {
-        setDraggedState((prev: DraggedNotes) => ({
+  /**
+   * For the Row when not being dragged,
+   *    If another row is being dragged and the cursor enters this row's space, then leaves,
+   *      report this row as no longer being hovered over
+   */
+  const onMouseLeave = () => {
+    if (rowDragged) {
+      if (drag.hoveredOver?.id === note.id) {
+        setDrag((prev: DraggedNotes) => ({
           ...prev,
           hoveredOver: undefined,
           moveType: undefined,
@@ -95,24 +180,34 @@ export const useDraggableRow = (
     }
   };
 
+  const isDragged = note.id === drag.rowDragged?.id;
+  const isHovered =
+    note.id !== drag.rowDragged?.id && note.id === drag.hoveredOver?.id && note.depth === drag.hoveredOver.depth;
+  const ancestorIsHovered = isHovered && !!drag.hoveredOver?.depth && note.depth > drag.hoveredOver.depth;
   return {
-    handlers: (note: TreeNote) => ({
-      dragHandlers: {
-        onStart: onDragStart(note),
+    handlers: {
+      /** Handlers for the react-draggable-core element */
+      drag: {
+        onStart: onDragStart,
+        onDrag,
         onStop: onDragStop,
-        position: dragPos,
       },
-      mouseHandlers: {
-        row: {
-          onMouseEnter: onMouseEnter(note),
-          onMouseLeave: onMouseLeave(note),
-        },
-        zone: (moveType: MoveNotePosition) => ({
-          onMouseEnter: onZoneEnter(note, moveType),
-        }),
+      /** Handlers for the row element */
+      row: {
+        onMouseEnter: onMouseEnter,
+        onMouseLeave: onMouseLeave,
       },
-    }),
-    state: draggedState,
+      /** Handlers for the row's individual zones which are used to set the move type. */
+      zone: (moveType: MoveNotePosition) => ({
+        onMouseEnter: onZoneEnter(moveType),
+      }),
+    },
+    state: drag,
+    isDragged,
+    isHovered,
+    ancestorIsHovered,
+    ref: element,
+    y,
   };
 };
 

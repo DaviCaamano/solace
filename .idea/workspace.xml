@@ -5,19 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2101ad9f-8972-44d3-9c27-f093e4bebdd9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/apps/web/src/components/shared/menu/PopupMenu.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/web/src/components/shared/menu/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/web/src/components/notebook/rows/RowZoneIcon.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/components/header/UserMenu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/header/UserMenu.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/components/header/button/UserMenuLogoutButton.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/components/header/button/index.ts" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/web/src/components/notebook/Notebook.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notebook/Notebook.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/components/notebook/header/HeaderBackButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notebook/header/HeaderBackButton.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/components/notebook/header/NoteSettingsButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notebook/header/NoteSettingsButton.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/web/src/components/notebook/header/NotebookHeader.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notebook/header/NotebookHeader.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/components/notebook/modal/DeleteNoteModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notebook/modal/DeleteNoteModal.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/notebook/hooks/useDraggableRow.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notebook/hooks/useDraggableRow.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/notebook/hooks/useNotebook.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notebook/hooks/useNotebook.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/notebook/move-row-zone/EndOfTreeMoveZone.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notebook/move-row-zone/EndOfTreeMoveZone.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/notebook/move-row-zone/RowMoveZone.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notebook/move-row-zone/RowMoveZone.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/web/src/components/notebook/notebook.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notebook/notebook.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/hooks/shared/useOutsideClick.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/hooks/shared/useOutsideClick.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/notebook/rows/AddNoteRow.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notebook/rows/AddNoteRow.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/notebook/rows/DragRowWrapper.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notebook/rows/DragRowWrapper.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/notebook/rows/FocusRow.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notebook/rows/FocusRow.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/notebook/rows/NoteList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notebook/rows/NoteList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/notebook/rows/NoteRow.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notebook/rows/NoteRow.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/notebook/rows/NoteRowBody.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notebook/rows/NoteRowBody.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/notebook/rows/NoteRowTitle.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notebook/rows/NoteRowTitle.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/notebook/rows/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notebook/rows/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/shared/interfaces/notes/notes.interface.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/shared/interfaces/notes/notes.interface.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -198,7 +203,8 @@
       <workItem from="1697015620497" duration="19585000" />
       <workItem from="1697156739930" duration="41520000" />
       <workItem from="1697199928894" duration="16002000" />
-      <workItem from="1697221178309" duration="17364000" />
+      <workItem from="1697221178309" duration="18235000" />
+      <workItem from="1697254320117" duration="22229000" />
     </task>
     <servers />
   </component>

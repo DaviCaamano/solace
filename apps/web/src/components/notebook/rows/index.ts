@@ -6,3 +6,4 @@ export * from './NoteList';
 export * from './NoteRow';
 export * from './NoteRowBody';
 export * from './NoteRowTitle';
+export * from './RowZoneIcon';

@@ -34,11 +34,10 @@ export const Notebook = ({ window, setWindow }: NotebookProps) => {
   return (
     <div id={'note-book'} className={styles.noteBook}>
       <DeleteNoteModal deleteNoteHandler={deleteNoteHandler} userId={user?.id} />
-      <AddNoteRow addNoteHandlers={addNoteHandlers} onClick={addNoteOnClick} hide={!!dragEvents.state.beingDragged} />
+      <AddNoteRow addNoteHandlers={addNoteHandlers} onClick={addNoteOnClick} hide={!!dragEvents[0].rowDragged} />
       <EndOfTreeMoveZone dragEvents={dragEvents} position={MoveNotePosition.lastNote} />
       <NoteList
         addNoteHandlers={addNoteHandlers}
-        markDelete={deleteNoteHandler.setMarkDelete}
         dragHandlers={dragEvents}
         noteList={noteHeiarchy.list}
         openEditor={openEditor}

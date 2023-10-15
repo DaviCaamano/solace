@@ -3,14 +3,13 @@ import {
   DeleteNoteHandler,
   NewNoteToggle,
   Note,
-  NotebookDragEvents,
   TreeNote,
   UnsafeCreateNoteDto,
 } from '#interfaces/notes';
 import { MutableRefObject, useEffect, useRef, useState } from 'react';
 import { ContentWindow } from '@interface/Landing';
 import { CreateNoteDto } from '~note/dto/note.dto';
-import { useDraggableRow } from '@components/notebook/hooks/useDraggableRow';
+import { UseDraggableState, useDraggableState } from '@components/notebook/hooks/useDraggableRow';
 import { useAddNoteMutation } from '@context/redux/api/notes/notes.slice';
 import { Editor, EditorViewMode } from '@interface/editor';
 
@@ -22,7 +21,7 @@ export const useNotebook = (
   setWindow: Setter<ContentWindow>,
   setEditor: (editor: Partial<Editor>) => void,
   userId?: string,
-): [AddNoteHandlers, DeleteNoteHandler, OpenEditorCallback, NotebookDragEvents] => {
+): [AddNoteHandlers, DeleteNoteHandler, OpenEditorCallback, UseDraggableState] => {
   const [addNote] = useAddNoteMutation();
 
   /**
@@ -32,14 +31,14 @@ export const useNotebook = (
 
   /**
    * Only one new-note input should display at a time. This state should hold the ID of the note who is
-   * creating a child note or 'ROOT' if the notebook is creating a new root note.
+   * creating a child note or 'ROOT_LAST' | 'ROOT_FIRST' if the notebook is creating a new root note.
    */
   const [newNoteToggle, setNewNoteToggle] = useState<NewNoteToggle>(undefined);
   /** Denotes when we are expecting a newly created Note to be reported */
   const [noteAdded, setNoteAdded] = useState<boolean>(false);
   const stickyList = useRef<Note[] | undefined>();
 
-  const dragEvents = useDraggableRow(userId, setNewNoteToggle);
+  const dragHandlers = useDraggableState(userId, setNewNoteToggle);
 
   /** Detect when a new note was both expected and added then move user to editor to edit new note. */
   useEffect(() => {
@@ -76,7 +75,7 @@ export const useNotebook = (
   };
 
   const addNoteToggle: AddNoteHandlers = { addNote: addNoteCallback, newNoteToggle, setNewNoteToggle };
-  return [addNoteToggle, deleteNoteHandler, openEditor, dragEvents];
+  return [addNoteToggle, deleteNoteHandler, openEditor, dragHandlers];
 };
 
 /**
@@ -108,7 +107,7 @@ interface HandleNewNoteArgs {
  * expecting.
  * Update the stickyList ref when noteList has been updated.
  *
- * @param noteList - List of Notes belonging to the logged in user.
+ * @param noteList - List of Notes belonging to the logged-in user.
  * @param stickyList - Copy of the above list for the purposes of detecting changes.
  * @param noteAdded - flag to indicate that we are expecting a new note to be added.
  * @param setNoteAdded

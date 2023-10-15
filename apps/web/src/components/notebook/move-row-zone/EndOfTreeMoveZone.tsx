@@ -1,24 +1,24 @@
 import { RowMoveZone } from '@components/notebook/move-row-zone/RowMoveZone';
-import { MoveNotePosition, NotebookDragEvents, TreeNote } from '#interfaces/notes';
+import { MoveNotePosition, TreeNote } from '#interfaces/notes';
+import { useDraggable, UseDraggableState } from '@components/notebook/hooks';
 
 interface EndOfTreeMoveZoneProps {
-  dragEvents: NotebookDragEvents;
+  dragEvents: UseDraggableState;
   position: MoveNotePosition;
 }
 export const EndOfTreeMoveZone = ({ dragEvents, position }: EndOfTreeMoveZoneProps) => {
-  const lastNoteHandler = dragEvents.handlers(rootNote).mouseHandlers;
+  const { state: draggedState, handlers, isHovered } = useDraggable(dragEvents, rootNote);
 
   return (
-    <div id={'last-child-move-zone'} className={''} {...lastNoteHandler.row}>
+    <div id={'last-child-move-zone'} {...handlers.row}>
       <RowMoveZone
-        draggedState={dragEvents.state}
-        expand={!!dragEvents.state.beingDragged}
-        mouseHandlers={lastNoteHandler.zone(MoveNotePosition.lastNote)}
-        note={rootNote}
+        isHovered={isHovered}
+        expand={!!draggedState.rowDragged}
+        mouseHandlers={handlers.zone(MoveNotePosition.lastNote)}
         position={position}
       />
     </div>
   );
 };
 
-const rootNote: TreeNote = { id: 'ROOT' } as TreeNote;
+const rootNote: TreeNote = { id: 'ROOT_LAST' } as TreeNote;
