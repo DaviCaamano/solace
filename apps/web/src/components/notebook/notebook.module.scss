@@ -79,7 +79,8 @@
 }
 
 .noteRow {
-  @apply text-[1.5rem] w-full h-[3.125rem] text-latte leading-8 flex justify-start items-start flex-col;
+  @apply text-[1.5rem] w-full h-[3.125rem] text-latte leading-8 flex justify-start items-start flex-col
+  transition-transform;
   position: relative !important;
 }
 

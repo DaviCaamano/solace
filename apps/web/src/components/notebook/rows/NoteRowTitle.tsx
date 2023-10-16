@@ -1,4 +1,4 @@
-import { MoveNotePosition, TreeNote } from '#interfaces/notes';
+import { MoveNotePosition, TreeNote, UseDraggableHandler } from '#interfaces/notes';
 import styles from '@components/notebook/notebook.module.scss';
 import DragIndicatorIcon from '@mui/icons-material/DragIndicator';
 
@@ -9,26 +9,16 @@ import { RowZoneIcon } from './RowZoneIcon';
 import { CSSProperties } from 'react';
 
 interface NoteRowTitleProps {
-  rowDragged: TreeNote | undefined;
+  dragState: UseDraggableHandler;
   containerName: string;
-  hoveredOver: TreeNote | undefined;
-  isDragged: boolean;
-  isHovered: boolean;
-  moveType: MoveNotePosition | undefined;
-  note: TreeNote;
   title: string | undefined;
 }
-export const NoteRowTitle = ({
-  rowDragged,
-  containerName,
-  hoveredOver,
-  isDragged,
-  isHovered,
-  moveType,
-  note: { id },
-  title,
-}: NoteRowTitleProps) => {
-  const rowBeingDragged = rowDragged?.id === id;
+export const NoteRowTitle = ({ dragState, containerName, title }: NoteRowTitleProps) => {
+  const {
+    state: { hoveredOver, rowDragged, moveType },
+    isHovered,
+    isDragged,
+  } = dragState;
   return (
     <div
       className={`row-body relative w-full flex flex-row ${hoveredOver && 'pointer-events-none'} `}
@@ -46,10 +36,10 @@ export const NoteRowTitle = ({
           }
           style={{ height: '2rem' }}
         >
-          <RowZoneIcon moveType={rowBeingDragged && moveType} />
-          <Title isDragged={isDragged} isHovered={isHovered} moveType={moveType} title={title} />
+          <Title dragState={dragState} title={title} />
+          <PositionPreview dragState={dragState} />
           <div className={'flex-1'} />
-          <CaretRight size={32} color={colors.tan} weight='bold' />
+          {!isDragged && <CaretRight size={32} color={colors.tan} weight='bold' />}
         </div>
       </div>
     </div>
@@ -67,25 +57,65 @@ const DragIcon = ({ hide, containerName }: DragIconProps) => {
 };
 
 interface TitleProps {
-  isDragged: boolean;
-  isHovered: boolean;
-  moveType: MoveNotePosition | undefined;
+  dragState: UseDraggableHandler;
   title: string | undefined;
 }
-const Title = ({ isDragged, isHovered, moveType, title }: TitleProps) => {
+const Title = ({
+  dragState: {
+    state: { moveType, hoveredOver },
+    isDragged,
+    isHovered,
+  },
+  title,
+}: TitleProps) => {
+  if (isDragged && hoveredOver) {
+    /**
+     * While being dragged over another row, hide the title to let the PositionPreview Component indicate where the
+     * note will be moved to.
+     */
+    return null;
+  }
   let shift: CSSProperties | undefined;
   if (isHovered) {
     if (moveType === MoveNotePosition.aheadOf) {
-      shift = { transform: 'translateY(25%)' };
+      shift = { transform: 'translateY(40%)' };
     } else if (moveType === MoveNotePosition.childOf) {
-      shift = { transform: 'translateY(-25%)' };
+      shift = { transform: 'translateY(-35%)' };
     }
-  } else if (isDragged && moveType === MoveNotePosition.childOf) {
-    shift = { marginLeft: isDragged ? '24px' : undefined };
   }
   return (
     <div className={'row-title-text relative text-[1.75rem] transition-all'} style={shift}>
       {capitalize(title || 'Untitled')}
+    </div>
+  );
+};
+
+
+/**
+ * A transparent phantom title that indicates where a dragged row will be relocated to.
+ */
+interface PositionPreviewProps {
+  dragState: UseDraggableHandler;
+}
+const PositionPreview = ({
+  dragState: {
+    state: { moveType, rowDragged },
+    isHovered,
+  },
+}: PositionPreviewProps) => {
+  if (!isHovered || !rowDragged) {
+    return null;
+  }
+  let shift: CSSProperties | undefined;
+  if (moveType === MoveNotePosition.aheadOf) {
+    shift = { left: 0, top: '50%', transform: 'translate(-1.75rem, -85%)' };
+  } else if (moveType === MoveNotePosition.childOf) {
+    shift = { left: 0, top: '50%', transform: 'translate(-3px, 0%)' };
+  }
+  return (
+    <div className={'row-title-text absolute text-[1.75rem] transition-all flex flex-row opacity-50'} style={shift}>
+      <RowZoneIcon moveType={moveType} />
+      {capitalize(rowDragged.title || 'Untitled')}
     </div>
   );
 };

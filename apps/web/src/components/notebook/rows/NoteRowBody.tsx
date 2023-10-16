@@ -11,16 +11,13 @@ interface RowProps {
   note: TreeNote;
   openEditor: OpenEditor;
 }
-export const NoteRowBody = ({
-  dragState: {
+export const NoteRowBody = ({ dragState, containerName, note }: RowProps) => {
+  const {
     handlers: { zone: zoneHandlers, row: rowHandlers },
     isDragged,
     isHovered,
     state: { rowDragged, hoveredOver, moveType },
-  },
-  containerName,
-  note,
-}: RowProps) => {
+  } = dragState;
   return (
     <div
       id={'note-row-body-animator'}
@@ -41,16 +38,7 @@ export const NoteRowBody = ({
           position={MoveNotePosition.childOf}
         />
 
-        <NoteRowTitle
-          rowDragged={rowDragged}
-          isDragged={isDragged}
-          isHovered={isHovered}
-          containerName={containerName}
-          note={note}
-          hoveredOver={hoveredOver}
-          moveType={moveType}
-          title={note.title}
-        />
+        <NoteRowTitle dragState={dragState} containerName={containerName} title={note.title} />
       </div>
     </div>
   );

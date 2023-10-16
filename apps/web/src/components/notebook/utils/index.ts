@@ -1,1 +1,1 @@
-export * from './getNoteHeiarchy';
+export * from './getFocusedNote';

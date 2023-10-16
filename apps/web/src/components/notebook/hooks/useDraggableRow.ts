@@ -52,6 +52,10 @@ const initialPos: DragPosition = {
   y: 0,
 };
 
+//Height of element with class: 'note-row'
+const NOTE_ROW_HEIGHT = 50;
+//Used to shift a dragged element to have the cursor located at exactly the midpoint of the element.
+const NOTE_ROW_HALF_HEIGHT = NOTE_ROW_HEIGHT / 2;
 export const useDraggable = (
   [drag, setDrag, userId, setNewNoteToggle]: UseDraggableState,
   note: TreeNote,
@@ -85,8 +89,11 @@ export const useDraggable = (
    * It is a click if the onDragStop function runs before MINIMUM_DRAG_TIME has passed in milliseconds.
    */
   const onDragStart: DraggableEventHandler = (event: DragEvent<HTMLDivElement>) => {
-    setPos((prev: DragPosition) => ({ ...prev, start: Date.now(), y: 0 }));
     event.stopPropagation(); //Stop Click, it will be triggered in onDragStop.
+    // @ts-ignore
+    let rect = event.target?.getBoundingClientRect();
+    let offset = event.clientY - rect.top - NOTE_ROW_HALF_HEIGHT; //y position within the element.
+    setPos((prev: DragPosition) => ({ ...prev, start: Date.now(), y: offset }));
   };
 
   /** Runs once-per-drag operations */

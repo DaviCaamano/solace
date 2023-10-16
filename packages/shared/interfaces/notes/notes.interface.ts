@@ -32,7 +32,7 @@ export enum MoveNotePosition {
   childOf = 'childOf',
   aheadOf = 'previous_row',
   lastNote = 'last_note',
-  elevate = 'elevate',
+  elevate = 'parents_row',
 }
 
 type NoteWithoutTimeSTamps = Omit<Note, 'createdAt' | 'updatedAt'>;
@@ -44,6 +44,7 @@ export interface NoteResponse {
 
 export interface TreeNote extends Note {
   depth: number;
+  prev?: string;
   children?: TreeNote[]; //Not provided by Backend
 }
 

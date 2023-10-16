@@ -55,7 +55,6 @@ export class NoteMoveService extends ComponentWithLogging {
     }
 
     const { sibling, originalNext, originalParent } = await this.dbService.detachNote(note, userId);
-
     try {
       switch (position) {
         case MoveNotePosition.aheadOf: {

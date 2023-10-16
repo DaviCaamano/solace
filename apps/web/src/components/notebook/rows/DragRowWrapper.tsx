@@ -19,7 +19,6 @@ export const DragRowWrapper = ({
   yOffset,
 }: DragRowWrapperProps) => {
   const css = isDragged ? 'text-coffee font-semibold z-50 pointer-events-none opacity-50' : '';
-  console.log('yOffset:', yOffset);
 
   return (
     <DraggableCore {...handlers} nodeRef={dragRef}>

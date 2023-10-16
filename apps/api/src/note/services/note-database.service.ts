@@ -30,27 +30,12 @@ export class NoteDatabaseService extends ComponentWithLogging {
     }
 
     try {
-      return correctParentIdCase(
-        await this.db.$queryRaw`
-        WITH RECURSIVE noteTree(id, title, content, status, next, parentId, depth) AS (
-            SELECT parent.id, parent.title, parent.content, parent.status, parent.next, parent."parentId", 0 as depth
-            FROM "Note" parent
-            WHERE 
-                parent."userId" = ${userId}
-                AND parent."parentId" is null
-                AND parent."id" is not null
-                AND parent."status" = 'ACTIVE'
-            UNION ALL
-            SELECT child.id, child.title, child.content, child.status, child.next, child."parentId", noteTree."depth" + 1
-            FROM "Note" child
-            INNER JOIN noteTree ON child."parentId" = noteTree."id"
-            WHERE 
-                child."id" is not null
-                AND child."status" = 'ACTIVE'
-        )
-        SELECT *
-        FROM noteTree;`,
-      );
+      return this.db.note.findMany({
+        where: {
+          userId,
+          status: NoteStatus.active,
+        },
+      });
     } catch (err: any) {
       this.report('Failed to list notes', err);
     }
@@ -363,13 +348,3 @@ export class NoteDatabaseService extends ComponentWithLogging {
 }
 
 const MAX_CONSOLIDATION_ATTEMPT = 3;
-
-const correctParentIdCase = (notes: Note[]) => {
-  for (let index = 0; index < notes.length; index++) {
-    if (typeof notes[index].parentid !== 'undefined') {
-      notes[index].parentId = notes[index].parentid;
-      delete notes[index].parentid;
-    }
-  }
-  return notes;
-};

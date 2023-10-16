@@ -52,16 +52,18 @@ export const NoteRow = ({
   };
 
   return (
-    <DragRowWrapper
-      containerName={`note-row-backdrop ${name}`}
-      dragRef={ref}
-      isDragged={isDragged}
-      handlers={handlers.drag}
-      yOffset={y}
-    >
-      <NoteRowBody dragState={dragState} containerName={name} note={note} openEditor={openEditor} />
-      <AddChildRow onSubmit={addChildSubmit} setCreateToggle={setCreateToggle} createToggle={createToggle} />
-      {children}
-    </DragRowWrapper>
+    <div key={`note-row-${note.id}`} className={'note-row-container w-full'}>
+      <DragRowWrapper
+        containerName={`note-row-backdrop ${name}`}
+        dragRef={ref}
+        isDragged={isDragged}
+        handlers={handlers.drag}
+        yOffset={y}
+      >
+        <NoteRowBody dragState={dragState} containerName={name} note={note} openEditor={openEditor} />
+        <AddChildRow onSubmit={addChildSubmit} setCreateToggle={setCreateToggle} createToggle={createToggle} />
+        {children}
+      </DragRowWrapper>
+    </div>
   );
 };

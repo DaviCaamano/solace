@@ -3,6 +3,7 @@ import { ArrowLeft } from 'phosphor-react';
 import { colors } from '@styles/tailwind';
 import { Editor, EditorViewMode } from '@interface/editor';
 import { TreeNote } from '#interfaces/notes';
+import { getFocusedNote } from '@components/notebook/utils';
 
 interface BackButtonProps {
   noteList: TreeNote[] | undefined;
@@ -25,7 +26,7 @@ export const HeaderBackButton = ({ noteList, show, selectedNote, setEditor }: Ba
         });
       }
       /** Not Root Note, so find the parent of the currently selected note and select it instead */
-      const newParent = noteList.find(({ id }: TreeNote) => selectedNote?.parentId === id);
+      const newParent = getFocusedNote(selectedNote?.parentId, noteList).focused;
       if (newParent) {
         const { id, content, title } = newParent;
         setEditor({ id, content, title, stale: false, viewMode: EditorViewMode.preview });

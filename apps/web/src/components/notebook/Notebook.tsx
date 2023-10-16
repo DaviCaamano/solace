@@ -2,7 +2,7 @@ import { ContentWindow } from '@interface/Landing';
 import styles from './notebook.module.scss';
 import { AddNoteRow, FocusRow, NoteList } from '@components/notebook/rows';
 import { useEditor, useListNotes } from '@hooks/context';
-import { getNoteGeneration } from '@components/notebook/utils';
+import { getFocusedNote } from '@components/notebook/utils';
 import { useMemo } from 'react';
 import { useNotebook } from '@components/notebook/hooks';
 import { EndOfTreeMoveZone } from '@components/notebook/move-row-zone';
@@ -28,7 +28,7 @@ export const Notebook = ({ window, setWindow }: NotebookProps) => {
 
   const addNoteOnClick = (title: string) => addNoteHandlers.addNote({ userId: user?.id, title });
 
-  const noteHeiarchy = useMemo(() => noteList && getNoteGeneration(editor.id, noteList), [editor.id, noteList]);
+  const noteHeiarchy = useMemo(() => noteList && getFocusedNote(editor.id, noteList), [editor.id, noteList]);
   if (!noteHeiarchy || isLoading) return <LoadingMessage />;
   if (isError) return <ErrorMessage error={error} />;
   return (
@@ -47,7 +47,7 @@ export const Notebook = ({ window, setWindow }: NotebookProps) => {
       <NotebookHeader
         deleteNoteHandler={deleteNoteHandler}
         dragEvents={dragEvents}
-        selectedNote={noteHeiarchy.selectedNote}
+        selectedNote={noteHeiarchy.focused}
         setEditor={setEditor}
         noteList={noteList}
       />
