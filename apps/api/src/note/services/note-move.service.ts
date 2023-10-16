@@ -63,8 +63,11 @@ export class NoteMoveService extends ComponentWithLogging {
         case MoveNotePosition.childOf: {
           return this.makeChildOf(note, targetId, userId);
         }
-        case MoveNotePosition.lastNote: {
-          return this.addToEndOfRoot(note, userId);
+        case MoveNotePosition.lastChildOf: {
+          return this.moveToLastSibling(note, userId);
+        }
+        case MoveNotePosition.elevate: {
+          return this.elevate(note, userId);
         }
       }
     } catch (err: any) {
@@ -173,29 +176,64 @@ export class NoteMoveService extends ComponentWithLogging {
    * @param targetId - Note: Parent Note who is having a note inserted as its new first child
    * @param userId - string: user which owns the note tree
    */
-  async makeChildOf(note: Note, targetId: string, userId: string) {
-    const firstChild = await this.findFirstChild(targetId, userId);
+  async makeChildOf(note: Note, targetId: string | undefined | null, userId: string) {
+    const sibling = await this.findFirstChild(targetId, userId);
 
     const updateData: Prisma.NoteUpdateInput = {
-      Parent: {
-        connect: {
-          id: targetId,
-        },
-      },
+      Parent: {},
     };
-    if (firstChild?.id) {
-      updateData.Next = {
-        connect: {
-          id: firstChild.id,
-        },
+    if (targetId) {
+      updateData.Parent.connect = {
+        id: targetId,
       };
     } else {
+      updateData.Parent.disconnect = true;
+    }
+
+    if (!sibling?.id) {
       updateData.Next = {
         disconnect: true,
       };
+    } else {
+      updateData.Next = {
+        connect: {
+          id: sibling.id,
+        },
+      };
     }
 
-    return this.db.note.update({ where: { id: note.id, userId }, data: updateData });
+    return await this.db.note.update({ where: { id: note.id, userId }, data: updateData });
+  }
+
+  /**
+   * Move Note to be the Last Child of its current siblings
+   *    Find Last child [F] of F.parent
+   *        F.next = note
+   *        note.next = false
+   * @param note - Note: note being moved
+   * @param userId - string: user which owns the note tree
+   */
+  async moveToLastSibling(note: Note, userId: string) {
+    const sibling = await this.findLastChild(note.parentId, userId);
+
+    const query: Prisma.NoteUpdateArgs = {
+      where: { id: note.id, userId },
+      data: { Next: { disconnect: true } },
+    };
+
+    if (sibling?.id) {
+      query.data.Prev = {
+        connect: {
+          id: sibling.id,
+        },
+      };
+    }
+
+    try {
+      return await this.db.note.update(query);
+    } catch (err: any) {
+      this.report(`Failed to update note while moving to last position - Note[${note.id}]`, err);
+    }
   }
 
   /**
@@ -207,23 +245,29 @@ export class NoteMoveService extends ComponentWithLogging {
    * @param userId - string: user which owns the note tree
    * @param attempt - Attempt again in case a tree must be consolidated.
    */
-  async findFirstChild(parentId: string | null, userId: string, attempt: number = 0) {
-    let parent: Note | undefined;
-    try {
-      parent = await this.db.note.findFirst({
-        where: { id: parentId, userId },
-        include: {
-          Children: true,
-        },
-      });
-    } catch (err: any) {
-      this.report('Failed to find parent note to insert child into (1)', err);
+  async findFirstChild(parentId: string | undefined | null, userId: string, attempt: number = 0) {
+    let children: Note[] | undefined;
+    if (parentId) {
+      try {
+        const parent = await this.db.note.findFirst({
+          where: { id: parentId, userId },
+          include: {
+            Children: true,
+          },
+        });
+        children = parent.Children;
+      } catch (err: any) {
+        this.report('Failed to find parent note to insert child into (1)', err);
+      }
+    } else {
+      try {
+        children = await this.db.note.findMany({
+          where: { parentId: null, userId },
+        });
+      } catch (err: any) {
+        this.report('Failed to find parent note to insert child into (1)', err);
+      }
     }
-    if (!parent) {
-      this.report('Failed to find parent note to insert child into (2)');
-    }
-
-    const children = parent.Children;
 
     if (!children?.length) {
       return null;
@@ -238,46 +282,42 @@ export class NoteMoveService extends ComponentWithLogging {
     /** Should not execute if child list is properly structured */
     this.error("Unable to find first child, list of children not strongly linked. Consolidating User's Note Tree");
     await this.dbService.consolidateTree(userId);
-    return this.findFirstChild(children, userId, attempt + 1);
+    return this.findFirstChild(parentId, userId, attempt + 1);
   }
 
   /**
-   * Move note to the end of the user's root notes.
-   * A root note has no parent notes.
-   * @param note - Note: note being moved.
+   * Given a parent, find the child in the highest position among the note's children
+   *   set parentId to null to find last root node
+   * @param parentId - string | null:
+   *    if string: will retrieve the first child element of a specified parent note or null if parent has no children
+   *    if null: will retrieve the first root element
    * @param userId - string: user which owns the note tree
    */
-  async addToEndOfRoot(note: Note, userId: string) {
-    let lastRoot: Note;
+  async findLastChild(parentId: string | undefined | null, userId: string) {
     try {
-      lastRoot = await this.db.note.findFirst({ where: { parentId: null, next: null, userId } });
+      return await this.db.note.findFirst({ where: { parentId: parentId || null, userId, next: null } });
     } catch (err: any) {
-      this.report(`Failed to retrieve list of root nodes for user: ${userId} (1)`, err);
+      this.report('Failed to find parent note to insert child into (1)', err);
     }
-    const updateData: Prisma.NoteUpdateInput = {
-      Parent: null,
-    };
-    if (lastRoot) {
-      updateData.Prev = {
-        connect: {
-          id: lastRoot.id,
-        },
-      };
+  }
+
+  async elevate(note: Note, userId: string) {
+    if (!note.parentId) {
+      this.report('Cannot elevate parentless note.');
     }
+    let parent: Note | undefined;
     try {
-      return await this.db.note.update({
-        where: { id: note.id, userId },
-        data: updateData,
-      });
+      parent = await this.db.note.findFirst({ where: { id: note.parentId }, include: { Parent: true } });
     } catch (err: any) {
-      this.report("Failed to move note to end of user's root notes", err);
+      this.report('Unable to find parent during elevate note operation.');
     }
+    return this.makeChildOf(note, parent.parentId, userId);
   }
 
   redundantMoveCheck(note: Note, targetId: string, position: MoveNotePosition) {
     const alreadyChildOfTarget = position === MoveNotePosition.childOf && note.parentId === targetId;
     const alreadyAheadOf = position === MoveNotePosition.aheadOf && note.next === targetId;
-    const alreadyLastNote = position === MoveNotePosition.lastNote && !note.next && !note.parentId;
+    const alreadyLastNote = position === MoveNotePosition.lastChildOf && !note.next && !note.parentId;
 
     return alreadyChildOfTarget || alreadyAheadOf || alreadyLastNote;
   }

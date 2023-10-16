@@ -1,17 +1,26 @@
 import { NoteRow } from '@components/notebook/rows/NoteRow';
 import { AddNoteHandlers, TreeNote } from '#interfaces/notes';
 import { Editor } from '@interface/editor';
-import { UseDraggableState } from '@components/notebook/hooks';
+import { MoveRowCallback, UseDraggableState } from '@components/notebook/hooks';
 interface NoteListProps {
   addNoteHandlers: AddNoteHandlers;
   depth?: number;
   dragHandlers: UseDraggableState;
+  moveNote: MoveRowCallback;
   noteList?: TreeNote[] | undefined;
   openEditor: (editor: Editor) => void;
   userId: string | undefined;
 }
 
-export const NoteList = ({ addNoteHandlers, depth = 0, dragHandlers, noteList, openEditor, userId }: NoteListProps) => {
+export const NoteList = ({
+  addNoteHandlers,
+  depth = 0,
+  dragHandlers,
+  moveNote,
+  noteList,
+  openEditor,
+  userId,
+}: NoteListProps) => {
   if (!noteList?.length) {
     return null;
   }
@@ -24,6 +33,7 @@ export const NoteList = ({ addNoteHandlers, depth = 0, dragHandlers, noteList, o
             key={note.id}
             addNoteHandlers={addNoteHandlers}
             name={'note-row-' + index}
+            moveNote={moveNote}
             note={note}
             depth={depth}
             dragHandlers={dragHandlers}

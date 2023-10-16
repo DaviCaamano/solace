@@ -5,12 +5,14 @@ import styles from '../notebook.module.scss';
 import { ContentWindow } from '@interface/Landing';
 import { CaretRight } from 'phosphor-react';
 import { colors } from '@styles/tailwind';
+import { TreeNote } from '#interfaces/notes';
 
 interface FocusRowProps {
   editor: Editor;
   setWindow: Setter<ContentWindow>;
+  rowDragged: TreeNote | undefined;
 }
-export const FocusRow = ({ editor: { title, viewMode }, setWindow }: FocusRowProps) => {
+export const FocusRow = ({ editor: { title, viewMode }, rowDragged, setWindow }: FocusRowProps) => {
   if (!title || viewMode !== EditorViewMode.preview) {
     return null;
   }
@@ -18,7 +20,7 @@ export const FocusRow = ({ editor: { title, viewMode }, setWindow }: FocusRowPro
     <div className={`focus-row ${styles.focusRow}`} onClick={() => setWindow(ContentWindow.editor)}>
       <NotePreview />
       <div className={`focus-row-title ${styles.focusRowTitle}`}>
-        {title} <Caret />
+        {title} <Caret rowDragged={rowDragged} />
       </div>
     </div>
   );
@@ -45,8 +47,8 @@ const NotePreview = () => {
 
 const EditorStyle = () => <style>{'.ProseMirror-focused { outline: none !important; }'}</style>;
 
-const Caret = () => (
-  <div className={'absolute'} style={{ right: 0, bottom: '0', transform: 'translateY(50%)' }}>
+const Caret = ({ rowDragged }: { rowDragged: TreeNote | undefined }) => (
+  <div className={`absolute ${rowDragged && 'hidden'}`} style={{ right: 0, bottom: '0', transform: 'translateY(50%)' }}>
     <CaretRight size={32} color={colors.tan} weight='bold' />
   </div>
 );

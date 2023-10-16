@@ -7,12 +7,14 @@ import React from 'react';
 import { HeaderBackButton } from './HeaderBackButton';
 import { NoteSettingsButton } from './NoteSettingsButton';
 import { useDraggable, UseDraggableState } from '../hooks/useDraggableRow';
+import { MoveRowCallback } from '@components/notebook/hooks';
 const rootNote: TreeNote = { id: 'ROOT_FIRST' } as TreeNote;
 
 interface NotebookHeader {
   deleteNoteHandler: DeleteNoteHandler;
   dragEvents: UseDraggableState;
   selectedNote: TreeNote | undefined;
+  moveNote: MoveRowCallback;
   noteList: TreeNote[] | undefined;
   setEditor: (editor: Partial<Editor>) => void;
 }
@@ -21,41 +23,57 @@ export const NotebookHeader = ({
   deleteNoteHandler,
   dragEvents,
   selectedNote,
+  moveNote,
   noteList,
   setEditor,
 }: NotebookHeader) => {
   const {
     state: { rowDragged },
     handlers,
-  } = useDraggable(dragEvents, selectedNote || rootNote);
+    isHovered,
+  } = useDraggable(dragEvents, selectedNote || rootNote, moveNote);
   const rowBeingDragged = !!rowDragged;
 
   const showBackButton = !rowBeingDragged && !!selectedNote && !!noteList;
+
+  const dragHandlers = {
+    onMouseLeave: () => rowDragged?.parentId && handlers.row.onMouseLeave(),
+    onMouseEnter: () => {
+      if (rowDragged?.parentId) {
+        handlers.row.onMouseEnter();
+        handlers.zone(MoveNotePosition.elevate).onMouseEnter();
+      }
+    },
+  };
   return (
-    <div id={'notebook-header'} className={`${styles.header}`} {...handlers.zone(MoveNotePosition.elevate)}>
-      <DragIndicator show={rowBeingDragged} />
+    <div id={'notebook-header'} className={styles.header} {...dragHandlers}>
       <HeaderBackButton noteList={noteList} show={showBackButton} selectedNote={selectedNote} setEditor={setEditor} />
       <NoteSettingsButton show={showBackButton} selectedNote={selectedNote} deleteNoteHandler={deleteNoteHandler} />
-      <Highlight rowDragged={rowBeingDragged} />
+      <Highlight isHovered={isHovered} rowDragged={rowBeingDragged} />
+      <DragIndicator rowDragged={rowDragged} />
     </div>
   );
 };
 
 interface DragIndicatorProps {
-  show: boolean;
+  rowDragged: TreeNote | undefined;
 }
-const DragIndicator = ({ show }: DragIndicatorProps) => (
-  <WestIcon
-    className={`${styles.headerDragIcon} ${show ? 'block' : 'hidden'}`}
-    style={{ fontSize: '4rem', lineHeight: '100%' }}
-  />
-);
+const DragIndicator = ({ rowDragged }: DragIndicatorProps) => {
+  if (!rowDragged?.parentId) {
+    return null;
+  }
+  return <WestIcon className={`${styles.headerDragIcon}`} style={{ fontSize: '2.5rem', lineHeight: '100%' }} />;
+};
 
-const Highlight = ({ rowDragged }: { rowDragged: boolean }) => (
+interface HighLightProps {
+  isHovered: boolean;
+  rowDragged: boolean;
+}
+const Highlight = ({ isHovered, rowDragged }: HighLightProps) => (
   <div
     id={'notebook-header-drag-highlight'}
-    className={`${
-      rowDragged ? 'block' : 'hidden'
-    } absolute w-full h-full top-0 left-0 bg-white opacity-10 cursor-pointer pointer-events-none`}
+    className={`${rowDragged ? 'block' : 'hidden'} absolute w-full h-full top-0 left-0 bg-white ${
+      isHovered ? 'opacity-50' : 'opacity-20'
+    } cursor-pointer pointer-events-none`}
   />
 );

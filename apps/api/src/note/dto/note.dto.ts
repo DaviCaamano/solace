@@ -65,7 +65,7 @@ export class MoveNoteDto {
   position: MoveNotePosition;
 
   @IsOptional()
-  targetId: string;
+  targetId?: string;
 }
 
 export class DeleteNoteDto {

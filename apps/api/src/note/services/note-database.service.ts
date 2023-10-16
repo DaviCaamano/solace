@@ -345,6 +345,82 @@ export class NoteDatabaseService extends ComponentWithLogging {
       );
     }
   }
+
+  async reset() {
+    const userId = 'd405e9fa-68eb-43ab-ad07-af477f11dafa';
+    await this.db.note.deleteMany({ where: { userId } });
+    await this.db.note.createMany({
+      data: defaultRecords.map(({ id, parentId, next }) => createManyQuery(id, userId, parentId, next)),
+    });
+  }
 }
 
 const MAX_CONSOLIDATION_ATTEMPT = 3;
+
+const createManyQuery = (id: string, userId: string, parentId?: string, next?: string): Prisma.NoteCreateManyInput => ({
+  id,
+  title: id,
+  userId,
+  content: '<p>Mew is fucking cool.</p>',
+  parentId: parentId || null,
+  next: next || null,
+  status: NoteStatus.active,
+});
+const defaultRecords = [
+  {
+    id: 'Neighbor-Wife',
+  },
+  {
+    id: 'Neighbor',
+    next: 'Neighbor-Wife',
+  },
+  {
+    id: 'Neighbor-Dog',
+    parentId: 'Neighbor',
+  },
+  {
+    id: 'Neighbor-Child',
+    parentId: 'Neighbor',
+    next: 'Neighbor-Dog',
+  },
+  {
+    id: 'Brother',
+    next: 'Neighbor',
+  },
+  {
+    id: 'Sister',
+    next: 'Brother',
+  },
+  {
+    id: 'You',
+    next: 'Sister',
+  },
+  {
+    id: 'Child-Brother',
+    parentId: 'You',
+  },
+  {
+    id: 'Child-Sister',
+    parentId: 'You',
+    next: 'Child-Brother',
+  },
+  {
+    id: 'Child',
+    parentId: 'You',
+    next: 'Child-Sister',
+  },
+  {
+    id: 'Grand-Brother',
+    parentId: 'Child',
+  },
+  {
+    id: 'Grand-Sister',
+    parentId: 'Child',
+    next: 'Grand-Brother',
+  },
+  {
+    id: 'Grand-Child',
+    parentId: 'Child',
+    next: 'Grand-Sister',
+  },
+];

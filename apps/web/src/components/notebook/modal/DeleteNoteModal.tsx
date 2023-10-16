@@ -2,7 +2,7 @@ import { Modal } from '@components/shared';
 import { useDeleteNoteMutation } from '@context/redux/api/notes/notes.slice';
 import { DeleteNoteHandler } from '#interfaces/notes';
 import { useState } from 'react';
-import { TrashSimple  } from 'phosphor-react';
+import { TrashSimple } from 'phosphor-react';
 import FormatQuoteIcon from '@mui/icons-material/FormatQuote';
 import CheckIcon from '@mui/icons-material/Check';
 import CloseIcon from '@mui/icons-material/Close';
@@ -37,7 +37,7 @@ export const DeleteNoteModal = ({ deleteNoteHandler: { markDelete, setMarkDelete
         style={{ maxWidth: 'calc(100vw - 1.25rem)' }}
       >
         <div className={'flex justify-center absolute w-full pointer-events-none my-4'} style={{ top: '-15px' }}>
-          <TrashSimple  size={32} color={colors.mug} weight='fill' className={'text-mug-light w-[2rem]'} />
+          <TrashSimple size={32} color={colors.mug} weight='fill' className={'text-mug-light w-[2rem]'} />
         </div>
         <div id={'delete-modal-description'} className={'mt-4 mb-4 md:mb-2'}>
           Are you sure you want <br className={'md:hidden'} />

@@ -18,7 +18,7 @@ export const RowZoneIcon = ({ moveType }: ZoneIconProps) => {
           <ArrowElbowDownRight className={'relative text-latte-lighter'} size={28} color={colors.latte} weight='bold' />
         </div>
       );
-    case MoveNotePosition.lastNote:
+    case MoveNotePosition.lastChildOf:
       return (
         <div className={'title-icon-container flex justify-center items-center right-full w-7 h-7'}>
           <ArrowLineDown className={'relative text-latte-lighter'} size={28} color={colors.latte} weight='bold' />

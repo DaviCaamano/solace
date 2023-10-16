@@ -5,13 +5,14 @@ import { AddChildRow } from './AddChildRow';
 import { Editor, EditorViewMode } from '@interface/editor';
 import { DragRowWrapper } from './DragRowWrapper';
 import { NoteRowBody } from './NoteRowBody';
-import { useDraggable, UseDraggableState } from '@components/notebook/hooks';
+import { MoveRowCallback, useDraggable, UseDraggableState } from '@components/notebook/hooks';
 
 type OpenEditor = (editor: Editor) => void;
 interface NoteRowProps extends PropsWithChildren {
   addNoteHandlers: AddNoteHandlers;
   dragHandlers: UseDraggableState;
   depth?: number;
+  moveNote: MoveRowCallback;
   name: string;
   note: TreeNote;
   openEditor: OpenEditor;
@@ -21,6 +22,7 @@ export const NoteRow = ({
   addNoteHandlers: { addNote, newNoteToggle, setNewNoteToggle },
   children,
   dragHandlers,
+  moveNote,
   name,
   note,
   openEditor,
@@ -34,7 +36,7 @@ export const NoteRow = ({
       stale: false,
       viewMode: EditorViewMode.preview,
     });
-  const dragState = useDraggable(dragHandlers, note, sendNoteToPreview);
+  const dragState = useDraggable(dragHandlers, note, moveNote, sendNoteToPreview);
   const { ref, handlers, isDragged, y } = dragState;
   const createToggle = newNoteToggle === note.id;
   const setCreateToggle = (flag: boolean) => {

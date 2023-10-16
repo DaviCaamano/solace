@@ -30,9 +30,9 @@ export enum NoteStatus {
  */
 export enum MoveNotePosition {
   childOf = 'childOf',
-  aheadOf = 'previous_row',
-  lastNote = 'last_note',
-  elevate = 'parents_row',
+  aheadOf = 'aheadOf',
+  lastChildOf = 'lastChildOf',
+  elevate = 'elevate',
 }
 
 type NoteWithoutTimeSTamps = Omit<Note, 'createdAt' | 'updatedAt'>;

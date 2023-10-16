@@ -1,6 +1,7 @@
 import {
   AddNoteHandlers,
   DeleteNoteHandler,
+  MoveNotePosition,
   NewNoteToggle,
   Note,
   TreeNote,
@@ -10,19 +11,30 @@ import { MutableRefObject, useEffect, useRef, useState } from 'react';
 import { ContentWindow } from '@interface/Landing';
 import { CreateNoteDto } from '~note/dto/note.dto';
 import { UseDraggableState, useDraggableState } from '@components/notebook/hooks/useDraggableRow';
-import { useAddNoteMutation } from '@context/redux/api/notes/notes.slice';
+import { useAddNoteMutation, useMoveNoteMutation } from '@context/redux/api/notes/notes.slice';
 import { Editor, EditorViewMode } from '@interface/editor';
+import { reset as resetEditor } from '@context/redux';
+import { FetchBaseQueryError } from '@reduxjs/toolkit/dist/query/react';
+import { SerializedError } from '@reduxjs/toolkit';
+import { getFocusedNote } from '@components/notebook/utils';
 
+type MovedNoteResponse = { data: Note } | { error: FetchBaseQueryError | SerializedError };
 type OpenEditorCallback = (editor: Editor) => void;
+export type MoveRowCallback = (
+  note: Note | undefined,
+  targetId: string | undefined,
+  position: MoveNotePosition,
+) => void;
 /** Detects the creation of a new note and moves the user to the editor to edit that note */
 export const useNotebook = (
   window: ContentWindow,
-  noteList: Note[] | undefined,
+  noteList: TreeNote[] | undefined,
   setWindow: Setter<ContentWindow>,
   setEditor: (editor: Partial<Editor>) => void,
   userId?: string,
-): [AddNoteHandlers, DeleteNoteHandler, OpenEditorCallback, UseDraggableState] => {
+): [AddNoteHandlers, DeleteNoteHandler, OpenEditorCallback, UseDraggableState, MoveRowCallback] => {
   const [addNote] = useAddNoteMutation();
+  const [moveNoteTrigger] = useMoveNoteMutation();
 
   /**
    * Mark a note for deletion, this will raise a modal which will prompt the user to confirm the deletion.
@@ -40,6 +52,45 @@ export const useNotebook = (
 
   const dragHandlers = useDraggableState(userId, setNewNoteToggle);
 
+  const moveNote = (note: Note | undefined, targetId: string | undefined | null, position: MoveNotePosition) => {
+    if (!note || !targetId || !position || !userId) {
+      throw Error(
+        `CANNOT MOVE ROW, MISSING ARG: ${!note ? 'NOTE' : !targetId ? 'TARGET_ID' : position ? 'POSITION' : 'USER'}`,
+      );
+    }
+    if (!noteList) {
+      throw Error('Cannot move note without note list');
+    }
+    if (!targetId || targetId === 'ROOT_LAST' || targetId === 'ROOT_FIRST') {
+      targetId = null;
+    }
+    const target = getFocusedNote(targetId, noteList).focused;
+
+    moveNoteTrigger({ id: note.id, position, targetId: targetId || undefined, userId }).then(
+      (resp: MovedNoteResponse) => {
+        // @ts-ignore
+        if (resp.error) {
+          // @ts-ignore
+          throw Error('Error moving Note:' + resp.error?.message);
+        }
+
+        //Refocus the Notebook on a new note unless the note retained the same parent.
+        if (position !== MoveNotePosition.aheadOf) {
+          if (!target) {
+            resetEditor();
+          } else {
+            setEditor({
+              id: target.id,
+              content: target.content,
+              title: target.title,
+              stale: false,
+              viewMode: EditorViewMode.preview,
+            });
+          }
+        }
+      },
+    );
+  };
   /** Detect when a new note was both expected and added then move user to editor to edit new note. */
   useEffect(() => {
     handleNewNote({
@@ -75,7 +126,7 @@ export const useNotebook = (
   };
 
   const addNoteToggle: AddNoteHandlers = { addNote: addNoteCallback, newNoteToggle, setNewNoteToggle };
-  return [addNoteToggle, deleteNoteHandler, openEditor, dragHandlers];
+  return [addNoteToggle, deleteNoteHandler, openEditor, dragHandlers, moveNote];
 };
 
 /**

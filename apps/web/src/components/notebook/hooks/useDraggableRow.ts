@@ -1,7 +1,7 @@
 import { DragEvent, useEffect, useRef, useState } from 'react';
 import { DraggedNotes, MoveNotePosition, NewNoteToggle, TreeNote, UseDraggableHandler } from '#interfaces/notes';
-import { useMoveNoteMutation } from '@context/redux/api/notes/notes.slice';
 import { DraggableData, DraggableEventHandler } from 'react-draggable';
+import { MoveRowCallback } from '@components/notebook/hooks/useNotebook';
 
 export type UseDraggableState = [
   DraggedNotes,
@@ -59,10 +59,10 @@ const NOTE_ROW_HALF_HEIGHT = NOTE_ROW_HEIGHT / 2;
 export const useDraggable = (
   [drag, setDrag, userId, setNewNoteToggle]: UseDraggableState,
   note: TreeNote,
+  dropMove: MoveRowCallback,
   onClick?: () => void,
 ): UseDraggableHandler => {
   const { rowDragged, moveType, hoveredOver } = drag;
-  const [moveNote] = useMoveNoteMutation();
 
   const [{ start, active, y }, setPos] = useState<DragPosition>(initialPos);
   const setY = (newY: number) => setPos((prev: DragPosition) => ({ ...prev, y: newY }));
@@ -137,7 +137,7 @@ export const useDraggable = (
     }
     if (hoveredOver && moveType && userId) {
       /** Drag ended while on top of another row and on top of one of their movement zones. */
-      moveNote({ id: note.id, position: moveType, targetId: hoveredOver.id, userId });
+      dropMove(note, hoveredOver.id, moveType);
     }
     /** Reset state after move operation */
     setDrag((prev: DraggedNotes) => ({

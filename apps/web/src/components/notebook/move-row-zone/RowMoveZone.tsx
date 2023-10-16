@@ -1,8 +1,8 @@
-import { DraggedNotes, MoveNotePosition, TreeNote } from '#interfaces/notes';
+import { MoveNotePosition } from '#interfaces/notes';
 import { colors } from '@styles/tailwind';
-import { CSSProperties } from 'react';
+import { CSSProperties, PropsWithChildren } from 'react';
 
-export interface MoveZoneProps {
+export interface MoveZoneProps extends PropsWithChildren {
   isHovered: boolean;
   expand: boolean;
   mouseHandlers: { onMouseEnter: () => void };
@@ -30,13 +30,17 @@ export interface MoveZoneProps {
  * @param position - used to both set the position of this zone inside the row and the move request if the user
  *   drops a row on top of this zone.
  */
-export const RowMoveZone = ({ isHovered, expand, mouseHandlers, position }: MoveZoneProps) => {
+export const RowMoveZone = ({ children, expand, isHovered, mouseHandlers, position }: MoveZoneProps) => {
   return (
     <div
-      className={'move-zone absolute transition-all w-full overflow-hidden px-[0.625rem]'}
+      className={
+        'move-zone absolute transition-all w-full overflow-hidden px-[0.625rem] flex justify-center items-center'
+      }
       {...mouseHandlers}
       style={MoveZonePosition(expand, isHovered, position)}
-    ></div>
+    >
+      {children}
+    </div>
   );
 };
 
@@ -58,7 +62,7 @@ const MoveZonePosition = (expand: boolean, hovered: boolean, position: MoveNoteP
         height: expand ? '1.5625rem' : 0,
         backgroundColor: bottomBgColor(hovered),
       };
-    case MoveNotePosition.lastNote:
+    case MoveNotePosition.lastChildOf:
       const style: CSSProperties = {
         backgroundColor: lastBgColor(hovered),
       };

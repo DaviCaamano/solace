@@ -16,7 +16,6 @@ export const NoteRowBody = ({ dragState, containerName, note }: RowProps) => {
     handlers: { zone: zoneHandlers, row: rowHandlers },
     isDragged,
     isHovered,
-    state: { rowDragged, hoveredOver, moveType },
   } = dragState;
   return (
     <div

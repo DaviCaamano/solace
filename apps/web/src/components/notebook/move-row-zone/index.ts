@@ -1,2 +1,2 @@
-export * from './EndOfTreeMoveZone';
+export * from './LastChildZone';
 export * from './RowMoveZone';

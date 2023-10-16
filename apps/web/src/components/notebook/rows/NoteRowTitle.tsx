@@ -1,4 +1,4 @@
-import { MoveNotePosition, TreeNote, UseDraggableHandler } from '#interfaces/notes';
+import { MoveNotePosition, UseDraggableHandler } from '#interfaces/notes';
 import styles from '@components/notebook/notebook.module.scss';
 import DragIndicatorIcon from '@mui/icons-material/DragIndicator';
 
@@ -15,9 +15,7 @@ interface NoteRowTitleProps {
 }
 export const NoteRowTitle = ({ dragState, containerName, title }: NoteRowTitleProps) => {
   const {
-    state: { hoveredOver, rowDragged, moveType },
-    isHovered,
-    isDragged,
+    state: { hoveredOver, rowDragged },
   } = dragState;
   return (
     <div
@@ -39,7 +37,7 @@ export const NoteRowTitle = ({ dragState, containerName, title }: NoteRowTitlePr
           <Title dragState={dragState} title={title} />
           <PositionPreview dragState={dragState} />
           <div className={'flex-1'} />
-          {!isDragged && <CaretRight size={32} color={colors.tan} weight='bold' />}
+          {!rowDragged && <CaretRight size={32} color={colors.tan} weight='bold' />}
         </div>
       </div>
     </div>
@@ -89,7 +87,6 @@ const Title = ({
     </div>
   );
 };
-
 
 /**
  * A transparent phantom title that indicates where a dragged row will be relocated to.

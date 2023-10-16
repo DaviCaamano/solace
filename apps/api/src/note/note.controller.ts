@@ -28,12 +28,17 @@ export class NoteController {
   }
 
   @Put('move')
-  move(@Body() moveNoteData: MoveNoteDto): Promise<SuccessNoteResponse> {
+  move(@Body() moveNoteData: MoveNoteDto): Promise<NoteResponse> {
     return this.noteService.move(moveNoteData);
   }
 
   @Delete()
   delete(@Body() { id, userId }: DeleteNoteDto): Promise<SuccessNoteResponse> {
     return this.noteService.delete(id, userId);
+  }
+
+  @Get('reset')
+  reset(): Promise<SuccessNoteResponse> {
+    return this.noteService.reset();
   }
 }

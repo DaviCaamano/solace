@@ -34,10 +34,9 @@ export const useTipTap = (viewMode: EditorViewMode = EditorViewMode.editor): [Ti
   const isPreview = viewMode === EditorViewMode.preview;
 
   const {
-    editor: { id: noteId, content, viewMode: editorViewMode },
+    editor: { id: noteId, content },
     setEditor,
   } = useEditor();
-  const disabled = viewMode === editorViewMode;
   const stickyNoteId = useRef<string | undefined>();
 
   const editor: TipTapEditor | null = useTipTapEditor({
