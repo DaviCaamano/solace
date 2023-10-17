@@ -1,4 +1,4 @@
-import { CreateNoteDto, DeleteNoteDto } from '~note/dto/note.dto';
+import { CreateNoteDto } from '~note/dto/note.dto';
 import { RefObject } from 'react';
 import { DraggableEventHandler } from 'react-draggable';
 
@@ -56,24 +56,28 @@ export interface SuccessNoteResponse {
   success: boolean;
 }
 
+export interface DeleteNoteResponse {
+  deleted: string[];
+}
+
 export interface UnsafeCreateNoteDto extends Omit<CreateNoteDto, 'userId'> {
   userId?: string;
 }
-export interface UnsafeDeleteNoteDto extends Omit<DeleteNoteDto, 'userId'> {
-  userId?: string;
-}
+
 export type UnsafeAddNoteTrigger = (newNote: UnsafeCreateNoteDto) => void;
 
 export interface DetachedNote {
   sibling: Note | undefined;
-  originalNext: string | undefined;
-  originalParent: string | undefined;
+  noteId: string;
+  originalParent: string;
+  originalNext: string;
+  userId: string;
 }
 /** Component Interfaces */
 
 export interface DeleteNoteHandler {
-  markDelete: TreeNote | undefined;
-  setMarkDelete: Setter<TreeNote | undefined>;
+  markedForDeletion: TreeNote | undefined;
+  setMarkedForDeletion: Setter<TreeNote | undefined>;
 }
 
 export interface DraggedNotes {

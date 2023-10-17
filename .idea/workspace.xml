@@ -5,25 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2101ad9f-8972-44d3-9c27-f093e4bebdd9" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/apps/api/src/note/services/note-delete.sevice.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/api/src/note/dto/note.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/note/dto/note.dto.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/api/src/note/note.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/note/note.controller.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/api/src/note/note.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/note/note.module.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/api/src/note/services/note-database.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/note/services/note-database.service.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/api/src/note/services/note-move.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/note/services/note-move.service.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/api/src/note/services/note.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/note/services/note.service.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/web/src/components/notebook/Notebook.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notebook/Notebook.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/components/notebook/header/NotebookHeader.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notebook/header/NotebookHeader.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/components/notebook/hooks/useDraggableRow.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notebook/hooks/useDraggableRow.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/notebook/buttons/RowButtons.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notebook/buttons/RowButtons.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/notebook/header/NoteSettingsButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notebook/header/NoteSettingsButton.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/web/src/components/notebook/hooks/useNotebook.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notebook/hooks/useNotebook.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/components/notebook/move-row-zone/EndOfTreeMoveZone.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notebook/move-row-zone/LastChildZone.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/components/notebook/move-row-zone/RowMoveZone.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notebook/move-row-zone/RowMoveZone.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/components/notebook/move-row-zone/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notebook/move-row-zone/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/components/notebook/rows/FocusRow.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notebook/rows/FocusRow.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/components/notebook/rows/NoteList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notebook/rows/NoteList.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/components/notebook/rows/NoteRow.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notebook/rows/NoteRow.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/components/notebook/rows/NoteRowTitle.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notebook/rows/NoteRowTitle.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/components/notebook/rows/RowZoneIcon.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notebook/rows/RowZoneIcon.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/context/redux/api/notes/endpoints/move-note.endpoint.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/context/redux/api/notes/endpoints/move-note.endpoint.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/notebook/modal/DeleteNoteModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notebook/modal/DeleteNoteModal.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/context/redux/api/notes/endpoints/delete-note.endpoint.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/context/redux/api/notes/endpoints/delete-note.endpoint.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/shared/interfaces/notes/notes.interface.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/shared/interfaces/notes/notes.interface.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -206,7 +200,8 @@
       <workItem from="1697156739930" duration="41520000" />
       <workItem from="1697199928894" duration="16002000" />
       <workItem from="1697221178309" duration="18235000" />
-      <workItem from="1697254320117" duration="55367000" />
+      <workItem from="1697254320117" duration="62724000" />
+      <workItem from="1697551425226" duration="10508000" />
     </task>
     <servers />
   </component>
@@ -254,19 +249,8 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/apps/web/src/styles/tailwind/colors.js</url>
-          <line>33</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/apps/web/src/styles/tailwind/colors.js</url>
-          <line>37</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/apps/api/src/note/dto/note.dto.ts</url>
           <line>67</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>

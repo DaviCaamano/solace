@@ -16,13 +16,14 @@ interface NotebookProps {
 }
 
 export const Notebook = ({ window, setWindow }: NotebookProps) => {
-  const { setEditor, user, editor } = useEditor();
+  const { editor, reset, setEditor, user } = useEditor();
   const { isLoading, isError, error, data: noteList } = useListNotes(user);
   const [addNoteHandlers, deleteNoteHandler, openEditor, dragEvents, moveNote] = useNotebook(
     window,
     noteList,
     setWindow,
     setEditor,
+    reset,
     user?.id,
   );
 

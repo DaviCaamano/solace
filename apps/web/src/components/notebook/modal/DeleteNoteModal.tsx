@@ -7,30 +7,30 @@ import FormatQuoteIcon from '@mui/icons-material/FormatQuote';
 import CheckIcon from '@mui/icons-material/Check';
 import CloseIcon from '@mui/icons-material/Close';
 import { colors } from '@styles/tailwind';
+import { Editor } from '@interface/editor';
 
-enum Prompts {
-  deleteNote, //Delete just the single note
-  deleteChildren, //Delete the note and all of its children
-}
 interface DeleteNoteModalProps {
   deleteNoteHandler: DeleteNoteHandler;
   userId: string | undefined;
 }
-export const DeleteNoteModal = ({ deleteNoteHandler: { markDelete, setMarkDelete }, userId }: DeleteNoteModalProps) => {
-  const [prompt, setPrompt] = useState<Prompts>(Prompts.deleteNote);
+export const DeleteNoteModal = ({
+  deleteNoteHandler: { markedForDeletion, setMarkedForDeletion },
+  userId,
+}: DeleteNoteModalProps) => {
+  const [deleteChildren, setDeleteChildren] = useState<boolean>(false);
   const [deleteNote] = useDeleteNoteMutation();
 
-  if (!userId || !markDelete) {
+  if (!userId || !markedForDeletion) {
     return null;
   }
 
   const onClick = async () => {
-    await deleteNote({ id: markDelete.id, userId, deleteChildren: prompt === Prompts.deleteChildren });
-    setMarkDelete(undefined);
+    await deleteNote({ id: markedForDeletion.id, userId, deleteChildren });
+    setMarkedForDeletion(undefined);
   };
 
   return (
-    <Modal open={!!markDelete} close={() => setMarkDelete(undefined)}>
+    <Modal open={!!markedForDeletion} close={() => setMarkedForDeletion(undefined)}>
       <div
         id={'note-book-delete-modal'}
         className={'relative w-full md:w-[43.75rem] flex flex-col mb-[-0.25rem] pt-4  justify-center items-center'}
@@ -43,16 +43,25 @@ export const DeleteNoteModal = ({ deleteNoteHandler: { markDelete, setMarkDelete
           Are you sure you want <br className={'md:hidden'} />
           to delete this note?
         </div>
-        <div id={'delete-modal-title'} className={'mb-4 md:mb-2'}>
-          <FormatQuoteIcon style={{ transform: 'scaleX(-1)', fontSize: '16px' }} className={'relative bottom-2'} />
-          <span className={'font-semibold'}>{markDelete.title}</span>
-          <FormatQuoteIcon style={{ fontSize: '16px' }} className={'relative bottom-2'} />
+        <div
+          id={'delete-modal-title'}
+          className={'mb-4 md:mb-2 relative overflow-ellipsis max-w-full'}
+          style={{ textOverflow: 'ellipsis' }}
+        >
+          <FormatQuoteIcon
+            style={{ transform: 'scaleX(-1)', fontSize: '16px' }}
+            className={'relative inline bottom-2'}
+          />
+          <span className={'font-semibold inline-block overflow-auto'} style={{ maxWidth: 'calc(100% - 2rem)' }}>
+            {markedForDeletion.title}
+          </span>
+          <FormatQuoteIcon style={{ fontSize: '16px' }} className={'relative inline bottom-2'} />
         </div>
         <div
           id={'delete-modal-button-container'}
-          className={'flex flex-col md:flex-row w-full justify-between px-12 mt-2'}
+          className={'flex flex-col md:flex-row w-full justify-between px-2 xs:px-4 sm:px-12 mt-2'}
         >
-          <DeleteChildrenCheckbox checked={prompt} setChecked={setPrompt} />
+          <DeleteChildrenCheckbox checked={deleteChildren} setChecked={setDeleteChildren} />
           <div className={'h-8 w-[184px] mx-auto md:m-0'}>
             <button
               id={'delete-modal-confirm-button'}
@@ -65,7 +74,7 @@ export const DeleteNoteModal = ({ deleteNoteHandler: { markDelete, setMarkDelete
             <button
               id={'delete-modal-cancel-button'}
               className={'py-[1px] h-full text-[12px] rounded-2xl bg-mug-light text-latte ml-6 w-[5rem]'}
-              onClick={() => setMarkDelete(undefined)}
+              onClick={() => setMarkedForDeletion(undefined)}
             >
               <CloseIcon />
             </button>
@@ -77,20 +86,20 @@ export const DeleteNoteModal = ({ deleteNoteHandler: { markDelete, setMarkDelete
 };
 
 interface DeleteChildrenCheckboxProps {
-  checked: Prompts;
-  setChecked: Setter<Prompts>;
+  checked: boolean;
+  setChecked: Setter<boolean>;
 }
 const DeleteChildrenCheckbox = ({ checked, setChecked }: DeleteChildrenCheckboxProps) => {
-  const onClick = () => setChecked(checked === Prompts.deleteChildren ? Prompts.deleteNote : Prompts.deleteChildren);
+  const onClick = () => setChecked((prev: boolean) => !prev);
   return (
     <div
       className={
-        'delete-children-prompt h-6 mb-5 md:mb-3 mt-1 flex justify-center items-center cursor-pointer select-none text-end'
+        'delete-children-prompt text-[0.9rem] xs:text-[1rem] h-6 mb-5 md:mb-3 mt-1 flex justify-center items-center cursor-pointer select-none text-end'
       }
       onClick={onClick}
     >
-      Delete all attached <br className={'md:hidden'} /> notes as well:
-      <Checkbox className={'ml-2'} checked={checked === Prompts.deleteChildren} onClick={onClick} />
+      Delete attached notes:
+      <Checkbox className={'ml-2'} checked={checked} />
     </div>
   );
 };
@@ -98,10 +107,9 @@ const DeleteChildrenCheckbox = ({ checked, setChecked }: DeleteChildrenCheckboxP
 interface CheckboxProps {
   checked: boolean;
   className?: string;
-  onClick: () => void;
 }
-const Checkbox = ({ checked, className, onClick }: CheckboxProps) => (
-  <div className={`${className} inline-flex h-5 w-5 overflow-hidden select-none`} onClick={onClick}>
+const Checkbox = ({ checked, className }: CheckboxProps) => (
+  <div className={`${className} inline-flex h-5 w-5 overflow-hidden select-none`}>
     <div className={'h-5 w-5 border-mug-light border-[2px] rounded p-[2px] flex justify-center items-center'}>
       {checked && <div className={'bg-mug-light w-full h-full mx-auto'} />}
     </div>

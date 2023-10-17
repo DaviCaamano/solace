@@ -31,6 +31,7 @@ export const useNotebook = (
   noteList: TreeNote[] | undefined,
   setWindow: Setter<ContentWindow>,
   setEditor: (editor: Partial<Editor>) => void,
+  reset: () => void,
   userId?: string,
 ): [AddNoteHandlers, DeleteNoteHandler, OpenEditorCallback, UseDraggableState, MoveRowCallback] => {
   const [addNote] = useAddNoteMutation();
@@ -39,8 +40,36 @@ export const useNotebook = (
   /**
    * Mark a note for deletion, this will raise a modal which will prompt the user to confirm the deletion.
    */
-  const [markDelete, setMarkDelete] = useState<TreeNote | undefined>(undefined);
+  const [markedForDeletion, setMarkedForDeletion] = useState<TreeNote | undefined>(undefined);
+  const stickyMarkedForDeletion = useRef<TreeNote | undefined>(undefined);
+  /**
+   * If a note has been marked for deletion and is not longer marked, then its deletion has been process.
+   * Set the editor to the deleted note's parent or root
+   */
+  useEffect(() => {
+    if (stickyMarkedForDeletion.current !== markedForDeletion) {
+      const deletedNote = stickyMarkedForDeletion.current;
 
+      if (!markedForDeletion && deletedNote) {
+        if (deletedNote?.parentId) {
+          const parent = noteList?.find((note: TreeNote) => note.id === deletedNote?.parentId);
+          if (parent) {
+            setEditor({
+              id: parent.id,
+              content: parent.content,
+              title: parent.title,
+              stale: false,
+              viewMode: EditorViewMode.preview,
+            });
+          } else {
+            reset();
+          }
+        }
+        reset();
+      }
+      stickyMarkedForDeletion.current = markedForDeletion;
+    }
+  });
   /**
    * Only one new-note input should display at a time. This state should hold the ID of the note who is
    * creating a child note or 'ROOT_LAST' | 'ROOT_FIRST' if the notebook is creating a new root note.
@@ -112,8 +141,8 @@ export const useNotebook = (
   };
 
   const deleteNoteHandler: DeleteNoteHandler = {
-    markDelete,
-    setMarkDelete,
+    markedForDeletion,
+    setMarkedForDeletion,
   };
 
   const openEditor = ({ content, id, stale, title, viewMode }: Editor) => {

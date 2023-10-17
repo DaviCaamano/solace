@@ -152,43 +152,6 @@ export class NoteDatabaseService extends ComponentWithLogging {
     }
   }
 
-  async delete(id: string, userId: string): Promise<Note> {
-    if (!id) {
-      this.report('No note id provided for delete note', HttpStatus.BAD_REQUEST);
-    }
-    if (!userId) {
-      this.report('No user id provided for delete note', HttpStatus.BAD_REQUEST);
-    }
-
-    const note = await this.get(id, userId);
-
-    if (!note) {
-      this.report('Note marked for deletion does not exist');
-    }
-
-    const { sibling, originalNext, originalParent } = await this.detachNote(note, userId);
-
-    try {
-      return this.db.note.update({
-        where: {
-          id,
-          userId,
-        },
-        data: {
-          status: NoteStatus.deleted,
-        },
-      });
-    } catch (err: any) {
-      if (sibling) {
-        this.error('Move Operation Failed, reverting note\'s previous sibling\'s "next" property', err);
-        await this.detachNote_Revert(id, sibling, originalNext, originalParent, userId);
-      } else {
-        this.error('Move Operation Failed', err);
-      }
-      this.report('Failed to delete note', err);
-    }
-  }
-
   /**
    * identifies if a node is the ancestor of another. Useful for avoiding things like infinite ancestor loops
    * @param userId - string: user which owns the note tree
@@ -227,14 +190,15 @@ export class NoteDatabaseService extends ComponentWithLogging {
    * Remove a note from its current position and return an object which can be used to reattach the note
    * @param note - Note: The note being detatched from the NoteTree.
    * @param userId - string: user which owns the note tree
-   *
+   * @param markDeleted - boolean: if true, the detached note is also marked as deleted
+   *    note.status = DELETED
    * @return originalSibling - Note: the updated Sibling and the original 'next' property of the sibling
    *    so the detachment can be reverted.
    *
    *  Find Note [A]: where A.next === note
    *    If A: A.next = note.next
    */
-  async detachNote(note: Note, userId: string): Promise<DetachedNote> {
+  async detachNote(note: Note, userId: string, markDeleted: boolean = false): Promise<DetachedNote> {
     const originalParent = note.parentId;
     let sibling: Note | undefined;
 
@@ -244,66 +208,64 @@ export class NoteDatabaseService extends ComponentWithLogging {
       this.report('Failed to detach note, could not search for sibling.', err);
     }
 
-    if (!sibling?.id) {
-      return {
-        sibling: null,
-        originalNext: null,
-        originalParent,
-      };
-    }
-
-    try {
-      const newSiblingNextPointer: Prisma.NoteUpdateOneWithoutPrevNestedInput = note.next
-        ? {
-            connect: {
-              id: note.next,
-            },
-          }
-        : {
-            disconnect: true,
-          };
-
-      sibling = await this.db.note.update({
-        where: { id: sibling.id, userId },
-        data: {
-          Next: newSiblingNextPointer,
-        },
-      });
-    } catch (err: any) {
-      this.report('Failed to detach note from sibling.', err);
-    }
-
-    try {
-      if (note.parentId) {
-        sibling = await this.db.note.update({
-          where: { id: note.id, userId },
-          data: {
-            Parent: {
-              disconnect: {
-                id: note.parentId,
+    if (sibling?.id) {
+      try {
+        const newSiblingNextPointer: Prisma.NoteUpdateOneWithoutPrevNestedInput = note.next
+          ? {
+              connect: {
+                id: note.next,
               },
-            },
+            }
+          : {
+              disconnect: true,
+            };
+
+        sibling = await this.db.note.update({
+          where: { id: sibling.id, userId },
+          data: {
+            Next: newSiblingNextPointer,
           },
         });
+      } catch (err: any) {
+        this.report('Failed to detach note from sibling.', err);
       }
-    } catch (err: any) {
-      this.report('Failed to detach note from parent.', err);
     }
+
+    if (note.parentId || markDeleted) {
+      try {
+        const query: Prisma.NoteUpdateArgs = {
+          where: { id: note.id, userId },
+          data: {},
+        };
+
+        if (note.parentId) {
+          query.data.Parent = {
+            disconnect: {
+              id: note.parentId,
+            },
+          };
+        }
+
+        if (markDeleted) {
+          query.data.status = NoteStatus.deleted;
+        }
+        await this.db.note.update(query);
+      } catch (err: any) {
+        this.report('Failed to detach note from parent.', err);
+      }
+    }
+
     return {
+      noteId: note.id as string,
       sibling,
       originalNext: note.id,
       originalParent,
+      userId,
     };
   }
 
   /** Undo operation done by detachNote function in this service */
-  async detachNote_Revert(
-    noteId: string,
-    sibling: Note | null,
-    originalNext: string | null,
-    originalParent: string | undefined,
-    userId: string,
-  ) {
+  async detachNote_Revert({ noteId, originalParent, originalNext, sibling, userId }: DetachedNote) {
     try {
       await this.db.note.update({ where: { userId, id: sibling.id }, data: { next: originalNext } });
     } catch (err: any) {

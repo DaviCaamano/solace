@@ -54,7 +54,8 @@ export class NoteMoveService extends ComponentWithLogging {
       this.report('Failed to find note being moved');
     }
 
-    const { sibling, originalNext, originalParent } = await this.dbService.detachNote(note, userId);
+    const detachedNote = await this.dbService.detachNote(note, userId);
+    const { sibling } = detachedNote;
     try {
       switch (position) {
         case MoveNotePosition.aheadOf: {
@@ -73,7 +74,7 @@ export class NoteMoveService extends ComponentWithLogging {
     } catch (err: any) {
       if (sibling) {
         this.error('Move Operation Failed, reverting note\'s previous sibling\'s "next" property', err);
-        await this.dbService.detachNote_Revert(note.id, sibling, originalNext, originalParent, userId);
+        await this.dbService.detachNote_Revert(detachedNote);
       } else {
         this.error('Move Operation Failed', err);
       }

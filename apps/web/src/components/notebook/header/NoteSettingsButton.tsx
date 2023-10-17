@@ -11,7 +11,7 @@ interface NoteSettingsButtonProps {
   selectedNote: TreeNote | undefined;
 }
 export const NoteSettingsButton = ({
-  deleteNoteHandler: { setMarkDelete },
+  deleteNoteHandler: { setMarkedForDeletion },
   selectedNote,
   show,
 }: NoteSettingsButtonProps) => {
@@ -20,7 +20,7 @@ export const NoteSettingsButton = ({
   const logoutButton: PopUpMenuItem = {
     onClick: () => {
       if (selectedNote) {
-        setMarkDelete(selectedNote);
+        setMarkedForDeletion(selectedNote);
       }
     },
     component: (
