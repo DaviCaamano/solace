@@ -22,14 +22,14 @@ export const HeaderBackButton = ({ noteList, show, selectedNote, setEditor }: Ba
           content: undefined,
           title: undefined,
           stale: false,
-          viewMode: EditorViewMode.preview,
+          viewMode: EditorViewMode.notebook,
         });
       }
       /** Not Root Note, so find the parent of the currently selected note and select it instead */
       const newParent = getFocusedNote(selectedNote?.parentId, noteList).focused;
       if (newParent) {
         const { id, content, title } = newParent;
-        setEditor({ id, content, title, stale: false, viewMode: EditorViewMode.preview });
+        setEditor({ id, content, title, stale: false, viewMode: EditorViewMode.notebook });
       }
     }
   };

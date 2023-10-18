@@ -8,7 +8,6 @@ import {
   UnsafeCreateNoteDto,
 } from '#interfaces/notes';
 import { MutableRefObject, useEffect, useRef, useState } from 'react';
-import { ContentWindow } from '@interface/Landing';
 import { CreateNoteDto } from '~note/dto/note.dto';
 import { UseDraggableState, useDraggableState } from '@components/notebook/hooks/useDraggableRow';
 import { useAddNoteMutation, useMoveNoteMutation } from '@context/redux/api/notes/notes.slice';
@@ -19,7 +18,6 @@ import { SerializedError } from '@reduxjs/toolkit';
 import { getFocusedNote } from '@components/notebook/utils';
 
 type MovedNoteResponse = { data: Note } | { error: FetchBaseQueryError | SerializedError };
-type OpenEditorCallback = (editor: Editor) => void;
 export type MoveRowCallback = (
   note: Note | undefined,
   targetId: string | undefined,
@@ -27,13 +25,11 @@ export type MoveRowCallback = (
 ) => void;
 /** Detects the creation of a new note and moves the user to the editor to edit that note */
 export const useNotebook = (
-  window: ContentWindow,
   noteList: TreeNote[] | undefined,
-  setWindow: Setter<ContentWindow>,
   setEditor: (editor: Partial<Editor>) => void,
   reset: () => void,
   userId?: string,
-): [AddNoteHandlers, DeleteNoteHandler, OpenEditorCallback, UseDraggableState, MoveRowCallback] => {
+): [AddNoteHandlers, DeleteNoteHandler, UseDraggableState, MoveRowCallback] => {
   const [addNote] = useAddNoteMutation();
   const [moveNoteTrigger] = useMoveNoteMutation();
 
@@ -59,7 +55,7 @@ export const useNotebook = (
               content: parent.content,
               title: parent.title,
               stale: false,
-              viewMode: EditorViewMode.preview,
+              viewMode: EditorViewMode.notebook,
             });
           } else {
             reset();
@@ -113,7 +109,7 @@ export const useNotebook = (
               content: target.content,
               title: target.title,
               stale: false,
-              viewMode: EditorViewMode.preview,
+              viewMode: EditorViewMode.notebook,
             });
           }
         }
@@ -128,9 +124,8 @@ export const useNotebook = (
       noteAdded,
       setNoteAdded,
       setEditor,
-      setWindow,
     });
-  }, [noteAdded, noteList, setWindow, setEditor]);
+  }, [noteAdded, noteList, setEditor]);
 
   const addNoteCallback = (newNote: UnsafeCreateNoteDto) => {
     if (newNote?.userId) {
@@ -145,17 +140,8 @@ export const useNotebook = (
     setMarkedForDeletion,
   };
 
-  const openEditor = ({ content, id, stale, title, viewMode }: Editor) => {
-    setEditor({ content: content || '', title, id, stale });
-    if (viewMode === EditorViewMode.editor && window !== ContentWindow.editor) {
-      setWindow(ContentWindow.editor);
-    } else if (viewMode === EditorViewMode.preview && window !== ContentWindow.notebook) {
-      setWindow(ContentWindow.notebook);
-    }
-  };
-
   const addNoteToggle: AddNoteHandlers = { addNote: addNoteCallback, newNoteToggle, setNewNoteToggle };
-  return [addNoteToggle, deleteNoteHandler, openEditor, dragHandlers, moveNote];
+  return [addNoteToggle, deleteNoteHandler, dragHandlers, moveNote];
 };
 
 /**
@@ -179,7 +165,6 @@ interface HandleNewNoteArgs {
   noteAdded: boolean;
   setNoteAdded: Setter<boolean>;
   setEditor: (editor: Partial<Editor>) => void;
-  setWindow: Setter<ContentWindow>;
 }
 
 /**
@@ -194,7 +179,7 @@ interface HandleNewNoteArgs {
  * @param setEditor
  * @param setWindow
  */
-const handleNewNote = ({ noteList, stickyList, noteAdded, setNoteAdded, setEditor, setWindow }: HandleNewNoteArgs) => {
+const handleNewNote = ({ noteList, stickyList, noteAdded, setNoteAdded, setEditor }: HandleNewNoteArgs) => {
   if (noteList?.length !== stickyList.current?.length) {
     const stickyNotes = stickyList.current;
     if (noteAdded && noteList && stickyNotes) {
@@ -202,8 +187,7 @@ const handleNewNote = ({ noteList, stickyList, noteAdded, setNoteAdded, setEdito
       setNoteAdded(false);
       stickyList.current = noteList;
       if (newNote) {
-        setEditor({ title: newNote.title, content: '', id: newNote.id, stale: false });
-        setWindow(ContentWindow.editor);
+        setEditor({ title: newNote.title, content: '', id: newNote.id, stale: false, viewMode: EditorViewMode.editor });
       }
     } else {
       stickyList.current = noteList;

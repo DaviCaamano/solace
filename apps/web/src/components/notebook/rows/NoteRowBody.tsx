@@ -1,15 +1,12 @@
 import { MoveNotePosition, TreeNote, UseDraggableHandler } from '#interfaces/notes';
 import styles from '@components/notebook/notebook.module.scss';
 import { RowMoveZone } from '@components/notebook/move-row-zone/RowMoveZone';
-import { Editor } from '@interface/editor';
 import { NoteRowTitle } from './NoteRowTitle';
 
-type OpenEditor = (editor: Editor) => void;
 interface RowProps {
   dragState: UseDraggableHandler;
   containerName: string;
   note: TreeNote;
-  openEditor: OpenEditor;
 }
 export const NoteRowBody = ({ dragState, containerName, note }: RowProps) => {
   const {
@@ -37,7 +34,7 @@ export const NoteRowBody = ({ dragState, containerName, note }: RowProps) => {
           position={MoveNotePosition.childOf}
         />
 
-        <NoteRowTitle dragState={dragState} containerName={containerName} title={note.title} />
+        <NoteRowTitle dragState={dragState} containerName={containerName} note={note} title={note.title} />
       </div>
     </div>
   );

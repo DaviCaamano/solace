@@ -2,12 +2,8 @@ import { useTipTap } from '@hooks/lib/tiptap';
 import { EditorMenu } from '@components/editor/EditorMenu';
 import { WordCount } from '@components/editor/menu/WordCount';
 import { TextEditor } from './menu';
-import { ContentWindow } from '@interface/Landing';
 
-interface EditorProps {
-  setWindow: Setter<ContentWindow>;
-}
-export const Editor = ({ setWindow }: EditorProps) => {
+export const Editor = () => {
   const [editor, characterLimit] = useTipTap();
 
   if (!editor) {
@@ -16,7 +12,7 @@ export const Editor = ({ setWindow }: EditorProps) => {
   return (
     <div className={'editor flex flex-col-reverse mx-auto max-w-[50rem]'} style={{ width: 'calc(100% - 2rem)' }}>
       <WordCount editor={editor} characterLimit={characterLimit} />
-      <TextEditor editor={editor} setWindow={setWindow} />
+      <TextEditor editor={editor} />
       <EditorMenu editor={editor} />
     </div>
   );

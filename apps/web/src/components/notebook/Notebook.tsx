@@ -1,4 +1,3 @@
-import { ContentWindow } from '@interface/Landing';
 import styles from './notebook.module.scss';
 import { AddNoteRow, FocusRow, NoteList } from '@components/notebook/rows';
 import { useEditor, useListNotes } from '@hooks/context';
@@ -10,22 +9,10 @@ import { DeleteNoteModal } from '@components/notebook/modal';
 import { MoveNotePosition } from '#interfaces/notes';
 import { NotebookHeader } from './header';
 
-interface NotebookProps {
-  window: ContentWindow;
-  setWindow: Setter<ContentWindow>;
-}
-
-export const Notebook = ({ window, setWindow }: NotebookProps) => {
+export const Notebook = () => {
   const { editor, reset, setEditor, user } = useEditor();
   const { isLoading, isError, error, data: noteList } = useListNotes(user);
-  const [addNoteHandlers, deleteNoteHandler, openEditor, dragEvents, moveNote] = useNotebook(
-    window,
-    noteList,
-    setWindow,
-    setEditor,
-    reset,
-    user?.id,
-  );
+  const [addNoteHandlers, deleteNoteHandler, dragEvents, moveNote] = useNotebook(noteList, setEditor, reset, user?.id);
 
   const addNoteOnClick = (title: string) => addNoteHandlers.addNote({ userId: user?.id, title });
   const noteHeiarchy = useMemo(() => noteList && getFocusedNote(editor.id, noteList), [editor.id, noteList]);
@@ -42,15 +29,8 @@ export const Notebook = ({ window, setWindow }: NotebookProps) => {
         list={noteHeiarchy.list}
         position={MoveNotePosition.lastChildOf}
       />
-      <NoteList
-        addNoteHandlers={addNoteHandlers}
-        dragHandlers={dragEvents}
-        moveNote={moveNote}
-        noteList={noteHeiarchy.list}
-        openEditor={openEditor}
-        userId={user?.id}
-      />
-      <FocusRow editor={editor} setWindow={setWindow} rowDragged={dragEvents[0].rowDragged} />
+      <NoteList dragHandlers={dragEvents} moveNote={moveNote} noteList={noteHeiarchy.list} />
+      <FocusRow editor={editor} setEditor={setEditor} rowDragged={dragEvents[0].rowDragged} />
       <NotebookHeader
         deleteNoteHandler={deleteNoteHandler}
         dragEvents={dragEvents}

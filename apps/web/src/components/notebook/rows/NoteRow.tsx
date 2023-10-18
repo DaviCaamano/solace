@@ -1,60 +1,36 @@
 import React, { PropsWithChildren } from 'react';
-import { TreeNote, AddNoteHandlers } from '#interfaces/notes';
-import { AddChildRow } from './AddChildRow';
+import { TreeNote } from '#interfaces/notes';
 
-import { Editor, EditorViewMode } from '@interface/editor';
+import { EditorViewMode } from '@interface/editor';
 import { DragRowWrapper } from './DragRowWrapper';
 import { NoteRowBody } from './NoteRowBody';
 import { MoveRowCallback, useDraggable, UseDraggableState } from '@components/notebook/hooks';
+import { RowCaret } from '@components/notebook/rows/RowCaret';
+import { useEditor } from '@hooks/context';
 
-type OpenEditor = (editor: Editor) => void;
 interface NoteRowProps extends PropsWithChildren {
-  addNoteHandlers: AddNoteHandlers;
   dragHandlers: UseDraggableState;
   depth?: number;
   moveNote: MoveRowCallback;
   name: string;
   note: TreeNote;
-  openEditor: OpenEditor;
-  userId: string | undefined;
 }
-export const NoteRow = ({
-  addNoteHandlers: { addNote, newNoteToggle, setNewNoteToggle },
-  children,
-  dragHandlers,
-  moveNote,
-  name,
-  note,
-  openEditor,
-  userId,
-}: NoteRowProps) => {
+export const NoteRow = ({ children, dragHandlers, moveNote, name, note }: NoteRowProps) => {
+  const { setEditor } = useEditor();
+
   const sendNoteToPreview = () =>
-    openEditor({
-      title: note.title,
-      content: note.content,
+    setEditor({
       id: note.id,
+      content: note.content,
+      title: note.title,
       stale: false,
-      viewMode: EditorViewMode.preview,
+      viewMode: EditorViewMode.notebook,
     });
   const dragState = useDraggable(dragHandlers, note, moveNote, sendNoteToPreview);
   const { ref, handlers, isDragged, y } = dragState;
-  const createToggle = newNoteToggle === note.id;
-  const setCreateToggle = (flag: boolean) => {
-    setNewNoteToggle(flag ? note.id : undefined);
-  };
-
-  const addChildSubmit = (title: string) => {
-    if (userId) {
-      addNote({
-        userId,
-        title,
-        parentId: note.id,
-      });
-    }
-  };
 
   return (
-    <div key={`note-row-${note.id}`} className={'note-row-container w-full'}>
+    <div key={`note-row-${note.id}`} className={'note-row-container relative w-full'}>
       <DragRowWrapper
         containerName={`note-row-backdrop ${name}`}
         dragRef={ref}
@@ -62,10 +38,10 @@ export const NoteRow = ({
         handlers={handlers.drag}
         yOffset={y}
       >
-        <NoteRowBody dragState={dragState} containerName={name} note={note} openEditor={openEditor} />
-        <AddChildRow onSubmit={addChildSubmit} setCreateToggle={setCreateToggle} createToggle={createToggle} />
+        <NoteRowBody dragState={dragState} containerName={name} note={note} />
         {children}
       </DragRowWrapper>
+      <RowCaret note={note} rowDragged={dragState.state.rowDragged} />
     </div>
   );
 };

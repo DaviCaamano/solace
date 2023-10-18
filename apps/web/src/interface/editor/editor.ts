@@ -7,7 +7,7 @@ export interface Editor {
 }
 
 export enum EditorViewMode {
-  preview = 'preview',
+  notebook = 'notebook',
   editor = 'editor',
 }
 export enum ColorBoard {

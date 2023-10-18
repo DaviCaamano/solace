@@ -5,17 +5,14 @@ import { CSSProperties, useCallback } from 'react';
 import { colors } from '@styles/tailwind';
 import styles from '../../menu/buttons/editor-buttons.module.scss';
 import NotebookIcon from '@images/icons/notebook.svg';
-import { ContentWindow } from '@interface/Landing';
 import { LocalStorage } from '@interface/cookie';
 import add from 'date-fns/add';
 import { useRouter } from 'next/router';
+import { EditorViewMode } from '@interface/editor';
 
-interface NotebookButtonProps {
-  setWindow: Setter<ContentWindow>;
-}
-export const NotebookButton = ({ setWindow }: NotebookButtonProps) => {
+export const NotebookButton = () => {
   const router = useRouter();
-  const { editor, reset, user } = useEditor();
+  const { editor, reset, setEditor, user } = useEditor();
   const [save] = useUpdateNoteMutation();
 
   /**
@@ -30,10 +27,10 @@ export const NotebookButton = ({ setWindow }: NotebookButtonProps) => {
     } else if (editor.id) {
       save({ id: editor.id, title: editor.title, content: editor.content, userId: user.id }).then(() => {
         reset();
-        setWindow(ContentWindow.notebook);
+        setEditor({ viewMode: EditorViewMode.notebook });
       });
     }
-  }, [editor.content, editor.id, editor.title, reset, router, save, setWindow, user?.id]);
+  }, [editor.content, editor.id, editor.title, reset, router, save, user?.id]);
 
   return (
     <Tooltip name={'notebook-button-tooltip'} content={<ToolTipContent loggedIn={!!user?.id} />} {...tooltipStyle}>

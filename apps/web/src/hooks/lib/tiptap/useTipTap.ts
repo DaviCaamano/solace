@@ -31,7 +31,7 @@ Color.configure({
 
 const characterLimit = 10000;
 export const useTipTap = (viewMode: EditorViewMode = EditorViewMode.editor): [TipTapEditor | null, number] => {
-  const isPreview = viewMode === EditorViewMode.preview;
+  const isPreview = viewMode === EditorViewMode.notebook;
 
   const {
     editor: { id: noteId, content },

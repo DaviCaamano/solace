@@ -2,16 +2,12 @@ import { useEditor } from '@hooks/context';
 import { useUpdateNoteMutation } from '@context/redux/api/notes/notes.slice';
 import styles from '@hooks/lib/tiptap/tip-tap.module.scss';
 import { FocusEventHandler } from 'react';
-import { ContentWindow } from '@interface/Landing';
 import { NotebookButton, SaveButton } from '@components/editor/header/buttons';
 import { User } from '#interfaces/user';
 import { Editor } from '@interface/editor';
 import { UpdateNoteDto } from '~note/dto/note.dto';
 
-interface EditorHeaderProps {
-  setWindow: Setter<ContentWindow>;
-}
-export const EditorHeader = ({ setWindow }: EditorHeaderProps) => {
+export const EditorHeader = () => {
   const { editor, setTitle, user } = useEditor();
   const [save] = useUpdateNoteMutation();
 
@@ -27,7 +23,7 @@ export const EditorHeader = ({ setWindow }: EditorHeaderProps) => {
       >
         {user ? editor?.title : ''}
       </div>
-      <NotebookButton setWindow={setWindow} />
+      <NotebookButton />
       <SaveButton />
     </div>
   );

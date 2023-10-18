@@ -2,22 +2,21 @@ import { useTipTap } from '@hooks/lib';
 import { EditorContent } from '@tiptap/react';
 import { Editor, EditorViewMode } from '@interface/editor';
 import styles from '../notebook.module.scss';
-import { ContentWindow } from '@interface/Landing';
 import { CaretRight } from 'phosphor-react';
 import { colors } from '@styles/tailwind';
 import { TreeNote } from '#interfaces/notes';
 
 interface FocusRowProps {
   editor: Editor;
-  setWindow: Setter<ContentWindow>;
+  setEditor: (editor: Partial<Editor>) => void;
   rowDragged: TreeNote | undefined;
 }
-export const FocusRow = ({ editor: { title, viewMode }, rowDragged, setWindow }: FocusRowProps) => {
-  if (!title || viewMode !== EditorViewMode.preview) {
+export const FocusRow = ({ editor: { title, viewMode }, rowDragged, setEditor }: FocusRowProps) => {
+  if (!title || viewMode !== EditorViewMode.notebook) {
     return null;
   }
   return (
-    <div className={`focus-row ${styles.focusRow}`} onClick={() => setWindow(ContentWindow.editor)}>
+    <div className={`focus-row ${styles.focusRow}`} onClick={() => setEditor({ viewMode: EditorViewMode.editor })}>
       <NotePreview />
       <div className={`focus-row-title-box ${styles.focusRowTitleBox}`}>
         <div className={`focus-row-title ${styles.focusRowTitle}`}>{title}</div>
@@ -28,7 +27,7 @@ export const FocusRow = ({ editor: { title, viewMode }, rowDragged, setWindow }:
 };
 
 const NotePreview = () => {
-  const [tipTapEditor] = useTipTap(EditorViewMode.preview);
+  const [tipTapEditor] = useTipTap(EditorViewMode.notebook);
 
   return (
     <div className={`note-preview ${styles.preview}`}>

@@ -1,19 +1,19 @@
-import { MoveNotePosition, UseDraggableHandler } from '#interfaces/notes';
+import { MoveNotePosition, TreeNote, UseDraggableHandler } from '#interfaces/notes';
 import styles from '@components/notebook/notebook.module.scss';
 import DragIndicatorIcon from '@mui/icons-material/DragIndicator';
 
-import { CaretRight } from 'phosphor-react';
 import { capitalize } from '#utils/string';
-import { colors } from '@styles/tailwind';
 import { RowZoneIcon } from './RowZoneIcon';
 import { CSSProperties } from 'react';
+import { RowCaret } from '@components/notebook/rows/RowCaret';
 
 interface NoteRowTitleProps {
   dragState: UseDraggableHandler;
+  note: TreeNote;
   containerName: string;
   title: string | undefined;
 }
-export const NoteRowTitle = ({ dragState, containerName, title }: NoteRowTitleProps) => {
+export const NoteRowTitle = ({ dragState, containerName, note, title }: NoteRowTitleProps) => {
   const {
     state: { hoveredOver, rowDragged },
   } = dragState;
@@ -37,7 +37,6 @@ export const NoteRowTitle = ({ dragState, containerName, title }: NoteRowTitlePr
           <Title dragState={dragState} title={title} />
           <PositionPreview dragState={dragState} />
           <div className={'flex-1'} />
-          {!rowDragged && <CaretRight size={32} color={colors.tan} weight='bold' />}
         </div>
       </div>
     </div>
@@ -83,7 +82,9 @@ const Title = ({
   }
   return (
     <div
-      className={'row-title-text relative text-[1rem] sm:text-[1.5rem] md:text-[1.5rem] transition-all overflow-ellipsis'}
+      className={
+        'row-title-text relative text-[1rem] sm:text-[1.5rem] md:text-[1.5rem] transition-all overflow-ellipsis'
+      }
       style={{ ...shift, width: 'calc(100% - 2rem)', textOverflow: 'ellipsis', overflow: 'hidden' }}
     >
       {capitalize(title || 'Untitled')}

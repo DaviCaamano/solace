@@ -5,7 +5,7 @@ const initialState: Editor = {
   content: '',
   title: '',
   stale: true,
-  viewMode: EditorViewMode.preview,
+  viewMode: EditorViewMode.notebook,
 };
 
 export const editorSlice = createSlice({
@@ -14,6 +14,7 @@ export const editorSlice = createSlice({
   reducers: {
     setEditor: (state: Editor, action: PayloadAction<Partial<Editor>>) => {
       const newState = action.payload;
+      console.log('~~~~~~~~~', newState.viewMode);
 
       if (newState.hasOwnProperty('id')) {
         state.id = newState.id;
@@ -27,7 +28,7 @@ export const editorSlice = createSlice({
       if (newState.hasOwnProperty('stale')) {
         state.stale = newState.stale;
       }
-      if (newState.hasOwnProperty('stale') && newState.viewMode) {
+      if (newState.hasOwnProperty('viewMode') && newState.viewMode) {
         state.viewMode = newState.viewMode;
       }
     },

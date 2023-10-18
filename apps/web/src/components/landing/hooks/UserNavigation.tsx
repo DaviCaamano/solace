@@ -1,16 +1,15 @@
-import { ContentWindow } from '@interface/Landing';
 import { useLogin } from '@hooks/user';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import { LocalStorage } from '@interface/cookie';
 import { useAddNoteMutation } from '@context/redux/api/notes/notes.slice';
 import { useEditor } from '@hooks/context';
 import { Note } from '#interfaces/notes';
+import { EditorViewMode } from '@interface/editor';
 
 /** Handle Navigation Logic for Landing Page */
-export const useUserNavigation = (): [ContentWindow, Setter<ContentWindow>] => {
-  const [window, setWindow] = useState<ContentWindow>(ContentWindow.notebook);
+export const useUserNavigation = (): EditorViewMode => {
   const [addNote] = useAddNoteMutation();
-  const { setEditor } = useEditor();
+  const { setEditor, editor } = useEditor();
   const { isLoading, isLoggedOut, user } = useLogin();
 
   const stickyLoggedStatus = useRef<boolean | undefined>(undefined);
@@ -20,7 +19,7 @@ export const useUserNavigation = (): [ContentWindow, Setter<ContentWindow>] => {
     if (!isLoading && stickyLoggedStatus.current !== isLoggedOut) {
       stickyLoggedStatus.current = isLoggedOut;
       if (isLoggedOut) {
-        setWindow(ContentWindow.editor);
+        setEditor({ viewMode: EditorViewMode.editor });
       } else {
         /** Editor Content we store in Local Storage for logged-out users to resume editing upon logging in. */
         const locallyStoredContent = localStorage.getItem(LocalStorage.editorContent);
@@ -40,20 +39,20 @@ export const useUserNavigation = (): [ContentWindow, Setter<ContentWindow>] => {
               if (newNote) {
                 localStorage.clear();
                 setEditor({ id: newNote.id, title: newNote.title, content: newNote.content, stale: false });
-                setWindow(ContentWindow.editor);
+                setEditor({ viewMode: EditorViewMode.editor });
               } else {
-                setWindow(ContentWindow.notebook);
+                setEditor({ viewMode: EditorViewMode.notebook });
               }
             },
           );
 
           /** Typical login, user has not used the editor before logging in */
         } else {
-          setWindow(ContentWindow.notebook);
+          setEditor({ viewMode: EditorViewMode.notebook });
         }
       }
     }
   }, [addNote, isLoading, isLoggedOut, setEditor, user?.id]);
 
-  return [window, setWindow];
+  return editor.viewMode;
 };
