@@ -24,6 +24,7 @@ interface EditorMenuButtonProps {
   editor: TipTapEditor;
 }
 interface LinkButtonProps extends EditorMenuButtonProps {
+  isMobile?: boolean;
   setLink: Setter<string>;
   setOpen: Setter<boolean>;
 }
@@ -58,11 +59,11 @@ export const LinkButtonContainer = ({ editor, setLink, setOpen }: LinkButtonProp
   );
 };
 
-export const LinkButton = ({ editor, setLink, setOpen }: LinkButtonProps) => {
+export const LinkButton = ({ editor, isMobile, setLink, setOpen }: LinkButtonProps) => {
   return (
     <div
       id={'link-button-container'}
-      className={'font-medium absolute bottom-0 left-0 h-8 w-8 bg-brown p-0 rounded-md'}
+      className={`font-medium ${!isMobile ? 'absolute bottom-0 left-0' : 'xs:mr-1'} h-8 w-8 bg-brown p-0 rounded-md`}
     >
       <EditorMenuButton
         id={'editor-link-button'}

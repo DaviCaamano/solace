@@ -18,11 +18,11 @@ export const Header = () => {
       >
         <Image
           key={'header-image'}
-          src={'/images/shared/solace3.webp'}
+          src={'/images/shared/solace-face.webp'}
           alt={'Solace, your AI companion'}
           width={48}
           height={48}
-          style={{ transform: 'scaleX(-1)', position: 'relative', bottom: 5 }}
+          style={{ position: 'relative', bottom: 5 }}
           onMouseEnter={() => setSolaceTooltip(true)}
           onMouseLeave={() => setSolaceTooltip(false)}
           onClick={() => setSolaceTooltip(!solaceTooltip)}

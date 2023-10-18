@@ -35,11 +35,8 @@ const NotePreview = () => {
       <div className={'w-full h-full rounded-2xl bg-mug '}>
         <div className={`editor-preview-screen ${styles.previewEditor}`}>
           <EditorStyle />
-          <EditorContent
-            editor={tipTapEditor}
-            data-testid={'text-editor'}
-            className={editorClassNames}
-          />
+          <EditorContent editor={tipTapEditor} data-testid={'text-editor'} className={editorClassNames} />
+          <PreviewBlur />
         </div>
       </div>
     </div>
@@ -47,9 +44,16 @@ const NotePreview = () => {
 };
 
 const EditorStyle = () => <style>{'.ProseMirror-focused { outline: none !important; }'}</style>;
-const editorClassNames = 'note-editor w-full flex-1 bg-mug text-latte'
+const editorClassNames = 'note-editor w-full flex-1 bg-mug text-latte';
 const Caret = ({ rowDragged }: { rowDragged: TreeNote | undefined }) => (
   <div className={`absolute ${rowDragged && 'hidden'}`} style={{ right: 0, bottom: '0', transform: 'translateY(50%)' }}>
     <CaretRight size={32} color={colors.tan} weight='bold' />
   </div>
+);
+
+const PreviewBlur = () => (
+  <div
+    className={'preview-blur absolute pointer-events-none cursor-pointer h-full w-full'}
+    style={{ background: `linear-gradient(transparent, 75%, ${colors.chalkboard})` }}
+  />
 );

@@ -20,7 +20,9 @@ interface LinkButtonMouseover {
 interface EditorMenuButtonProps {
   editor: TipTapEditor;
 }
-
+interface EditorMenuScriptButtonProps extends EditorMenuButtonProps {
+  isMobile?: boolean;
+}
 export const ScriptButtonContainer = ({ editor }: EditorMenuButtonProps) => {
   const [mousedOver, setMousedOver] = useState<boolean>(false);
 
@@ -52,11 +54,11 @@ export const ScriptButtonContainer = ({ editor }: EditorMenuButtonProps) => {
   );
 };
 
-export const SubScriptButton = ({ editor }: EditorMenuButtonProps) => {
+export const SubScriptButton = ({ editor, isMobile }: EditorMenuScriptButtonProps) => {
   return (
     <div
       id={'clear-link-button-container'}
-      className={'font-medium absolute bottom-0 left-0 h-8 w-8 bg-brown p-0 rounded-md'}
+      className={`font-medium ${!isMobile ? 'absolute bottom-0 left-0': 'ml-1'} h-8 w-8 bg-brown p-0 rounded-md`}
     >
       <EditorMenuButton
         id={'editor-subscript-button'}

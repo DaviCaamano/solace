@@ -54,11 +54,14 @@ export const ListButtonContainer = ({ editor }: EditorMenuButtonProps) => {
   );
 };
 
-export const BulletButton = ({ editor }: EditorMenuButtonProps) => {
+interface EditorMenuBulletButtonProps extends EditorMenuButtonProps {
+  isMobile?: boolean;
+}
+export const BulletButton = ({ editor, isMobile }: EditorMenuBulletButtonProps) => {
   return (
     <div
       id={'bullet-button-container'}
-      className={'font-medium absolute bottom-0 left-0 h-8 w-8 bg-brown p-0 rounded-md'}
+      className={`font-medium ${!isMobile ? 'absolute bottom-0 left-0' : 'ml-1'} h-8 w-8 bg-brown p-0 rounded-md`}
     >
       <EditorMenuButton
         id={'bullet-list-button'}

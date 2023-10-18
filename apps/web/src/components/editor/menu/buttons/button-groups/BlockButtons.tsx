@@ -46,8 +46,8 @@ export const BlockButtonContainer = ({ editor }: EditorMenuButtonProps) => {
         {...events}
       >
         <div className={'relative w-full h-full rounded-md'}>
-          <CodeBlockButton editor={editor} />
           <BlockQuoteButton editor={editor} />
+          <CodeBlockButton editor={editor} />
         </div>
       </MotionDiv>
     </div>
@@ -56,10 +56,7 @@ export const BlockButtonContainer = ({ editor }: EditorMenuButtonProps) => {
 
 export const BlockQuoteButton = ({ editor }: EditorMenuButtonProps) => {
   return (
-    <div
-      id={'clear-link-button-container'}
-      className={'font-medium absolute bottom-0 left-0 h-8 w-8 bg-brown p-0 rounded-md'}
-    >
+    <div id={'clear-link-button-container'} className={'font-medium relative h-8 w-8 bg-brown p-0 rounded-md'}>
       <EditorMenuButton
         id={'editor-block-quote-button'}
         active={editor.isActive('blockquote')}
@@ -72,9 +69,15 @@ export const BlockQuoteButton = ({ editor }: EditorMenuButtonProps) => {
   );
 };
 
-export const CodeBlockButton = ({ editor }: EditorMenuButtonProps) => {
+interface EditorMenuCodeBlockButtonProps extends EditorMenuButtonProps {
+  isMobile?: boolean;
+}
+export const CodeBlockButton = ({ editor, isMobile }: EditorMenuCodeBlockButtonProps) => {
   return (
-    <div id={'code-block-button-container'} className={'font-medium relative h-8 w-8 bg-brown p-0 rounded-md'}>
+    <div
+      id={'code-block-button-container'}
+      className={`font-medium ${!isMobile ? 'absolute bottom-0 left-0' : 'xs:ml-1'} h-8 w-8 bg-brown p-0 rounded-md`}
+    >
       <EditorMenuButton
         id={'code-block-quote-button'}
         active={editor.isActive('codeBlock')}

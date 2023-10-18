@@ -5,9 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2101ad9f-8972-44d3-9c27-f093e4bebdd9" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/apps/web/public/images/promotional/sign-up-promotion.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/web/public/images/shared/solace-face.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/web/src/components/shared/Device/Device.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/web/src/components/shared/Device/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/components/notebook/notebook.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notebook/notebook.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/public/images/background/bg-0-319.webp" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/public/images/background/bg-0-319.webp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/public/images/background/bg-320.webp" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/public/images/background/bg-320.webp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/public/images/shared/solace3.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/editor/EditorMenu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/editor/EditorMenu.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/editor/menu/buttons/button-groups/BlockButtons.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/editor/menu/buttons/button-groups/BlockButtons.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/editor/menu/buttons/button-groups/LinkButtons.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/editor/menu/buttons/button-groups/LinkButtons.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/editor/menu/buttons/button-groups/ListButtons.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/editor/menu/buttons/button-groups/ListButtons.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/editor/menu/buttons/button-groups/ScriptButtons.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/editor/menu/buttons/button-groups/ScriptButtons.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/header/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/header/Header.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/web/src/components/notebook/rows/FocusRow.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notebook/rows/FocusRow.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -190,7 +204,8 @@
       <workItem from="1697199928894" duration="16002000" />
       <workItem from="1697221178309" duration="18235000" />
       <workItem from="1697254320117" duration="62724000" />
-      <workItem from="1697551425226" duration="26977000" />
+      <workItem from="1697551425226" duration="27308000" />
+      <workItem from="1697616879802" duration="13579000" />
     </task>
     <servers />
   </component>
