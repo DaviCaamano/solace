@@ -6,11 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="2101ad9f-8972-44d3-9c27-f093e4bebdd9" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/components/editor/Editor.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/editor/Editor.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/components/editor/EditorMenu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/editor/EditorMenu.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/components/editor/menu/TextEditor.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/editor/menu/TextEditor.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/components/notebook/Notebook.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notebook/Notebook.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/web/src/components/notebook/notebook.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notebook/notebook.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/notebook/rows/FocusRow.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notebook/rows/FocusRow.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -193,7 +190,7 @@
       <workItem from="1697199928894" duration="16002000" />
       <workItem from="1697221178309" duration="18235000" />
       <workItem from="1697254320117" duration="62724000" />
-      <workItem from="1697551425226" duration="26329000" />
+      <workItem from="1697551425226" duration="26977000" />
     </task>
     <servers />
   </component>

@@ -143,11 +143,15 @@
   @apply relative w-full h-[9.25rem] border-y-[2px] border-tan overflow-hidden opacity-50 flex flex-col-reverse;
 }
 
-.focusRowTitle {
+.focusRowTitleBox {
   @apply relative flex justify-center items-center
-  h-[4rem] w-full text-[2rem] text-latte font-semibold text-center cursor-pointer;
+  h-[4rem] w-full text-latte font-semibold text-center cursor-pointer;
 }
 
+.focusRowTitle {
+  @apply w-full overflow-hidden overflow-ellipsis whitespace-nowrap mx-16
+  text-[1.25rem] xs:text-[1.5rem] sm:text-[1.75rem] md:text-[2rem];
+}
 .preview {
   @apply flex flex-col h-[5.25rem] md:flex-row justify-center items-center;
 }

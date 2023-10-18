@@ -19,8 +19,9 @@ export const FocusRow = ({ editor: { title, viewMode }, rowDragged, setWindow }:
   return (
     <div className={`focus-row ${styles.focusRow}`} onClick={() => setWindow(ContentWindow.editor)}>
       <NotePreview />
-      <div className={`focus-row-title ${styles.focusRowTitle}`}>
-        {title} <Caret rowDragged={rowDragged} />
+      <div className={`focus-row-title-box ${styles.focusRowTitleBox}`}>
+        <div className={`focus-row-title ${styles.focusRowTitle}`}>{title}</div>
+        <Caret rowDragged={rowDragged} />
       </div>
     </div>
   );
@@ -37,7 +38,7 @@ const NotePreview = () => {
           <EditorContent
             editor={tipTapEditor}
             data-testid={'text-editor'}
-            className={'note-editor w-full flex-1 bg-mug text-latte '}
+            className={editorClassNames}
           />
         </div>
       </div>
@@ -46,7 +47,7 @@ const NotePreview = () => {
 };
 
 const EditorStyle = () => <style>{'.ProseMirror-focused { outline: none !important; }'}</style>;
-
+const editorClassNames = 'note-editor w-full flex-1 bg-mug text-latte'
 const Caret = ({ rowDragged }: { rowDragged: TreeNote | undefined }) => (
   <div className={`absolute ${rowDragged && 'hidden'}`} style={{ right: 0, bottom: '0', transform: 'translateY(50%)' }}>
     <CaretRight size={32} color={colors.tan} weight='bold' />
