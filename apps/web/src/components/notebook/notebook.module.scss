@@ -70,12 +70,13 @@
 
 .noteBook {
   @apply flex flex-col-reverse justify-end
-  w-full h-[80vh] sm:mx-auto
-  lg:w-[40rem] lg:h-[50rem]
-  relative overflow-hidden
-  bg-chalkboard
-  md:rounded-2xl border-latte border-[2px];
-  z-index: -5;
+    lg:w-[40rem]
+    w-full lg:min-h-[31.25rem]
+    sm:mx-auto
+    pb-[3.125rem]
+    relative overflow-hidden
+    bg-chalkboard
+    md:rounded-2xl border-latte border-[2px];
 }
 
 .noteRow {

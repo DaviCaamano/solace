@@ -1,26 +1,59 @@
 import { LoginLink } from './LoginLink';
 import { UserMenu } from './UserMenu';
-import { ReactNode } from 'react';
 import { useLogin } from '@hooks/user';
+import Image from 'next/image';
+import { Tooltip } from '@components/shared';
+import { useState } from 'react';
 
 export const Header = () => {
   const { isLoading, isLoggedOut, error } = useLogin();
-
+  const [solaceTooltip, setSolaceTooltip] = useState<boolean>(false);
   return (
-    <HeaderBar>
-      <UserMenu loggedIn={!isLoading && !isLoggedOut} />
-      <ErrorMessage error={error} />
-      <LoginLink show={!isLoading && isLoggedOut} />
-    </HeaderBar>
+    <div id={'header'} className={'w-full h-20 flex flex-row items-center justify-between pt-4 px-12'}>
+      <Tooltip
+        content={<SolaceTooltip />}
+        tooltip={{ style: { left: -24, transform: 'unset' } }}
+        open={solaceTooltip}
+        setOpen={setSolaceTooltip}
+      >
+        <Image
+          key={'header-image'}
+          src={'/images/shared/solace3.webp'}
+          alt={'Solace, your AI companion'}
+          width={48}
+          height={48}
+          style={{ transform: 'scaleX(-1)', position: 'relative', bottom: 5 }}
+          onMouseEnter={() => setSolaceTooltip(true)}
+          onMouseLeave={() => setSolaceTooltip(false)}
+          onClick={() => setSolaceTooltip(!solaceTooltip)}
+        />
+      </Tooltip>
+      <div className={'flex flex-col h-full'}>
+        <UserMenu loggedIn={!isLoading && !isLoggedOut} />
+        <ErrorMessage error={error} />
+        <LoginLink show={!isLoading && isLoggedOut} />
+      </div>
+    </div>
   );
 };
 
-const HeaderBar = ({ children, className }: { children?: ReactNode; className?: string }) => (
-  <div id={'header'} className={'w-full h-20 flex flex-col items-end justify-start pt-4 pr-12 ' + className}>
-    {children}
-  </div>
-);
-
 const ErrorMessage = ({ error }: { error?: string }) => (
   <span className={`absolute right-5 fade_7 ${!error && 'fadeOut pointer-events-none'}`}>{error}</span>
+);
+
+const SolaceTooltip = () => (
+  <div>
+    <div className={'text-[0.75rem] xs:text-[0.8rem] sm:text-[0.9rem]'}>
+      Your Assistant <span className={'text-tan-light font-semibold'}>Solace</span> will help you
+      <br /> fill in the gaps in your work.
+      <br /> From paragraphs to pages,
+      <br /> Starships to villainous dragons...
+      <br />
+      <br /> Click here and <br className={'block sm:hidden'} />
+      Solace will give you some notes.
+      <br />
+      <br />
+      <span className={'text-pink font-bold'}>THIS FEATURE IS NOT YET AVAILABLE</span>
+    </div>
+  </div>
 );

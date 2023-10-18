@@ -1,5 +1,5 @@
 import '@styles/global.css';
-import { Background } from '@components/global/Background';
+import { Background } from '@components/background';
 
 import type { AppProps } from 'next/app';
 import { droidFont, montserratFont } from '@fonts/index';

@@ -15,27 +15,17 @@ export const ContentSlider = ({ children, open }: SliderProps) => {
   }
   return (
     <MotionDiv
-      className={'absolute'}
+      className={'relative'}
       initial={'hide'}
       animate={open ? 'show' : 'hide'}
       variants={animations}
       transition={{ duration: 0.3 }}
       exit={'hide'}
       style={{
-        right: '50%',
-        top: '50%',
         width: '100%',
-        height: '100%',
       }}
     >
-      <div
-        className={'w-full h-full'}
-        style={{
-          transform: 'translate(50%, -50%)',
-        }}
-      >
-        {children}
-      </div>
+      <div className={'w-full h-full flex justify-center items-center'}>{children}</div>
     </MotionDiv>
   );
 };

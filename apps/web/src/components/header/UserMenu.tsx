@@ -17,7 +17,7 @@ export const UserMenu = ({ loggedIn }: UserMenuProps) => {
   };
 
   return (
-    <div>
+    <div className={'user-menu-container flex items-center'}>
       <PopupMenu open={open} included={iconRef} setOpen={setOpen} items={logoutButton} />
       <UserIcon iconRef={iconRef} loggedIn={loggedIn} setOpen={setOpen} />
     </div>
@@ -31,8 +31,6 @@ interface UserIconProps {
 }
 const UserIcon = ({ iconRef, loggedIn, setOpen }: UserIconProps) => (
   <a onClick={() => setOpen((prev: boolean) => !prev)} ref={iconRef}>
-    <AccountCircleIcon
-      className={`absolute right-5 text-xl text-latte fade_7 cursor-pointer w-12 h-12 ${!loggedIn && 'fadeOut'}`}
-    />
+    <AccountCircleIcon className={`text-xl text-latte fade_7 cursor-pointer w-12 h-12 ${!loggedIn && 'fadeOut'}`} />
   </a>
 );

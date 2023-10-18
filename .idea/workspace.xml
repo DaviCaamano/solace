@@ -5,20 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2101ad9f-8972-44d3-9c27-f093e4bebdd9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/apps/api/src/note/services/note-delete.sevice.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/web/public/images/shared/solace3.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/web/src/components/background/background.module.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/web/src/components/background/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/api/src/note/note.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/note/note.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/api/src/note/note.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/note/note.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/api/src/note/services/note-database.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/note/services/note-database.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/api/src/note/services/note-move.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/note/services/note-move.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/api/src/note/services/note.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/note/services/note.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/components/notebook/Notebook.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notebook/Notebook.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/components/notebook/buttons/RowButtons.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notebook/buttons/RowButtons.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/components/notebook/header/NoteSettingsButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notebook/header/NoteSettingsButton.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/components/notebook/hooks/useNotebook.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notebook/hooks/useNotebook.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/components/notebook/modal/DeleteNoteModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notebook/modal/DeleteNoteModal.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/context/redux/api/notes/endpoints/delete-note.endpoint.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/context/redux/api/notes/endpoints/delete-note.endpoint.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/shared/interfaces/notes/notes.interface.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/shared/interfaces/notes/notes.interface.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/pages/_app.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/pages/_app.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/pages/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/pages/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/public/images/shared/global/bg-0-320.webp" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/public/images/background/bg-0-319.webp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/public/images/shared/global/bg-320-785.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/public/images/shared/global/bg-786.webp" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/public/images/background/bg-320.webp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/global/Background.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/background/Background.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/header/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/header/Header.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/header/UserMenu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/header/UserMenu.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/landing/ContentSlider.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/landing/ContentSlider.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/notebook/notebook.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notebook/notebook.module.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,11 +107,11 @@
       <recent name="C:\Users\davit\Projects\solace\packages\config\mkcert" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\davit\Projects\solace\apps\web\public\images\shared" />
+      <recent name="C:\Users\davit\Projects\solace\apps\web\public\images\icons" />
+      <recent name="C:\Users\davit\Projects\solace\apps\web\public\images" />
       <recent name="C:\Users\davit\Projects\solace\apps\web\src\components\notebook\header" />
       <recent name="C:\Users\davit\Projects\solace\apps\web\public\images\shared\global" />
-      <recent name="C:\Users\davit\Projects\solace\apps\web\src\context\redux" />
-      <recent name="C:\Users\davit\Projects\solace\apps\web\src\components\header" />
-      <recent name="C:\Users\davit\Projects\solace\apps\web\src\components\editor\header\buttons" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -201,7 +201,7 @@
       <workItem from="1697199928894" duration="16002000" />
       <workItem from="1697221178309" duration="18235000" />
       <workItem from="1697254320117" duration="62724000" />
-      <workItem from="1697551425226" duration="10508000" />
+      <workItem from="1697551425226" duration="24095000" />
     </task>
     <servers />
   </component>
