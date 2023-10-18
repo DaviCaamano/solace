@@ -8,8 +8,11 @@ interface EditorProps {
 }
 export const TextEditor = ({ editor: tipTapEditor, setWindow }: EditorProps) => {
   return (
-    <div id={'add-note'} className={'flex flex-col md:flex-row justify-center items-center'}>
-      <div className={`${editorDimensions} rounded-2xl bg-mug w-full h-[100px]`}>
+    <div id={'text-editor'} className={'flex flex-col md:flex-row justify-center items-center'}>
+      <div
+        className={'w-full rounded-2xl bg-mug'}
+        style={{ height: `calc(100vh - ${heightReduction})` }}
+      >
         <div className={'w-full h-full flex flex-col relative rounded-2xl'}>
           <EditorHeader setWindow={setWindow} />
           <EditorStyle />
@@ -23,6 +26,13 @@ export const TextEditor = ({ editor: tipTapEditor, setWindow }: EditorProps) => 
     </div>
   );
 };
-const editorDimensions = 'w-[20rem] h-[20rem] sm:w-[31rem] sm:h-[31rem] lg:w-[46rem] lg:h-[46rem]';
 
 const EditorStyle = () => <style>{'.ProseMirror-focused { outline: none !important; }'}</style>;
+
+
+const headerHeight = 80;
+const footerHeight = 256;
+const wordCountHeight = 64;
+const additionalMargin = 32;
+
+const heightReduction = (headerHeight + footerHeight + wordCountHeight + additionalMargin) / 16 + 'rem';

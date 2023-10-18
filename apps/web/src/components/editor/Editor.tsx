@@ -14,7 +14,7 @@ export const Editor = ({ setWindow }: EditorProps) => {
     return null;
   }
   return (
-    <div className={'flex flex-col-reverse'}>
+    <div className={'editor flex flex-col-reverse mx-auto max-w-[50rem]'} style={{ width: 'calc(100% - 2rem)' }}>
       <WordCount editor={editor} characterLimit={characterLimit} />
       <TextEditor editor={editor} setWindow={setWindow} />
       <EditorMenu editor={editor} />

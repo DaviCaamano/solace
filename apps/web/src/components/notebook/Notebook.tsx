@@ -33,7 +33,7 @@ export const Notebook = ({ window, setWindow }: NotebookProps) => {
   if (!noteHeiarchy || isLoading) return <LoadingMessage />;
   if (isError) return <ErrorMessage error={error} />;
   return (
-    <div id={'note-book'} className={styles.noteBook}>
+    <div id={'note-book'} className={styles.noteBook} style={{ height: `calc(100vh - ${heightReduction})` }}>
       <DeleteNoteModal deleteNoteHandler={deleteNoteHandler} userId={user?.id} />
       <AddNoteRow addNoteHandlers={addNoteHandlers} onClick={addNoteOnClick} hide={!!dragEvents[0].rowDragged} />
       <LastChildZone
@@ -67,3 +67,11 @@ const LoadingMessage = () => <div className={'text-3xl text-latte font-semibold'
 const ErrorMessage = ({ error }: { error: any }) => (
   <div className={'text-3xl text-latte font-semibold'}>{error?.message}</div>
 );
+
+const headerHeight = 80;
+const footerHeight = 256;
+const wordCountHeight = 64;
+const additionalMargin = 32;
+
+const heightReduction = (headerHeight + footerHeight + wordCountHeight + additionalMargin) / 16 + 'rem';
+console.log('heightReduction', heightReduction);

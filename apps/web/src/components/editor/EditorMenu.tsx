@@ -24,7 +24,7 @@ export const EditorMenu = ({ editor }: EditorMenuProps) => {
   const [link, setLink] = useState<string>('');
 
   return (
-    <div id={'editor-menu'} className={'flex flex-row h-8 w-full md:mb-2 relative'}>
+    <div id={'editor-menu'} className={'flex flex-row h-8 w-full mb-2 relative'}>
       <BoldButton editor={editor} />
       <ItalicsButton editor={editor} />
       <UnderlineButton editor={editor} />
