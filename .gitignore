@@ -41,3 +41,6 @@ yarn-error.log*
 packages/config/mkcert/
 !packages/config/mkcert/README.md
 .vercel
+
+#intellij
+.idea
