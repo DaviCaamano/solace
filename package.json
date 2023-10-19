@@ -8,6 +8,7 @@
   ],
   "scripts": {
     "build": "turbo run build",
+    "full-build": "cross-env yarn run migrate && yarn run gen && yarn run build",
     "dev": "turbo run dev --parallel",
     "lint": "turbo run lint",
     "tsc": "turbo run tsc",
