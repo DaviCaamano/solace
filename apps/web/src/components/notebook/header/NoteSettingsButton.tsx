@@ -36,7 +36,7 @@ export const NoteSettingsButton = ({
   return (
     <div className={`note-settings-button ${styles.noteSettingsButton} ${show ? 'block' : 'hidden'}`}>
       <PopupMenu
-        key={'note-settings-popup'}
+        name={'note-settings-popup'}
         open={open}
         included={iconRef}
         setOpen={setOpen}

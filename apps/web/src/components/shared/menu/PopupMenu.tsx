@@ -13,10 +13,11 @@ interface PopupMenuProps {
    */
   included?: RefObject<any>[] | RefObject<any>;
   items: PopUpMenuItem[] | PopUpMenuItem;
+  name: string;
   setOpen: Setter<boolean>;
   wrapperStyle?: CSSProperties;
 }
-export const PopupMenu = ({ open, included, items: menuItems, setOpen, wrapperStyle }: PopupMenuProps) => {
+export const PopupMenu = ({ open, included, items: menuItems, name, setOpen, wrapperStyle }: PopupMenuProps) => {
   const clickRef = useOuterClicks(
     () => {
       setOpen(false);
@@ -39,8 +40,8 @@ export const PopupMenu = ({ open, included, items: menuItems, setOpen, wrapperSt
             ref={clickRef as Ref<HTMLDivElement>}
           >
             <AnimatePresence>
-              {items.map(({ component, onClick }: PopUpMenuItem) => (
-                <MenuButton open={open} onClick={onClick}>
+              {items.map(({ component, onClick }: PopUpMenuItem, index: number) => (
+                <MenuButton key={`${name}-${index}`} open={open} onClick={onClick}>
                   {component}
                 </MenuButton>
               ))}

@@ -49,6 +49,10 @@ $backdropOpacity: 0.5;
   animation: fadein $duration forwards;
 }
 
+.sharedModal {
+  @apply inline-block bg-latte rounded-xl relative scrollbar-none overflow-visible;
+}
+
 .sharedModal::backdrop {
   background-color: $mug;
   opacity: $backdropOpacity;

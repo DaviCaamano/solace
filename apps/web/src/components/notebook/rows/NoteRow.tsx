@@ -38,7 +38,7 @@ export const NoteRow = ({ children, dragHandlers, moveNote, name, note }: NoteRo
         handlers={handlers.drag}
         yOffset={y}
       >
-        <NoteRowBody dragState={dragState} containerName={name} note={note} />
+        <NoteRowBody dragState={dragState} containerName={name} title={note.title} />
         {children}
       </DragRowWrapper>
       <RowCaret note={note} rowDragged={dragState.state.rowDragged} />

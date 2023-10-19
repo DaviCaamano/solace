@@ -1,5 +1,4 @@
 import { useEditor } from '@hooks/context';
-import { useUpdateNoteMutation } from '@context/redux/api/notes/notes.slice';
 import { Tooltip } from '@components/shared';
 import { CSSProperties, useCallback } from 'react';
 import { colors } from '@styles/tailwind';
@@ -12,7 +11,6 @@ import DisabledByDefaultIcon from '@mui/icons-material/DisabledByDefault';
 export const NotebookCancelButton = () => {
   const router = useRouter();
   const { editor, reset, setEditor, user } = useEditor();
-  const [save] = useUpdateNoteMutation();
 
   /**
    * If user is not logged in, save the content of the editor to local storage.
@@ -27,7 +25,7 @@ export const NotebookCancelButton = () => {
       reset();
       setEditor({ viewMode: EditorViewMode.notebook });
     }
-  }, [editor.content, editor.id, editor.title, reset, router, save, setEditor, user?.id]);
+  }, [editor.content, editor.id, reset, router, setEditor, user?.id]);
 
   return (
     <Tooltip

@@ -1,19 +1,17 @@
-import { MoveNotePosition, TreeNote, UseDraggableHandler } from '#interfaces/notes';
+import { MoveNotePosition, UseDraggableHandler } from '#interfaces/notes';
 import styles from '@components/notebook/notebook.module.scss';
 import DragIndicatorIcon from '@mui/icons-material/DragIndicator';
 
 import { capitalize } from '#utils/string';
 import { RowZoneIcon } from './RowZoneIcon';
 import { CSSProperties } from 'react';
-import { RowCaret } from '@components/notebook/rows/RowCaret';
 
 interface NoteRowTitleProps {
   dragState: UseDraggableHandler;
-  note: TreeNote;
   containerName: string;
   title: string | undefined;
 }
-export const NoteRowTitle = ({ dragState, containerName, note, title }: NoteRowTitleProps) => {
+export const NoteRowTitle = ({ dragState, containerName, title }: NoteRowTitleProps) => {
   const {
     state: { hoveredOver, rowDragged },
   } = dragState;

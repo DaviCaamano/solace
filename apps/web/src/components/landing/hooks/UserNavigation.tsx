@@ -5,20 +5,27 @@ import { useAddNoteMutation } from '@context/redux/api/notes/notes.slice';
 import { useEditor } from '@hooks/context';
 import { Note } from '#interfaces/notes';
 import { EditorViewMode } from '@interface/editor';
+import { usePromos } from '@components/landing/hooks/usePromos';
+import { Promo } from '#interfaces/promo';
 
+export interface UseUserNavigation {
+  closePromo: (promo: Promo) => void;
+  promos: Promo[];
+  viewMode: EditorViewMode;
+}
 /** Handle Navigation Logic for Landing Page */
-export const useUserNavigation = (): EditorViewMode => {
+export const useLoginNavigation = (): UseUserNavigation => {
   const [addNote] = useAddNoteMutation();
   const { setEditor, editor } = useEditor();
-  const { isLoading, isLoggedOut, user } = useLogin();
-
+  const { isLoading, isLoggedOut, user } = useLogin(true);
+  const { promos, closePromo } = usePromos({ isLoggedIn: isLoading ? undefined : !isLoggedOut });
   const stickyLoggedStatus = useRef<boolean | undefined>(undefined);
 
   /** When the user goes from logged in to logged out, or vise versa, direct them to the appropriate content window. */
   useEffect(() => {
     if (!isLoading && stickyLoggedStatus.current !== isLoggedOut) {
       stickyLoggedStatus.current = isLoggedOut;
-      if (isLoggedOut) {
+      if (isLoggedOut && editor.viewMode !== EditorViewMode.editor) {
         setEditor({ viewMode: EditorViewMode.editor });
       } else {
         /** Editor Content we store in Local Storage for logged-out users to resume editing upon logging in. */
@@ -52,7 +59,12 @@ export const useUserNavigation = (): EditorViewMode => {
         }
       }
     }
-  }, [addNote, isLoading, isLoggedOut, setEditor, user?.id]);
+  }, [addNote, editor.viewMode, isLoading, isLoggedOut, setEditor, user?.id]);
 
-  return editor.viewMode;
+  /** Handle Login based Promo Modal */
+  useEffect(() => {
+    // Promo
+  }, []);
+
+  return { closePromo, promos, viewMode: editor.viewMode };
 };

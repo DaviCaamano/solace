@@ -5,33 +5,31 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2101ad9f-8972-44d3-9c27-f093e4bebdd9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/apps/api/constants/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/api/constants/villains.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/web/public/images/promotional/sign-up-promotion-lg.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/web/public/images/promotional/sign-up-promotion-sm.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/web/src/components/editor/header/buttons/NotebookCancelButton.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env.template" beforeDir="false" afterPath="$PROJECT_DIR$/.env.template" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/web/public/images/promotional/sign-up-promotion-xs.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/web/src/components/landing/hooks/usePromos.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/web/src/components/landing/promos/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/web/src/components/landing/promos/sign-up-promo/SignUpPromo.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/web/src/components/landing/promos/sign-up-promo/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/web/src/components/landing/promos/sign-up-promo/sign-up-promo.module.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/shared/interfaces/promo/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/shared/interfaces/promo/promo.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/api/.eslintrc.js" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/.eslintrc.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/api/src/note/note.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/note/note.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/api/src/note/services/note-database.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/note/services/note-database.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/api/src/note/services/note.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/note/services/note.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/api/src/user/user-database.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/user/user-database.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/api/src/user/user.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/user/user.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/api/src/user/user.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/user/user.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/components/editor/header/EditorHeader.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/editor/header/EditorHeader.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/components/editor/header/buttons/NotebookButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/editor/header/buttons/NotebookButton.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/components/editor/header/buttons/SaveButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/editor/header/buttons/SaveButton.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/pages/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/pages/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/public/images/promotional/sign-up-promotion.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/editor/header/buttons/NotebookCancelButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/editor/header/buttons/NotebookCancelButton.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/header/UserMenu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/header/UserMenu.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/web/src/components/landing/Content.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/landing/Content.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/components/notebook/Notebook.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notebook/Notebook.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/landing/hooks/UserNavigation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/landing/hooks/UserNavigation.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/web/src/components/notebook/header/NoteSettingsButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notebook/header/NoteSettingsButton.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/components/notebook/hooks/useNotebook.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notebook/hooks/useNotebook.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/components/notebook/rows/AddNoteRow.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notebook/rows/AddNoteRow.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/components/notebook/rows/NoteList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notebook/rows/NoteList.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/components/notebook/rows/RowCaret.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notebook/rows/RowCaret.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/context/redux/editor/editor.slice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/context/redux/editor/editor.slice.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/hooks/lib/tiptap/useTipTap.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/hooks/lib/tiptap/useTipTap.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/tsconfig/nestjs.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/tsconfig/nestjs.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/notebook/modal/DeleteNoteModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notebook/modal/DeleteNoteModal.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/notebook/rows/NoteRow.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notebook/rows/NoteRow.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/notebook/rows/NoteRowBody.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notebook/rows/NoteRowBody.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/notebook/rows/NoteRowTitle.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notebook/rows/NoteRowTitle.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/shared/menu/PopupMenu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/shared/menu/PopupMenu.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/shared/modal/Modal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/shared/modal/Modal.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/shared/modal/modal.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/shared/modal/modal.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/hooks/user/useLogin.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/hooks/user/useLogin.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/tests/context.test.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/tests/context.test.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -121,11 +119,11 @@
       <recent name="C:\Users\davit\Projects\solace\packages\config\mkcert" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\davit\Projects\solace\apps\web\src\components\landing\promos\sign-up-promo" />
       <recent name="C:\Users\davit\Projects\solace\apps\web\public\images\shared" />
       <recent name="C:\Users\davit\Projects\solace\apps\web\public\images\icons" />
       <recent name="C:\Users\davit\Projects\solace\apps\web\public\images" />
       <recent name="C:\Users\davit\Projects\solace\apps\web\src\components\notebook\header" />
-      <recent name="C:\Users\davit\Projects\solace\apps\web\public\images\shared\global" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -218,7 +216,7 @@
       <workItem from="1697551425226" duration="27308000" />
       <workItem from="1697616879802" duration="17372000" />
       <workItem from="1697670462048" duration="1885000" />
-      <workItem from="1697672860854" duration="13887000" />
+      <workItem from="1697672860854" duration="26107000" />
     </task>
     <servers />
   </component>

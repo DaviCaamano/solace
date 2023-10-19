@@ -18,7 +18,7 @@ export const UserMenu = ({ loggedIn }: UserMenuProps) => {
 
   return (
     <div className={'user-menu-container flex items-center'}>
-      <PopupMenu open={open} included={iconRef} setOpen={setOpen} items={logoutButton} />
+      <PopupMenu open={open} included={iconRef} setOpen={setOpen} items={logoutButton} name={'user-menu'} />
       <UserIcon iconRef={iconRef} loggedIn={loggedIn} setOpen={setOpen} />
     </div>
   );

@@ -7,7 +7,6 @@ import FormatQuoteIcon from '@mui/icons-material/FormatQuote';
 import CheckIcon from '@mui/icons-material/Check';
 import CloseIcon from '@mui/icons-material/Close';
 import { colors } from '@styles/tailwind';
-import { Editor } from '@interface/editor';
 
 interface DeleteNoteModalProps {
   deleteNoteHandler: DeleteNoteHandler;

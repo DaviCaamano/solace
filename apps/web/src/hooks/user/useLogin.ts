@@ -9,7 +9,7 @@ interface useLoginResponse {
   error: string | undefined;
   user: User | undefined;
 }
-export const useLogin = (): useLoginResponse => {
+export const useLogin = (processLogin: boolean = false): useLoginResponse => {
   const { user: authZeroUser, error: authZeroError, isLoading: authZeroIsLoading } = useAuthZeroUser();
 
   const [login, { data: user, error, isLoading, isSuccess }] = useLoginMutation?.({
@@ -17,7 +17,7 @@ export const useLogin = (): useLoginResponse => {
   });
 
   useEffect(() => {
-    if (authZeroUser && detectUserChange(user, authZeroUser)) {
+    if (processLogin && authZeroUser && detectUserChange(user, authZeroUser)) {
       login({
         zeroId: authZeroUser.sub as string,
         email: authZeroUser.email as string,
@@ -26,7 +26,7 @@ export const useLogin = (): useLoginResponse => {
         picture: authZeroUser.picture || undefined,
       }).unwrap();
     }
-  }, [authZeroUser, login, user]);
+  }, [authZeroUser, login, processLogin, user]);
 
   // /** Null if it is not yet clear if the user has logged in with both authzero and the backend yet */
   // const userLoggedIn: boolean | null;
