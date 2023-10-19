@@ -40,3 +40,4 @@ yarn-error.log*
 #mkcert
 packages/config/mkcert/
 !packages/config/mkcert/README.md
+.vercel

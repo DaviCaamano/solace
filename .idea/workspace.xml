@@ -5,31 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2101ad9f-8972-44d3-9c27-f093e4bebdd9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/apps/web/public/images/promotional/sign-up-promotion-xs.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/web/src/components/landing/hooks/usePromos.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/web/src/components/landing/promos/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/web/src/components/landing/promos/sign-up-promo/SignUpPromo.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/web/src/components/landing/promos/sign-up-promo/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/web/src/components/landing/promos/sign-up-promo/sign-up-promo.module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/shared/interfaces/promo/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/shared/interfaces/promo/promo.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env.template" beforeDir="false" afterPath="$PROJECT_DIR$/.env.template" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.github/workflows/api.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/api.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/pages/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/pages/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/public/images/promotional/sign-up-promotion.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/components/editor/header/buttons/NotebookCancelButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/editor/header/buttons/NotebookCancelButton.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/components/header/UserMenu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/header/UserMenu.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/components/landing/Content.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/landing/Content.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/components/landing/hooks/UserNavigation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/landing/hooks/UserNavigation.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/components/notebook/header/NoteSettingsButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notebook/header/NoteSettingsButton.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/components/notebook/modal/DeleteNoteModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notebook/modal/DeleteNoteModal.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/components/notebook/rows/NoteRow.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notebook/rows/NoteRow.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/components/notebook/rows/NoteRowBody.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notebook/rows/NoteRowBody.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/components/notebook/rows/NoteRowTitle.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/notebook/rows/NoteRowTitle.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/components/shared/menu/PopupMenu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/shared/menu/PopupMenu.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/components/shared/modal/Modal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/shared/modal/Modal.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/components/shared/modal/modal.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/shared/modal/modal.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/hooks/user/useLogin.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/hooks/user/useLogin.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/tests/context.test.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/tests/context.test.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/api/prisma/schema.prisma" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/prisma/schema.prisma" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/api/src/persistence/prisma/database.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/persistence/prisma/database.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/turbo.json" beforeDir="false" afterPath="$PROJECT_DIR$/turbo.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,6 +37,10 @@
             <RecentBranchesForRepo>
               <option name="branches">
                 <list>
+                  <RecentBranch>
+                    <option name="branchName" value="main" />
+                    <option name="lastUsedInstant" value="1697710896" />
+                  </RecentBranch>
                   <RecentBranch>
                     <option name="branchName" value="master" />
                     <option name="lastUsedInstant" value="1692893207" />
@@ -216,7 +204,11 @@
       <workItem from="1697551425226" duration="27308000" />
       <workItem from="1697616879802" duration="17372000" />
       <workItem from="1697670462048" duration="1885000" />
-      <workItem from="1697672860854" duration="26107000" />
+      <workItem from="1697672860854" duration="27204000" />
+      <workItem from="1697710746784" duration="2061000" />
+      <workItem from="1697734620578" duration="852000" />
+      <workItem from="1697735750910" duration="1082000" />
+      <workItem from="1697737224191" duration="1814000" />
     </task>
     <servers />
   </component>
