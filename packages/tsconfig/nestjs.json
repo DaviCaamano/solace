@@ -20,6 +20,11 @@
     "noFallthroughCasesInSwitch": false,
     "baseUrl": "."
   },
-  "include": ["../../apps/api/src/**/*.ts", "../../apps/api/test/**/*.ts", "../shared/types/global.d.ts"],
+  "include": [
+    "../../apps/api/src/**/*.ts",
+    "../../apps/api/constants/**/*.ts",
+    "../../apps/api/test/**/*.ts",
+    "../shared/types/global.d.ts"
+  ],
   "exclude": ["node_modules"]
 }

@@ -21,6 +21,10 @@ export class UserDatabaseService extends ComponentWithLogging {
     });
   }
 
+  get(userId: string): Promise<User> {
+    return this.db.user.findUnique({ where: { id: userId } });
+  }
+
   upsert({ email, name, nickname, picture, zeroId }: Omit<UserRecord, 'id'>): Promise<User> {
     if (!email) {
       this.report('No email provided for login');

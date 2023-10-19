@@ -66,8 +66,8 @@ const tooltipStyle = {
     className: 'w-8 h-8',
     style: {
       position: 'absolute',
-      right: '0.5rem',
-      top: '0.40625rem',
+      right: '3rem',
+      top: '10px',
     } as CSSProperties,
   },
 };

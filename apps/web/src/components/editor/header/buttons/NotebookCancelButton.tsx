@@ -3,14 +3,13 @@ import { useUpdateNoteMutation } from '@context/redux/api/notes/notes.slice';
 import { Tooltip } from '@components/shared';
 import { CSSProperties, useCallback } from 'react';
 import { colors } from '@styles/tailwind';
-import styles from '../../menu/buttons/editor-buttons.module.scss';
-import NotebookIcon from '@images/icons/notebook.svg';
 import { LocalStorage } from '@interface/cookie';
 import add from 'date-fns/add';
 import { useRouter } from 'next/router';
 import { EditorViewMode } from '@interface/editor';
+import DisabledByDefaultIcon from '@mui/icons-material/DisabledByDefault';
 
-export const NotebookButton = () => {
+export const NotebookCancelButton = () => {
   const router = useRouter();
   const { editor, reset, setEditor, user } = useEditor();
   const [save] = useUpdateNoteMutation();
@@ -25,28 +24,27 @@ export const NotebookButton = () => {
       localStorage.setItem(LocalStorage.expiration, add(new Date(), { days: 7 }).toString());
       router.push('/api/auth/login').then();
     } else if (editor.id) {
-      save({ id: editor.id, title: editor.title, content: editor.content, userId: user.id }).then(() => {
-        reset();
-        setEditor({ viewMode: EditorViewMode.notebook });
-      });
+      reset();
+      setEditor({ viewMode: EditorViewMode.notebook });
     }
   }, [editor.content, editor.id, editor.title, reset, router, save, setEditor, user?.id]);
 
   return (
-    <Tooltip name={'notebook-button-tooltip'} content={<ToolTipContent loggedIn={!!user?.id} />} {...tooltipStyle}>
-      <NotebookIcon
-        alt={'Click here to see your notebook, where all of your notes are saved.'}
-        className={`${styles.notebookButton} `}
-        onClick={onClick}
-        color={colors.mug}
-      />
+    <Tooltip
+      name={'notebook-cancel-button-tooltip'}
+      content={<ToolTipContent loggedIn={!!user?.id} />}
+      {...tooltipStyle}
+    >
+      <div className={'notebook-cancel-button rounded-3xl overflow-hidden'} onClick={onClick}>
+        <DisabledByDefaultIcon style={{ zIndex: 1, color: colors.mug, fontSize: '32px' }} />
+      </div>
     </Tooltip>
   );
 };
 
 const ToolTipContent = ({ loggedIn }: { loggedIn: boolean }) =>
   loggedIn ? (
-    'View Notebook'
+    'Cancel Edit'
   ) : (
     <span>
       Please <span className={'underline'}>Login</span> to view your notebook.
@@ -56,11 +54,11 @@ const ToolTipContent = ({ loggedIn }: { loggedIn: boolean }) =>
 const tooltipStyle = {
   tooltip: { style: { maxWidth: '150px' } },
   wrapper: {
-    className: 'w-8 h-8',
+    className: 'w-12 h-12',
     style: {
       position: 'absolute',
-      right: '5.5rem',
-      top: '12px',
+      right: '0.5rem',
+      top: '10px',
     } as CSSProperties,
   },
 };

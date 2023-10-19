@@ -12,7 +12,7 @@ import { NotebookHeader } from './header';
 export const Notebook = () => {
   const { editor, reset, setEditor, user } = useEditor();
   const { isLoading, isError, error, data: noteList } = useListNotes(user);
-  const [addNoteHandlers, deleteNoteHandler, dragEvents, moveNote] = useNotebook(noteList, setEditor, reset, user?.id);
+  const [addNoteHandlers, deleteNoteHandler, dragEvents, moveNote] = useNotebook(editor, noteList, setEditor, reset, user?.id);
 
   const addNoteOnClick = (title: string) => addNoteHandlers.addNote({ userId: user?.id, title });
   const noteHeiarchy = useMemo(() => noteList && getFocusedNote(editor.id, noteList), [editor.id, noteList]);
@@ -54,4 +54,3 @@ const wordCountHeight = 64;
 const additionalMargin = 32;
 
 const heightReduction = (headerHeight + footerHeight + wordCountHeight + additionalMargin) / 16 + 'rem';
-console.log('heightReduction', heightReduction);

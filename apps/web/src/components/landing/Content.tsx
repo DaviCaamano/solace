@@ -6,7 +6,6 @@ import { EditorViewMode } from '@interface/editor';
 
 export const Content = () => {
   const viewMode = useUserNavigation();
-  console.log('viewMode', viewMode);
   return (
     <div id={'content'} className={'relative w-full flex-1'}>
       <AnimatePresence>

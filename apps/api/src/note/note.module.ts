@@ -8,5 +8,6 @@ import { NoteDeleteService } from '~note/services/note-delete.sevice';
 @Module({
   controllers: [NoteController],
   providers: [NoteService, NoteDatabaseService, NoteMoveService, NoteDeleteService],
+  exports: [NoteDatabaseService],
 })
 export class NoteModule {}

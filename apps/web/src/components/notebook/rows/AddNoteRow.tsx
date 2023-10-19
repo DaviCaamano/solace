@@ -21,6 +21,7 @@ export const AddNoteRow = ({
     } else {
       setNewNoteToggle('ROOT_LAST');
     }
+    setTitle('');
   };
 
   const hideRow = (typeof newNoteToggle !== 'undefined' && newNoteToggle !== 'ROOT_LAST') || hide;
@@ -36,8 +37,12 @@ export const AddNoteRow = ({
         setTitle={setTitle}
         onBlur={() => {
           setNewNoteToggle(undefined);
+          setTitle('');
         }}
-        onSubmit={() => onClick(title)}
+        onSubmit={() => {
+          onClick(title);
+          setTitle('');
+        }}
       />
       <AddNoteButton onClick={addNote} />
     </div>

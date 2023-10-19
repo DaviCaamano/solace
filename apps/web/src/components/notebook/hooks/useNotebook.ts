@@ -25,6 +25,7 @@ export type MoveRowCallback = (
 ) => void;
 /** Detects the creation of a new note and moves the user to the editor to edit that note */
 export const useNotebook = (
+  editor: Editor,
   noteList: TreeNote[] | undefined,
   setEditor: (editor: Partial<Editor>) => void,
   reset: () => void,
@@ -130,7 +131,7 @@ export const useNotebook = (
   const addNoteCallback = (newNote: UnsafeCreateNoteDto) => {
     if (newNote?.userId) {
       setNoteAdded(true);
-      addNote(newNote as CreateNoteDto);
+      addNote({ ...(newNote as CreateNoteDto), parentId: editor.id });
     }
     setNewNoteToggle(undefined);
   };

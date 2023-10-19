@@ -1,14 +1,18 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { ComponentWithLogging } from '~utils/logging';
-import { LoginResponse } from '#interfaces/user/user.interface';
+import { LoginResponse, User } from '#interfaces/user/user.interface';
 import { UserDatabaseService } from '~user/user-database.service';
 import { LoginDto } from '~user/dto';
+import { NoteDatabaseService } from '~note/services/note-database.service';
+import { DatabaseService } from '~persistence/prisma/database.service';
 
 @Injectable()
 export class UserService extends ComponentWithLogging {
   constructor(
+    private readonly db: DatabaseService,
     private readonly dbService: UserDatabaseService,
     private readonly logger: Logger,
+    private readonly noteDbService: NoteDatabaseService,
   ) {
     super();
 
@@ -22,7 +26,13 @@ export class UserService extends ComponentWithLogging {
   }
 
   async login(user: LoginDto): Promise<LoginResponse> {
-    const updatedUser = await this.dbService.upsert(user);
-    return { user: updatedUser };
+    let userRecord: User | undefined = await this.db.user.findUnique({ where: { zeroId: user.zeroId } });
+
+    if (!userRecord) {
+      userRecord = await this.dbService.upsert(user);
+      await this.noteDbService.addDefaultNotes(userRecord.id);
+    }
+
+    return { user: userRecord };
   }
 }

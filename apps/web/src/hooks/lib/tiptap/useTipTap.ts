@@ -39,6 +39,7 @@ export const useTipTap = (viewMode: EditorViewMode = EditorViewMode.editor): [Ti
   } = useEditor();
   const stickyNoteId = useRef<string | undefined>();
 
+  const initialContent = useRef<string>(content);
   const editor: TipTapEditor | null = useTipTapEditor({
     extensions: [
       Document,
@@ -82,7 +83,7 @@ export const useTipTap = (viewMode: EditorViewMode = EditorViewMode.editor): [Ti
       }),
       History,
     ],
-    content: content,
+    content: initialContent.current,
     autofocus: !isPreview,
     editable: !isPreview,
     injectCSS: false,
@@ -96,11 +97,6 @@ export const useTipTap = (viewMode: EditorViewMode = EditorViewMode.editor): [Ti
     },
   });
 
-  /** Inject Content of note when view mode changes*/
-  useEffect(() => {
-    editor?.commands.setContent(content);
-  }, [content, editor, viewMode]);
-
   /** Redundant focus command for navigation from other windows*/
   useEffect(() => {
     editor?.commands.focus();
@@ -111,8 +107,9 @@ export const useTipTap = (viewMode: EditorViewMode = EditorViewMode.editor): [Ti
     if (noteId && stickyNoteId.current !== noteId) {
       stickyNoteId.current = noteId;
       setEditor({ content, stale: false });
+      editor?.commands.setContent(content);
     }
-  }, [content, noteId, setEditor]);
+  }, [content, editor?.commands, noteId, setEditor]);
 
   return [editor, characterLimit];
 };

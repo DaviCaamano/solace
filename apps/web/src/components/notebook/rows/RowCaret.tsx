@@ -13,7 +13,6 @@ export const RowCaret = ({ note, rowDragged }: RowCaretProps) => {
 
   const onClick = (event) => {
     event.preventDefault();
-    console.log('~~~@@@###$$$');
     setEditor({
       id: note.id,
       title: note.title,

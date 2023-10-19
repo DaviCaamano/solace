@@ -14,8 +14,6 @@ export const editorSlice = createSlice({
   reducers: {
     setEditor: (state: Editor, action: PayloadAction<Partial<Editor>>) => {
       const newState = action.payload;
-      console.log('~~~~~~~~~', newState.viewMode);
-
       if (newState.hasOwnProperty('id')) {
         state.id = newState.id;
       }

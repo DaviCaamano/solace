@@ -6,6 +6,7 @@ import { NotebookButton, SaveButton } from '@components/editor/header/buttons';
 import { User } from '#interfaces/user';
 import { Editor } from '@interface/editor';
 import { UpdateNoteDto } from '~note/dto/note.dto';
+import { NotebookCancelButton } from '@components/editor/header/buttons/NotebookCancelButton';
 
 export const EditorHeader = () => {
   const { editor, setTitle, user } = useEditor();
@@ -25,6 +26,7 @@ export const EditorHeader = () => {
       </div>
       <NotebookButton />
       <SaveButton />
+      <NotebookCancelButton />
     </div>
   );
 };

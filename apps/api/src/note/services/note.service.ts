@@ -43,7 +43,9 @@ export class NoteService extends ComponentWithLogging {
     await this.deleteService.delete(id, userId, deleteChildren);
 
   reset = async () => {
-    await this.dbService.reset();
+    if (process.env.TEST_USER) {
+      await this.dbService.addDefaultNotes(process.env.TEST_USER, true);
+    }
     return {
       success: true,
     };

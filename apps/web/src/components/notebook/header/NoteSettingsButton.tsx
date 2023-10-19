@@ -35,7 +35,14 @@ export const NoteSettingsButton = ({
 
   return (
     <div className={`note-settings-button ${styles.noteSettingsButton} ${show ? 'block' : 'hidden'}`}>
-      <PopupMenu open={open} included={iconRef} setOpen={setOpen} items={logoutButton} wrapperStyle={wrapperStyle} />
+      <PopupMenu
+        key={'note-settings-popup'}
+        open={open}
+        included={iconRef}
+        setOpen={setOpen}
+        items={logoutButton}
+        wrapperStyle={wrapperStyle}
+      />
       <div onClick={() => setOpen((prev: boolean) => !prev)} ref={iconRef as unknown as LegacyRef<HTMLDivElement>}>
         <DotsThreeOutlineVertical
           size={26}

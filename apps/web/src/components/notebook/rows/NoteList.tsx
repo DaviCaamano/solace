@@ -1,6 +1,5 @@
 import { NoteRow } from '@components/notebook/rows/NoteRow';
 import { TreeNote } from '#interfaces/notes';
-import { Editor } from '@interface/editor';
 import { MoveRowCallback, UseDraggableState } from '@components/notebook/hooks';
 interface NoteListProps {
   depth?: number;

@@ -6,6 +6,7 @@ import { DatabaseService } from '~persistence/prisma/database.service';
 import { DetachedNote, NoteStatus } from '#interfaces/notes/notes.interface';
 import { HttpStatus } from '@nestjs/common/enums/http-status.enum';
 import { Prisma } from '@prisma/client';
+import { villains } from '../../../constants';
 
 @Injectable()
 export class NoteDatabaseService extends ComponentWithLogging {
@@ -96,11 +97,13 @@ export class NoteDatabaseService extends ComponentWithLogging {
       } catch (err: any) {
         this.report(`Failed to retrieve final root node for user: ${userId} (used for note creation) (1)`, err);
       }
-      query.Prev = {
-        connect: {
-          id: lastNode.id,
-        },
-      };
+      if (lastNode) {
+        query.Prev = {
+          connect: {
+            id: lastNode.id,
+          },
+        };
+      }
     }
 
     try {
@@ -308,81 +311,102 @@ export class NoteDatabaseService extends ComponentWithLogging {
     }
   }
 
-  async reset() {
-    const userId = 'd405e9fa-68eb-43ab-ad07-af477f11dafa';
-    await this.db.note.deleteMany({ where: { userId } });
+  async addDefaultNotes(userId: string, clearCurrent: boolean = false) {
+    if (clearCurrent) {
+      await this.db.note.deleteMany({ where: { userId } });
+    }
+
+    const createQueries: Prisma.NoteCreateManyInput[] = [];
+    for (let { content, title } of villains) {
+      createQueries.push({
+        title,
+        content,
+        userId: userId,
+        status: NoteStatus.active,
+      });
+    }
+
     await this.db.note.createMany({
-      data: defaultRecords.map(({ id, parentId, next }) => createManyQuery(id, userId, parentId, next)),
+      data: createQueries,
     });
+
+    const updateQueries: Prisma.NoteUpdateArgs[] = [];
+    const noteList = await this.list(userId);
+    for (let { title, next: nextTitle, parentId: parentTitle } of villains) {
+      const relations = getRelationsForVillains(noteList, title, parentTitle, nextTitle);
+
+      if (relations) {
+        const { id, next, parentId } = relations;
+        if (!id) {
+          continue;
+        }
+        const query: Prisma.NoteUpdateArgs = {
+          where: {
+            id,
+          },
+          data: {},
+        };
+        if (parentId) {
+          query.data.Parent = {
+            connect: {
+              id: parentId,
+            },
+          };
+        }
+        if (next) {
+          query.data.Next = {
+            connect: {
+              id: next,
+            },
+          };
+        }
+        updateQueries.push(query);
+      }
+    }
+
+    let promises = [];
+    for (let query of updateQueries) {
+      promises.push(this.db.note.update(query));
+    }
+    await Promise.all(promises);
+    return true;
   }
 }
 
 const MAX_CONSOLIDATION_ATTEMPT = 3;
 
-const createManyQuery = (id: string, userId: string, parentId?: string, next?: string): Prisma.NoteCreateManyInput => ({
-  id,
-  title: id,
-  userId,
-  content: '<p>Mew is fucking cool.</p>',
-  parentId: parentId || null,
-  next: next || null,
-  status: NoteStatus.active,
-});
-const defaultRecords = [
-  {
-    id: 'Neighbor-Wife',
-  },
-  {
-    id: 'Neighbor',
-    next: 'Neighbor-Wife',
-  },
-  {
-    id: 'Neighbor-Dog',
-    parentId: 'Neighbor',
-  },
-  {
-    id: 'Neighbor-Child',
-    parentId: 'Neighbor',
-    next: 'Neighbor-Dog',
-  },
-  {
-    id: 'Brother',
-    next: 'Neighbor',
-  },
-  {
-    id: 'Sister',
-    next: 'Brother',
-  },
-  {
-    id: 'You',
-    next: 'Sister',
-  },
-  {
-    id: 'Child-Brother',
-    parentId: 'You',
-  },
-  {
-    id: 'Child-Sister',
-    parentId: 'You',
-    next: 'Child-Brother',
-  },
-  {
-    id: 'Child',
-    parentId: 'You',
-    next: 'Child-Sister',
-  },
-  {
-    id: 'Grand-Brother',
-    parentId: 'Child',
-  },
-  {
-    id: 'Grand-Sister',
-    parentId: 'Child',
-    next: 'Grand-Brother',
-  },
-  {
-    id: 'Grand-Child',
-    parentId: 'Child',
-    next: 'Grand-Sister',
-  },
-];
+const getRelationsForVillains = (
+  noteList: Note[],
+  title: string,
+  parentTitle: string | undefined,
+  nextTitle: string | undefined,
+) => {
+  let id: string | undefined;
+  let parentId: string | undefined;
+  let next: string | undefined;
+  const parentFound = !parentTitle || (parentTitle && parentId);
+  const nextFound = !nextTitle || (nextTitle && next);
+  for (let { title: noteTitle, id: noteId } of noteList) {
+    if (title === noteTitle) {
+      id = noteId;
+    } else if (parentTitle && noteTitle === parentTitle) {
+      parentId = noteId;
+    } else if (nextTitle && noteTitle === nextTitle) {
+      next = noteId;
+    }
+
+    if (id && parentFound && nextFound) {
+      break;
+    }
+  }
+
+  if (!parentId && !next) {
+    return null;
+  }
+
+  return {
+    id,
+    parentId,
+    next,
+  };
+};

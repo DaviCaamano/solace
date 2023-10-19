@@ -7,7 +7,6 @@ module.exports = {
     sourceType: 'module',
     tsconfigRootDir: __dirname,
   },
-
   root: true,
   env: {
     node: true,
