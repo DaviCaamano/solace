@@ -26,4 +26,5 @@ module.exports = withTM({
   sassOptions: {
     importer: jsonImporter(),
   },
+  distDir: 'build',
 });
