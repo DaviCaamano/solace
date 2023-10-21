@@ -1,7 +1,7 @@
 require('dotenv').config({ path: '../../.env' });
 
 const jsonImporter = require('node-sass-json-importer');
-const backendPort = process.env.BACKEND_PORT || 5002;
+const backendPort = process.env.PORT || 8000;
 const backendHost = process.env.BACKEND_HOST || 'http://localhost';
 
 module.exports = {

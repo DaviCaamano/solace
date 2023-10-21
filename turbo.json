@@ -6,7 +6,7 @@
       "env": [
         "NEXT_PUBLIC_BASE_URL",
         "POSTGRES_PRISMA_URL",
-        "BACKEND_PORT",
+        "PORT",
         "BACKEND_HOST",
         "AUTH0_SECRET",
         "AUTH0_BASE_URL",

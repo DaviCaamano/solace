@@ -5,7 +5,7 @@ require('dotenv').config({ path: '../../.env' });
 import { Logger } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from '~app.module';
-const PORT = process.env.BACKEND_PORT || 5002;
+const PORT = process.env.PORT || 8000;
 declare const module: any;
 async function bootstrap() {
   const logger = new Logger('EntryPoint');

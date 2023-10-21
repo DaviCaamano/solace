@@ -6,7 +6,7 @@ export class DatabaseService extends PrismaClient implements OnModuleInit {
   constructor() {
     super({
       datasources: {
-        db: { url: process.env.POSTGRES_PRISMA_URL },
+        db: { url: process.env.DATABASE_URL },
       },
     });
   }
