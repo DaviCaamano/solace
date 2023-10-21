@@ -1,8 +1,8 @@
 'use client';
 
-import { DragEvent, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { DraggedNotes, MoveNotePosition, NewNoteToggle, TreeNote, UseDraggableHandler } from '#interfaces/notes';
-import { DraggableData, DraggableEventHandler } from 'react-draggable';
+import {DraggableData, DraggableEvent, DraggableEventHandler} from 'react-draggable';
 import { MoveRowCallback } from '@components/notebook/hooks/useNotebook';
 
 export type UseDraggableState = [
@@ -90,10 +90,11 @@ export const useDraggable = (
    *
    * It is a click if the onDragStop function runs before MINIMUM_DRAG_TIME has passed in milliseconds.
    */
-  const onDragStart: DraggableEventHandler = (event: DragEvent<HTMLDivElement>) => {
+  const onDragStart: DraggableEventHandler = (event: DraggableEvent) => {
     event.stopPropagation(); //Stop Click, it will be triggered in onDragStop.
     // @ts-ignore
     let rect = event.target?.getBoundingClientRect();
+    // @ts-ignore
     let offset = event.clientY - rect.top - NOTE_ROW_HALF_HEIGHT; //y position within the element.
     setPos((prev: DragPosition) => ({ ...prev, start: Date.now(), y: offset }));
   };

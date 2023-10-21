@@ -3,6 +3,7 @@ import { CaretRight } from 'phosphor-react';
 import { TreeNote } from '#interfaces/notes';
 import { EditorViewMode } from '@interface/editor';
 import { useEditor } from '@hooks/context';
+import { MouseEventHandler } from 'react';
 
 interface RowCaretProps {
   note: TreeNote;
@@ -11,7 +12,7 @@ interface RowCaretProps {
 export const RowCaret = ({ note, rowDragged }: RowCaretProps) => {
   const { setEditor } = useEditor();
 
-  const onClick = (event) => {
+  const onClick: MouseEventHandler<HTMLDivElement> = (event) => {
     event.preventDefault();
     setEditor({
       id: note.id,

@@ -6,6 +6,7 @@
     "declaration": true,
     "declarationMap": true,
     "esModuleInterop": true,
+    "experimentalDecorators": true,
     "forceConsistentCasingInFileNames": true,
     "inlineSources": false,
     "isolatedModules": true,
@@ -15,6 +16,7 @@
     "preserveWatchOutput": true,
     "skipLibCheck": true,
     "strict": true,
+    "strictPropertyInitialization": false,
     "paths": {
       "~*": ["../../apps/api/src/*"],
       "@components/*": ["../../apps/web/src/components/*"],

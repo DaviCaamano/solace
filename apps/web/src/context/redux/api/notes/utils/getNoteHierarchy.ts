@@ -45,7 +45,7 @@ const getChildren = (original: (Note | TreeNote)[], parent: TreeNote): TreeNote 
 };
 
 /** Sort the unsorted array of link list nodes, also add a prev field to make it a two-dimensional array */
-const sortList = (list: TreeNote[], sorted: TreeNote[] = []) => {
+const sortList = (list: TreeNote[], sorted: TreeNote[] = []): TreeNote[] => {
   if (!list.length) {
     return sorted;
   }

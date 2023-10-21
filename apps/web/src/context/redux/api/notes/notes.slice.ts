@@ -12,6 +12,7 @@ import {
 import { ReduxQueryBuilder } from '#interfaces/redux/redux.interfaces';
 
 export const notesSlice = apiSlice.injectEndpoints({
+  // @ts-ignore
   endpoints: (builder: ReduxQueryBuilder<'Note'>) => ({
     getNote: getNotesEndpoint(builder),
     listNotes: listNotesEndpoint(builder),
