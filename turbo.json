@@ -1,12 +1,10 @@
 {
-  "$schema": "https://turbo.build/schema.json",
-
   "pipeline": {
     "build": {
       "dependsOn": ["^build"],
       "outputs": ["dist/**", ".next/**"],
       "env": [
-        "BASE_URL",
+        "NEXT_PUBLIC_BASE_URL",
         "POSTGRES_PRISMA_URL",
         "BACKEND_PORT",
         "BACKEND_HOST",
@@ -24,7 +22,7 @@
     "dev": {
       "cache": false
     },
-    "tsc": {
+    "start": {
       "cache": false
     },
     "test:ci": {

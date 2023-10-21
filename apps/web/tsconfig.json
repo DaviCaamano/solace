@@ -1,22 +1,12 @@
 {
-  "extends": "tsconfig/nextjs.json",
-  "compilerOptions": {
-    "allowJs": true,
-    "plugins": [
-      {
-        "name": "next"
-      }
-    ],
-    "strictNullChecks": true
-  },
+  "extends": "../../packages/tsconfig/nextjs.json",
   "include": [
-    "src",
-    "pages",
-    "next-env.d.ts",
-    "../../packages/shared/types/global.d.ts",
-    "jest.config.ts",
-    "jest.setup.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "../../packages/shared/types/*.d.ts",
     ".next/types/**/*.ts"
   ],
-  "exclude": ["**/node_modules", "node_modules"]
+  "exclude": [
+    "node_modules"
+  ]
 }

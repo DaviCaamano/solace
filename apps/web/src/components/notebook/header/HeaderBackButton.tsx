@@ -29,7 +29,13 @@ export const HeaderBackButton = ({ noteList, show, selectedNote, setEditor }: Ba
       const newParent = getFocusedNote(selectedNote?.parentId, noteList).focused;
       if (newParent) {
         const { id, content, title } = newParent;
-        setEditor({ id, content, title, stale: false, viewMode: EditorViewMode.notebook });
+        setEditor({
+          id,
+          content,
+          title,
+          stale: false,
+          viewMode: EditorViewMode.notebook,
+        });
       }
     }
   };

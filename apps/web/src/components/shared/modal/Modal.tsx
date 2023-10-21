@@ -38,11 +38,7 @@ export const Modal = ({ children, onClose, open, close, styles }: ModalProps) =>
   }, [onClose]);
 
   return (
-    <dialog
-      ref={dialogRef}
-      className={`shared-modal ${mStyles.sharedModal}`}
-      style={styles?.dialog}
-    >
+    <dialog ref={dialogRef} className={`shared-modal ${mStyles.sharedModal}`} style={styles?.dialog}>
       {open && (
         <div
           id={'shared-modal-content'}

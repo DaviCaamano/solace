@@ -14,6 +14,6 @@
       "@public/*": ["../web/src/public/*"],
       "~interfaces/*": ["./interfaces/*"],
       "~utils/*": ["./utils/*"]
-    },
+    }
   }
 }

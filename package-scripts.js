@@ -55,5 +55,10 @@ module.exports = {
       },
     },
     dev: 'npx turbo run dev',
+    start: {
+      default: 'nps start.web start.api',
+      web: 'next start',
+      api: 'nest start'
+    }
   },
 };

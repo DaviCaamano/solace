@@ -1,3 +1,5 @@
+'use client';
+
 import { useState } from 'react';
 import { EditorMenuButton } from '@components/editor';
 import { motion } from 'framer-motion';
@@ -58,7 +60,7 @@ export const SubScriptButton = ({ editor, isMobile }: EditorMenuScriptButtonProp
   return (
     <div
       id={'clear-link-button-container'}
-      className={`font-medium ${!isMobile ? 'absolute bottom-0 left-0': 'ml-1'} h-8 w-8 bg-brown p-0 rounded-md`}
+      className={`font-medium ${!isMobile ? 'absolute bottom-0 left-0' : 'ml-1'} h-8 w-8 bg-brown p-0 rounded-md`}
     >
       <EditorMenuButton
         id={'editor-subscript-button'}

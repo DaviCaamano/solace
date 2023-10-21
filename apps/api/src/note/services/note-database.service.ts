@@ -92,7 +92,12 @@ export class NoteDatabaseService extends ComponentWithLogging {
       try {
         lastNode = await this.db.note.findFirst({
           select: { id: true },
-          where: { parentId: parentId, next: null, userId, status: NoteStatus.active },
+          where: {
+            parentId: parentId,
+            next: null,
+            userId,
+            status: NoteStatus.active,
+          },
         });
       } catch (err: any) {
         this.report(`Failed to retrieve final root node for user: ${userId} (used for note creation) (1)`, err);
@@ -206,7 +211,9 @@ export class NoteDatabaseService extends ComponentWithLogging {
     let sibling: Note | undefined;
 
     try {
-      sibling = await this.db.note.findUnique({ where: { next: note.id, userId } });
+      sibling = await this.db.note.findUnique({
+        where: { next: note.id, userId },
+      });
     } catch (err: any) {
       this.report('Failed to detach note, could not search for sibling.', err);
     }
@@ -270,15 +277,23 @@ export class NoteDatabaseService extends ComponentWithLogging {
   /** Undo operation done by detachNote function in this service */
   async detachNote_Revert({ noteId, originalParent, originalNext, sibling, userId }: DetachedNote) {
     try {
-      await this.db.note.update({ where: { userId, id: sibling.id }, data: { next: originalNext } });
+      await this.db.note.update({
+        where: { userId, id: sibling.id },
+        data: { next: originalNext },
+      });
     } catch (err: any) {
       this.error("Failed to revert target's previous sibling's \"next\" property. Consolidating User's Note Tree", err);
       await this.consolidateTree(userId);
     }
     try {
-      const noteRecord = await this.db.note.findUnique({ where: { userId, id: noteId } });
+      const noteRecord = await this.db.note.findUnique({
+        where: { userId, id: noteId },
+      });
       if (noteRecord && noteRecord.parentId !== originalParent) {
-        this.db.note.update({ where: { userId, id: noteId }, data: { next: originalNext } });
+        this.db.note.update({
+          where: { userId, id: noteId },
+          data: { next: originalNext },
+        });
       }
     } catch (err: any) {
       this.error("Failed to revert target's previous sibling's \"next\" property. Consolidating User's Note Tree", err);
@@ -312,12 +327,16 @@ export class NoteDatabaseService extends ComponentWithLogging {
   }
 
   async addDefaultNotes(userId: string, clearCurrent: boolean = false) {
+    console.log(`1
+    
+    `)
     if (clearCurrent) {
       await this.db.note.deleteMany({ where: { userId } });
     }
 
     const createQueries: Prisma.NoteCreateManyInput[] = [];
-    for (let { content, title } of villains) {
+    for (const { content, title } of villains) {
+      console.log('2')
       createQueries.push({
         title,
         content,
@@ -325,14 +344,19 @@ export class NoteDatabaseService extends ComponentWithLogging {
         status: NoteStatus.active,
       });
     }
-
+    console.log(`
+    
+    3
+    
+    `)
     await this.db.note.createMany({
       data: createQueries,
     });
 
     const updateQueries: Prisma.NoteUpdateArgs[] = [];
     const noteList = await this.list(userId);
-    for (let { title, next: nextTitle, parentId: parentTitle } of villains) {
+    for (const { title, next: nextTitle, parentId: parentTitle } of villains) {
+      console.log('4')
       const relations = getRelationsForVillains(noteList, title, parentTitle, nextTitle);
 
       if (relations) {
@@ -364,8 +388,9 @@ export class NoteDatabaseService extends ComponentWithLogging {
       }
     }
 
-    let promises = [];
-    for (let query of updateQueries) {
+    const promises = [];
+    for (const query of updateQueries) {
+      console.log('~~', query);
       promises.push(this.db.note.update(query));
     }
     await Promise.all(promises);
@@ -386,7 +411,7 @@ const getRelationsForVillains = (
   let next: string | undefined;
   const parentFound = !parentTitle || (parentTitle && parentId);
   const nextFound = !nextTitle || (nextTitle && next);
-  for (let { title: noteTitle, id: noteId } of noteList) {
+  for (const { title: noteTitle, id: noteId } of noteList) {
     if (title === noteTitle) {
       id = noteId;
     } else if (parentTitle && noteTitle === parentTitle) {

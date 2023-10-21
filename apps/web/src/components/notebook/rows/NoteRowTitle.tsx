@@ -83,7 +83,12 @@ const Title = ({
       className={
         'row-title-text relative text-[1rem] sm:text-[1.5rem] md:text-[1.5rem] transition-all overflow-ellipsis'
       }
-      style={{ ...shift, width: 'calc(100% - 2rem)', textOverflow: 'ellipsis', overflow: 'hidden' }}
+      style={{
+        ...shift,
+        width: 'calc(100% - 2rem)',
+        textOverflow: 'ellipsis',
+        overflow: 'hidden',
+      }}
     >
       {capitalize(title || 'Untitled')}
     </div>

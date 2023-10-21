@@ -1,5 +1,9 @@
 import { CSSProperties, useState } from 'react';
-type UseButtonEvents = { onMouseUp: () => void; onMouseLeave: () => void; onMouseDown: () => void };
+type UseButtonEvents = {
+  onMouseUp: () => void;
+  onMouseLeave: () => void;
+  onMouseDown: () => void;
+};
 /**
  * Takes two css definitions (CSS properties JSON or strings for class names) and returns the css for the button's state
  * Button states:

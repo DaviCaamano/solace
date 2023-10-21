@@ -24,7 +24,7 @@ This turborepo uses [Yarn](https://classic.yarnpkg.com/lang/en/) as a package ma
 
 - `api`: a [NestJS](https://nestjs.com/) app
 - `web`: a [Next.js](https://nextjs.org) app
-- `shared`: a module for files shared between apps`.
+- `ui`: a stub React component library used by `web`.
 - `config`: `eslint`, `nginx` and `tailwind` (includes `eslint-config-next` and `eslint-config-prettier`)
 - `tsconfig`: `tsconfig.json`s used throughout the monorepo
 

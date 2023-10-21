@@ -53,6 +53,8 @@ const Caret = ({ rowDragged }: { rowDragged: TreeNote | undefined }) => (
 const PreviewBlur = () => (
   <div
     className={'preview-blur absolute pointer-events-none cursor-pointer h-full w-full'}
-    style={{ background: `linear-gradient(transparent, 75%, ${colors.chalkboard})` }}
+    style={{
+      background: `linear-gradient(transparent, 75%, ${colors.chalkboard})`,
+    }}
   />
 );

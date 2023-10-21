@@ -1,5 +1,3 @@
-
-
 describe('Editor Menu Buttons', () => {
   test('placeholder', () => {});
   // test('Bold Button Click', async () => {

@@ -26,10 +26,19 @@ export class UserService extends ComponentWithLogging {
   }
 
   async login(user: LoginDto): Promise<LoginResponse> {
-    let userRecord: User | undefined = await this.db.user.findUnique({ where: { zeroId: user.zeroId } });
+    let userRecord: User | undefined = await this.db.user.findUnique({
+      where: { zeroId: user.zeroId },
+    });
 
     if (!userRecord) {
+      console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
       userRecord = await this.dbService.upsert(user);
+      console.log(
+        `
+      
+      userRecord:`,
+        userRecord,
+      );
       await this.noteDbService.addDefaultNotes(userRecord.id);
     }
 

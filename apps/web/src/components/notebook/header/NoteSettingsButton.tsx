@@ -1,3 +1,5 @@
+'use client';
+
 import { DotsThreeOutlineVertical, TrashSimple } from 'phosphor-react';
 import { colors } from '@styles/tailwind';
 import styles from '@components/notebook/notebook.module.scss';

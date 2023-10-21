@@ -1,3 +1,5 @@
+'use client';
+
 import { Modal } from '@components/shared';
 import { ChangeEvent, useState } from 'react';
 import LinkIcon from '@mui/icons-material/Link';
@@ -22,7 +24,14 @@ export const LinkModal = ({ open, editor, link, setLink, setOpen }: LinkModalPro
         id={'link-modal'}
         className={'relative w-[43.75rem] flex flex-col mb-[-0.25rem]'}
         style={{ maxWidth: 'calc(100vw - 1.25rem)' }}
-        onSubmit={confirmUrl({ editor, color, link, setColor, setInvalidUrl, setOpen })}
+        onSubmit={confirmUrl({
+          editor,
+          color,
+          link,
+          setColor,
+          setInvalidUrl,
+          setOpen,
+        })}
       >
         <div className={'flex justify-center absolute w-full pointer-events-none'} style={{ top: '-15px' }}>
           <LinkIcon className={'text-mug-light  w-[2rem]'} />
@@ -49,7 +58,14 @@ export const LinkModal = ({ open, editor, link, setLink, setOpen }: LinkModalPro
             className={`py-[1px] text-[12px] rounded-2xl text-latte w-[5rem] ${
               invalidUrl ? 'bg-pink' : 'bg-mug-light'
             }`}
-            onClick={confirmUrl({ editor, color, link, setColor, setInvalidUrl, setOpen })}
+            onClick={confirmUrl({
+              editor,
+              color,
+              link,
+              setColor,
+              setInvalidUrl,
+              setOpen,
+            })}
           >
             <CheckIcon />
           </button>

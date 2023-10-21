@@ -1,3 +1,5 @@
+'use client';
+
 import { DragEvent, useEffect, useRef, useState } from 'react';
 import { DraggedNotes, MoveNotePosition, NewNoteToggle, TreeNote, UseDraggableHandler } from '#interfaces/notes';
 import { DraggableData, DraggableEventHandler } from 'react-draggable';

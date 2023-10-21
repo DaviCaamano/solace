@@ -44,6 +44,11 @@ const onBlur =
     const newTitle = event.currentTarget.innerHTML;
     setTitle(newTitle);
     if (editor.id && user?.id) {
-      save({ id: editor.id, title: newTitle, content: editor.content, userId: user.id }).then();
+      save({
+        id: editor.id,
+        title: newTitle,
+        content: editor.content,
+        userId: user.id,
+      }).then();
     }
   };

@@ -1,3 +1,5 @@
+'use client';
+
 import { useState } from 'react';
 import { EditorMenuButton } from '@components/editor';
 import { motion } from 'framer-motion';

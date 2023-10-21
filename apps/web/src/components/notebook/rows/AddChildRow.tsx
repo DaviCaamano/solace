@@ -1,3 +1,5 @@
+'use client';
+
 import styles from '../notebook.module.scss';
 import { useState } from 'react';
 import CheckIcon from '@mui/icons-material/Check';

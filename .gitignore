@@ -2,7 +2,6 @@
 
 # dependencies
 node_modules
-
 .pnp
 .pnp.js
 
@@ -16,7 +15,6 @@ build
 
 **/dist
 **/.env
-**/node_modules
 
 # misc
 .DS_Store
@@ -36,11 +34,3 @@ yarn-error.log*
 
 # turbo
 .turbo
-
-#mkcert
-packages/config/mkcert/
-!packages/config/mkcert/README.md
-.vercel
-
-#intellij
-.idea

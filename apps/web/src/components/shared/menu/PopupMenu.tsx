@@ -1,3 +1,5 @@
+'use client';
+
 import { AnimatePresence, motion } from 'framer-motion';
 import { CSSProperties, PropsWithChildren, ReactNode, Ref, RefObject } from 'react';
 import { useOuterClicks } from '@hooks/shared';
@@ -93,7 +95,10 @@ export const MenuButton = ({ children, onClick, open }: MenuButtonProps) => {
         <div className={`popup-menu-button ${MenuButtonTw}`}>
           <span
             className={'text-xl text-center decoration-1 w-full  '}
-            style={{ textDecorationThickness: '1px', textDecoration: 'inherit' }}
+            style={{
+              textDecorationThickness: '1px',
+              textDecoration: 'inherit',
+            }}
           >
             {children}
           </span>

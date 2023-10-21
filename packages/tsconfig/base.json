@@ -1,7 +1,6 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
   "display": "Default",
-  "moduleResolution": "node",
   "compilerOptions": {
     "composite": false,
     "declaration": true,
@@ -16,7 +15,6 @@
     "preserveWatchOutput": true,
     "skipLibCheck": true,
     "strict": true,
-    "outDir": "dist",
     "paths": {
       "~*": ["../../apps/api/src/*"],
       "@components/*": ["../../apps/web/src/components/*"],
@@ -37,5 +35,6 @@
       "~utils/*": ["../../api/utils/*"],
       "~root/*": ["../../*"]
     }
-  }
+  },
+  "exclude": ["node_modules"]
 }

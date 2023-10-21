@@ -2,7 +2,6 @@
   "$schema": "https://json.schemastore.org/tsconfig",
   "extends": "./base.json",
   "compilerOptions": {
-    "allowJs": true,
     "module": "commonjs",
     "declaration": true,
     "removeComments": true,
@@ -17,14 +16,13 @@
     "noImplicitAny": false,
     "strictBindCallApply": false,
     "forceConsistentCasingInFileNames": false,
-    "noFallthroughCasesInSwitch": false,
-    "baseUrl": "."
+    "noFallthroughCasesInSwitch": false
   },
   "include": [
     "../../apps/api/src/**/*.ts",
     "../../apps/api/constants/**/*.ts",
     "../../apps/api/test/**/*.ts",
+    "../../apps/api/utils/**/*.ts",
     "../shared/types/global.d.ts"
-  ],
-  "exclude": ["node_modules"]
+  ]
 }

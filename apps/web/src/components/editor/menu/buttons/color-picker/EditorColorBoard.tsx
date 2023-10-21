@@ -1,3 +1,5 @@
+'use client';
+
 import { AnimatePresence, motion } from 'framer-motion';
 import { editorColors } from '@constants/editor/editorColors';
 import { EditorColorTile } from './EditorColorTile';

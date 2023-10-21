@@ -1,3 +1,5 @@
+'use client';
+
 import {
   AddNoteHandlers,
   DeleteNoteHandler,
@@ -92,30 +94,33 @@ export const useNotebook = (
     }
     const target = getFocusedNote(targetId, noteList).focused;
 
-    moveNoteTrigger({ id: note.id, position, targetId: targetId || undefined, userId }).then(
-      (resp: MovedNoteResponse) => {
+    moveNoteTrigger({
+      id: note.id,
+      position,
+      targetId: targetId || undefined,
+      userId,
+    }).then((resp: MovedNoteResponse) => {
+      // @ts-ignore
+      if (resp.error) {
         // @ts-ignore
-        if (resp.error) {
-          // @ts-ignore
-          throw Error('Error moving Note:' + resp.error?.message);
-        }
+        throw Error('Error moving Note:' + resp.error?.message);
+      }
 
-        //Refocus the Notebook on a new note unless the note retained the same parent.
-        if (position !== MoveNotePosition.aheadOf) {
-          if (!target) {
-            resetEditor();
-          } else {
-            setEditor({
-              id: target.id,
-              content: target.content,
-              title: target.title,
-              stale: false,
-              viewMode: EditorViewMode.notebook,
-            });
-          }
+      //Refocus the Notebook on a new note unless the note retained the same parent.
+      if (position !== MoveNotePosition.aheadOf) {
+        if (!target) {
+          resetEditor();
+        } else {
+          setEditor({
+            id: target.id,
+            content: target.content,
+            title: target.title,
+            stale: false,
+            viewMode: EditorViewMode.notebook,
+          });
         }
-      },
-    );
+      }
+    });
   };
   /** Detect when a new note was both expected and added then move user to editor to edit new note. */
   useEffect(() => {
@@ -141,7 +146,11 @@ export const useNotebook = (
     setMarkedForDeletion,
   };
 
-  const addNoteToggle: AddNoteHandlers = { addNote: addNoteCallback, newNoteToggle, setNewNoteToggle };
+  const addNoteToggle: AddNoteHandlers = {
+    addNote: addNoteCallback,
+    newNoteToggle,
+    setNewNoteToggle,
+  };
   return [addNoteToggle, deleteNoteHandler, dragHandlers, moveNote];
 };
 
@@ -188,7 +197,13 @@ const handleNewNote = ({ noteList, stickyList, noteAdded, setNoteAdded, setEdito
       setNoteAdded(false);
       stickyList.current = noteList;
       if (newNote) {
-        setEditor({ title: newNote.title, content: '', id: newNote.id, stale: false, viewMode: EditorViewMode.editor });
+        setEditor({
+          title: newNote.title,
+          content: '',
+          id: newNote.id,
+          stale: false,
+          viewMode: EditorViewMode.editor,
+        });
       }
     } else {
       stickyList.current = noteList;

@@ -1,6 +1,10 @@
 import { CSSProperties, useEffect, useRef, useState } from 'react';
 
-type UseButtonEvents = { onMouseUp: () => void; onMouseLeave: () => void; onMouseDown: () => void };
+type UseButtonEvents = {
+  onMouseUp: () => void;
+  onMouseLeave: () => void;
+  onMouseDown: () => void;
+};
 
 export interface UseToggledStyle {
   toggled: boolean;
@@ -50,5 +54,10 @@ export const useToggle = ({ onCss, offCss, pressedCss, onToggle }: UseToggleStyl
       setPressed(false);
     },
   };
-  return { toggled, pressed, css: pressed ? pressedCss : toggled ? onCss : offCss, events };
+  return {
+    toggled,
+    pressed,
+    css: pressed ? pressedCss : toggled ? onCss : offCss,
+    events,
+  };
 };

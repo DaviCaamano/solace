@@ -1,6 +1,6 @@
 {
-  "name": "turborepo-basic-shared",
-  "version": "0.1.0",
+  "name": "solace",
+  "version": "0.0.0",
   "private": true,
   "workspaces": [
     "apps/*",
@@ -8,25 +8,22 @@
   ],
   "scripts": {
     "build": "turbo run build",
-    "full-build": "cross-env yarn run migrate && yarn run gen && yarn run build",
     "dev": "turbo run dev --parallel",
     "lint": "turbo run lint",
-    "tsc": "turbo run tsc",
-    "test": "turbo run test --parallel",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "clean": "turbo daemon clean",
     "gen": "prisma generate",
-    "migrate": "cross-env dotenv -e .env prisma migrate dev && prisma generate"
+    "migrate": "cross-env dotenv -e .env prisma migrate dev && prisma generate",
+    "full-build": "cross-env yarn && yarn run migrate && yarn run gen && yarn run build",
+    "start": "turbo run start --parallel"
   },
   "dependencies": {
-    "@vercel/postgres": "^0.5.0",
     "cross-env": "^7.0.3",
     "dotenv": "^16.3.1"
   },
   "devDependencies": {
-    "@testing-library/react": "^14.0.0",
-    "dotenv-cli": "^7.3.0",
-    "turbo": "^1.10.15"
+    "prettier": "^3.0.3",
+    "prisma": "^5.4.2",
+    "turbo": "^1.10.16"
   },
   "engines": {
     "npm": ">=7.0.0",

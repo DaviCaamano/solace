@@ -43,7 +43,7 @@ export class NoteMoveService extends ComponentWithLogging {
     if (await this.dbService.isAncestor(userId, targetId, id)) {
       return this.report('Cannot move Note: ancestors cannot target their own descendants');
     }
-    let note: Note | undefined = await this.dbService.get(id, userId);
+    const note: Note | undefined = await this.dbService.get(id, userId);
 
     /** Redundant Operation, cancelling */
     if (this.redundantMoveCheck(note, targetId, position)) {
@@ -155,7 +155,10 @@ export class NoteMoveService extends ComponentWithLogging {
         err,
       );
       try {
-        await this.db.note.update({ where: { userId, next: sibling.id }, data: { next: targetId } });
+        await this.db.note.update({
+          where: { userId, next: sibling.id },
+          data: { next: targetId },
+        });
       } catch (err: any) {
         this.error(
           "Failed to revert target's previous sibling's \"next\" property. Consolidating User's Note Tree",
@@ -203,7 +206,10 @@ export class NoteMoveService extends ComponentWithLogging {
       };
     }
 
-    return await this.db.note.update({ where: { id: note.id, userId }, data: updateData });
+    return await this.db.note.update({
+      where: { id: note.id, userId },
+      data: updateData,
+    });
   }
 
   /**
@@ -275,7 +281,7 @@ export class NoteMoveService extends ComponentWithLogging {
     }
 
     const nextIds: string[] = children.map(({ next }: Note) => next);
-    for (let child of children) {
+    for (const child of children) {
       if (!nextIds.includes(child.id)) {
         return child;
       }
@@ -296,7 +302,9 @@ export class NoteMoveService extends ComponentWithLogging {
    */
   async findLastChild(parentId: string | undefined | null, userId: string) {
     try {
-      return await this.db.note.findFirst({ where: { parentId: parentId || null, userId, next: null } });
+      return await this.db.note.findFirst({
+        where: { parentId: parentId || null, userId, next: null },
+      });
     } catch (err: any) {
       this.report('Failed to find parent note to insert child into (1)', err);
     }
@@ -308,7 +316,10 @@ export class NoteMoveService extends ComponentWithLogging {
     }
     let parent: Note | undefined;
     try {
-      parent = await this.db.note.findFirst({ where: { id: note.parentId }, include: { Parent: true } });
+      parent = await this.db.note.findFirst({
+        where: { id: note.parentId },
+        include: { Parent: true },
+      });
     } catch (err: any) {
       this.report('Unable to find parent during elevate note operation.');
     }

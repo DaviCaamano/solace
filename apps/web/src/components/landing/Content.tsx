@@ -1,7 +1,9 @@
+'use client';
+
 import { AnimatePresence } from 'framer-motion';
 import { Notebook } from '@components/notebook';
 import { Editor } from '@components/editor';
-import { ContentSlider, useLoginNavigation } from './';
+import { ContentSlider, useLoginNavigation } from './index';
 import { EditorViewMode } from '@interface/editor';
 import { SignUpPromo } from '@components/landing/promos';
 import { Promo } from '#interfaces/promo';

@@ -1,7 +1,10 @@
+'use client';
+
 import { RefObject, useRef, useState } from 'react';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { PopupMenu, PopUpMenuItem } from '@components/shared/menu';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
+import { UserCircle } from 'phosphor-react';
+import { colors } from '@styles/tailwind';
 
 interface UserMenuProps {
   loggedIn: boolean;
@@ -31,6 +34,11 @@ interface UserIconProps {
 }
 const UserIcon = ({ iconRef, loggedIn, setOpen }: UserIconProps) => (
   <a onClick={() => setOpen((prev: boolean) => !prev)} ref={iconRef}>
-    <AccountCircleIcon className={`text-xl text-latte fade_7 cursor-pointer w-12 h-12 ${!loggedIn && 'fadeOut'}`} />
+    <UserCircle
+      size={48}
+      color={colors.latte}
+      weight={'bold'}
+      className={`fade_7 cursor-pointer ${!loggedIn && 'fadeOut'}`}
+    />
   </a>
 );

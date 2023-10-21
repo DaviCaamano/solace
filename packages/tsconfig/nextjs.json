@@ -3,6 +3,8 @@
   "display": "Next.js",
   "extends": "./base.json",
   "compilerOptions": {
+    "allowJs": true,
+    "strictPropertyInitialization": false,
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
     "skipLibCheck": true,

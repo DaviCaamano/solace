@@ -1,3 +1,5 @@
+'use client';
+
 import { Modal } from '@components/shared';
 import { useDeleteNoteMutation } from '@context/redux/api/notes/notes.slice';
 import { DeleteNoteHandler } from '#interfaces/notes';

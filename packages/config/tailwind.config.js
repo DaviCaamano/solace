@@ -4,9 +4,11 @@ const defaultTheme = require('tailwindcss/defaultTheme');
 
 module.exports = {
   content: [
-    '../../packages/shared/**/*.{js,ts,jsx,tsx}',
-    './pages/**/*.{js,ts,jsx,tsx}',
-    './src/components/**/*.{js,ts,jsx,tsx}',
+    "../../packages/shared/**/*.{js,ts,jsx,tsx}",
+    "./src/app/**/*.{js,ts,jsx,tsx}",
+    "./src/components/**/*.{js,ts,jsx,tsx}",
+    "./src/screens/**/*.{js,ts,jsx,tsx}",
+    "./src/providers/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
     screens: {
@@ -26,19 +28,12 @@ module.exports = {
         serif: ['var(--font-droid)', ...defaultTheme.fontFamily.serif],
         droid: ['var(--font-droid)', ...defaultTheme.fontFamily.serif],
       },
+      backgroundImage: {
+        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+        'gradient-conic':
+            'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+      },
     },
   },
   plugins: [require('tailwind-scrollbar')],
 };
-
-/**
- * Recommended breakpoints from Browserstack for 2023
- * https://www.browserstack.com/guide/responsive-design-breakpoints
- * base: 0–319px
- * [xs] Mobile: 320px–479px
- * [sm]Tablet: 480px–767px
- * [md] Laptop: 768px–1023px
- * [lg] Desktop: 1024px–1279px
- * [xl] (TW default): 1280px and above
- * [2xl]: (TW default) 1536px
- */

@@ -1,3 +1,5 @@
+'use client';
+
 import { AnimatePresence, motion } from 'framer-motion';
 import { SideBarHeader } from '@components/sidebar/SideBarHeader';
 const { div: MotionDiv } = motion;

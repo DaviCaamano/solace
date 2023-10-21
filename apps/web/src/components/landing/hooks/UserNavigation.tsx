@@ -1,3 +1,5 @@
+'use client';
+
 import { useLogin } from '@hooks/user';
 import { useEffect, useRef } from 'react';
 import { LocalStorage } from '@interface/cookie';
@@ -18,7 +20,9 @@ export const useLoginNavigation = (): UseUserNavigation => {
   const [addNote] = useAddNoteMutation();
   const { setEditor, editor } = useEditor();
   const { isLoading, isLoggedOut, user } = useLogin(true);
-  const { promos, closePromo } = usePromos({ isLoggedIn: isLoading ? undefined : !isLoggedOut });
+  const { promos, closePromo } = usePromos({
+    isLoggedIn: isLoading ? undefined : !isLoggedOut,
+  });
   const stickyLoggedStatus = useRef<boolean | undefined>(undefined);
 
   /** When the user goes from logged in to logged out, or vise versa, direct them to the appropriate content window. */
@@ -40,12 +44,21 @@ export const useLoginNavigation = (): UseUserNavigation => {
          *
          */
         if (locallyStoredContent && user?.id) {
-          addNote({ title: '', userId: user?.id, content: locallyStoredContent }).then(
+          addNote({
+            title: '',
+            userId: user?.id,
+            content: locallyStoredContent,
+          }).then(
             // @ts-ignore
             ({ data: newNote }: FetchResponse<Note | null>) => {
               if (newNote) {
                 localStorage.clear();
-                setEditor({ id: newNote.id, title: newNote.title, content: newNote.content, stale: false });
+                setEditor({
+                  id: newNote.id,
+                  title: newNote.title,
+                  content: newNote.content,
+                  stale: false,
+                });
                 setEditor({ viewMode: EditorViewMode.editor });
               } else {
                 setEditor({ viewMode: EditorViewMode.notebook });

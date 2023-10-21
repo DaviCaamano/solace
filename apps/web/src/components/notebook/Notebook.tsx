@@ -12,7 +12,13 @@ import { NotebookHeader } from './header';
 export const Notebook = () => {
   const { editor, reset, setEditor, user } = useEditor();
   const { isLoading, isError, error, data: noteList } = useListNotes(user);
-  const [addNoteHandlers, deleteNoteHandler, dragEvents, moveNote] = useNotebook(editor, noteList, setEditor, reset, user?.id);
+  const [addNoteHandlers, deleteNoteHandler, dragEvents, moveNote] = useNotebook(
+    editor,
+    noteList,
+    setEditor,
+    reset,
+    user?.id,
+  );
 
   const addNoteOnClick = (title: string) => addNoteHandlers.addNote({ userId: user?.id, title });
   const noteHeiarchy = useMemo(() => noteList && getFocusedNote(editor.id, noteList), [editor.id, noteList]);

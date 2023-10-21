@@ -1,6 +1,6 @@
 import colors from '@styles/tailwind/colors';
 
-export const editorColors = {
+export const editorColors: Record<string, string> = {
   pink: '#FF8686',
   red: '#e91e63',
   violet: '#9c27b0',

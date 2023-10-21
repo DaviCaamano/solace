@@ -35,7 +35,10 @@ export class NoteDeleteService extends ComponentWithLogging {
 
     let noteList: Note | undefined;
     try {
-      noteList = await this.db.note.findMany({ where: { userId }, include: { Children: true } });
+      noteList = await this.db.note.findMany({
+        where: { userId },
+        include: { Children: true },
+      });
     } catch (err: any) {
       this.report('Failed to get Note to be marked for Deletion (1)', err);
     }
@@ -117,7 +120,7 @@ export class NoteDeleteService extends ComponentWithLogging {
       /** Find the first child of the deleted note */
       const nextIds: string[] = children.map(({ next }: Note) => next);
       let firstChild: Note | undefined;
-      for (let child of children) {
+      for (const child of children) {
         if (!nextIds.includes(child.id)) {
           firstChild = child;
         }
@@ -166,7 +169,9 @@ export class NoteDeleteService extends ComponentWithLogging {
       /** Set all parent ID's to that or the original parent, or null if parent was a child of root. */
       try {
         await this.db.note.updateMany({
-          where: { OR: children.map((child: Note) => ({ id: child.id, userId })) },
+          where: {
+            OR: children.map((child: Note) => ({ id: child.id, userId })),
+          },
           data: { parentId },
         });
       } catch (err: any) {

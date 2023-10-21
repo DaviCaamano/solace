@@ -1,3 +1,5 @@
+'use client';
+
 import { PropsWithChildren, useState } from 'react';
 
 import styles from '@components/editor/menu/buttons/editor-buttons.module.scss';

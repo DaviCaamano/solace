@@ -1,3 +1,5 @@
+'use client';
+
 import { Editor as TipTapEditor } from '@tiptap/react';
 import {
   BlockButtonContainer,

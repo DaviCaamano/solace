@@ -1,3 +1,5 @@
+'use client';
+
 import { useListNotesQuery } from '@context/redux/api/notes/notes.slice';
 import { useEffect, useRef } from 'react';
 import { User } from '#interfaces/user';

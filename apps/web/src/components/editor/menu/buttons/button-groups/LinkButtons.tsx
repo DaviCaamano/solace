@@ -1,3 +1,5 @@
+'use client';
+
 import { useState } from 'react';
 import { EditorMenuButton } from '@components/editor';
 import LinkIcon from '@mui/icons-material/Link';
@@ -90,7 +92,15 @@ export const ClearLinkButton = ({ editor }: EditorMenuButtonProps) => {
         className={'font-medium relative px-1 h-8 w-8'}
       >
         <LinkIcon className={'relative'} />
-        <CloseIcon className={'absolute'} style={{ right: '0', bottom: '2px', fontSize: '18px', color: colors.pink }} />
+        <CloseIcon
+          className={'absolute'}
+          style={{
+            right: '0',
+            bottom: '2px',
+            fontSize: '18px',
+            color: colors.pink,
+          }}
+        />
       </EditorMenuButton>
     </div>
   );
