@@ -6,6 +6,7 @@
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
+    "postinstall": "prisma generate",
     "prebuild": "rimraf dist",
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
@@ -22,7 +23,7 @@
     "test:ci": "jest --ci --runInBand",
     "gen": "prisma generate",
     "migrate": "cross-env dotenv -e ../../.env prisma migrate dev && prisma generate",
-    "migrate-serverless": "cross-env prisma migrate dev && prisma generate"
+    "migrate-serverless": "cross-env prisma migrate deploy && prisma generate"
   },
   "dependencies": {
     "@nestjs/common": "^10.1.3",
