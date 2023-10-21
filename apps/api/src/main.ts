@@ -9,7 +9,7 @@ const PORT = process.env.BACKEND_PORT || 5002;
 declare const module: any;
 async function bootstrap() {
   const logger = new Logger('EntryPoint');
-  const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create(AppModule, { cors: true });
   app.setGlobalPrefix('api');
 
   await app.listen(PORT);
