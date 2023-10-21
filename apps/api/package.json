@@ -19,7 +19,10 @@
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json --runInBand",
-    "test:ci": "jest --ci --runInBand"
+    "test:ci": "jest --ci --runInBand",
+    "gen": "prisma generate",
+    "migrate": "cross-env dotenv -e ../../.env prisma migrate dev && prisma generate",
+    "migrate-serverless": "cross-env prisma migrate dev && prisma generate"
   },
   "dependencies": {
     "@nestjs/common": "^10.1.3",
