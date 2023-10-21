@@ -9,8 +9,9 @@ const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'Notes from Solace',
-  description: 'Whether it\'s Starting your next best seller, battling with writers block, finding inspiration for ' +
-      'the gaming table, with our AI assistant, all you need are a few notes from Solace.'
+  description:
+    "Whether it's Starting your next best seller, battling with writers block, finding inspiration for " +
+    'the gaming table, with our AI assistant, all you need are a few notes from Solace.',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

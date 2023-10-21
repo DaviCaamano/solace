@@ -329,14 +329,14 @@ export class NoteDatabaseService extends ComponentWithLogging {
   async addDefaultNotes(userId: string, clearCurrent: boolean = false) {
     console.log(`1
     
-    `)
+    `);
     if (clearCurrent) {
       await this.db.note.deleteMany({ where: { userId } });
     }
 
     const createQueries: Prisma.NoteCreateManyInput[] = [];
     for (const { content, title } of villains) {
-      console.log('2')
+      console.log('2');
       createQueries.push({
         title,
         content,
@@ -348,7 +348,7 @@ export class NoteDatabaseService extends ComponentWithLogging {
     
     3
     
-    `)
+    `);
     await this.db.note.createMany({
       data: createQueries,
     });
@@ -356,7 +356,7 @@ export class NoteDatabaseService extends ComponentWithLogging {
     const updateQueries: Prisma.NoteUpdateArgs[] = [];
     const noteList = await this.list(userId);
     for (const { title, next: nextTitle, parentId: parentTitle } of villains) {
-      console.log('4')
+      console.log('4');
       const relations = getRelationsForVillains(noteList, title, parentTitle, nextTitle);
 
       if (relations) {

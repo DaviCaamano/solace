@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { DraggedNotes, MoveNotePosition, NewNoteToggle, TreeNote, UseDraggableHandler } from '#interfaces/notes';
-import {DraggableData, DraggableEvent, DraggableEventHandler} from 'react-draggable';
+import { DraggableData, DraggableEvent, DraggableEventHandler } from 'react-draggable';
 import { MoveRowCallback } from '@components/notebook/hooks/useNotebook';
 
 export type UseDraggableState = [
