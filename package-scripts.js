@@ -42,8 +42,10 @@ module.exports = {
     },
     build: {
       default: 'npx turbo run build',
-      web: 'next build',
-      api: 'nest build',
+      ci: {
+        web: 'cd out && npm run build',
+        api: 'cd out && npm run build',
+      },
     },
     docker: {
       build: {
@@ -56,7 +58,7 @@ module.exports = {
     start: {
       default: 'nps start.web start.api',
       web: 'next start',
-      api: 'nest start',
-    },
+      api: 'nest start'
+    }
   },
 };
